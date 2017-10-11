@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище БД_НарядModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="OrderDetailsId" />
+          </Key>
+          <Property Name="OrderDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Rate" Type="numeric" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderMaster">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Вид_робіт_Сортименти">
+          <Key>
+            <PropertyRef Name="Id Сортимент" />
+          </Key>
+          <Property Name="Id Сортимент" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Сортимент" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="до 0,05" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,06-0,08" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,09-0,12" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,13-0,22" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,23-0,36" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,37-0,54" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,55-0,76" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,77-1,02" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="1,03-1,29" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="1,30-1,61" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_OrderDetails_OrderMaster">
+          <End Role="OrderMaster" Type="Self.OrderMaster" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderMaster">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище БД_НарядModelContainer">
+          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderMaster" EntityType="Self.OrderMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Вид_робіт_Сортименти" EntityType="Self.Вид_робіт_Сортименти" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_OrderDetails_OrderMaster" Association="Self.FK_OrderDetails_OrderMaster">
+            <End Role="OrderMaster" EntitySet="OrderMaster" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="БД_НарядModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="OrderDetailsId" />
+          </Key>
+          <Property Name="OrderDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Rate" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="OrderMaster" Relationship="Self.FK_OrderDetails_OrderMaster" FromRole="OrderDetails" ToRole="OrderMaster" />
+        </EntityType>
+        <EntityType Name="OrderMaster">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_OrderMaster" FromRole="OrderMaster" ToRole="OrderDetails" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Вид_робіт_Сортименти">
+          <Key>
+            <PropertyRef Name="Id_Сортимент" />
+          </Key>
+          <Property Name="Id_Сортимент" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Сортимент" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="до_0_05" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="C0_06_0_08" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="C0_09_0_12" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="C0_13_0_22" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="C0_23_0_36" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="C0_37_0_54" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="C0_55_0_76" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="C0_77_1_02" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="C1_03_1_29" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="C1_30_1_61" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_OrderDetails_OrderMaster">
+          <End Role="OrderMaster" Type="Self.OrderMaster" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderMaster">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="БД_НарядEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="Self.Categories" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" />
+          <EntitySet Name="OrderMaster" EntityType="Self.OrderMaster" />
+          <EntitySet Name="Products" EntityType="Self.Products" />
+          <EntitySet Name="Вид_робіт_Сортименти" EntityType="Self.Вид_робіт_Сортименти" />
+          <AssociationSet Name="FK_OrderDetails_OrderMaster" Association="Self.FK_OrderDetails_OrderMaster">
+            <End Role="OrderMaster" EntitySet="OrderMaster" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище БД_НарядModelContainer" CdmEntityContainer="БД_НарядEntities1">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="БД_НарядModel.Categories">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="БД_НарядModel.OrderDetails">
+              <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="OrderDetailsId" ColumnName="OrderDetailsId" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderMaster">
+            <EntityTypeMapping TypeName="БД_НарядModel.OrderMaster">
+              <MappingFragment StoreEntitySet="OrderMaster">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="БД_НарядModel.Products">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Вид_робіт_Сортименти">
+            <EntityTypeMapping TypeName="БД_НарядModel.Вид_робіт_Сортименти">
+              <MappingFragment StoreEntitySet="Вид_робіт_Сортименти">
+                <ScalarProperty Name="Id_Сортимент" ColumnName="Id Сортимент" />
+                <ScalarProperty Name="Сортимент" ColumnName="Сортимент" />
+                <ScalarProperty Name="до_0_05" ColumnName="до 0,05" />
+                <ScalarProperty Name="C0_06_0_08" ColumnName="0,06-0,08" />
+                <ScalarProperty Name="C0_09_0_12" ColumnName="0,09-0,12" />
+                <ScalarProperty Name="C0_13_0_22" ColumnName="0,13-0,22" />
+                <ScalarProperty Name="C0_23_0_36" ColumnName="0,23-0,36" />
+                <ScalarProperty Name="C0_37_0_54" ColumnName="0,37-0,54" />
+                <ScalarProperty Name="C0_55_0_76" ColumnName="0,55-0,76" />
+                <ScalarProperty Name="C0_77_1_02" ColumnName="0,77-1,02" />
+                <ScalarProperty Name="C1_03_1_29" ColumnName="1,03-1,29" />
+                <ScalarProperty Name="C1_30_1_61" ColumnName="1,30-1,61" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

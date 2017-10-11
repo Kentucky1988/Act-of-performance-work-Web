@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="БД_НарядModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Вид_робіт_Сортименти">
+    <Key>
+      <PropertyRef Name="Id_Сортимент" />
+    </Key>
+    <Property Name="Id_Сортимент" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Сортимент" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="до_0_05" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="C0_06_0_08" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="C0_09_0_12" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="C0_13_0_22" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="C0_23_0_36" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="C0_37_0_54" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="C0_55_0_76" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="C0_77_1_02" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="C1_03_1_29" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="C1_30_1_61" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="БД_НарядEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Вид_робіт_Сортименти" EntityType="Self.Вид_робіт_Сортименти" />
+  </EntityContainer>
+</Schema>

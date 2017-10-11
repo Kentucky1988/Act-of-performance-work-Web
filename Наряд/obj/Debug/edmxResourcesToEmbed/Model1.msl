@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище БД_НарядModelContainer" CdmEntityContainer="БД_НарядEntities">
+    <EntitySetMapping Name="Вид_робіт_Сортименти">
+      <EntityTypeMapping TypeName="БД_НарядModel.Вид_робіт_Сортименти">
+        <MappingFragment StoreEntitySet="Вид_робіт_Сортименти">
+          <ScalarProperty Name="Id_Сортимент" ColumnName="Id Сортимент" />
+          <ScalarProperty Name="Сортимент" ColumnName="Сортимент" />
+          <ScalarProperty Name="до_0_05" ColumnName="до 0,05" />
+          <ScalarProperty Name="C0_06_0_08" ColumnName="0,06-0,08" />
+          <ScalarProperty Name="C0_09_0_12" ColumnName="0,09-0,12" />
+          <ScalarProperty Name="C0_13_0_22" ColumnName="0,13-0,22" />
+          <ScalarProperty Name="C0_23_0_36" ColumnName="0,23-0,36" />
+          <ScalarProperty Name="C0_37_0_54" ColumnName="0,37-0,54" />
+          <ScalarProperty Name="C0_55_0_76" ColumnName="0,55-0,76" />
+          <ScalarProperty Name="C0_77_1_02" ColumnName="0,77-1,02" />
+          <ScalarProperty Name="C1_03_1_29" ColumnName="1,03-1,29" />
+          <ScalarProperty Name="C1_30_1_61" ColumnName="1,30-1,61" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

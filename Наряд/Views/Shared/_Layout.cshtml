@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">  <!--забезпечення правильної візуалізації та підтримки масштабованості на мобільних пристроях-->
+    <title>@ViewBag.Title - Наряд</title> <!--имя вкладки, отображается в закладках-->
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> <!-- Свіжа збірка мінімізованих CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> <!-- Додаткові теми -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script> <!--Подключаем библиотеку JQuery-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> <!-- Свіжа збірка мінімізованої JavaScript -->
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> <!--Подключаем библиотеку JQuery UI-->
+</head>
+
+<body>
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <a href="#" class=" = navbar-brand">Наряд - Акт</a>
+        </div>*@
+
+    <div class="container-fluid">
+        @RenderBody() <!--метод который вставляет часть страницы-->
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Наряд - акт на виконання робіт</p>
+        </footer>
+    </div>
+</body>
+</html>

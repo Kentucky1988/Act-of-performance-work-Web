@@ -1,0 +1,23 @@
+﻿.custom-combobox {
+    position: relative;
+    display: inline-block;
+    padding-right: 35px;      
+}
+
+.custom-combobox-toggle { /*кновка выпадающего списка*/
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    padding: 0;  
+}
+
+.custom-combobox-input { /*выпадающий список*/
+    /*absolute | fixed | relative | static | inherit*/
+    color: dimgray;
+    padding: 6px;    
+}
+
+.ui-autocomplete {/*полоcа прокрута для выпадающего списка*/
+    max-height: 200px;
+    overflow-y: auto;  
+}
