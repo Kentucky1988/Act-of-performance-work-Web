@@ -28,7 +28,34 @@ function renderCategory(element) {//создание списка категор
     })
 }
 
-//fetch products
+var Materials = []
+function LoadMaterials(element) { //материалы
+    if (Materials.length == 0) {
+        $.ajax({
+            type: "GET",
+            url: '/home/getMaterials',
+            success: function (data) {
+                Materials = data;
+                renderMaterials(element);
+            }
+        })
+    }
+    else {
+        //добавляем материалы в список
+        renderMaterials(element);
+    }
+}
+
+function renderMaterials(element) {//создание списка материалов
+    var $ele = $(element);
+    $ele.empty();
+    $.each(Materials, function (i, val) {
+        $ele.append($('<option/>').val(val.Id_Сортимент).text(val.Сортимент));
+    })
+}
+
+
+//список продуктов
 function LoadProduct(categoryDD) {
     $.ajax({
         type: "GET",
@@ -54,65 +81,47 @@ function renderProduct(element, data) {//создание ведомого сп�
 }
 
 $(document).ready(function () {
-    $('#add').click(function () {//событие на нажатие кнопки ДОБАВИТЬ
-        //validation and add order items
+    $('.add').click(function () {//событие на нажатие кнопки ДОБАВИТЬ
+
+        //($table).find  ,$table
+        var $table = $(this).parents('.tbodyTable');//таблица в которой добовляем строки
         var isAllValid = true;
-        if ($('#productCategory').val() == "0") {
-            isAllValid = false;
-            $('#productCategory').siblings('span.error').css('visibility', 'visible');
-        }
-        else {
-            $('#productCategory').siblings('span.error').css('visibility', 'hidden');
-        }
 
-        if ($('#product').val() == "0") {
-            isAllValid = false;
-            $('#product').siblings('span.error').css('visibility', 'visible');
-        }
-        else {
-            $('#product').siblings('span.error').css('visibility', 'hidden');
-        }
+        $("tr td input:not(:disabled)", $table).each(function () {//проверка не пустые строки
+            if ($(this).val().trim() == '') {
+                isAllValid = false;
+            }
+            //else {
+            // $('#productCategory').siblings('span.error').css('visibility', 'hidden');
+            //}
+        });
 
-        if (!($('#quantity').val().trim() != '' && (parseInt($('#quantity').val()) || 0))) {
-            isAllValid = false;
-            $('#quantity').siblings('span.error').css('visibility', 'visible');
-        }
-        else {
-            $('#quantity').siblings('span.error').css('visibility', 'hidden');
-        }
+        if (isAllValid) {//копирование строки 
 
-        if (!($('#rate').val().trim() != '' && !isNaN($('#rate').val().trim()))) {
-            isAllValid = false;
-            $('#rate').siblings('span.error').css('visibility', 'visible');
-        }
-        else {
-            $('#rate').siblings('span.error').css('visibility', 'hidden');
-        }
-
-        if (isAllValid) {
             // var $newRow = $('#mainrow').clone().removeAttr('id');//клонирование строки          
 
-            $("<tr>").appendTo("#tbodyTable");//добавляем нижнюю строку            
-            $("#tbodyTable tr:first td").each(function (indx) {//заполняем последнюю строку данными     
+            $("<tr>").appendTo($table);//добавляем нижнюю строку            
+            $("tr:first td", $table).each(function (indx) {//заполняем последнюю строку данными     
                 var str;
 
-                if ($(this).find("input").attr('type', 'text')) {
-                    str = $(this).find("input").val();
-                }               
+                if ($("input", this).attr('type', 'text')) {
+                    str = $("input", this).val();
+                }
 
-                if (indx == 1) {
-                    $("<td/>").attr("colspan", "2").text(str).appendTo("#tbodyTable tr:last");
-                } else if (indx > 1) {
-                    $("<td/>", { text: str }).appendTo("#tbodyTable tr:last");
-                } else {
+                if (indx == 1 && ($($table).next().is("tfoot"))) {
+                    $("<td/>").attr("colspan", "2").text(str).appendTo($("tr:last", $table));
+                } else if (indx == 1 || indx > 1 || (indx == 0 && !($($table).next().is("tfoot")))) {
+                    $("<td/>", { text: str }).appendTo($("tr:last", $table));
+                }
+                else {
                     return;
                 }
             });
 
-            var $newRow = $('#mainrow #add').clone();//клонирование кнопки add
+            var $newRow = $(this).clone();//клонирование кнопки add
             $($newRow).addClass('remove').toggleClass('btn-success btn-danger');//сменить стиль success - danger
             $('#addIcon', $newRow).toggleClass('glyphicon-plus glyphicon-trash');//сменить иконку кнопки
-            $($newRow).appendTo("#tbodyTable tr:last td:last");//добавление клонированой кнопки add
+            $($newRow).appendTo($("tr:last td:last", $table));//добавление клонированой кнопки add
 
             //$('.pc', $newRow).val($('#productCategory').val()); //копировать значение 
             //$('.product', $newRow).val($('#product').val());    //копировать значение          
@@ -128,29 +137,50 @@ $(document).ready(function () {
             //$('#headTable').append($newRow);//добавление клонированой строки
 
             $('span.error', $newRow).remove();
-            $('input.custom-combobox-input:first').val('');
-            $('#productCategory').val('0');
-            $('#quantity,#rate').val('');
-            $('#orderItemError').empty();
+            $('input.custom-combobox-input', $table).val('');
+            $('#productCategory', $table).val('0');
+            $('#quantity,#rate', $table).val('');
+            $('#orderItemError', $table).empty();
         }
-        columnSum(); //сумма строк      
+
+        if ($($table).next().is("tfoot")) {
+            columnSum(); //сумма строк      
+        }
     });
 
     //Удаление строки
-    $('#tbodyTable').on('click', '.remove', function () {
-        $(this).parents('tr').remove();
-        columnSum(); //сумма строк
+    $('.tbodyTable').each(function () {
+       
+        $(this).on('click', '.remove', function () {
+            var $obj = $(this).parents('.tbodyTable').next().is("tfoot");
+            $(this).parents('tr').remove();
+            if ($obj) {
+                columnSum(); //перещитать сумму строк после удаленных
+                }
+        })
     });
 
     function columnSum() {//сумма строк
         $("tfoot tr td:not(:first)").text(function (indx) {
             var sum = 0;
-            $("tr:not(:first) td:nth-child(" + (indx + 2) + ")", "#tbodyTable").each(function () {
+            $("tr:not(:first) td:nth-child(" + (indx + 2) + ")", "#tbodyTable1").each(function () {
                 sum += +$(this).text()
             });
             $(this).text(sum)
         });
     }
+
+    //function columnSum() {//сумма строк
+    //    if ($('.tbodyTable').next().is("tfoot")) {
+    //        $('.tbodyTable').find("tfoot tr td:not(:first)").text(function (indx) {
+    //            var sum = 0;
+    //            $("tr:not(:first) td:nth-child(" + (indx + 2) + ")", ".tbodyTable").each(function () {
+    //                sum += +$(this).text()
+    //            });
+    //            $(this).text(sum)
+    //        });
+    //    }
+    //}
 
     //Сохранить
     $('#submit').click(function () {
@@ -244,4 +274,9 @@ $(document).ready(function () {
 });
 
 LoadCategory($('#productCategory'));
+
+$('.materials').each(function () {//выпадающий список сыря и материалов
+    LoadMaterials($(this));
+})
+
 

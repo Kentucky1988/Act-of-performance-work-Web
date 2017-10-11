@@ -13,6 +13,16 @@ namespace Наряд.Controllers
             return View();
         }
 
+        public JsonResult getMaterials()
+        {
+            List<Вид_робіт_Сортименти> materials = new List<Вид_робіт_Сортименти>();
+            using (БД_НарядEntities1 dc = new БД_НарядEntities1())
+            {
+                materials = dc.Вид_робіт_Сортименти.OrderBy(a => a.Сортимент).ToList();
+            }
+            return new JsonResult { Data = materials, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
         public JsonResult getProductCategories()
         {
             List<Categories> categories = new List<Categories>();

@@ -2,7 +2,7 @@
     ViewBag.Title = "Index"; //имя вкладки, отображается в закладках
 }
 
-<div class="container"> <!--создать три вюшки для окон и убрать из отсюда-->
+<div class="container">   
     <ul class="nav nav-tabs" role="tablist">
         <li class="active"><a href="#facial" role="tab" data-toggle="tab">Лицьова сторона</a> </li>
         <li><a href="#reverse" role="tab" data-toggle="tab">Зворотня сторона</a> </li>
@@ -11,240 +11,10 @@
 </div>
 
 <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="facial">
-        <div>
-            <table align="center">
-                <tr>
-                    <td> <h3>Наряд - акт на виконання робіт №</h3> </td>
-                    <td><input type="text" class="form-control" style="width: 50px; margin-top: 15px" /></td>
-                </tr>
-            </table>
-        </div>
-        <div>
-            <div>
-                <table class="table-bordered">
-                    <tr>
-                        <td>Дата</td>
-                        <td>Підприємство</td>
-                        <td>Ідентифікаційний код ЄДРПОУ</td>
-                        <td>Підрозділ</td>
-                        <td>Бригада</td>
-                        <td>Кількістьть осіб</td>
-                        <td>Прізвище та ініціали робітника</td>
-                        <td>Табельний номер</td>
-                        <td>Вид діяльності</td>
-                    </tr>
-                    <tr>
-                        <td> <input type="text" class="calendar" id="getDate" />  </td>
-                        <td> <input type="text" /> </td>
-                        <td> <input type="text" /> </td>
-                        <td> <input type="text" /> </td>
-                        <td> <input type="text" /> </td>
-                        <td> <input type="text" /> </td>
-                        <td> <input type="text" /> </td>
-                        <td> <input type="text" /> </td>
-                        <td> <input type="text" /> </td>
-                    </tr>
-                </table>
-            </div>
-            <br />
-            <div>
-                <table>
-                    <tr>
-                        <td style="text-align:right">Місце роботи Кв.</td>
-                        <td> <input type="text" /> </td>
-                        <td id="paddingLeft">Виділ</td>
-                        <td> <input type="text" /> </td>
-                        <td id="paddingLeft">Лісорубний квиток №</td>
-                        <td> <input type="text" /> </td>
-                        <td id="paddingLeft">Якого року лісосіка</td>
-                        <td> <select name="year"> </select> </td>
-                        <td id="paddingLeft">Вид рубки</td>
-                        <td> <input type="text" /> </td>
-                    </tr>
-                </table>
-                <table style="margin-top:5px">
-                    <tr>
-                        <td> Найменування заходу</td>
-                        <td> <input type="text" id="orderDate" />  </td>
-                        <td id="paddingLeft">Початок рототи</td>
-                        <td>  <input type="text" class="calendar" id="firstWorkingDay" />  </td>
-                        <td id="paddingLeft">Закінчення роботи</td>
-                        <td>  <input type="text" class="calendar" id="lastWorkingDay" /> </td>
-                        <td id="paddingLeft">Щоденник приймання робіт №</td>
-                        <td>  <input type="text" id="orderDate" /> </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <br>
-        <div class="details">
-            <table class="table-bordered">
-                <thead>
-                    <tr>
-                        <td rowspan="2">Категорія робіт</td>
-                        <td rowspan="2">Найменування робіт</td>
-                        <td rowspan="2">Одиниця виміру</td>
-                        <td colspan="2">Обсяг робіт </td>
-                        <td rowspan="2">Норма виробітку</td>
-                        <td rowspan="2">Виконанно норм</td>
-                        <td rowspan="2">Розцінка за одиницю</td>
-                        <td rowspan="2">Сума заробітку</td>
-                        <td colspan="2">Відпрацьовано</td>
-                        <td rowspan="2">Добавити строку</td>
-                    </tr>
-                    <tr>
-                        <td>Задано</td>
-                        <td>Виконано</td>
-                        <td>Людино-годин</td>
-                        <td>Людино-змін</td>
-                    </tr>
-                </thead>
-                <tbody id="tbodyTable">
-                    <!--тело таблицы-->
-                    <tr class="mycontainer" id="mainrow" align="center">
-                        <td>
-                            <!--выпадающий список категория работ-->
-                            <select id="productCategory" class="pc" style="min-width:150px" onchange="LoadProduct(this)">
-                                <option></option>
-                            </select>
-                        </td>
-                        <td>
-                            <!--выпадающий список вид работ-->
-                            <select id="product" class="product autocompleteCombobox form-control" style="min-width:450px">
-                                <option></option>
-                            </select>
-                        </td>
-                        <td> <input type="text" id="quantity" class="quantity" /> </td>
-                        <td> <input type="text" id="quantity" class="quantity" /> </td>
-                        <td> <input type="text" id="quantity" class="quantity" /> </td>
-                        <td> <input type="text" id="quantity" class="quantity" /> </td>
-                        <td> <input type="text" id="quantity" class="quantity" /> </td>
-                        <td> <input type="text" id="quantity" class="quantity" /> </td>
-                        <td> <input type="text" id="quantity" class="quantity" /> </td>
-                        <td> <input type="text" id="quantity" class="quantity" /> </td>
-                        <td> <input type="text" id="rate" class="quantity" /> </td>
-                        <td>
-                            <button class="btn btn-success" id="add" style="width:60px">
-                                <!--кнопка добавления строки-->
-                                <span id="addIcon" class="glyphicon glyphicon-plus" />
-                            </button>
-                        </td>
-                    </tr>
-                <tfoot>
-                    <!--нижняя строка с суммой-->
-                    <tr>
-                        <td colspan="2">УСЬОГО</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-        <div>
-            <table align="center">
-                <tr>
-                    <td> <h3>Витрачено сировини, матеріалів та відходів виробництва</h3> </td>
-                </tr>
-            </table>
-        </div>
-        <div class="details">
-            <table class="table-bordered">
-                <thead>
-                    <tr>
-                        <td rowspan="2">Найменування сировини, матеріалів та на що витрачено</td>
-                        <td rowspan="2">Одиниця виміру</td>
-                        <td colspan="2">Кількість</td>
-                        <td rowspan="2">Вартість</td>
-                        <td rowspan="2">Найменування сировини, матеріалів та на що витрачено</td>
-                        <td rowspan="2">Одиниця виміру</td>
-                        <td colspan="2">Кількість</td>
-                        <td rowspan="2">Вартість</td>
-                        <td rowspan="2">Добавити строку</td>
-                    </tr>
-                    <tr>
-                        <td>по нормі</td>
-                        <td>фактично</td>
-                        <td>по нормі</td>
-                        <td>фактично</td>
-                    </tr>
-                </thead>
-                <tbody id="tbodyTable">
-                    <!--тело таблицы-->
-                    <tr class="mycontainer" id="mainrow" align="center">
-                        <td>
-                            <!--выпадающий список материалы, сырье-->
-                            <select id="productCategory" class="pc" style="min-width:150px" onchange="LoadProduct(this)">
-                                <option></option>
-                            </select>
-                        </td>
-                        <td> <input type="text" id="quantity" class="quantity" /> </td>
-                        <td> <input type="text" id="quantity" class="quantity" /> </td>
-                        <td> <input type="text" id="quantity" class="quantity" /> </td>
-                        <td> <input type="text" id="quantity" class="quantity" /> </td>
-                        <td>
-                            <!--выпадающий список материалы, сырье-->
-                            <select id="productCategory" class="pc" style="min-width:150px" onchange="LoadProduct(this)">
-                                <option></option>
-                            </select>
-                        </td>
-                        <td> <input type="text" id="quantity" class="quantity" /> </td>
-                        <td> <input type="text" id="quantity" class="quantity" /> </td>
-                        <td> <input type="text" id="quantity" class="quantity" /> </td>
-                        <td> <input type="text" id="rate" class="quantity" /> </td>
-                        <td>
-                            <button class="btn btn-success" id="add" style="width:60px">
-                                <span id="addIcon" class="glyphicon glyphicon-plus" />
-                            </button> <!--кнопка добавления строки-->
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <br />
-        <div class="container-fluid">
-            <div>
-                <table>
-                    <tr>
-                        <td style="text-align:right">Наряд видав</td>
-                        <td> <input type="text" /> </td>
-                        <td id="paddingLeft">До виконання прийняв</td>
-                        <td> <input type="text" /> </td>
-                        <td id="paddingLeft">Виконану роботу здав</td>
-                        <td> <input type="text" /> </td>
-                    </tr>
-                </table>
-            </div>
-            <div>
-                <table style="margin-top:5px">
-                    <tr>
-                        <td>Оцінка якості виконаних робіт</td>
-                        <td> <input type="text" id="orderDate" />  </td>
-                        <td id="paddingLeft">Роботу прийняв</td>
-                        <td> <input type="text" id="orderDate" />  </td>
-                    </tr>
-                </table>
-            </div>
-        </div>       
-        <div align="right">
-            <button id="submit" class="btn btn-warning" style="width:100px">
-                <span id="addIcon" class="glyphicon glyphicon-floppy-disk" />
-            </button>
-        </div><!--Кнопка сохранения-->
-    </div>
-    <div role="tabpanel" class="tab-pane" id="reverse">Зворотня сторона</div>
+    <div role="tabpanel" class="tab-pane active" id="facial"> @Html.Partial("_facialPage") </div>
+    <div role="tabpanel" class="tab-pane" id="reverse"> @Html.Partial("_reversePage") </div>
     <div role="tabpanel" class="tab-pane" id="database">База данних</div>
 </div>
-
-
-
 
 
 <link rel="stylesheet" href="~/Content/bootstrap.min.css" /> <!--библиотека bootstrap-->
@@ -259,8 +29,8 @@
 <script src="~/Scripts/myJScript/datepicker.languageUK.js"></script> <!--файл с кодом Украинского языка календаря и робота с датами-->
 <script src="~/Scripts/myJScript/myJScript.js"></script>
 
-<script type="text/javascript">
-
+<script type="text/javascript">   
+     
     $(function () {
         $("input[type='text'], select").addClass("form-control");
     });
@@ -268,9 +38,7 @@
     $(function () {
         $("thead td").addClass("td1");/*клас отображает содержимое ячеек заголовка по центру (вертикаль)*/
     });
-
-    //each() перебор
-    //eq(0) елемент масива
+    
 </script>
 
 <style type="text/css">
@@ -294,5 +62,10 @@
         text-align: right;
         padding-right: 5px;
     }
+
+    .add {
+        width:60px;
+    }
+
 </style>
 
