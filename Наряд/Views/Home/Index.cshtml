@@ -4,15 +4,15 @@
 
 <div class="container">   
     <ul class="nav nav-tabs" role="tablist">
-        <li class="active"><a href="#facial" role="tab" data-toggle="tab">Лицьова сторона</a> </li>
-        <li><a href="#reverse" role="tab" data-toggle="tab">Зворотня сторона</a> </li>
+        <li><a href="#facial" role="tab" data-toggle="tab">Лицьова сторона</a> </li>
+        <li class="active"><a href="#reverse" role="tab" data-toggle="tab">Зворотня сторона</a> </li>
         <li><a href="#database" role="tab" data-toggle="tab">База данних</a> </li>
     </ul>
 </div>
 
 <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="facial"> @Html.Partial("_facialPage") </div>
-    <div role="tabpanel" class="tab-pane" id="reverse"> @Html.Partial("_reversePage") </div>
+    <div role="tabpanel" class="tab-pane" id="facial"> @Html.Partial("_facialPage") </div>
+    <div role="tabpanel" class="tab-pane active" id="reverse"> @Html.Partial("_reversePage") </div>
     <div role="tabpanel" class="tab-pane" id="database">База данних</div>
 </div>
 
@@ -38,7 +38,7 @@
     $(function () {
         $("thead td").addClass("td1");/*клас отображает содержимое ячеек заголовка по центру (вертикаль)*/
     });
-    
+        
 </script>
 
 <style type="text/css">
@@ -58,7 +58,7 @@
     }
 
     #paddingLeft {
-        padding-left: 10px;
+        padding-left: 13px;
         text-align: right;
         padding-right: 5px;
     }

@@ -1,1 +1,280 @@
-﻿<li>Зворотня сторона</li>
+﻿<div role="tabpanel" class="tab-pane active" id="facialPage">
+    <!--лицевая сторона наряд акта-->
+    <div align="center">
+        <h4>Табель на внутрішньо бригадний розрахунок зарплати</h4>
+    </div>
+    <div class="details">
+        <table class="table-bordered table-hover">
+            <thead>
+                <tr>
+                    <td rowspan="3">Прізвище та ініціали робітника</td>
+                    <td rowspan="3">Табельний №</td>
+                    <td rowspan="3">Категорія</td>
+                    <td rowspan="3">Професія</td>
+                    <td rowspan="3">Тарифний розряд, коефіцієнт</td>
+                    <td colspan="16">Відпрацьовано годин по числам місяця</td>
+                    <td colspan="3">Годин</td>
+                    <td rowspan="3">Тарифна ставка</td>
+                    <td rowspan="3">Сумма коеф.</td>
+                    <td colspan="2">Виконанно норм</td>
+                    <td colspan="3">Належить нарахувати зарплати</td>
+                    <td rowspan="3">Добавити строку</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td>&nbsp;</td>
+                    <td rowspan="3">Всього</td>
+                    <td colspan="2">в т. ч.</td>
+                    <td rowspan="2">Кількість</td>
+                    <td rowspan="2">%</td>
+                    <td rowspan="2">&nbsp;</td>
+                    <td rowspan="2">&nbsp;</td>
+                    <td rowspan="2">Всього</td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                    <td>19</td>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                    <td>23</td>
+                    <td>24</td>
+                    <td>25</td>
+                    <td>26</td>
+                    <td>27</td>
+                    <td>28</td>
+                    <td>29</td>
+                    <td>30</td>
+                    <td>31</td>
+                    <td>відрядно</td>
+                    <td>погодинно</td>
+                </tr>
+            </thead>
+            <tbody class="tbodyTableRevers" id="tbodyTable1">
+                <!--тело таблицы-->
+                <tr class="mycontainerRevers" id="mainrow" align="center">
+                    <td rowspan="2">
+                        <!--выпадающий список категория работ-->
+                        <select id="productCategory autocompleteCombobox" class="pc" style="min-width:200px; border:none; height: 68px">
+                            <option></option>
+                        </select>
+                    </td>
+                    <td rowspan="2"> <input type="text" class="quantity" disabled /> </td>
+                    <td rowspan="2"> <input type="text" class="quantity" id="quantity" /> </td>
+                    <td rowspan="2"> <input type="text" class="quantity" id="rate" /> </td>
+                    <td rowspan="2"> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" id="quantity" /> </td>
+                    <td> <input type="text" class="quantity" id="rate" /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" id="quantity" /> </td>
+                    <td rowspan="2"> <input type="text" class="quantity" id="rate" /> </td>
+                    <td rowspan="2"> <input type="text" class="quantity" disabled /> </td>
+                    <td rowspan="2"> <input type="text" class="quantity" disabled /> </td>
+                    <td rowspan="2"> <input type="text" class="quantity" disabled /> </td>
+                    <td rowspan="2"> <input type="text" class="quantity" disabled /> </td>
+                    <td rowspan="2"> <input type="text" class="quantity" disabled /> </td>
+                    <td rowspan="2"> <input type="text" class="quantity" disabled /> </td>
+                    <td rowspan="2"> <input type="text" class="quantity" disabled /> </td>
+                    <td rowspan="2"> <input type="text" class="quantity" disabled /> </td>
+                    <td rowspan="2"> <input type="text" class="quantity" disabled /> </td>
+                    <td rowspan="2">
+                        <button class="btn btn-success add">
+                            <!--кнопка добавления строки-->
+                            <span id="addIcon" class="glyphicon glyphicon-plus" />
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" id="quantity" /> </td>
+                    <td> <input type="text" class="quantity" id="rate" /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td> <input type="text" class="quantity" id="quantity" /> </td>
+                </tr>
+            <tfoot>
+                <!--нижняя строка с суммой-->
+                <tr>
+                    <td colspan="2">УСЬОГО</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <br />
+    <div align="center">
+        <table>
+            <tr>
+                <td style="text-align:right">Вартість коефіцієнту, грн</td>
+                <td> <input type="text" /> </td>
+                <td id="paddingLeft">Бригадир</td>
+                <td> <input type="text" /> </td>
+                <td id="paddingLeft">Відповідальний за введення табеля</td>
+                <td> <input type="text" id="orderDate" />  </td>
+                <td id="paddingLeft">Розрахунок склав</td>
+                <td> <input type="text" id="orderDate" />  </td>
+            </tr>
+        </table>
+    </div>
+    <br />
+    <div align="left">
+        <h4 style="padding-left:150px">Лісопродукцію:</h4>
+    </div>
+    <div class="details">
+        <table class="table-bordered table-hover">
+            <thead>
+                <tr>
+                    <td rowspan="2">Найменування сировини, матеріалів та на що витрачено</td>
+                    <td rowspan="2">Одиниця виміру</td>
+                    <td colspan="2">Кількість</td>
+                    <td rowspan="2">Вартість</td>
+                    <td rowspan="2">Найменування сировини, матеріалів та на що витрачено</td>
+                    <td rowspan="2">Одиниця виміру</td>
+                    <td colspan="2">Кількість</td>
+                    <td rowspan="2">Вартість</td>
+                    <td rowspan="2">Добавити строку</td>
+                </tr>
+                <tr>
+                    <td>по нормі</td>
+                    <td>фактично</td>
+                    <td>по нормі</td>
+                    <td>фактично</td>
+                </tr>
+            </thead>
+            <tbody class="tbodyTable">
+                <!--тело таблицы-->
+                <tr class="mycontainer" id="mainrow" align="center">
+                    <td>
+                        <!--выпадающий список материалы, сырье-->
+                        <select class="pc autocompleteCombobox materials">
+                            <option></option>
+                        </select>
+                    </td>
+                    <td> <input type="text" id="quantity" class="quantity" /> </td>
+                    <td> <input type="text" id="quantity" class="quantity" /> </td>
+                    <td> <input type="text" id="quantity" class="quantity" /> </td>
+                    <td> <input type="text" id="quantity" class="quantity" /> </td>
+                    <td>
+                        <!--выпадающий список материалы, сырье-->
+                        <select class="pc autocompleteCombobox materials">
+                            <option></option>
+                        </select>
+                    </td>
+                    <td> <input type="text" id="quantity" class="quantity" /> </td>
+                    <td> <input type="text" id="quantity" class="quantity" /> </td>
+                    <td> <input type="text" id="quantity" class="quantity" /> </td>
+                    <td> <input type="text" id="rate" class="quantity" /> </td>
+                    <td>
+                        <button class="btn btn-success add">
+                            <span id="addIcon" class="glyphicon glyphicon-plus" />
+                        </button> <!--кнопка добавления строки-->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br />
+    <div class="container-fluid">
+        <div>
+            <table>
+                <tr>
+                    <td style="text-align:right">Прийняв на відповідальне зберігання</td>
+                    <td> <input type="text" /> </td>
+                    <td id="paddingLeft">Дата</td>
+                    <td> <input type="text" class="calendar" id="getDate" />  </td>
+                    <td id="paddingLeft">Затверджую</td>
+                    <td> <input type="text" /> </td>
+                </tr>
+            </table>
+        </div>        
+    </div>
+    <div align="right">
+        <button id="submit" class="btn btn-warning" style="width:100px">
+            <span id="addIcon" class="glyphicon glyphicon-floppy-disk" />
+        </button>
+    </div><!--Кнопка сохранения-->
+</div>
+
+
+<script type="text/javascript">
+
+    $('.tbodyTableRevers td').each(function () {
+        $this = this;
+        if ($($this).attr('rowspan')) {
+            $('input', $this).css({ 'border': 'none', 'height': '68px' });
+        }
+        else {
+            $('input', $this).css({ 'border': 'none', 'height': '34px' });
+        }
+
+        if ($('input', $this).attr('disabled')) {
+            $($this).css('background-color', 'lavender');
+        }
+    });
+</script>

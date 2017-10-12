@@ -1,11 +1,13 @@
 ﻿$(function () {//формат календаря
-    $(".calendar").datepicker({
-		inline: true,
-        dateFormat: 'dd/mm/yy',
-        language: 'uk',        
-		changeYear: true,
-        changeMonth: true            
-    }).width(100) 
+    $(".calendar").each(function () {
+        $(this).datepicker({
+            inline: true,
+            dateFormat: 'dd/mm/yy',
+            language: 'uk',
+            changeYear: true,
+            changeMonth: true
+        }).width(100) 
+    })
 });
 
 $(function ($) {//украинский язык календаря
@@ -52,7 +54,9 @@ $(function () {// текущая дата
     var year = data.getFullYear();
     day = day + "/" + month + "/" + year;
 
-    $('#getDate').val(day);
+    $('#getDate').each(function (index, element) {
+        $(element).val(day);
+    })
 });
 
 $(function () {// первый робочий день месяца   

@@ -170,18 +170,6 @@ $(document).ready(function () {
         });
     }
 
-    //function columnSum() {//сумма строк
-    //    if ($('.tbodyTable').next().is("tfoot")) {
-    //        $('.tbodyTable').find("tfoot tr td:not(:first)").text(function (indx) {
-    //            var sum = 0;
-    //            $("tr:not(:first) td:nth-child(" + (indx + 2) + ")", ".tbodyTable").each(function () {
-    //                sum += +$(this).text()
-    //            });
-    //            $(this).text(sum)
-    //        });
-    //    }
-    //}
-
     //Сохранить
     $('#submit').click(function () {
         var isAllValid = true;
