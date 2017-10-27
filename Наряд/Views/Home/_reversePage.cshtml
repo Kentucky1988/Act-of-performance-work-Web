@@ -4,18 +4,18 @@
         <h4>Табель на внутрішньо бригадний розрахунок зарплати</h4>
     </div>
     <div class="details">
-        <table class="table-bordered table-hover">
-            <thead>
+        <table class="table-bordered table-hover employee">
+            <thead style="font-size: 10pt">
                 <tr>
                     <td rowspan="3">Прізвище та ініціали робітника</td>
-                    <td rowspan="3">Табельний №</td>
-                    <td rowspan="3">Категорія</td>
-                    <td rowspan="3">Професія</td>
-                    <td rowspan="3">Тарифний розряд, коефіцієнт</td>
+                    <td rowspan="3" class="verticalText">Табельний&nbsp;№</td>
+                    <td rowspan="3" class="verticalText">Категорія</td>
+                    <td rowspan="3" class="verticalText">Професія</td>
+                    <td rowspan="3" class="verticalText">Тарифний розряд,&nbsp;коеф.</td>
                     <td colspan="16">Відпрацьовано годин по числам місяця</td>
                     <td colspan="3">Годин</td>
-                    <td rowspan="3">Тарифна ставка</td>
-                    <td rowspan="3">Сумма коеф.</td>
+                    <td rowspan="3" class="verticalText">Тарифна&nbsp;ставка</td>
+                    <td rowspan="3" class="verticalText">Сумма&nbsp;коеф.</td>
                     <td colspan="2">Виконанно норм</td>
                     <td colspan="3">Належить нарахувати зарплати</td>
                     <td rowspan="3">Добавити строку</td>
@@ -37,10 +37,10 @@
                     <td>14</td>
                     <td>15</td>
                     <td>&nbsp;</td>
-                    <td rowspan="3">Всього</td>
+                    <td rowspan="3" class="verticalText">Всього</td>
                     <td colspan="2">в т. ч.</td>
-                    <td rowspan="2">Кількість</td>
-                    <td rowspan="2">%</td>
+                    <td rowspan="2" class="verticalText">Кількість</td>
+                    <td rowspan="2">%  </td>
                     <td rowspan="2">&nbsp;</td>
                     <td rowspan="2">&nbsp;</td>
                     <td rowspan="2">Всього</td>
@@ -62,8 +62,8 @@
                     <td>29</td>
                     <td>30</td>
                     <td>31</td>
-                    <td>відрядно</td>
-                    <td>погодинно</td>
+                    <td>відря-дно</td>
+                    <td>пого-динно</td>
                 </tr>
             </thead>
             <tbody class="tbodyTableRevers" id="tbodyTable1">
@@ -71,7 +71,7 @@
                 <tr class="mycontainerRevers" id="mainrow" align="center">
                     <td rowspan="2">
                         <!--выпадающий список категория работ-->
-                        <select id="productCategory autocompleteCombobox" class="pc" style="min-width:200px; border:none; height: 68px">
+                        <select id="productCategory" class="pc autocompleteCombobox materials">  
                             <option></option>
                         </select>
                     </td>
@@ -79,21 +79,21 @@
                     <td rowspan="2"> <input type="text" class="quantity" id="quantity" /> </td>
                     <td rowspan="2"> <input type="text" class="quantity" id="rate" /> </td>
                     <td rowspan="2"> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" id="quantity" /> </td>
-                    <td> <input type="text" class="quantity" id="rate" /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
+                    <td id="1"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="2"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="3"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="4"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="5"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="6"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="7"> <input type="text" class="quantity" id="quantity" /> </td>
+                    <td id="8"> <input type="text" class="quantity" id="rate" /> </td>
+                    <td id="9"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="10"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="11"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="12"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="13"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="14"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="15"> <input type="text" class="quantity" disabled /> </td>
                     <td> <input type="text" class="quantity" id="quantity" /> </td>
                     <td rowspan="2"> <input type="text" class="quantity" id="rate" /> </td>
                     <td rowspan="2"> <input type="text" class="quantity" disabled /> </td>
@@ -113,30 +113,27 @@
                     </td>
                 </tr>
                 <tr>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" id="quantity" /> </td>
-                    <td> <input type="text" class="quantity" id="rate" /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" disabled /> </td>
-                    <td> <input type="text" class="quantity" id="quantity" /> </td>
+                    <td id="16"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="17"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="18"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="19"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="20"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="21"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="22"> <input type="text" class="quantity" id="quantity" /> </td>
+                    <td id="23"> <input type="text" class="quantity" id="rate" /> </td>
+                    <td id="24"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="25"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="26"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="27"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="28"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="29"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="30"> <input type="text" class="quantity" disabled /> </td>
+                    <td id="31"> <input type="text" class="quantity" id="quantity" /> </td>
                 </tr>
             <tfoot>
                 <!--нижняя строка с суммой-->
                 <tr>
-                    <td colspan="2">УСЬОГО</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td colspan="5">УСЬОГО</td>                   
                     <td></td>
                     <td></td>
                     <td></td>
@@ -168,16 +165,16 @@
         </table>
     </div>
     <br />
-    <div align="center">
+    <div>
         <table>
             <tr>
                 <td style="text-align:right">Вартість коефіцієнту, грн</td>
                 <td> <input type="text" /> </td>
-                <td id="paddingLeft">Бригадир</td>
+                <td class="paddingLeft">Бригадир</td>
                 <td> <input type="text" /> </td>
-                <td id="paddingLeft">Відповідальний за введення табеля</td>
+                <td class="paddingLeft">Відповідальний за введення табеля</td>
                 <td> <input type="text" id="orderDate" />  </td>
-                <td id="paddingLeft">Розрахунок склав</td>
+                <td class="paddingLeft">Розрахунок склав</td>
                 <td> <input type="text" id="orderDate" />  </td>
             </tr>
         </table>
@@ -190,21 +187,19 @@
         <table class="table-bordered table-hover">
             <thead>
                 <tr>
-                    <td rowspan="2">Найменування сировини, матеріалів та на що витрачено</td>
-                    <td rowspan="2">Одиниця виміру</td>
-                    <td colspan="2">Кількість</td>
-                    <td rowspan="2">Вартість</td>
-                    <td rowspan="2">Найменування сировини, матеріалів та на що витрачено</td>
-                    <td rowspan="2">Одиниця виміру</td>
-                    <td colspan="2">Кількість</td>
-                    <td rowspan="2">Вартість</td>
+                    <td rowspan="2">Найменування</td>
+                    <td rowspan="2">Порода</td>
+                    <td rowspan="2">Сортимент</td>
+                    <td rowspan="2">Сорт</td>
+                    <td rowspan="2">Довжина</td>
+                    <td rowspan="2">Діаметр</td>
+                    <td colspan="2">Один. виміру</td>
+                    <td rowspan="2">Кількість</td>
                     <td rowspan="2">Добавити строку</td>
                 </tr>
                 <tr>
-                    <td>по нормі</td>
-                    <td>фактично</td>
-                    <td>по нормі</td>
-                    <td>фактично</td>
+                    <td>штук</td>
+                    <td>м<sup>3</sup></td>                    
                 </tr>
             </thead>
             <tbody class="tbodyTable">
@@ -216,19 +211,13 @@
                             <option></option>
                         </select>
                     </td>
-                    <td> <input type="text" id="quantity" class="quantity" /> </td>
-                    <td> <input type="text" id="quantity" class="quantity" /> </td>
-                    <td> <input type="text" id="quantity" class="quantity" /> </td>
-                    <td> <input type="text" id="quantity" class="quantity" /> </td>
-                    <td>
-                        <!--выпадающий список материалы, сырье-->
-                        <select class="pc autocompleteCombobox materials">
-                            <option></option>
-                        </select>
-                    </td>
-                    <td> <input type="text" id="quantity" class="quantity" /> </td>
-                    <td> <input type="text" id="quantity" class="quantity" /> </td>
-                    <td> <input type="text" id="quantity" class="quantity" /> </td>
+                    <td> <input type="text" id="quantity" class="quantity"/> </td>
+                    <td> <input type="text" id="quantity" class="quantity"/> </td>
+                    <td> <input type="text" id="quantity" class="quantity"/> </td>
+                    <td> <input type="text" id="quantity" class="quantity"/> </td>                    
+                    <td> <input type="text" id="quantity" class="quantity"/> </td>
+                    <td> <input type="text" id="quantity" class="quantity"/> </td>
+                    <td> <input type="text" id="quantity" class="quantity"/> </td>
                     <td> <input type="text" id="rate" class="quantity" /> </td>
                     <td>
                         <button class="btn btn-success add">
@@ -240,27 +229,21 @@
         </table>
     </div>
     <br />
-    <div class="container-fluid">
+    <div>
         <div>
             <table>
                 <tr>
                     <td style="text-align:right">Прийняв на відповідальне зберігання</td>
                     <td> <input type="text" /> </td>
-                    <td id="paddingLeft">Дата</td>
-                    <td> <input type="text" class="calendar" id="getDate" />  </td>
-                    <td id="paddingLeft">Затверджую</td>
+                    <td class="paddingLeft">Дата</td>
+                    <td> <input type="text" class="calendar" name="getDate"/>  </td>
+                    <td class="paddingLeft">Затверджую</td>
                     <td> <input type="text" /> </td>
                 </tr>
             </table>
         </div>        
-    </div>
-    <div align="right">
-        <button id="submit" class="btn btn-warning" style="width:100px">
-            <span id="addIcon" class="glyphicon glyphicon-floppy-disk" />
-        </button>
-    </div><!--Кнопка сохранения-->
+    </div>   
 </div>
-
 
 <script type="text/javascript">
 
@@ -277,4 +260,11 @@
             $($this).css('background-color', 'lavender');
         }
     });
+
+    $('.verticalText').css({ 'max-width': '20px', 'transform': 'rotate(-90deg) translateX(-7px)' });
+    $('.employee tr:first td').filter('.verticalText').css({ 'transform': 'rotate(-90deg) translateX(-2em)', 'line-height': '1em' });
+    $('.employee thead tr').not(':first').css('height', '35px');
+    
 </script>
+
+

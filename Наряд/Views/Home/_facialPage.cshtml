@@ -4,7 +4,7 @@
         <table align="center">
             <tr>
                 <td> <h3>Наряд - акт на виконання робіт №</h3> </td>
-                <td><input type="text" class="form-control" style="width: 50px; margin-top: 15px" /></td>
+                <td><input type="text" class="form-control" style="width: 50px; margin-top: 10px" /></td>
             </tr>
         </table>
     </div>
@@ -24,7 +24,7 @@
                     <td>Вид діяльності</td>
                 </tr>
                 <tr>
-                    <td> <input type="text" class="calendar" id="getDate" />  </td>
+                    <td> <input type="text" class="calendar" name="getDate" />  </td>
                     <td> <input type="text" /> </td>
                     <td> <input type="text" /> </td>
                     <td> <input type="text" /> </td>
@@ -42,13 +42,13 @@
                 <tr>
                     <td style="text-align:right">Місце роботи Кв.</td>
                     <td> <input type="text" /> </td>
-                    <td id="paddingLeft">Виділ</td>
+                    <td class="paddingLeft">Виділ</td>
                     <td> <input type="text" /> </td>
-                    <td id="paddingLeft">Лісорубний квиток №</td>
+                    <td class="paddingLeft">Лісорубний квиток №</td>
                     <td> <input type="text" /> </td>
-                    <td id="paddingLeft">Якого року лісосіка</td>
+                    <td class="paddingLeft">Якого року лісосіка</td>
                     <td> <select name="year"> </select> </td>
-                    <td id="paddingLeft">Вид рубки</td>
+                    <td class="paddingLeft">Вид рубки</td>
                     <td> <input type="text" /> </td>
                 </tr>
             </table>
@@ -56,11 +56,11 @@
                 <tr>
                     <td> Найменування заходу</td>
                     <td> <input type="text" id="orderDate" />  </td>
-                    <td id="paddingLeft">Початок рототи</td>
-                    <td>  <input type="text" class="calendar" id="firstWorkingDay" />  </td>
-                    <td id="paddingLeft">Закінчення роботи</td>
-                    <td>  <input type="text" class="calendar" id="lastWorkingDay" /> </td>
-                    <td id="paddingLeft">Щоденник приймання робіт №</td>
+                    <td class="paddingLeft">Початок роботи</td>
+                    <td>  <input type="text" class="calendar" name="firstWorkingDay" />  </td>
+                    <td class="paddingLeft">Закінчення роботи</td>
+                    <td>  <input type="text" class="calendar" name="lastWorkingDay" /> </td>
+                    <td class="paddingLeft">Щоденник приймання робіт №</td>
                     <td>  <input type="text" id="orderDate" /> </td>
                 </tr>
             </table>
@@ -100,7 +100,7 @@
                     </td>
                     <td>
                         <!--выпадающий список вид работ-->
-                        <select id="product" class="product autocompleteCombobox form-control" style="min-width:450px">
+                        <select id="product" class="product autocompleteCombobox form-control">
                             <option></option>
                         </select>
                     </td>
@@ -148,33 +148,17 @@
                     <td rowspan="2">Найменування сировини, матеріалів та на що витрачено</td>
                     <td rowspan="2">Одиниця виміру</td>
                     <td colspan="2">Кількість</td>
-                    <td rowspan="2">Вартість</td>
-                    <td rowspan="2">Найменування сировини, матеріалів та на що витрачено</td>
-                    <td rowspan="2">Одиниця виміру</td>
-                    <td colspan="2">Кількість</td>
-                    <td rowspan="2">Вартість</td>
-                    <td rowspan="2">Добавити строку</td>
+                    <td rowspan="2">Вартість</td>                   
+                    <td rowspan="2">Добавити<br/>строку</td>
                 </tr>
                 <tr>
                     <td>по нормі</td>
-                    <td>фактично</td>
-                    <td>по нормі</td>
-                    <td>фактично</td>
+                    <td>фактично</td>                   
                 </tr>
             </thead>
             <tbody class="tbodyTable">
                 <!--тело таблицы-->
-                <tr class="mycontainer" id="mainrow" align="center">
-                    <td>
-                        <!--выпадающий список материалы, сырье-->
-                        <select class="pc autocompleteCombobox materials">
-                            <option></option>
-                        </select>
-                    </td>
-                    <td> <input type="text" id="quantity" class="quantity" /> </td>
-                    <td> <input type="text" id="quantity" class="quantity" /> </td>
-                    <td> <input type="text" id="quantity" class="quantity" /> </td>
-                    <td> <input type="text" id="quantity" class="quantity" /> </td>
+                <tr class="mycontainer" id="mainrow" align="center">                   
                     <td>
                         <!--выпадающий список материалы, сырье-->
                         <select class="pc autocompleteCombobox materials">
@@ -201,9 +185,9 @@
                 <tr>
                     <td style="text-align:right">Наряд видав</td>
                     <td> <input type="text" /> </td>
-                    <td id="paddingLeft">До виконання прийняв</td>
+                    <td class="paddingLeft">До виконання прийняв</td>
                     <td> <input type="text" /> </td>
-                    <td id="paddingLeft">Виконану роботу здав</td>
+                    <td class="paddingLeft">Виконану роботу здав</td>
                     <td> <input type="text" /> </td>
                 </tr>
             </table>
@@ -213,7 +197,7 @@
                 <tr>
                     <td>Оцінка якості виконаних робіт</td>
                     <td> <input type="text" id="orderDate" />  </td>
-                    <td id="paddingLeft">Роботу прийняв</td>
+                    <td class="paddingLeft">Роботу прийняв</td>
                     <td> <input type="text" id="orderDate" />  </td>
                 </tr>
             </table>
@@ -225,4 +209,11 @@
         </button>
     </div><!--Кнопка сохранения-->
 </div>
+
+<script type="text/javascript">
+
+
+
+</script>
+
 

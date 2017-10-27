@@ -4,13 +4,19 @@
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">  <!--забезпечення правильної візуалізації та підтримки масштабованості на мобільних пристроях-->
     <title>@ViewBag.Title - Наряд</title> <!--имя вкладки, отображается в закладках-->
     
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> <!-- Свіжа збірка мінімізованих CSS -->
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> <!-- Свіжа збірка мінімізованих CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> <!-- Додаткові теми -->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">*@
       
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" /> <!--библиотека bootstrap-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" /> <!--Стиль-->
+    <link rel="stylesheet" type="text/css" href="~/Content/ComboBox.Autocomplete.css" /><!--файл с стилем autocomplete.combobox-->
+    <link rel="stylesheet" type="text/css" href="~/Content/textAlignment.css" /><!--стиль с выравниванием текста-->
+
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script> <!--Подключаем библиотеку JQuery-->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> <!-- Свіжа збірка мінімізованої JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> <!-- bootstrap -->
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> <!--Подключаем библиотеку JQuery UI-->
+   
 </head>
 
 <body>
@@ -27,3 +33,11 @@
     </div>
 </body>
 </html>
+
+<!--Библиотеки подключать после кода окна, чтоб быстрее загружалась страница-->
+
+<script src="~/Scripts/myJScript/addData.copyString.saveData.js"></script><!--Файл JS в котором будит обработчик нажатия кнопок-->
+<script src="~/Scripts/myJScript/autocomplete.combobox.js"></script> <!--файл с кодом autocomplete.combobox-->
+<script src="~/Scripts/myJScript/datepicker.languageUK.js"></script> <!--файл с кодом Украинского языка календаря и робота с датами-->
+
+

@@ -1,10 +1,10 @@
 ﻿.custom-combobox {
     position: relative;
     display: inline-block;
-    padding-right: 35px;     
+    padding-right: 35px;    
 }
 
-.custom-combobox-toggle { /*кновка выпадающего списка*/
+.custom-combobox-toggle { /*кнопка выпадающего списка*/
     position: absolute;
     top: 0;
     bottom: 0;
@@ -13,14 +13,20 @@
 }
 
 .custom-combobox-input { /*поле ввода выпадающего списока*/
-    position: relative;
+    /*position: relative;*/
     color: dimgray;
     padding: 6px;
-    min-width: 350px;
     font-size: 10pt; /*шрифт*/
+    min-width: 400px;
 }
 
 .ui-autocomplete {/*полоcа прокрута для выпадающего списка*/
-    max-height: 200px;
+    max-height: 250px;
     overflow-y: auto;  
 }
+
+/*.employee{
+    background-color:#f0ad4e;
+}*/
+
+
