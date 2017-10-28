@@ -139,7 +139,7 @@ $(document).ready(function () {
             $('span.error', $newRow).remove();
             $('input.custom-combobox-input', $table).val('');
             $('#productCategory', $table).val('0');
-            $('#quantity,#rate', $table).val('');
+            $('.quantity', $table).val('');
             $('#orderItemError', $table).empty();
         }
 

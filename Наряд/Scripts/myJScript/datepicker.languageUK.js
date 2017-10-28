@@ -130,15 +130,17 @@ function titleDay() { //добавить вспл. подсказку /День 
     var dateObject = new Date(firstWorkingDate[2], firstWorkingDate[1] - 1, firstWorkingDate[0]);
     var lasMonthDay = new Date(dateObject.getFullYear(), dateObject.getMonth() + 1, 0);//последний день месяца
 
-    $('.employee tbody td[id]').each(function () {
+    $('.employee tbody td[id]').each(function () {        
+
+        $('input', this).prop("disabled", false).removeAttr("title"); //отключить *не активен* убрать title
         var attrId = this.id;
 
         if (attrId > 0 && attrId <= lasMonthDay.getDate()) {
             var currentDate = new Date(dateObject.getFullYear(), dateObject.getMonth(), attrId);
             var data = dayNames(currentDate.getDay()) + ": " + currentDate.getDate();
             $(this).attr('title', data);
-        } else {
-            $(this).attr('title', 'НЕТ').css('color', 'red');
+        } else {           
+            $('input' ,this).prop("disabled", true).attr('title', 'В цьому місяці менше днів');
         }
     });
 };
