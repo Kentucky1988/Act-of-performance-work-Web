@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -29,7 +30,7 @@ namespace Наряд.Controllers
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
             {
                 categories = dc.Categories.OrderBy(a => a.CategoryName).ToList();
-            }                                             
+            }
             return new JsonResult { Data = categories, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
@@ -39,6 +40,31 @@ namespace Наряд.Controllers
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
             {
                 products = dc.Products.Where(a => a.CategoryID.Equals(categoryID)).OrderBy(a => a.ProductName).ToList();
+            }
+            return new JsonResult { Data = products, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
+        public JsonResult normWork(double volumeWood)//норма выполнения робот
+        {
+            List<Вид_робіт_Сортименти> products = new List<Вид_робіт_Сортименти>();
+            using (БД_НарядEntities1 db = new БД_НарядEntities1())
+            {
+                var properties = (from t in typeof(Вид_робіт_Сортименти).GetProperties()
+                                  select t.Name).ToList();
+
+                string st = properties[0];
+
+                //string [] cilumName2 = typeof(Вид_робіт_Сортименти).GetProperties()
+                //        .Select(property => property.Name)
+                //        .ToArray();
+
+                foreach (var item in properties)
+                {
+                    Console.WriteLine(item);
+                }
+
+                Console.ReadKey();
+                //products = db.Products.Where(a => a.CategoryID.Equals(volumeWood)).OrderBy(a => a.ProductName).ToList();
             }
             return new JsonResult { Data = products, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }

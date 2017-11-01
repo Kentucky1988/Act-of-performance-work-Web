@@ -137,7 +137,7 @@
       <DependentUpon>ModelБД_Наряд.edmx</DependentUpon>
       <LastGenOutput>ModelБД_Наряд.cs</LastGenOutput>
     </Content>
-    <Content Include="Scripts\myJScript\myJScript.js" />
+    <Content Include="Scripts\myJScript\workTheTable.js" />
     <Content Include="Scripts\myJScript\autocomplete.combobox.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

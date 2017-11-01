@@ -81,7 +81,7 @@ function renderProduct(element, data) {//создание ведомого сп�
 }
 
 $(document).ready(function () {
-    $('.add').click(function () {//событие на нажатие кнопки ДОБАВИТЬ
+    $('.add').click(function () {//событие на нажатие кнопки ДОБАВИТ
 
         //($table).find  ,$table
         var $table = $(this).parents('.tbodyTable');//таблица в которой добовляем строки
@@ -159,16 +159,6 @@ $(document).ready(function () {
                 }
         })
     });
-
-    function columnSum() {//сумма строк
-        $("tfoot tr td:not(:first)").text(function (indx) {
-            var sum = 0;
-            $("tr:not(:first) td:nth-child(" + (indx + 2) + ")", "#tbodyTable1").each(function () {
-                sum += +$(this).text()
-            });
-            $(this).text(sum)
-        });
-    }
 
     //Сохранить
     $('#submit').click(function () {

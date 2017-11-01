@@ -50,6 +50,8 @@
                     <td> <select name="year"> </select> </td>
                     <td class="paddingLeft">Вид рубки</td>
                     <td> <input type="text" /> </td>
+                    <td class="paddingLeft">Середній обєм хлиста, м<sup>3</sup></td>
+                    <td> <input type="text" id="volumeWood"/> </td>
                 </tr>
             </table>
             <table style="margin-top:5px">
@@ -98,21 +100,21 @@
                             <option></option>
                         </select>
                     </td>
-                    <td>
+                    <td id="qwert">
                         <!--выпадающий список вид работ-->
-                        <select id="product" class="product autocompleteCombobox form-control quantity">
+                        <select id="product" class="product autocompleteCombobox form-control quantity" >
                             <option></option>
                         </select>
                     </td>
-                    <td> <input type="text" class="quantity"/> </td>
-                    <td> <input type="text" class="quantity"/> </td>
-                    <td> <input type="text" class="quantity"/> </td>
-                    <td> <input type="text" class="quantity"/> </td>
-                    <td> <input type="text" class="quantity"/> </td>
-                    <td> <input type="text" class="quantity"/> </td>
-                    <td> <input type="text" class="quantity"/> </td>
-                    <td> <input type="text" class="quantity"/> </td>
-                    <td> <input type="text" class="quantity"/> </td>
+                    <td> <input type="text" class="quantity" /> </td>
+                    <td> <input type="text" class="quantity" /> </td>
+                    <td> <input type="text" class="quantity" /> </td>
+                    <td> <input type="text" class="quantity" id="norm" /> </td>
+                    <td> <input type="text" class="quantity" /> </td>
+                    <td> <input type="text" class="quantity" /> </td>
+                    <td> <input type="text" class="quantity" /> </td>
+                    <td> <input type="text" class="quantity" /> </td>
+                    <td> <input type="text" class="quantity" /> </td>
                     <td>
                         <button class="btn btn-success add">
                             <!--кнопка добавления строки-->
@@ -120,6 +122,7 @@
                         </button>
                     </td>
                 </tr>
+            </tbody>
             <tfoot>
                 <!--нижняя строка с суммой-->
                 <tr>
@@ -148,17 +151,17 @@
                     <td rowspan="2">Найменування сировини, матеріалів та на що витрачено</td>
                     <td rowspan="2">Одиниця виміру</td>
                     <td colspan="2">Кількість</td>
-                    <td rowspan="2">Вартість</td>                   
-                    <td rowspan="2">Добавити<br/>строку</td>
+                    <td rowspan="2">Вартість</td>
+                    <td rowspan="2">Добавити<br />строку</td>
                 </tr>
                 <tr>
                     <td>по нормі</td>
-                    <td>фактично</td>                   
+                    <td>фактично</td>
                 </tr>
             </thead>
             <tbody class="tbodyTable">
                 <!--тело таблицы-->
-                <tr class="mycontainer quantity" id="mainrow" align="center">                   
+                <tr class="mycontainer quantity" id="mainrow" align="center">
                     <td>
                         <!--выпадающий список материалы, сырье-->
                         <select class="pc autocompleteCombobox materials quantity">

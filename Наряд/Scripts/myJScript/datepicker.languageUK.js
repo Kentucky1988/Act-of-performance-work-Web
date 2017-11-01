@@ -20,7 +20,7 @@ $(function ($) {//украинский язык календаря
             'Липень', 'Серпень', 'Вересень', 'Жовтень', 'Листопад', 'Грудень'],
         monthNamesShort: ['Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень',
             'Липень', 'Серпень', 'Вересень', 'Жовтень', 'Листопад', 'Грудень'],
-        dayNames: ['неділя', 'понеділок', 'вівторок', 'середа', 'четверг', 'пятница', 'суббота'],
+        dayNames: ['неділя', 'понеділок', 'вівторок', 'середа', 'четверг', "п'ятница", 'суббота'],
         dayNamesShort: ['ндл', 'пнд', 'втр', 'срд', 'чтв', 'птн', 'сбт'],
         dayNamesMin: ['Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
         weekHeader: 'Нед',
@@ -57,9 +57,11 @@ $(function () {// текущая дата
     $("[name='getDate']").val(day);
 });
 
-$(function () {// первый робочий день месяца   
-    var data = new Date();
-    var firstMonthDay = new Date(data.getFullYear(), data.getMonth(), 0);
+function firstWorkDay() {// первый робочий день месяца   
+
+    var firstWorkingDate = $("[name='getDate']").val().split("/");
+    var dateObject = new Date(firstWorkingDate[2], firstWorkingDate[1] - 1, firstWorkingDate[0]);
+    var firstMonthDay = new Date(dateObject.getFullYear(), dateObject.getMonth(), 1);//первый день месяца
 
     while (firstMonthDay.getDay() > 5 || firstMonthDay.getDay() < 1) {
         firstMonthDay.setDate(firstMonthDay.getDate() + 1);
@@ -73,11 +75,13 @@ $(function () {// первый робочий день месяца
     day = day + "/" + month + "/" + year;
 
     $("[name='firstWorkingDay']").val(day);
-});
+};
 
-$(function () {// последний робочий день месяца   
-    var data = new Date();
-    var lasMonthDay = new Date(data.getFullYear(), data.getMonth() + 1, 0);
+function lastWorkDay() {// последний робочий день месяца   
+
+    var firstWorkingDate = $("[name='getDate']").val().split("/");
+    var dateObject = new Date(firstWorkingDate[2], firstWorkingDate[1] - 1, firstWorkingDate[0]);
+    var lasMonthDay = new Date(dateObject.getFullYear(), dateObject.getMonth() + 1, 0);//последний день месяца
 
     while (lasMonthDay.getDay() > 5 || lasMonthDay.getDay() < 1) {
         lasMonthDay.setDate(lasMonthDay.getDate() - 1);
@@ -91,6 +95,13 @@ $(function () {// последний робочий день месяца
     day = day + "/" + month + "/" + year;
 
     $("[name='lastWorkingDay']").val(day);
+};
+
+$(document).ready(function () {
+    colorCellDayOff();
+    titleDay();
+    firstWorkDay();
+    lastWorkDay();
 });
 
 $("[name='firstWorkingDay']").change(function () {// событие на изминеие ячейки начало робот
@@ -98,7 +109,9 @@ $("[name='firstWorkingDay']").change(function () {// событие на изм�
     titleDay();
 });
 
-$(document).ready(function () {
+$("[name='getDate']").change(function () {// событие на изминеие ячейки начало робот   
+    firstWorkDay();
+    lastWorkDay();
     colorCellDayOff();
     titleDay();
 });
@@ -130,7 +143,7 @@ function titleDay() { //добавить вспл. подсказку /День 
     var dateObject = new Date(firstWorkingDate[2], firstWorkingDate[1] - 1, firstWorkingDate[0]);
     var lasMonthDay = new Date(dateObject.getFullYear(), dateObject.getMonth() + 1, 0);//последний день месяца
 
-    $('.employee tbody td[id]').each(function () {        
+    $('.employee tbody td[id]').each(function () {
 
         $('input', this).prop("disabled", false).removeAttr("title"); //отключить *не активен* убрать title
         var attrId = this.id;
@@ -139,8 +152,8 @@ function titleDay() { //добавить вспл. подсказку /День 
             var currentDate = new Date(dateObject.getFullYear(), dateObject.getMonth(), attrId);
             var data = dayNames(currentDate.getDay()) + ": " + currentDate.getDate();
             $(this).attr('title', data);
-        } else {           
-            $('input' ,this).prop("disabled", true).attr('title', 'В цьому місяці менше днів');
+        } else {
+            $('input', this).prop("disabled", true).attr('title', 'В цьому місяці менше днів');
         }
     });
 };
@@ -148,7 +161,7 @@ function titleDay() { //добавить вспл. подсказку /День 
 function dayNames(day) {//конвертирует дату в день недели 
     switch (day) {
         case 0: {
-           return day = 'Неділя';
+            return day = 'Неділя';
             break;
         }
         case 1: {
@@ -168,14 +181,14 @@ function dayNames(day) {//конвертирует дату в день неде
             break;
         }
         case 5: {
-            return day = 'Пятница';
+            return day = "П'ятница";
             break;
         }
         case 6: {
             return day = 'Суббота';
             break;
         }
-    }    
+    }
 }
 
 
