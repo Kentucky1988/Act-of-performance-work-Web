@@ -43,8 +43,8 @@ $(function () {// добавить годы в випадающий список
     $("[name='year']").prop('selectedIndex', 5); //значение по умолчанию
 });
 
+function currentDate() {// текущая дата 
 
-$(function () {// текущая дата 
     var data = new Date();
 
     var day = data.getDate();
@@ -55,7 +55,8 @@ $(function () {// текущая дата
     day = day + "/" + month + "/" + year;
 
     $("[name='getDate']").val(day);
-});
+};
+
 
 function firstWorkDay() {// первый робочий день месяца   
 
@@ -96,25 +97,6 @@ function lastWorkDay() {// последний робочий день месяц
 
     $("[name='lastWorkingDay']").val(day);
 };
-
-$(document).ready(function () {
-    colorCellDayOff();
-    titleDay();
-    firstWorkDay();
-    lastWorkDay();
-});
-
-$("[name='firstWorkingDay']").change(function () {// событие на изминеие ячейки начало робот
-    colorCellDayOff();
-    titleDay();
-});
-
-$("[name='getDate']").change(function () {// событие на изминеие ячейки начало робот   
-    firstWorkDay();
-    lastWorkDay();
-    colorCellDayOff();
-    titleDay();
-});
 
 function colorCellDayOff() { //выделение ячеек с выходным днем зеленым  
 
@@ -190,6 +172,26 @@ function dayNames(day) {//конвертирует дату в день неде
         }
     }
 }
+
+$(document).ready(function () {
+    currentDate();
+    firstWorkDay();
+    lastWorkDay();
+    colorCellDayOff();
+    titleDay();
+});
+
+$("[name='firstWorkingDay']").change(function () {// событие на изминеие ячейки начало робот
+    colorCellDayOff();
+    titleDay();
+});
+
+$("[name='getDate']").change(function () {// событие на изминеие ячейки текущая дата  
+    firstWorkDay();
+    lastWorkDay();
+    colorCellDayOff();
+    titleDay();
+});
 
 
 

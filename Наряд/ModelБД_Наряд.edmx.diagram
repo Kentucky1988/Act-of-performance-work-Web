@@ -5,12 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="7eb0f53916274e049b1c4faa657fc6c7" Name="Diagram1">
-        <EntityTypeShape EntityType="БД_НарядModel.Categories" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="БД_НарядModel.OrderDetails" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="БД_НарядModel.OrderMaster" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="БД_НарядModel.Products" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="БД_НарядModel.Вид_робіт_Сортименти" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <AssociationConnector Association="БД_НарядModel.FK_OrderDetails_OrderMaster" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="БД_НарядModel.Categories" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="БД_НарядModel.OrderDetails" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="БД_НарядModel.OrderMaster" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="БД_НарядModel.Products" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="БД_НарядModel.Вид_робіт_Сортименти" Width="1.5" PointX="4.75" PointY="4.75" />
+        <AssociationConnector Association="БД_НарядModel.FK_OrderDetails_OrderMaster" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

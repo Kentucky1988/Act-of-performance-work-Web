@@ -16,15 +16,15 @@ namespace Наряд
     {
         public int Id_Сортимент { get; set; }
         public string Сортимент { get; set; }
-        public decimal до_0_05 { get; set; }
-        public decimal C0_06_0_08 { get; set; }
-        public decimal C0_09_0_12 { get; set; }
-        public decimal C0_13_0_22 { get; set; }
-        public decimal C0_23_0_36 { get; set; }
-        public decimal C0_37_0_54 { get; set; }
-        public decimal C0_55_0_76 { get; set; }
-        public decimal C0_77_1_02 { get; set; }
-        public decimal C1_03_1_29 { get; set; }
-        public decimal C1_30_1_61 { get; set; }
+        public decimal C0_05 { get; set; }
+        public decimal C0_08 { get; set; }
+        public decimal C0_12 { get; set; }
+        public decimal C0_22 { get; set; }
+        public decimal C0_36 { get; set; }
+        public decimal C0_54 { get; set; }
+        public decimal C0_76 { get; set; }
+        public decimal C1_02 { get; set; }
+        public decimal C1_29 { get; set; }
+        public decimal C1_61 { get; set; }
     }
 }

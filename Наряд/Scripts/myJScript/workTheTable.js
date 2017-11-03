@@ -8,9 +8,10 @@
     });
 };
 
-$('#qwert').focusin(function (e) {// событие на изминеие ячейки вид ротобы  
 
-    alert($("#volumeWood").val() + "/" + $(this));//!!!!!!!!!!!!!!!!!!!!!!!!!
+function normOfWork(typeOfWork) {
+
+   // alert($("#volumeWood").val() + "/" + typeOfWork);//!!!!!!!!!!!!!!!!!!!!!!!!!
 
     $.ajax({
         type: "GET",
@@ -19,5 +20,9 @@ $('#qwert').focusin(function (e) {// событие на изминеие яче
         success: function (norm) {
             $('#norm').val(norm);
         }
-    })
-});
+    });
+};
+
+
+
+

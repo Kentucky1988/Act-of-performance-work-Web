@@ -133,4 +133,10 @@
     $("#toggle").on("click", function () {
         $(".autocompleteCombobox").toggle();
     });
+    $(".autocompleteCombobox").combobox({ //событие ни изминение значения выпадающего списка
+        select: function (event, ui) {
+            normOfWork(this.value);           
+        }   
+    });
 });
+

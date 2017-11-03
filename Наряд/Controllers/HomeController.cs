@@ -44,31 +44,77 @@ namespace Наряд.Controllers
             return new JsonResult { Data = products, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
-        public JsonResult normWork(double volumeWood)//норма выполнения робот
+        public JsonResult normWork(string volumeWood)//норма выполнения робот
         {
-            List<Вид_робіт_Сортименти> products = new List<Вид_робіт_Сортименти>();
-            using (БД_НарядEntities1 db = new БД_НарядEntities1())
+            double column = 0;
+            double volumeWoods = 0;
+
+            try
             {
-                var properties = (from t in typeof(Вид_робіт_Сортименти).GetProperties()
-                                  select t.Name).ToList();
+                volumeWoods = Convert.ToDouble(volumeWood.Replace('.', ','));
+            }
+            catch (Exception)
+            {
+                return new JsonResult { Data = column, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
 
-                string st = properties[0];
+            var properties = (from t in typeof(Вид_робіт_Сортименти).GetProperties()
+                              select t.Name).ToList();
 
-                //string [] cilumName2 = typeof(Вид_робіт_Сортименти).GetProperties()
-                //        .Select(property => property.Name)
-                //        .ToArray();
+            int columnNumber = 0;
+            for (; columnNumber < properties.Count; columnNumber++)
+            {
+                double columName = 0;
+                double nextColumName = 0;
 
-                foreach (var item in properties)
+                try
                 {
-                    Console.WriteLine(item);
+                    columName = double.Parse(properties[columnNumber].Remove(0, 1).Replace('_', ','));
+                    nextColumName = double.Parse(properties[columnNumber + 1].Remove(0, 1).Replace('_', ','));
+                }
+                catch (Exception)
+                {
+                    continue;
                 }
 
-                Console.ReadKey();
-                //products = db.Products.Where(a => a.CategoryID.Equals(volumeWood)).OrderBy(a => a.ProductName).ToList();
+                if (columName < volumeWoods && nextColumName >= volumeWoods)
+                {
+                    column = nextColumName;
+                    columnNumber++;
+                    break;
+                }
+                else if (volumeWoods <= columName)
+                {
+                    column = columName;
+                    break;
+                }
             }
-            return new JsonResult { Data = products, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-        }
 
+            double normOfWork = 0;
+
+            try
+            {
+                string typeOfWork = "Ділові ялина 6м";
+                string amountOfWood = properties[columnNumber];
+
+                using (БД_НарядEntities1 db = new БД_НарядEntities1())
+                {
+                    var normList = (from p in db.Вид_робіт_Сортименти
+                                    where p.Сортимент == typeOfWork
+                                    select p).ToList();
+
+                    var nameColum = normList[0].GetType().GetProperty(amountOfWood);
+                    normOfWork = Convert.ToDouble(nameColum.GetValue(normList[0]));
+                }
+            }
+            catch (Exception)
+            {
+                normOfWork = 0;
+            }
+
+            return new JsonResult { Data = normOfWork, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+        
         [HttpPost]
         public JsonResult save(OrderMaster order)
         {

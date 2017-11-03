@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище БД_НарядModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище БД_НарядModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="CategoryID" />
@@ -45,16 +45,16 @@
           </Key>
           <Property Name="Id Сортимент" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Сортимент" Type="nvarchar" MaxLength="70" Nullable="false" />
-          <Property Name="до 0,05" Type="decimal" Precision="5" Scale="3" Nullable="false" />
-          <Property Name="0,06-0,08" Type="decimal" Precision="5" Scale="3" Nullable="false" />
-          <Property Name="0,09-0,12" Type="decimal" Precision="5" Scale="3" Nullable="false" />
-          <Property Name="0,13-0,22" Type="decimal" Precision="5" Scale="3" Nullable="false" />
-          <Property Name="0,23-0,36" Type="decimal" Precision="5" Scale="3" Nullable="false" />
-          <Property Name="0,37-0,54" Type="decimal" Precision="5" Scale="3" Nullable="false" />
-          <Property Name="0,55-0,76" Type="decimal" Precision="5" Scale="3" Nullable="false" />
-          <Property Name="0,77-1,02" Type="decimal" Precision="5" Scale="3" Nullable="false" />
-          <Property Name="1,03-1,29" Type="decimal" Precision="5" Scale="3" Nullable="false" />
-          <Property Name="1,30-1,61" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,05" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,08" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,12" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,22" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,36" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,54" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,76" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="1,02" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="1,29" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="1,61" Type="decimal" Precision="5" Scale="3" Nullable="false" />
         </EntityType>
         <Association Name="FK_OrderDetails_OrderMaster">
           <End Role="OrderMaster" Type="Self.OrderMaster" Multiplicity="1" />
@@ -79,17 +79,27 @@
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="БД_НарядModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="БД_НарядEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="БД_НарядModel.Categories" />
+          <EntitySet Name="OrderDetails" EntityType="БД_НарядModel.OrderDetails" />
+          <EntitySet Name="OrderMaster" EntityType="БД_НарядModel.OrderMaster" />
+          <EntitySet Name="Products" EntityType="БД_НарядModel.Products" />
+          <EntitySet Name="Вид_робіт_Сортименти" EntityType="БД_НарядModel.Вид_робіт_Сортименти" />
+          <AssociationSet Name="FK_OrderDetails_OrderMaster" Association="БД_НарядModel.FK_OrderDetails_OrderMaster">
+            <End Role="OrderMaster" EntitySet="OrderMaster" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
           <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="OrderDetails">
           <Key>
@@ -98,19 +108,19 @@
           <Property Name="OrderDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrderID" Type="Int32" Nullable="false" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
-          <Property Name="Rate" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Rate" Type="Decimal" Nullable="false" Precision="12" Scale="2" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="OrderMaster" Relationship="Self.FK_OrderDetails_OrderMaster" FromRole="OrderDetails" ToRole="OrderMaster" />
+          <NavigationProperty Name="OrderMaster" Relationship="БД_НарядModel.FK_OrderDetails_OrderMaster" FromRole="OrderDetails" ToRole="OrderMaster" />
         </EntityType>
         <EntityType Name="OrderMaster">
           <Key>
             <PropertyRef Name="OrderID" />
           </Key>
           <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OrderNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_OrderMaster" FromRole="OrderMaster" ToRole="OrderDetails" />
+          <NavigationProperty Name="OrderDetails" Relationship="БД_НарядModel.FK_OrderDetails_OrderMaster" FromRole="OrderMaster" ToRole="OrderDetails" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
@@ -118,28 +128,28 @@
           </Key>
           <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CategoryID" Type="Int32" Nullable="false" />
-          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Вид_робіт_Сортименти">
           <Key>
             <PropertyRef Name="Id_Сортимент" />
           </Key>
           <Property Name="Id_Сортимент" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Сортимент" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="до_0_05" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
-          <Property Name="C0_06_0_08" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
-          <Property Name="C0_09_0_12" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
-          <Property Name="C0_13_0_22" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
-          <Property Name="C0_23_0_36" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
-          <Property Name="C0_37_0_54" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
-          <Property Name="C0_55_0_76" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
-          <Property Name="C0_77_1_02" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
-          <Property Name="C1_03_1_29" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
-          <Property Name="C1_30_1_61" Type="Decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="Сортимент" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="C0_05" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_08" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_12" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_22" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_36" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_54" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_76" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C1_02" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C1_29" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C1_61" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
         </EntityType>
         <Association Name="FK_OrderDetails_OrderMaster">
-          <End Role="OrderMaster" Type="Self.OrderMaster" Multiplicity="1" />
-          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <End Type="БД_НарядModel.OrderMaster" Role="OrderMaster" Multiplicity="1" />
+          <End Type="БД_НарядModel.OrderDetails" Role="OrderDetails" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OrderMaster">
               <PropertyRef Name="OrderID" />
@@ -149,17 +159,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="БД_НарядEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Categories" EntityType="Self.Categories" />
-          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" />
-          <EntitySet Name="OrderMaster" EntityType="Self.OrderMaster" />
-          <EntitySet Name="Products" EntityType="Self.Products" />
-          <EntitySet Name="Вид_робіт_Сортименти" EntityType="Self.Вид_робіт_Сортименти" />
-          <AssociationSet Name="FK_OrderDetails_OrderMaster" Association="Self.FK_OrderDetails_OrderMaster">
-            <End Role="OrderMaster" EntitySet="OrderMaster" />
-            <End Role="OrderDetails" EntitySet="OrderDetails" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -169,56 +168,56 @@
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="БД_НарядModel.Categories">
               <MappingFragment StoreEntitySet="Categories">
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderDetails">
             <EntityTypeMapping TypeName="БД_НарядModel.OrderDetails">
               <MappingFragment StoreEntitySet="OrderDetails">
-                <ScalarProperty Name="OrderDetailsId" ColumnName="OrderDetailsId" />
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="Rate" ColumnName="Rate" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="OrderDetailsId" ColumnName="OrderDetailsId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderMaster">
             <EntityTypeMapping TypeName="БД_НарядModel.OrderMaster">
               <MappingFragment StoreEntitySet="OrderMaster">
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
-                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="БД_НарядModel.Products">
               <MappingFragment StoreEntitySet="Products">
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Вид_робіт_Сортименти">
             <EntityTypeMapping TypeName="БД_НарядModel.Вид_робіт_Сортименти">
               <MappingFragment StoreEntitySet="Вид_робіт_Сортименти">
-                <ScalarProperty Name="Id_Сортимент" ColumnName="Id Сортимент" />
+                <ScalarProperty Name="C1_61" ColumnName="1,61" />
+                <ScalarProperty Name="C1_29" ColumnName="1,29" />
+                <ScalarProperty Name="C1_02" ColumnName="1,02" />
+                <ScalarProperty Name="C0_76" ColumnName="0,76" />
+                <ScalarProperty Name="C0_54" ColumnName="0,54" />
+                <ScalarProperty Name="C0_36" ColumnName="0,36" />
+                <ScalarProperty Name="C0_22" ColumnName="0,22" />
+                <ScalarProperty Name="C0_12" ColumnName="0,12" />
+                <ScalarProperty Name="C0_08" ColumnName="0,08" />
+                <ScalarProperty Name="C0_05" ColumnName="0,05" />
                 <ScalarProperty Name="Сортимент" ColumnName="Сортимент" />
-                <ScalarProperty Name="до_0_05" ColumnName="до 0,05" />
-                <ScalarProperty Name="C0_06_0_08" ColumnName="0,06-0,08" />
-                <ScalarProperty Name="C0_09_0_12" ColumnName="0,09-0,12" />
-                <ScalarProperty Name="C0_13_0_22" ColumnName="0,13-0,22" />
-                <ScalarProperty Name="C0_23_0_36" ColumnName="0,23-0,36" />
-                <ScalarProperty Name="C0_37_0_54" ColumnName="0,37-0,54" />
-                <ScalarProperty Name="C0_55_0_76" ColumnName="0,55-0,76" />
-                <ScalarProperty Name="C0_77_1_02" ColumnName="0,77-1,02" />
-                <ScalarProperty Name="C1_03_1_29" ColumnName="1,03-1,29" />
-                <ScalarProperty Name="C1_30_1_61" ColumnName="1,30-1,61" />
+                <ScalarProperty Name="Id_Сортимент" ColumnName="Id Сортимент" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

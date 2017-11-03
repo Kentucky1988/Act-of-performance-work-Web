@@ -50,7 +50,7 @@ function renderMaterials(element) {//создание списка матери�
     var $ele = $(element);
     $ele.empty();
     $.each(Materials, function (i, val) {
-        $ele.append($('<option/>').val(val.Id_Сортимент).text(val.Сортимент));
+        $ele.append($('<option/>').val(val.Сортимент).text(val.Сортимент));
     })
 }
 
@@ -76,7 +76,7 @@ function renderProduct(element, data) {//создание ведомого сп�
     $ele.empty();
     $ele.append($('<option/>').val('0').text('Вибрати'));
     $.each(data, function (i, val) {
-        $ele.append($('<option/>').val(val.ProductID).text(val.ProductName));
+        $ele.append($('<option/>').val(val.ProductName).text(val.ProductName));
     })
 }
 
