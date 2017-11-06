@@ -5,10 +5,9 @@ function LoadCategory(element) {
         //ajax function for fetch data
         $.ajax({
             type: "GET",
-            url: '/home/getProductCategories',
+            url: '/home/getCategories',
             success: function (data) {
                 Categories = data;
-                //render catagory
                 renderCategory(element);
             }
         })
@@ -24,8 +23,40 @@ function renderCategory(element) {//создание списка категор
     $ele.empty();
     $ele.append($('<option/>').val('0').text('Вибрати'));
     $.each(Categories, function (i, val) {
-        $ele.append($('<option/>').val(val.CategoryID).text(val.CategoryName));
+        $ele.append($('<option/>').val(val.Категорії_робіт1).text(val.Категорії_робіт1));
     })
+}
+
+//вид робот
+var TypeOfWork = []
+function LoadProduct(element) {
+    if (TypeOfWork.length == 0) {
+        $.ajax({
+            type: "GET",
+            url: "/home/getTypeOfWork",
+            data: { 'categoryOfWork': $(element).val() },
+            success: function (data) {
+
+                //render products to appropriate dropdown
+                renderProduct($(element).parents('.mycontainer').find('select.product'), data);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        })
+    }
+    else {
+        renderProduct(element);
+    }
+}
+
+function renderProduct(element, data) {//создание ведомого списка   
+    var $ele = $(element);
+    $ele.empty();
+    $.each(data, function (i, val) {
+        $ele.append($('<option/>').val(val).text(val));
+    })
+    $('.custom-combobox-input').val(" ");
 }
 
 var Materials = []
@@ -50,33 +81,7 @@ function renderMaterials(element) {//создание списка матери�
     var $ele = $(element);
     $ele.empty();
     $.each(Materials, function (i, val) {
-        $ele.append($('<option/>').val(val.Сортимент).text(val.Сортимент));
-    })
-}
-
-
-//список продуктов
-function LoadProduct(categoryDD) {
-    $.ajax({
-        type: "GET",
-        url: "/home/getProducts",
-        data: { 'categoryID': $(categoryDD).val() },
-        success: function (data) {
-            //render products to appropriate dropdown
-            renderProduct($(categoryDD).parents('.mycontainer').find('select.product'), data);
-        },
-        error: function (error) {
-            console.log(error);
-        }
-    })
-}
-
-function renderProduct(element, data) {//создание ведомого списка   
-    var $ele = $(element);
-    $ele.empty();
-    $ele.append($('<option/>').val('0').text('Вибрати'));
-    $.each(data, function (i, val) {
-        $ele.append($('<option/>').val(val.ProductName).text(val.ProductName));
+        $ele.append($('<option/>').val(val.Назва_сортименту).text(val.Назва_сортименту));
     })
 }
 
@@ -138,8 +143,8 @@ $(document).ready(function () {
 
             $('span.error', $newRow).remove();
             $('input.custom-combobox-input', $table).val('');
-            $('#productCategory', $table).val('0');
-            $('.quantity', $table).val('');
+            //$('#productCategory', $table).val('0');
+            $('.quantity', $table).not('#Unit').val('');
             $('#orderItemError', $table).empty();
         }
 
@@ -150,108 +155,110 @@ $(document).ready(function () {
 
     //Удаление строки
     $('.tbodyTable').each(function () {
-       
+
         $(this).on('click', '.remove', function () {
             var $obj = $(this).parents('.tbodyTable').next().is("tfoot");
             $(this).parents('tr').remove();
             if ($obj) {
                 columnSum(); //перещитать сумму строк после удаленных
-                }
+            }
         })
     });
 
     //Сохранить
-    $('#submit').click(function () {
-        var isAllValid = true;
+    //$('#submit').click(function () {
+    //    var isAllValid = true;
 
-        //validate order items
-        $('#orderItemError').text('');
-        var list = [];
-        var errorItemCount = 0;
-        $('#orderdetailsItems tbody tr').each(function (index, ele) {
-            if (
-                $('select.product', this).val() == "0" ||
-                (parseInt($('.quantity', this).val()) || 0) == 0 ||
-                $('.rate', this).val() == "" ||
-                isNaN($('.rate', this).val())
-            ) {
-                errorItemCount++;
-                $(this).addClass('error');
-            } else {
-                var orderItem = {
-                    ProductID: $('select.product', this).val(),
-                    Quantity: parseInt($('.quantity', this).val()),
-                    Rate: parseFloat($('.rate', this).val())
-                }
-                list.push(orderItem);
-            }
-        })
+    //    //validate order items
+    //    $('#orderItemError').text('');
+    //    var list = [];
+    //    var errorItemCount = 0;
+    //    $('#orderdetailsItems tbody tr').each(function (index, ele) {
+    //        if (
+    //            $('select.product', this).val() == "0" ||
+    //            (parseInt($('.quantity', this).val()) || 0) == 0 ||
+    //            $('.rate', this).val() == "" ||
+    //            isNaN($('.rate', this).val())
+    //        ) {
+    //            errorItemCount++;
+    //            $(this).addClass('error');
+    //        } else {
+    //            var orderItem = {
+    //                ProductID: $('select.product', this).val(),
+    //                Quantity: parseInt($('.quantity', this).val()),
+    //                Rate: parseFloat($('.rate', this).val())
+    //            }
+    //            list.push(orderItem);
+    //        }
+    //    })
 
-        if (errorItemCount > 0) {
-            $('#orderItemError').text(errorItemCount + " invalid entry in order item list.");
-            isAllValid = false;
-        }
+    //    if (errorItemCount > 0) {
+    //        $('#orderItemError').text(errorItemCount + " invalid entry in order item list.");
+    //        isAllValid = false;
+    //    }
 
-        if (list.length == 0) {
-            $('#orderItemError').text('At least 1 order item required.');
-            isAllValid = false;
-        }
+    //    if (list.length == 0) {
+    //        $('#orderItemError').text('At least 1 order item required.');
+    //        isAllValid = false;
+    //    }
 
-        if ($('#orderNo').val().trim() == '') {
-            $('#orderNo').siblings('span.error').css('visibility', 'visible');
-            isAllValid = false;
-        }
-        else {
-            $('#orderNo').siblings('span.error').css('visibility', 'hidden');
-        }
+    //    if ($('#orderNo').val().trim() == '') {
+    //        $('#orderNo').siblings('span.error').css('visibility', 'visible');
+    //        isAllValid = false;
+    //    }
+    //    else {
+    //        $('#orderNo').siblings('span.error').css('visibility', 'hidden');
+    //    }
 
-        if ($('#orderDate').val().trim() == '') {
-            $('#orderDate').siblings('span.error').css('visibility', 'visible');
-            isAllValid = false;
-        }
-        else {
-            $('#orderDate').siblings('span.error').css('visibility', 'hidden');
-        }
+    //    if ($('#orderDate').val().trim() == '') {
+    //        $('#orderDate').siblings('span.error').css('visibility', 'visible');
+    //        isAllValid = false;
+    //    }
+    //    else {
+    //        $('#orderDate').siblings('span.error').css('visibility', 'hidden');
+    //    }
 
-        if (isAllValid) {
-            var data = {
-                OrderNo: $('#orderNo').val().trim(),
-                OrderDateString: $('#orderDate').val().trim(),
-                Description: $('#description').val().trim(),
-                OrderDetails: list
-            }
+    //    if (isAllValid) {
+    //        var data = {
+    //            OrderNo: $('#orderNo').val().trim(),
+    //            OrderDateString: $('#orderDate').val().trim(),
+    //            Description: $('#description').val().trim(),
+    //            OrderDetails: list
+    //        }
 
-            $(this).val('Please wait...');
+    //        $(this).val('Please wait...');
 
-            $.ajax({
-                type: 'POST',
-                url: '/home/save',
-                data: JSON.stringify(data),
-                contentType: 'application/json',
-                success: function (data) {
-                    if (data.status) {
-                        alert('Successfully saved');
-                        //here we will clear the form
-                        list = [];
-                        $('#orderNo,#orderDate,#description').val('');
-                        $('#orderdetailsItems').empty();
-                    }
-                    else {
-                        alert('Error');
-                    }
-                    $('#submit').val('Save');
-                },
-                error: function (error) {
-                    console.log(error);
-                    $('#submit').val('Save');
-                }
-            });
-        }
+    //        $.ajax({
+    //            type: 'POST',
+    //            url: '/home/save',
+    //            data: JSON.stringify(data),
+    //            contentType: 'application/json',
+    //            success: function (data) {
+    //                if (data.status) {
+    //                    alert('Successfully saved');
+    //                    //here we will clear the form
+    //                    list = [];
+    //                    $('#orderNo,#orderDate,#description').val('');
+    //                    $('#orderdetailsItems').empty();
+    //                }
+    //                else {
+    //                    alert('Error');
+    //                }
+    //                $('#submit').val('Save');
+    //            },
+    //            error: function (error) {
+    //                console.log(error);
+    //                $('#submit').val('Save');
+    //            }
+    //        });
+    //    }
 
-    });
+    //});
 });
 
-LoadCategory($('#productCategory'));
+$(document).ready(function () {
+    LoadCategory($('#productCategory'));
+});
 
 $('.materials').each(function () {//выпадающий список сыря и материалов
     LoadMaterials($(this));

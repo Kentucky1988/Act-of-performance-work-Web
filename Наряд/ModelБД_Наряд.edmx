@@ -5,48 +5,22 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Хранилище БД_НарядModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Categories">
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
           <Key>
-            <PropertyRef Name="CategoryID" />
+            <PropertyRef Name="Вид_робітID" />
+            <PropertyRef Name="Вид_робіт" />
+            <PropertyRef Name="0,12" />
+            <PropertyRef Name="0,22" />
+            <PropertyRef Name="0,36" />
+            <PropertyRef Name="0,54" />
+            <PropertyRef Name="0,76" />
+            <PropertyRef Name="1,02" />
+            <PropertyRef Name="1,29" />
           </Key>
-          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CategoryName" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="OrderDetails">
-          <Key>
-            <PropertyRef Name="OrderDetailsId" />
-          </Key>
-          <Property Name="OrderDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OrderID" Type="int" Nullable="false" />
-          <Property Name="ProductID" Type="int" Nullable="false" />
-          <Property Name="Rate" Type="numeric" Precision="12" Scale="2" Nullable="false" />
-          <Property Name="Quantity" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="OrderMaster">
-          <Key>
-            <PropertyRef Name="OrderID" />
-          </Key>
-          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OrderNo" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="OrderDate" Type="datetime" Nullable="false" />
-          <Property Name="Description" Type="varchar" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="Products">
-          <Key>
-            <PropertyRef Name="ProductID" />
-          </Key>
-          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CategoryID" Type="int" Nullable="false" />
-          <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Вид_робіт_Сортименти">
-          <Key>
-            <PropertyRef Name="Id Сортимент" />
-          </Key>
-          <Property Name="Id Сортимент" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Сортимент" Type="nvarchar" MaxLength="70" Nullable="false" />
-          <Property Name="0,05" Type="decimal" Precision="5" Scale="3" Nullable="false" />
-          <Property Name="0,08" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="Вид_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
           <Property Name="0,12" Type="decimal" Precision="5" Scale="3" Nullable="false" />
           <Property Name="0,22" Type="decimal" Precision="5" Scale="3" Nullable="false" />
           <Property Name="0,36" Type="decimal" Precision="5" Scale="3" Nullable="false" />
@@ -54,90 +28,210 @@
           <Property Name="0,76" Type="decimal" Precision="5" Scale="3" Nullable="false" />
           <Property Name="1,02" Type="decimal" Precision="5" Scale="3" Nullable="false" />
           <Property Name="1,29" Type="decimal" Precision="5" Scale="3" Nullable="false" />
-          <Property Name="1,61" Type="decimal" Precision="5" Scale="3" Nullable="false" />
         </EntityType>
-        <Association Name="FK_OrderDetails_OrderMaster">
-          <End Role="OrderMaster" Type="Self.OrderMaster" Multiplicity="1" />
-          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OrderMaster">
-              <PropertyRef Name="OrderID" />
-            </Principal>
-            <Dependent Role="OrderDetails">
-              <PropertyRef Name="OrderID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Категорії_робіт" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Категорії_робіт">
+          <Key>
+            <PropertyRef Name="Категорії_робітID" />
+            <PropertyRef Name="Категорії_робіт" />
+            <PropertyRef Name="Одиниця_виміру" />
+          </Key>
+          <Property Name="Категорії_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Категорії_робіт" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Одиниця_виміру" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.РГК_ССР_без_трелювання" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="РГК_ССР_без_трелювання">
+          <Key>
+            <PropertyRef Name="Вид_робітID" />
+            <PropertyRef Name="Вид_робіт" />
+            <PropertyRef Name="0,219" />
+            <PropertyRef Name="0,25" />
+            <PropertyRef Name="0,32" />
+            <PropertyRef Name="0,39" />
+            <PropertyRef Name="0,49" />
+            <PropertyRef Name="0,75" />
+            <PropertyRef Name="1,1" />
+          </Key>
+          <Property Name="Вид_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="0,219" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,25" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,32" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,39" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,49" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,75" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="1,1" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
+          <Key>
+            <PropertyRef Name="Вид_робітID" />
+            <PropertyRef Name="Вид_робіт" />
+            <PropertyRef Name="0,035" />
+            <PropertyRef Name="0,04" />
+            <PropertyRef Name="0,045" />
+            <PropertyRef Name="0,05" />
+            <PropertyRef Name="0,055" />
+            <PropertyRef Name="0,06" />
+            <PropertyRef Name="0,065" />
+            <PropertyRef Name="0,07" />
+            <PropertyRef Name="0,08" />
+            <PropertyRef Name="0,09" />
+            <PropertyRef Name="0,1" />
+            <PropertyRef Name="0,12" />
+            <PropertyRef Name="0,14" />
+            <PropertyRef Name="0,16" />
+            <PropertyRef Name="0,19" />
+            <PropertyRef Name="0,22" />
+            <PropertyRef Name="0,25" />
+            <PropertyRef Name="0,29" />
+            <PropertyRef Name="0,35" />
+            <PropertyRef Name="0,41" />
+            <PropertyRef Name="0,5" />
+            <PropertyRef Name="0,62" />
+            <PropertyRef Name="0,78" />
+            <PropertyRef Name="0,98" />
+            <PropertyRef Name="1,5" />
+          </Key>
+          <Property Name="Вид_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="0,035" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,04" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,045" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,05" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,055" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,06" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,065" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,07" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,08" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,09" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,1" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,12" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,14" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,16" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,19" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,22" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,25" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,29" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,35" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,41" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,5" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,62" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,78" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,98" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="1,5" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Сортименти" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Сортименти">
+          <Key>
+            <PropertyRef Name="СортиментиID" />
+            <PropertyRef Name="Назва_сортименту" />
+          </Key>
+          <Property Name="СортиментиID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Назва_сортименту" Type="nvarchar" MaxLength="60" Nullable="false" />
+        </EntityType>
         <EntityContainer Name="Хранилище БД_НарядModelContainer">
-          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="OrderMaster" EntityType="Self.OrderMaster" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Вид_робіт_Сортименти" EntityType="Self.Вид_робіт_Сортименти" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_OrderDetails_OrderMaster" Association="Self.FK_OrderDetails_OrderMaster">
-            <End Role="OrderMaster" EntitySet="OrderMaster" />
-            <End Role="OrderDetails" EntitySet="OrderDetails" />
-          </AssociationSet>
+          <EntitySet Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" EntityType="Self.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[Вид_робітID] AS [Вид_робітID], 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[Вид_робіт] AS [Вид_робіт], 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[0,12] AS [0,12], 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[0,22] AS [0,22], 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[0,36] AS [0,36], 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[0,54] AS [0,54], 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[0,76] AS [0,76], 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[1,02] AS [1,02], 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[1,29] AS [1,29]
+    FROM [dbo].[Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР] AS [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Категорії_робіт" EntityType="Self.Категорії_робіт" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Категорії_робіт].[Категорії_робітID] AS [Категорії_робітID], 
+    [Категорії_робіт].[Категорії_робіт] AS [Категорії_робіт], 
+    [Категорії_робіт].[Одиниця_виміру] AS [Одиниця_виміру]
+    FROM [dbo].[Категорії_робіт] AS [Категорії_робіт]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="РГК_ССР_без_трелювання" EntityType="Self.РГК_ССР_без_трелювання" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [РГК_ССР_без_трелювання].[Вид_робітID] AS [Вид_робітID], 
+    [РГК_ССР_без_трелювання].[Вид_робіт] AS [Вид_робіт], 
+    [РГК_ССР_без_трелювання].[0,219] AS [0,219], 
+    [РГК_ССР_без_трелювання].[0,25] AS [0,25], 
+    [РГК_ССР_без_трелювання].[0,32] AS [0,32], 
+    [РГК_ССР_без_трелювання].[0,39] AS [0,39], 
+    [РГК_ССР_без_трелювання].[0,49] AS [0,49], 
+    [РГК_ССР_без_трелювання].[0,75] AS [0,75], 
+    [РГК_ССР_без_трелювання].[1,1] AS [1,1]
+    FROM [dbo].[РГК_ССР_без_трелювання] AS [РГК_ССР_без_трелювання]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntityType="Self.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[Вид_робітID] AS [Вид_робітID], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[Вид_робіт] AS [Вид_робіт], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,035] AS [0,035], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,04] AS [0,04], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,045] AS [0,045], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,05] AS [0,05], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,055] AS [0,055], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,06] AS [0,06], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,065] AS [0,065], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,07] AS [0,07], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,08] AS [0,08], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,09] AS [0,09], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,1] AS [0,1], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,12] AS [0,12], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,14] AS [0,14], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,16] AS [0,16], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,19] AS [0,19], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,22] AS [0,22], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,25] AS [0,25], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,29] AS [0,29], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,35] AS [0,35], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,41] AS [0,41], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,5] AS [0,5], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,62] AS [0,62], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,78] AS [0,78], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,98] AS [0,98], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[1,5] AS [1,5]
+    FROM [dbo].[Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР] AS [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Сортименти" EntityType="Self.Сортименти" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Сортименти].[СортиментиID] AS [СортиментиID], 
+    [Сортименти].[Назва_сортименту] AS [Назва_сортименту]
+    FROM [dbo].[Сортименти] AS [Сортименти]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="БД_НарядModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="БД_НарядEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Categories" EntityType="БД_НарядModel.Categories" />
-          <EntitySet Name="OrderDetails" EntityType="БД_НарядModel.OrderDetails" />
-          <EntitySet Name="OrderMaster" EntityType="БД_НарядModel.OrderMaster" />
-          <EntitySet Name="Products" EntityType="БД_НарядModel.Products" />
-          <EntitySet Name="Вид_робіт_Сортименти" EntityType="БД_НарядModel.Вид_робіт_Сортименти" />
-          <AssociationSet Name="FK_OrderDetails_OrderMaster" Association="БД_НарядModel.FK_OrderDetails_OrderMaster">
-            <End Role="OrderMaster" EntitySet="OrderMaster" />
-            <End Role="OrderDetails" EntitySet="OrderDetails" />
-          </AssociationSet>
+          <EntitySet Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" EntityType="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" />
+          <EntitySet Name="Категорії_робіт" EntityType="БД_НарядModel.Категорії_робіт" />
+          <EntitySet Name="РГК_ССР_без_трелювання" EntityType="БД_НарядModel.РГК_ССР_без_трелювання" />
+          <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" />
+          <EntitySet Name="Сортименти" EntityType="БД_НарядModel.Сортименти" />
         </EntityContainer>
-        <EntityType Name="Categories">
+        <EntityType Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
           <Key>
-            <PropertyRef Name="CategoryID" />
+            <PropertyRef Name="Вид_робітID" />
+            <PropertyRef Name="Вид_робіт" />
+            <PropertyRef Name="C0_12" />
+            <PropertyRef Name="C0_22" />
+            <PropertyRef Name="C0_36" />
+            <PropertyRef Name="C0_54" />
+            <PropertyRef Name="C0_76" />
+            <PropertyRef Name="C1_02" />
+            <PropertyRef Name="C1_29" />
           </Key>
-          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="OrderDetails">
-          <Key>
-            <PropertyRef Name="OrderDetailsId" />
-          </Key>
-          <Property Name="OrderDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderID" Type="Int32" Nullable="false" />
-          <Property Name="ProductID" Type="Int32" Nullable="false" />
-          <Property Name="Rate" Type="Decimal" Nullable="false" Precision="12" Scale="2" />
-          <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="OrderMaster" Relationship="БД_НарядModel.FK_OrderDetails_OrderMaster" FromRole="OrderDetails" ToRole="OrderMaster" />
-        </EntityType>
-        <EntityType Name="OrderMaster">
-          <Key>
-            <PropertyRef Name="OrderID" />
-          </Key>
-          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="OrderDetails" Relationship="БД_НарядModel.FK_OrderDetails_OrderMaster" FromRole="OrderMaster" ToRole="OrderDetails" />
-        </EntityType>
-        <EntityType Name="Products">
-          <Key>
-            <PropertyRef Name="ProductID" />
-          </Key>
-          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CategoryID" Type="Int32" Nullable="false" />
-          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Вид_робіт_Сортименти">
-          <Key>
-            <PropertyRef Name="Id_Сортимент" />
-          </Key>
-          <Property Name="Id_Сортимент" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Сортимент" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
-          <Property Name="C0_05" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
-          <Property Name="C0_08" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
           <Property Name="C0_12" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
           <Property Name="C0_22" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
           <Property Name="C0_36" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
@@ -145,68 +239,114 @@
           <Property Name="C0_76" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
           <Property Name="C1_02" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
           <Property Name="C1_29" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
-          <Property Name="C1_61" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
         </EntityType>
-        <Association Name="FK_OrderDetails_OrderMaster">
-          <End Type="БД_НарядModel.OrderMaster" Role="OrderMaster" Multiplicity="1" />
-          <End Type="БД_НарядModel.OrderDetails" Role="OrderDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OrderMaster">
-              <PropertyRef Name="OrderID" />
-            </Principal>
-            <Dependent Role="OrderDetails">
-              <PropertyRef Name="OrderID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="Категорії_робіт">
+          <Key>
+            <PropertyRef Name="Категорії_робітID" />
+            <PropertyRef Name="Категорії_робіт1" />
+            <PropertyRef Name="Одиниця_виміру" />
+          </Key>
+          <Property Name="Категорії_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Категорії_робіт1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Одиниця_виміру" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="РГК_ССР_без_трелювання">
+          <Key>
+            <PropertyRef Name="Вид_робітID" />
+            <PropertyRef Name="Вид_робіт" />
+            <PropertyRef Name="C0_219" />
+            <PropertyRef Name="C0_25" />
+            <PropertyRef Name="C0_32" />
+            <PropertyRef Name="C0_39" />
+            <PropertyRef Name="C0_49" />
+            <PropertyRef Name="C0_75" />
+            <PropertyRef Name="C1_1" />
+          </Key>
+          <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="C0_219" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_25" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_32" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_39" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_49" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_75" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C1_1" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+        </EntityType>
+        <EntityType Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
+          <Key>
+            <PropertyRef Name="Вид_робітID" />
+            <PropertyRef Name="Вид_робіт" />
+            <PropertyRef Name="C0_035" />
+            <PropertyRef Name="C0_04" />
+            <PropertyRef Name="C0_045" />
+            <PropertyRef Name="C0_05" />
+            <PropertyRef Name="C0_055" />
+            <PropertyRef Name="C0_06" />
+            <PropertyRef Name="C0_065" />
+            <PropertyRef Name="C0_07" />
+            <PropertyRef Name="C0_08" />
+            <PropertyRef Name="C0_09" />
+            <PropertyRef Name="C0_1" />
+            <PropertyRef Name="C0_12" />
+            <PropertyRef Name="C0_14" />
+            <PropertyRef Name="C0_16" />
+            <PropertyRef Name="C0_19" />
+            <PropertyRef Name="C0_22" />
+            <PropertyRef Name="C0_25" />
+            <PropertyRef Name="C0_29" />
+            <PropertyRef Name="C0_35" />
+            <PropertyRef Name="C0_41" />
+            <PropertyRef Name="C0_5" />
+            <PropertyRef Name="C0_62" />
+            <PropertyRef Name="C0_78" />
+            <PropertyRef Name="C0_98" />
+            <PropertyRef Name="C1_5" />
+          </Key>
+          <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="C0_035" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_04" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_045" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_05" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_055" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_06" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_065" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_07" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_08" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_09" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_1" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_12" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_14" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_16" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_19" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_22" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_25" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_29" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_35" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_41" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_5" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_62" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_78" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_98" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C1_5" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+        </EntityType>
+        <EntityType Name="Сортименти">
+          <Key>
+            <PropertyRef Name="СортиментиID" />
+            <PropertyRef Name="Назва_сортименту" />
+          </Key>
+          <Property Name="СортиментиID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Назва_сортименту" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище БД_НарядModelContainer" CdmEntityContainer="БД_НарядEntities1">
-          <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="БД_НарядModel.Categories">
-              <MappingFragment StoreEntitySet="Categories">
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OrderDetails">
-            <EntityTypeMapping TypeName="БД_НарядModel.OrderDetails">
-              <MappingFragment StoreEntitySet="OrderDetails">
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="Rate" ColumnName="Rate" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-                <ScalarProperty Name="OrderDetailsId" ColumnName="OrderDetailsId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OrderMaster">
-            <EntityTypeMapping TypeName="БД_НарядModel.OrderMaster">
-              <MappingFragment StoreEntitySet="OrderMaster">
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
-                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="БД_НарядModel.Products">
-              <MappingFragment StoreEntitySet="Products">
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Вид_робіт_Сортименти">
-            <EntityTypeMapping TypeName="БД_НарядModel.Вид_робіт_Сортименти">
-              <MappingFragment StoreEntitySet="Вид_робіт_Сортименти">
-                <ScalarProperty Name="C1_61" ColumnName="1,61" />
+          <EntitySetMapping Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
+            <EntityTypeMapping TypeName="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
+              <MappingFragment StoreEntitySet="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
                 <ScalarProperty Name="C1_29" ColumnName="1,29" />
                 <ScalarProperty Name="C1_02" ColumnName="1,02" />
                 <ScalarProperty Name="C0_76" ColumnName="0,76" />
@@ -214,10 +354,73 @@
                 <ScalarProperty Name="C0_36" ColumnName="0,36" />
                 <ScalarProperty Name="C0_22" ColumnName="0,22" />
                 <ScalarProperty Name="C0_12" ColumnName="0,12" />
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Категорії_робіт">
+            <EntityTypeMapping TypeName="БД_НарядModel.Категорії_робіт">
+              <MappingFragment StoreEntitySet="Категорії_робіт">
+                <ScalarProperty Name="Одиниця_виміру" ColumnName="Одиниця_виміру" />
+                <ScalarProperty Name="Категорії_робіт1" ColumnName="Категорії_робіт" />
+                <ScalarProperty Name="Категорії_робітID" ColumnName="Категорії_робітID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="РГК_ССР_без_трелювання">
+            <EntityTypeMapping TypeName="БД_НарядModel.РГК_ССР_без_трелювання">
+              <MappingFragment StoreEntitySet="РГК_ССР_без_трелювання">
+                <ScalarProperty Name="C1_1" ColumnName="1,1" />
+                <ScalarProperty Name="C0_75" ColumnName="0,75" />
+                <ScalarProperty Name="C0_49" ColumnName="0,49" />
+                <ScalarProperty Name="C0_39" ColumnName="0,39" />
+                <ScalarProperty Name="C0_32" ColumnName="0,32" />
+                <ScalarProperty Name="C0_25" ColumnName="0,25" />
+                <ScalarProperty Name="C0_219" ColumnName="0,219" />
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
+            <EntityTypeMapping TypeName="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
+              <MappingFragment StoreEntitySet="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
+                <ScalarProperty Name="C1_5" ColumnName="1,5" />
+                <ScalarProperty Name="C0_98" ColumnName="0,98" />
+                <ScalarProperty Name="C0_78" ColumnName="0,78" />
+                <ScalarProperty Name="C0_62" ColumnName="0,62" />
+                <ScalarProperty Name="C0_5" ColumnName="0,5" />
+                <ScalarProperty Name="C0_41" ColumnName="0,41" />
+                <ScalarProperty Name="C0_35" ColumnName="0,35" />
+                <ScalarProperty Name="C0_29" ColumnName="0,29" />
+                <ScalarProperty Name="C0_25" ColumnName="0,25" />
+                <ScalarProperty Name="C0_22" ColumnName="0,22" />
+                <ScalarProperty Name="C0_19" ColumnName="0,19" />
+                <ScalarProperty Name="C0_16" ColumnName="0,16" />
+                <ScalarProperty Name="C0_14" ColumnName="0,14" />
+                <ScalarProperty Name="C0_12" ColumnName="0,12" />
+                <ScalarProperty Name="C0_1" ColumnName="0,1" />
+                <ScalarProperty Name="C0_09" ColumnName="0,09" />
                 <ScalarProperty Name="C0_08" ColumnName="0,08" />
+                <ScalarProperty Name="C0_07" ColumnName="0,07" />
+                <ScalarProperty Name="C0_065" ColumnName="0,065" />
+                <ScalarProperty Name="C0_06" ColumnName="0,06" />
+                <ScalarProperty Name="C0_055" ColumnName="0,055" />
                 <ScalarProperty Name="C0_05" ColumnName="0,05" />
-                <ScalarProperty Name="Сортимент" ColumnName="Сортимент" />
-                <ScalarProperty Name="Id_Сортимент" ColumnName="Id Сортимент" />
+                <ScalarProperty Name="C0_045" ColumnName="0,045" />
+                <ScalarProperty Name="C0_04" ColumnName="0,04" />
+                <ScalarProperty Name="C0_035" ColumnName="0,035" />
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Сортименти">
+            <EntityTypeMapping TypeName="БД_НарядModel.Сортименти">
+              <MappingFragment StoreEntitySet="Сортименти">
+                <ScalarProperty Name="Назва_сортименту" ColumnName="Назва_сортименту" />
+                <ScalarProperty Name="СортиментиID" ColumnName="СортиментиID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

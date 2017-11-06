@@ -1,47 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Хранилище БД_НарядModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="Categories">
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
     <Key>
-      <PropertyRef Name="CategoryID" />
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="0,12" />
+      <PropertyRef Name="0,22" />
+      <PropertyRef Name="0,36" />
+      <PropertyRef Name="0,54" />
+      <PropertyRef Name="0,76" />
+      <PropertyRef Name="1,02" />
+      <PropertyRef Name="1,29" />
     </Key>
-    <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CategoryName" Type="varchar" MaxLength="50" Nullable="false" />
-  </EntityType>
-  <EntityType Name="OrderDetails">
-    <Key>
-      <PropertyRef Name="OrderDetailsId" />
-    </Key>
-    <Property Name="OrderDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="OrderID" Type="int" Nullable="false" />
-    <Property Name="ProductID" Type="int" Nullable="false" />
-    <Property Name="Rate" Type="numeric" Precision="12" Scale="2" Nullable="false" />
-    <Property Name="Quantity" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="OrderMaster">
-    <Key>
-      <PropertyRef Name="OrderID" />
-    </Key>
-    <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="OrderNo" Type="varchar" MaxLength="20" Nullable="false" />
-    <Property Name="OrderDate" Type="datetime" Nullable="false" />
-    <Property Name="Description" Type="varchar" MaxLength="200" />
-  </EntityType>
-  <EntityType Name="Products">
-    <Key>
-      <PropertyRef Name="ProductID" />
-    </Key>
-    <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CategoryID" Type="int" Nullable="false" />
-    <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Вид_робіт_Сортименти">
-    <Key>
-      <PropertyRef Name="Id Сортимент" />
-    </Key>
-    <Property Name="Id Сортимент" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Сортимент" Type="nvarchar" MaxLength="70" Nullable="false" />
-    <Property Name="0,05" Type="decimal" Precision="5" Scale="3" Nullable="false" />
-    <Property Name="0,08" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="Вид_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
     <Property Name="0,12" Type="decimal" Precision="5" Scale="3" Nullable="false" />
     <Property Name="0,22" Type="decimal" Precision="5" Scale="3" Nullable="false" />
     <Property Name="0,36" Type="decimal" Precision="5" Scale="3" Nullable="false" />
@@ -49,29 +23,183 @@
     <Property Name="0,76" Type="decimal" Precision="5" Scale="3" Nullable="false" />
     <Property Name="1,02" Type="decimal" Precision="5" Scale="3" Nullable="false" />
     <Property Name="1,29" Type="decimal" Precision="5" Scale="3" Nullable="false" />
-    <Property Name="1,61" Type="decimal" Precision="5" Scale="3" Nullable="false" />
   </EntityType>
-  <Association Name="FK_OrderDetails_OrderMaster">
-    <End Role="OrderMaster" Type="Self.OrderMaster" Multiplicity="1" />
-    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="OrderMaster">
-        <PropertyRef Name="OrderID" />
-      </Principal>
-      <Dependent Role="OrderDetails">
-        <PropertyRef Name="OrderID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Категорії_робіт" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Категорії_робіт">
+    <Key>
+      <PropertyRef Name="Категорії_робітID" />
+      <PropertyRef Name="Категорії_робіт" />
+      <PropertyRef Name="Одиниця_виміру" />
+    </Key>
+    <Property Name="Категорії_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Категорії_робіт" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Одиниця_виміру" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.РГК_ССР_без_трелювання" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="РГК_ССР_без_трелювання">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="0,219" />
+      <PropertyRef Name="0,25" />
+      <PropertyRef Name="0,32" />
+      <PropertyRef Name="0,39" />
+      <PropertyRef Name="0,49" />
+      <PropertyRef Name="0,75" />
+      <PropertyRef Name="1,1" />
+    </Key>
+    <Property Name="Вид_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="0,219" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,25" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,32" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,39" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,49" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,75" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="1,1" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="0,035" />
+      <PropertyRef Name="0,04" />
+      <PropertyRef Name="0,045" />
+      <PropertyRef Name="0,05" />
+      <PropertyRef Name="0,055" />
+      <PropertyRef Name="0,06" />
+      <PropertyRef Name="0,065" />
+      <PropertyRef Name="0,07" />
+      <PropertyRef Name="0,08" />
+      <PropertyRef Name="0,09" />
+      <PropertyRef Name="0,1" />
+      <PropertyRef Name="0,12" />
+      <PropertyRef Name="0,14" />
+      <PropertyRef Name="0,16" />
+      <PropertyRef Name="0,19" />
+      <PropertyRef Name="0,22" />
+      <PropertyRef Name="0,25" />
+      <PropertyRef Name="0,29" />
+      <PropertyRef Name="0,35" />
+      <PropertyRef Name="0,41" />
+      <PropertyRef Name="0,5" />
+      <PropertyRef Name="0,62" />
+      <PropertyRef Name="0,78" />
+      <PropertyRef Name="0,98" />
+      <PropertyRef Name="1,5" />
+    </Key>
+    <Property Name="Вид_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="0,035" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,04" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,045" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,05" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,055" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,06" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,065" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,07" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,08" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,09" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,1" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,12" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,14" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,16" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,19" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,22" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,25" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,29" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,35" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,41" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,5" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,62" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,78" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="0,98" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="1,5" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Сортименти" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Сортименти">
+    <Key>
+      <PropertyRef Name="СортиментиID" />
+      <PropertyRef Name="Назва_сортименту" />
+    </Key>
+    <Property Name="СортиментиID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Назва_сортименту" Type="nvarchar" MaxLength="60" Nullable="false" />
+  </EntityType>
   <EntityContainer Name="Хранилище БД_НарядModelContainer">
-    <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="OrderMaster" EntityType="Self.OrderMaster" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Вид_робіт_Сортименти" EntityType="Self.Вид_робіт_Сортименти" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_OrderDetails_OrderMaster" Association="Self.FK_OrderDetails_OrderMaster">
-      <End Role="OrderMaster" EntitySet="OrderMaster" />
-      <End Role="OrderDetails" EntitySet="OrderDetails" />
-    </AssociationSet>
+    <EntitySet Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" EntityType="Self.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[Вид_робітID] AS [Вид_робітID], 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[Вид_робіт] AS [Вид_робіт], 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[0,12] AS [0,12], 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[0,22] AS [0,22], 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[0,36] AS [0,36], 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[0,54] AS [0,54], 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[0,76] AS [0,76], 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[1,02] AS [1,02], 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[1,29] AS [1,29]
+    FROM [dbo].[Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР] AS [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Категорії_робіт" EntityType="Self.Категорії_робіт" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Категорії_робіт].[Категорії_робітID] AS [Категорії_робітID], 
+    [Категорії_робіт].[Категорії_робіт] AS [Категорії_робіт], 
+    [Категорії_робіт].[Одиниця_виміру] AS [Одиниця_виміру]
+    FROM [dbo].[Категорії_робіт] AS [Категорії_робіт]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="РГК_ССР_без_трелювання" EntityType="Self.РГК_ССР_без_трелювання" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [РГК_ССР_без_трелювання].[Вид_робітID] AS [Вид_робітID], 
+    [РГК_ССР_без_трелювання].[Вид_робіт] AS [Вид_робіт], 
+    [РГК_ССР_без_трелювання].[0,219] AS [0,219], 
+    [РГК_ССР_без_трелювання].[0,25] AS [0,25], 
+    [РГК_ССР_без_трелювання].[0,32] AS [0,32], 
+    [РГК_ССР_без_трелювання].[0,39] AS [0,39], 
+    [РГК_ССР_без_трелювання].[0,49] AS [0,49], 
+    [РГК_ССР_без_трелювання].[0,75] AS [0,75], 
+    [РГК_ССР_без_трелювання].[1,1] AS [1,1]
+    FROM [dbo].[РГК_ССР_без_трелювання] AS [РГК_ССР_без_трелювання]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntityType="Self.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[Вид_робітID] AS [Вид_робітID], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[Вид_робіт] AS [Вид_робіт], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,035] AS [0,035], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,04] AS [0,04], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,045] AS [0,045], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,05] AS [0,05], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,055] AS [0,055], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,06] AS [0,06], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,065] AS [0,065], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,07] AS [0,07], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,08] AS [0,08], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,09] AS [0,09], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,1] AS [0,1], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,12] AS [0,12], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,14] AS [0,14], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,16] AS [0,16], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,19] AS [0,19], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,22] AS [0,22], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,25] AS [0,25], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,29] AS [0,29], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,35] AS [0,35], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,41] AS [0,41], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,5] AS [0,5], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,62] AS [0,62], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,78] AS [0,78], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,98] AS [0,98], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[1,5] AS [1,5]
+    FROM [dbo].[Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР] AS [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Сортименти" EntityType="Self.Сортименти" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Сортименти].[СортиментиID] AS [СортиментиID], 
+    [Сортименти].[Назва_сортименту] AS [Назва_сортименту]
+    FROM [dbo].[Сортименти] AS [Сортименти]</DefiningQuery>
+    </EntitySet>
   </EntityContainer>
 </Schema>

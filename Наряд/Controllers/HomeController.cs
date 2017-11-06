@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Linq.Dynamic;
+using System.Web.DynamicData;
 
 namespace Наряд.Controllers
 {
@@ -16,35 +19,48 @@ namespace Наряд.Controllers
 
         public JsonResult getMaterials()
         {
-            List<Вид_робіт_Сортименти> materials = new List<Вид_робіт_Сортименти>();
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
             {
-                materials = dc.Вид_робіт_Сортименти.OrderBy(a => a.Сортимент).ToList();
+                var materials = dc.Сортименти.OrderBy(a => a.Назва_сортименту).ToList();
+                return new JsonResult { Data = materials, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
-            return new JsonResult { Data = materials, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
-        public JsonResult getProductCategories()
+        public JsonResult getCategories()
         {
-            List<Categories> categories = new List<Categories>();
+
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
             {
-                categories = dc.Categories.OrderBy(a => a.CategoryName).ToList();
+                var categories = dc.Категорії_робіт.OrderBy(a => a.Категорії_робіт1).ToList();
+                return new JsonResult { Data = categories, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
-            return new JsonResult { Data = categories, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+
         }
 
-        public JsonResult getProducts(int categoryID)
+
+        public JsonResult getTypeOfWork(string categoryOfWork)
         {
-            List<Products> products = new List<Products>();
-            using (БД_НарядEntities1 dc = new БД_НарядEntities1())
+            using (БД_НарядEntities1 context = new БД_НарядEntities1())
             {
-                products = dc.Products.Where(a => a.CategoryID.Equals(categoryID)).OrderBy(a => a.ProductName).ToList();
+                var TypeOfWork = context.Database.SqlQuery<string>(
+                                   $"SELECT Вид_робіт FROM {categoryOfWork}").ToList();
+
+                return new JsonResult { Data = TypeOfWork, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
-            return new JsonResult { Data = products, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
-        public JsonResult normWork(string volumeWood)//норма выполнения робот
+        public JsonResult getUnit(string category)
+        {
+            using (БД_НарядEntities1 context = new БД_НарядEntities1())
+            {
+                var TypeOfWork = context.Database.SqlQuery<string>(
+                                   $"SELECT[Одиниця_виміру] FROM Категорії_робіт WHERE[Категорії_робіт] = N'{category}'").ToList();
+
+                return new JsonResult { Data = TypeOfWork[0], JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+        }
+
+        public JsonResult normWork(string table, string typeOfWork, string volumeWood)//норма выполнения робот
         {
             double column = 0;
             double volumeWoods = 0;
@@ -58,8 +74,13 @@ namespace Наряд.Controllers
                 return new JsonResult { Data = column, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
 
-            var properties = (from t in typeof(Вид_робіт_Сортименти).GetProperties()
-                              select t.Name).ToList();
+            List<string> properties = null;
+            using (БД_НарядEntities1 db = new БД_НарядEntities1())
+            {
+                var normList = db.Database.SqlQuery<string>(
+                                   $"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'{table}'").ToList();
+                properties = normList;
+            }
 
             int columnNumber = 0;
             for (; columnNumber < properties.Count; columnNumber++)
@@ -69,8 +90,8 @@ namespace Наряд.Controllers
 
                 try
                 {
-                    columName = double.Parse(properties[columnNumber].Remove(0, 1).Replace('_', ','));
-                    nextColumName = double.Parse(properties[columnNumber + 1].Remove(0, 1).Replace('_', ','));
+                    columName = double.Parse(properties[columnNumber].Replace('_', ','));
+                    nextColumName = double.Parse(properties[columnNumber + 1].Replace('_', ','));
                 }
                 catch (Exception)
                 {
@@ -94,17 +115,13 @@ namespace Наряд.Controllers
 
             try
             {
-                string typeOfWork = "Ділові ялина 6м";
                 string amountOfWood = properties[columnNumber];
 
                 using (БД_НарядEntities1 db = new БД_НарядEntities1())
                 {
-                    var normList = (from p in db.Вид_робіт_Сортименти
-                                    where p.Сортимент == typeOfWork
-                                    select p).ToList();
-
-                    var nameColum = normList[0].GetType().GetProperty(amountOfWood);
-                    normOfWork = Convert.ToDouble(nameColum.GetValue(normList[0]));
+                    var normList = db.Database.SqlQuery<decimal>(
+                                  $"SELECT[{amountOfWood}] FROM {table} WHERE Вид_робіт = N'{typeOfWork}'").ToList();                 
+                    normOfWork = Convert.ToDouble(normList[0]);
                 }
             }
             catch (Exception)
@@ -114,29 +131,29 @@ namespace Наряд.Controllers
 
             return new JsonResult { Data = normOfWork, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
-        
-        [HttpPost]
-        public JsonResult save(OrderMaster order)
-        {
-            bool status = false;
-            DateTime dateOrg;
-            var isValidDate = DateTime.TryParseExact(order.OrderDateString, "mm-dd-yyyy", null, System.Globalization.DateTimeStyles.None, out dateOrg);
-            if (isValidDate)
-            {
-                order.OrderDate = dateOrg;
-            }
 
-            var isValidModel = TryUpdateModel(order);
-            if (isValidModel)
-            {
-                using (БД_НарядEntities1 dc = new БД_НарядEntities1())
-                {
-                    dc.OrderMaster.Add(order);
-                    dc.SaveChanges();
-                    status = true;
-                }
-            }
-            return new JsonResult { Data = new { status = status } };
-        }
+        //[HttpPost]
+        //public JsonResult save(OrderMaster order)
+        //{
+        //    bool status = false;
+        //    DateTime dateOrg;
+        //    var isValidDate = DateTime.TryParseExact(order.OrderDateString, "mm-dd-yyyy", null, System.Globalization.DateTimeStyles.None, out dateOrg);
+        //    if (isValidDate)
+        //    {
+        //        order.OrderDate = dateOrg;
+        //    }
+
+        //    var isValidModel = TryUpdateModel(order);
+        //    if (isValidModel)
+        //    {
+        //        using (БД_НарядEntities1 dc = new БД_НарядEntities1())
+        //        {
+        //            dc.OrderMaster.Add(order);
+        //            dc.SaveChanges();
+        //            status = true;
+        //        }
+        //    }
+        //    return new JsonResult { Data = new { status = status } };
+        //}
     }
 }

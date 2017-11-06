@@ -54,6 +54,9 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -147,9 +150,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Categories.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="ExtendedModel\OrderMaster.cs" />
     <Compile Include="Global.asax.cs">
@@ -170,17 +170,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelБД_Наряд.edmx</DependentUpon>
     </Compile>
-    <Compile Include="OrderDetails.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
-    </Compile>
-    <Compile Include="OrderMaster.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Products.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Вид_робіт_Сортименти.cs">
+    <Compile Include="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Категорії_робіт.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
+    <Compile Include="РГК_ССР_без_трелювання.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Сортименти.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
   </ItemGroup>

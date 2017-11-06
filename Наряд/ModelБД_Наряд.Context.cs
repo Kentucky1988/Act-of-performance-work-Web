@@ -25,10 +25,10 @@ namespace Наряд
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Categories> Categories { get; set; }
-        public virtual DbSet<OrderDetails> OrderDetails { get; set; }
-        public virtual DbSet<OrderMaster> OrderMaster { get; set; }
-        public virtual DbSet<Products> Products { get; set; }
-        public virtual DbSet<Вид_робіт_Сортименти> Вид_робіт_Сортименти { get; set; }
+        public virtual DbSet<Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР> Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР { get; set; }
+        public virtual DbSet<Категорії_робіт> Категорії_робіт { get; set; }
+        public virtual DbSet<РГК_ССР_без_трелювання> РГК_ССР_без_трелювання { get; set; }
+        public virtual DbSet<Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР> Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР { get; set; }
+        public virtual DbSet<Сортименти> Сортименти { get; set; }
     }
 }

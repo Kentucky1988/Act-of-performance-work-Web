@@ -133,8 +133,9 @@
     $("#toggle").on("click", function () {
         $(".autocompleteCombobox").toggle();
     });
-    $(".autocompleteCombobox").combobox({ //событие ни изминение значения выпадающего списка
-        select: function (event, ui) {
+
+    $(".tbodyTable .autocompleteCombobox").combobox({ //событие ни изминение значения выпадающего списка
+        select: function (event, ui) {                // расчет норм
             normOfWork(this.value);           
         }   
     });

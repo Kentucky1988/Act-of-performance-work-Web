@@ -96,7 +96,7 @@
                 <tr class="mycontainer" id="mainrow" align="center">
                     <td>
                         <!--выпадающий список категория работ-->
-                        <select id="productCategory" class="pc" style="min-width:150px" onchange="LoadProduct(this)">
+                        <select id="productCategory" class="pc" style="min-width:150px"> <!-- onchange="LoadProduct(this)"-->
                             <option></option>
                         </select>
                     </td>
@@ -106,13 +106,13 @@
                             <option></option>
                         </select>
                     </td>
-                    <td> <input type="text" class="quantity" /> </td>
-                    <td> <input type="text" class="quantity" /> </td>
-                    <td> <input type="text" class="quantity" /> </td>
-                    <td> <input type="text" class="quantity" id="norm" /> </td>
-                    <td> <input type="text" class="quantity" /> </td>
-                    <td> <input type="text" class="quantity" /> </td>
-                    <td> <input type="text" class="quantity" /> </td>
+                    <td> <input type="text" class="quantity" id="Unit" disabled/> </td>
+                    <td> <input type="text" class="quantity" id="set"/> </td>
+                    <td> <input type="text" class="quantity" id="executed"/> </td>
+                    <td> <input type="text" class="quantity" id="norm" disabled/> </td>
+                    <td> <input type="text" class="quantity" id="executedNorm" disabled/> </td>
+                    <td> <input type="text" class="quantity" id="UnitPrice" disabled/> </td>
+                    <td> <input type="text" class="quantity" id="Sum" disabled/> </td>
                     <td> <input type="text" class="quantity" /> </td>
                     <td> <input type="text" class="quantity" /> </td>
                     <td>

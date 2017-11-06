@@ -1,60 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="БД_НарядModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="БД_НарядEntities1" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Categories" EntityType="БД_НарядModel.Categories" />
-    <EntitySet Name="OrderDetails" EntityType="БД_НарядModel.OrderDetails" />
-    <EntitySet Name="OrderMaster" EntityType="БД_НарядModel.OrderMaster" />
-    <EntitySet Name="Products" EntityType="БД_НарядModel.Products" />
-    <EntitySet Name="Вид_робіт_Сортименти" EntityType="БД_НарядModel.Вид_робіт_Сортименти" />
-    <AssociationSet Name="FK_OrderDetails_OrderMaster" Association="БД_НарядModel.FK_OrderDetails_OrderMaster">
-      <End Role="OrderMaster" EntitySet="OrderMaster" />
-      <End Role="OrderDetails" EntitySet="OrderDetails" />
-    </AssociationSet>
+    <EntitySet Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" EntityType="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" />
+    <EntitySet Name="Категорії_робіт" EntityType="БД_НарядModel.Категорії_робіт" />
+    <EntitySet Name="РГК_ССР_без_трелювання" EntityType="БД_НарядModel.РГК_ССР_без_трелювання" />
+    <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" />
+    <EntitySet Name="Сортименти" EntityType="БД_НарядModel.Сортименти" />
   </EntityContainer>
-  <EntityType Name="Categories">
+  <EntityType Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
     <Key>
-      <PropertyRef Name="CategoryID" />
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="C0_12" />
+      <PropertyRef Name="C0_22" />
+      <PropertyRef Name="C0_36" />
+      <PropertyRef Name="C0_54" />
+      <PropertyRef Name="C0_76" />
+      <PropertyRef Name="C1_02" />
+      <PropertyRef Name="C1_29" />
     </Key>
-    <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="OrderDetails">
-    <Key>
-      <PropertyRef Name="OrderDetailsId" />
-    </Key>
-    <Property Name="OrderDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="OrderID" Type="Int32" Nullable="false" />
-    <Property Name="ProductID" Type="Int32" Nullable="false" />
-    <Property Name="Rate" Type="Decimal" Nullable="false" Precision="12" Scale="2" />
-    <Property Name="Quantity" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="OrderMaster" Relationship="БД_НарядModel.FK_OrderDetails_OrderMaster" FromRole="OrderDetails" ToRole="OrderMaster" />
-  </EntityType>
-  <EntityType Name="OrderMaster">
-    <Key>
-      <PropertyRef Name="OrderID" />
-    </Key>
-    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="OrderNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="OrderDetails" Relationship="БД_НарядModel.FK_OrderDetails_OrderMaster" FromRole="OrderMaster" ToRole="OrderDetails" />
-  </EntityType>
-  <EntityType Name="Products">
-    <Key>
-      <PropertyRef Name="ProductID" />
-    </Key>
-    <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="CategoryID" Type="Int32" Nullable="false" />
-    <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="Вид_робіт_Сортименти">
-    <Key>
-      <PropertyRef Name="Id_Сортимент" />
-    </Key>
-    <Property Name="Id_Сортимент" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Сортимент" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
-    <Property Name="C0_05" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
-    <Property Name="C0_08" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
     <Property Name="C0_12" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
     <Property Name="C0_22" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
     <Property Name="C0_36" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
@@ -62,18 +28,103 @@
     <Property Name="C0_76" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
     <Property Name="C1_02" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
     <Property Name="C1_29" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
-    <Property Name="C1_61" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
   </EntityType>
-  <Association Name="FK_OrderDetails_OrderMaster">
-    <End Type="БД_НарядModel.OrderMaster" Role="OrderMaster" Multiplicity="1" />
-    <End Type="БД_НарядModel.OrderDetails" Role="OrderDetails" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="OrderMaster">
-        <PropertyRef Name="OrderID" />
-      </Principal>
-      <Dependent Role="OrderDetails">
-        <PropertyRef Name="OrderID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <EntityType Name="Категорії_робіт">
+    <Key>
+      <PropertyRef Name="Категорії_робітID" />
+      <PropertyRef Name="Категорії_робіт1" />
+      <PropertyRef Name="Одиниця_виміру" />
+    </Key>
+    <Property Name="Категорії_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Категорії_робіт1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Одиниця_виміру" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="РГК_ССР_без_трелювання">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="C0_219" />
+      <PropertyRef Name="C0_25" />
+      <PropertyRef Name="C0_32" />
+      <PropertyRef Name="C0_39" />
+      <PropertyRef Name="C0_49" />
+      <PropertyRef Name="C0_75" />
+      <PropertyRef Name="C1_1" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="C0_219" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_25" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_32" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_39" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_49" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_75" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C1_1" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+  </EntityType>
+  <EntityType Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="C0_035" />
+      <PropertyRef Name="C0_04" />
+      <PropertyRef Name="C0_045" />
+      <PropertyRef Name="C0_05" />
+      <PropertyRef Name="C0_055" />
+      <PropertyRef Name="C0_06" />
+      <PropertyRef Name="C0_065" />
+      <PropertyRef Name="C0_07" />
+      <PropertyRef Name="C0_08" />
+      <PropertyRef Name="C0_09" />
+      <PropertyRef Name="C0_1" />
+      <PropertyRef Name="C0_12" />
+      <PropertyRef Name="C0_14" />
+      <PropertyRef Name="C0_16" />
+      <PropertyRef Name="C0_19" />
+      <PropertyRef Name="C0_22" />
+      <PropertyRef Name="C0_25" />
+      <PropertyRef Name="C0_29" />
+      <PropertyRef Name="C0_35" />
+      <PropertyRef Name="C0_41" />
+      <PropertyRef Name="C0_5" />
+      <PropertyRef Name="C0_62" />
+      <PropertyRef Name="C0_78" />
+      <PropertyRef Name="C0_98" />
+      <PropertyRef Name="C1_5" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="C0_035" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_04" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_045" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_05" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_055" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_06" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_065" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_07" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_08" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_09" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_1" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_12" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_14" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_16" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_19" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_22" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_25" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_29" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_35" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_41" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_5" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_62" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_78" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_98" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C1_5" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+  </EntityType>
+  <EntityType Name="Сортименти">
+    <Key>
+      <PropertyRef Name="СортиментиID" />
+      <PropertyRef Name="Назва_сортименту" />
+    </Key>
+    <Property Name="СортиментиID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Назва_сортименту" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>
