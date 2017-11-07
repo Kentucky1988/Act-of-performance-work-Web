@@ -1,6 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="Хранилище БД_НарядModelContainer" CdmEntityContainer="БД_НарядEntities1">
+    <EntitySetMapping Name="Денна_тарифна_ставка">
+      <EntityTypeMapping TypeName="БД_НарядModel.Денна_тарифна_ставка">
+        <MappingFragment StoreEntitySet="Денна_тарифна_ставка">
+          <ScalarProperty Name="Разряд6" ColumnName="Разряд6" />
+          <ScalarProperty Name="Разряд5" ColumnName="Разряд5" />
+          <ScalarProperty Name="Разряд4" ColumnName="Разряд4" />
+          <ScalarProperty Name="Разряд3" ColumnName="Разряд3" />
+          <ScalarProperty Name="Разряд2" ColumnName="Разряд2" />
+          <ScalarProperty Name="Разряд1" ColumnName="Разряд1" />
+          <ScalarProperty Name="Комплексна_индивідуальна" ColumnName="Комплексна_индивідуальна" />
+          <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+          <ScalarProperty Name="РозцінкаID" ColumnName="РозцінкаID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
       <EntityTypeMapping TypeName="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
         <MappingFragment StoreEntitySet="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
@@ -20,6 +35,8 @@
       <EntityTypeMapping TypeName="БД_НарядModel.Категорії_робіт">
         <MappingFragment StoreEntitySet="Категорії_робіт">
           <ScalarProperty Name="Одиниця_виміру" ColumnName="Одиниця_виміру" />
+          <ScalarProperty Name="РозцінкаID" ColumnName="РозцінкаID" />
+          <ScalarProperty Name="Комплексна_индивідуальна" ColumnName="Комплексна_индивідуальна" />
           <ScalarProperty Name="Категорії_робіт1" ColumnName="Категорії_робіт" />
           <ScalarProperty Name="Категорії_робітID" ColumnName="Категорії_робітID" />
         </MappingFragment>

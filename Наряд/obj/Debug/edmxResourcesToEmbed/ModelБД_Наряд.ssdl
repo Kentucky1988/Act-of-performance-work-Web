@@ -1,5 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Хранилище БД_НарядModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Денна_тарифна_ставка">
+    <Key>
+      <PropertyRef Name="РозцінкаID" />
+    </Key>
+    <Property Name="РозцінкаID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
+    <Property Name="Комплексна_индивідуальна" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Разряд1" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+    <Property Name="Разряд2" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+    <Property Name="Разряд3" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+    <Property Name="Разряд4" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+    <Property Name="Разряд5" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+    <Property Name="Разряд6" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+  </EntityType>
   <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
   <EntityType Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
@@ -30,10 +44,14 @@
     <Key>
       <PropertyRef Name="Категорії_робітID" />
       <PropertyRef Name="Категорії_робіт" />
+      <PropertyRef Name="Комплексна_индивідуальна" />
+      <PropertyRef Name="РозцінкаID" />
       <PropertyRef Name="Одиниця_виміру" />
     </Key>
     <Property Name="Категорії_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Категорії_робіт" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Комплексна_индивідуальна" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="РозцінкаID" Type="int" Nullable="false" />
     <Property Name="Одиниця_виміру" Type="nvarchar" MaxLength="10" Nullable="false" />
   </EntityType>
   <!--Ошибки, обнаруженные при создании:
@@ -130,7 +148,20 @@
     <Property Name="СортиментиID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Назва_сортименту" Type="nvarchar" MaxLength="60" Nullable="false" />
   </EntityType>
+  <Association Name="FK__Категорії__Розці__1F98B2C1">
+    <End Role="Денна_тарифна_ставка" Type="Self.Денна_тарифна_ставка" Multiplicity="1" />
+    <End Role="Категорії_робіт" Type="Self.Категорії_робіт" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Денна_тарифна_ставка">
+        <PropertyRef Name="РозцінкаID" />
+      </Principal>
+      <Dependent Role="Категорії_робіт">
+        <PropertyRef Name="РозцінкаID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="Хранилище БД_НарядModelContainer">
+    <EntitySet Name="Денна_тарифна_ставка" EntityType="Self.Денна_тарифна_ставка" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" EntityType="Self.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[Вид_робітID] AS [Вид_робітID], 
@@ -148,6 +179,8 @@
       <DefiningQuery>SELECT 
     [Категорії_робіт].[Категорії_робітID] AS [Категорії_робітID], 
     [Категорії_робіт].[Категорії_робіт] AS [Категорії_робіт], 
+    [Категорії_робіт].[Комплексна_индивідуальна] AS [Комплексна_индивідуальна], 
+    [Категорії_робіт].[РозцінкаID] AS [РозцінкаID], 
     [Категорії_робіт].[Одиниця_виміру] AS [Одиниця_виміру]
     FROM [dbo].[Категорії_робіт] AS [Категорії_робіт]</DefiningQuery>
     </EntitySet>
@@ -201,5 +234,9 @@
     [Сортименти].[Назва_сортименту] AS [Назва_сортименту]
     FROM [dbo].[Сортименти] AS [Сортименти]</DefiningQuery>
     </EntitySet>
+    <AssociationSet Name="FK__Категорії__Розці__1F98B2C1" Association="Self.FK__Категорії__Розці__1F98B2C1">
+      <End Role="Денна_тарифна_ставка" EntitySet="Денна_тарифна_ставка" />
+      <End Role="Категорії_робіт" EntitySet="Категорії_робіт" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

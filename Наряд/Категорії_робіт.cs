@@ -16,6 +16,10 @@ namespace Наряд
     {
         public int Категорії_робітID { get; set; }
         public string Категорії_робіт1 { get; set; }
+        public string Комплексна_индивідуальна { get; set; }
+        public int РозцінкаID { get; set; }
         public string Одиниця_виміру { get; set; }
+    
+        public virtual Денна_тарифна_ставка Денна_тарифна_ставка { get; set; }
     }
 }

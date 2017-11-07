@@ -23,7 +23,7 @@ function renderCategory(element) {//создание списка категор
     $ele.empty();
     $ele.append($('<option/>').val('0').text('Вибрати'));
     $.each(Categories, function (i, val) {
-        $ele.append($('<option/>').val(val.Категорії_робіт1).text(val.Категорії_робіт1));
+        $ele.append($('<option/>').text(val));
     })
 }
 
@@ -114,8 +114,8 @@ $(document).ready(function () {
                 }
 
                 if (indx == 1 && ($($table).next().is("tfoot"))) {
-                    $("<td/>").attr("colspan", "2").text(str).appendTo($("tr:last", $table));
-                } else if (indx == 1 || indx > 1 || (indx == 0 && !($($table).next().is("tfoot")))) {
+                    $("<td/>").attr("colspan", "3").text(str).appendTo($("tr:last", $table));
+                } else if (indx >= 3 || (indx == 0 && !($($table).next().is("tfoot")))) {
                     $("<td/>", { text: str }).appendTo($("tr:last", $table));
                 }
                 else {

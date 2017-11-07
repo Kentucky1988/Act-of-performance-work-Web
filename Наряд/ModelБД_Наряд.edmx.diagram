@@ -5,11 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="7eb0f53916274e049b1c4faa657fc6c7" Name="Diagram1">
-        <EntityTypeShape EntityType="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="БД_НарядModel.Категорії_робіт" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="БД_НарядModel.РГК_ССР_без_трелювання" Width="1.5" PointX="2.75" PointY="3.75" />
-        <EntityTypeShape EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="БД_НарядModel.Сортименти" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="БД_НарядModel.Денна_тарифна_ставка" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="БД_НарядModel.Категорії_робіт" Width="1.5" PointX="3" PointY="1.375" />
+        <EntityTypeShape EntityType="БД_НарядModel.РГК_ССР_без_трелювання" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="БД_НарядModel.Сортименти" Width="1.5" PointX="5.75" PointY="0.75" />
+        <AssociationConnector Association="БД_НарядModel.FK__Категорії__Розці__1F98B2C1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

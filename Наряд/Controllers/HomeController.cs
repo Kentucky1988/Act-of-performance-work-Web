@@ -28,13 +28,11 @@ namespace Наряд.Controllers
 
         public JsonResult getCategories()
         {
-
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
             {
-                var categories = dc.Категорії_робіт.OrderBy(a => a.Категорії_робіт1).ToList();
+                var categories = dc.Категорії_робіт.OrderBy(a => a.Категорії_робіт1).Select(a => a.Категорії_робіт1).ToList();
                 return new JsonResult { Data = categories, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
-
         }
 
 
@@ -52,11 +50,12 @@ namespace Наряд.Controllers
         public JsonResult getUnit(string category)
         {
             using (БД_НарядEntities1 context = new БД_НарядEntities1())
-            {
-                var TypeOfWork = context.Database.SqlQuery<string>(
-                                   $"SELECT[Одиниця_виміру] FROM Категорії_робіт WHERE[Категорії_робіт] = N'{category}'").ToList();
+            {               
+                var TypeOfWork = context.Категорії_робіт.Where(a => a.Категорії_робіт1 == category)
+                                                       .Select(a => new { a.Комплексна_индивідуальна, a.РозцінкаID, a.Одиниця_виміру })
+                                                       .ToList();
 
-                return new JsonResult { Data = TypeOfWork[0], JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                return new JsonResult { Data = TypeOfWork, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
 
@@ -120,7 +119,7 @@ namespace Наряд.Controllers
                 using (БД_НарядEntities1 db = new БД_НарядEntities1())
                 {
                     var normList = db.Database.SqlQuery<decimal>(
-                                  $"SELECT[{amountOfWood}] FROM {table} WHERE Вид_робіт = N'{typeOfWork}'").ToList();                 
+                                  $"SELECT[{amountOfWood}] FROM {table} WHERE Вид_робіт = N'{typeOfWork}'").ToList();
                     normOfWork = Convert.ToDouble(normList[0]);
                 }
             }

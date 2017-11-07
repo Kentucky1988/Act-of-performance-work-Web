@@ -5,6 +5,20 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Хранилище БД_НарядModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Денна_тарифна_ставка">
+          <Key>
+            <PropertyRef Name="РозцінкаID" />
+          </Key>
+          <Property Name="РозцінкаID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Комплексна_индивідуальна" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Разряд1" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="Разряд2" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="Разряд3" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="Разряд4" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="Разряд5" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="Разряд6" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+        </EntityType>
         <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
@@ -35,10 +49,14 @@
           <Key>
             <PropertyRef Name="Категорії_робітID" />
             <PropertyRef Name="Категорії_робіт" />
+            <PropertyRef Name="Комплексна_индивідуальна" />
+            <PropertyRef Name="РозцінкаID" />
             <PropertyRef Name="Одиниця_виміру" />
           </Key>
           <Property Name="Категорії_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Категорії_робіт" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Комплексна_индивідуальна" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="РозцінкаID" Type="int" Nullable="false" />
           <Property Name="Одиниця_виміру" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
@@ -135,7 +153,20 @@
           <Property Name="СортиментиID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Назва_сортименту" Type="nvarchar" MaxLength="60" Nullable="false" />
         </EntityType>
+        <Association Name="FK__Категорії__Розці__1F98B2C1">
+          <End Role="Денна_тарифна_ставка" Type="Self.Денна_тарифна_ставка" Multiplicity="1" />
+          <End Role="Категорії_робіт" Type="Self.Категорії_робіт" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Денна_тарифна_ставка">
+              <PropertyRef Name="РозцінкаID" />
+            </Principal>
+            <Dependent Role="Категорії_робіт">
+              <PropertyRef Name="РозцінкаID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище БД_НарядModelContainer">
+          <EntitySet Name="Денна_тарифна_ставка" EntityType="Self.Денна_тарифна_ставка" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" EntityType="Self.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[Вид_робітID] AS [Вид_робітID], 
@@ -153,6 +184,8 @@
             <DefiningQuery>SELECT 
     [Категорії_робіт].[Категорії_робітID] AS [Категорії_робітID], 
     [Категорії_робіт].[Категорії_робіт] AS [Категорії_робіт], 
+    [Категорії_робіт].[Комплексна_индивідуальна] AS [Комплексна_индивідуальна], 
+    [Категорії_робіт].[РозцінкаID] AS [РозцінкаID], 
     [Категорії_робіт].[Одиниця_виміру] AS [Одиниця_виміру]
     FROM [dbo].[Категорії_робіт] AS [Категорії_робіт]</DefiningQuery>
           </EntitySet>
@@ -206,18 +239,42 @@
     [Сортименти].[Назва_сортименту] AS [Назва_сортименту]
     FROM [dbo].[Сортименти] AS [Сортименти]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK__Категорії__Розці__1F98B2C1" Association="Self.FK__Категорії__Розці__1F98B2C1">
+            <End Role="Денна_тарифна_ставка" EntitySet="Денна_тарифна_ставка" />
+            <End Role="Категорії_робіт" EntitySet="Категорії_робіт" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="БД_НарядModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="БД_НарядEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Денна_тарифна_ставка" EntityType="БД_НарядModel.Денна_тарифна_ставка" />
           <EntitySet Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" EntityType="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" />
           <EntitySet Name="Категорії_робіт" EntityType="БД_НарядModel.Категорії_робіт" />
           <EntitySet Name="РГК_ССР_без_трелювання" EntityType="БД_НарядModel.РГК_ССР_без_трелювання" />
           <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" />
           <EntitySet Name="Сортименти" EntityType="БД_НарядModel.Сортименти" />
+          <AssociationSet Name="FK__Категорії__Розці__1F98B2C1" Association="БД_НарядModel.FK__Категорії__Розці__1F98B2C1">
+            <End Role="Денна_тарифна_ставка" EntitySet="Денна_тарифна_ставка" />
+            <End Role="Категорії_робіт" EntitySet="Категорії_робіт" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Денна_тарифна_ставка">
+          <Key>
+            <PropertyRef Name="РозцінкаID" />
+          </Key>
+          <Property Name="РозцінкаID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Комплексна_индивідуальна" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Разряд1" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="Разряд2" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="Разряд3" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="Разряд4" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="Разряд5" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="Разряд6" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <NavigationProperty Name="Категорії_робіт" Relationship="БД_НарядModel.FK__Категорії__Розці__1F98B2C1" FromRole="Денна_тарифна_ставка" ToRole="Категорії_робіт" />
+        </EntityType>
         <EntityType Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
           <Key>
             <PropertyRef Name="Вид_робітID" />
@@ -244,11 +301,16 @@
           <Key>
             <PropertyRef Name="Категорії_робітID" />
             <PropertyRef Name="Категорії_робіт1" />
+            <PropertyRef Name="Комплексна_индивідуальна" />
+            <PropertyRef Name="РозцінкаID" />
             <PropertyRef Name="Одиниця_виміру" />
           </Key>
           <Property Name="Категорії_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Категорії_робіт1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Комплексна_индивідуальна" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="РозцінкаID" Type="Int32" Nullable="false" />
           <Property Name="Одиниця_виміру" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Денна_тарифна_ставка" Relationship="БД_НарядModel.FK__Категорії__Розці__1F98B2C1" FromRole="Категорії_робіт" ToRole="Денна_тарифна_ставка" />
         </EntityType>
         <EntityType Name="РГК_ССР_без_трелювання">
           <Key>
@@ -338,12 +400,39 @@
           <Property Name="СортиментиID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Назва_сортименту" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
         </EntityType>
+        <Association Name="FK__Категорії__Розці__1F98B2C1">
+          <End Type="БД_НарядModel.Денна_тарифна_ставка" Role="Денна_тарифна_ставка" Multiplicity="1" />
+          <End Type="БД_НарядModel.Категорії_робіт" Role="Категорії_робіт" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Денна_тарифна_ставка">
+              <PropertyRef Name="РозцінкаID" />
+            </Principal>
+            <Dependent Role="Категорії_робіт">
+              <PropertyRef Name="РозцінкаID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище БД_НарядModelContainer" CdmEntityContainer="БД_НарядEntities1">
+          <EntitySetMapping Name="Денна_тарифна_ставка">
+            <EntityTypeMapping TypeName="БД_НарядModel.Денна_тарифна_ставка">
+              <MappingFragment StoreEntitySet="Денна_тарифна_ставка">
+                <ScalarProperty Name="Разряд6" ColumnName="Разряд6" />
+                <ScalarProperty Name="Разряд5" ColumnName="Разряд5" />
+                <ScalarProperty Name="Разряд4" ColumnName="Разряд4" />
+                <ScalarProperty Name="Разряд3" ColumnName="Разряд3" />
+                <ScalarProperty Name="Разряд2" ColumnName="Разряд2" />
+                <ScalarProperty Name="Разряд1" ColumnName="Разряд1" />
+                <ScalarProperty Name="Комплексна_индивідуальна" ColumnName="Комплексна_индивідуальна" />
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="РозцінкаID" ColumnName="РозцінкаID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
             <EntityTypeMapping TypeName="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
               <MappingFragment StoreEntitySet="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
@@ -363,6 +452,8 @@
             <EntityTypeMapping TypeName="БД_НарядModel.Категорії_робіт">
               <MappingFragment StoreEntitySet="Категорії_робіт">
                 <ScalarProperty Name="Одиниця_виміру" ColumnName="Одиниця_виміру" />
+                <ScalarProperty Name="РозцінкаID" ColumnName="РозцінкаID" />
+                <ScalarProperty Name="Комплексна_индивідуальна" ColumnName="Комплексна_индивідуальна" />
                 <ScalarProperty Name="Категорії_робіт1" ColumnName="Категорії_робіт" />
                 <ScalarProperty Name="Категорії_робітID" ColumnName="Категорії_робітID" />
               </MappingFragment>

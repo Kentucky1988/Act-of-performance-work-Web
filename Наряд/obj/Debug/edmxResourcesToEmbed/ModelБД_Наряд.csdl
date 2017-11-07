@@ -1,12 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="БД_НарядModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="БД_НарядEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Денна_тарифна_ставка" EntityType="БД_НарядModel.Денна_тарифна_ставка" />
     <EntitySet Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" EntityType="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" />
     <EntitySet Name="Категорії_робіт" EntityType="БД_НарядModel.Категорії_робіт" />
     <EntitySet Name="РГК_ССР_без_трелювання" EntityType="БД_НарядModel.РГК_ССР_без_трелювання" />
     <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" />
     <EntitySet Name="Сортименти" EntityType="БД_НарядModel.Сортименти" />
+    <AssociationSet Name="FK__Категорії__Розці__1F98B2C1" Association="БД_НарядModel.FK__Категорії__Розці__1F98B2C1">
+      <End Role="Денна_тарифна_ставка" EntitySet="Денна_тарифна_ставка" />
+      <End Role="Категорії_робіт" EntitySet="Категорії_робіт" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Денна_тарифна_ставка">
+    <Key>
+      <PropertyRef Name="РозцінкаID" />
+    </Key>
+    <Property Name="РозцінкаID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Комплексна_индивідуальна" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Разряд1" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+    <Property Name="Разряд2" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+    <Property Name="Разряд3" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+    <Property Name="Разряд4" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+    <Property Name="Разряд5" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+    <Property Name="Разряд6" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+    <NavigationProperty Name="Категорії_робіт" Relationship="БД_НарядModel.FK__Категорії__Розці__1F98B2C1" FromRole="Денна_тарифна_ставка" ToRole="Категорії_робіт" />
+  </EntityType>
   <EntityType Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
     <Key>
       <PropertyRef Name="Вид_робітID" />
@@ -33,11 +53,16 @@
     <Key>
       <PropertyRef Name="Категорії_робітID" />
       <PropertyRef Name="Категорії_робіт1" />
+      <PropertyRef Name="Комплексна_индивідуальна" />
+      <PropertyRef Name="РозцінкаID" />
       <PropertyRef Name="Одиниця_виміру" />
     </Key>
     <Property Name="Категорії_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Категорії_робіт1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Комплексна_индивідуальна" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="РозцінкаID" Type="Int32" Nullable="false" />
     <Property Name="Одиниця_виміру" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Денна_тарифна_ставка" Relationship="БД_НарядModel.FK__Категорії__Розці__1F98B2C1" FromRole="Категорії_робіт" ToRole="Денна_тарифна_ставка" />
   </EntityType>
   <EntityType Name="РГК_ССР_без_трелювання">
     <Key>
@@ -127,4 +152,16 @@
     <Property Name="СортиментиID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Назва_сортименту" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
   </EntityType>
+  <Association Name="FK__Категорії__Розці__1F98B2C1">
+    <End Type="БД_НарядModel.Денна_тарифна_ставка" Role="Денна_тарифна_ставка" Multiplicity="1" />
+    <End Type="БД_НарядModel.Категорії_робіт" Role="Категорії_робіт" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Денна_тарифна_ставка">
+        <PropertyRef Name="РозцінкаID" />
+      </Principal>
+      <Dependent Role="Категорії_робіт">
+        <PropertyRef Name="РозцінкаID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -75,6 +75,7 @@
                 <tr>
                     <td rowspan="2">Категорія робіт</td>
                     <td rowspan="2">Найменування робіт</td>
+                    <td rowspan="2">Разряд&nbsp;робіт</td>
                     <td rowspan="2">Одиниця виміру</td>
                     <td colspan="2">Обсяг робіт </td>
                     <td rowspan="2">Норма виробітку</td>
@@ -93,10 +94,10 @@
             </thead>
             <tbody class="tbodyTable" id="tbodyTable1">
                 <!--тело таблицы-->
-                <tr class="mycontainer" id="mainrow" align="center">
+                <tr class="mycontainer" id="mainrow">
                     <td>
                         <!--выпадающий список категория работ-->
-                        <select id="productCategory" class="pc" style="min-width:150px"> <!-- onchange="LoadProduct(this)"-->
+                        <select id="productCategory" class="pc" style="min-width:150px"> 
                             <option></option>
                         </select>
                     </td>
@@ -106,7 +107,19 @@
                             <option></option>
                         </select>
                     </td>
-                    <td> <input type="text" class="quantity" id="Unit" disabled/> </td>
+                    <td>
+                        <!--выпадающий список разряд робот-->
+                        <select id="rank" disabled>  
+                            <option></option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>                            
+                        </select>
+                    </td>
+                    <td> <input type="text" class="quantity" id="Unit"/> </td>
                     <td> <input type="text" class="quantity" id="set"/> </td>
                     <td> <input type="text" class="quantity" id="executed"/> </td>
                     <td> <input type="text" class="quantity" id="norm" disabled/> </td>
@@ -126,7 +139,7 @@
             <tfoot>
                 <!--нижняя строка с суммой-->
                 <tr>
-                    <td colspan="2">УСЬОГО</td>
+                    <td colspan="3">УСЬОГО</td>
                     <td></td>
                     <td></td>
                     <td></td>

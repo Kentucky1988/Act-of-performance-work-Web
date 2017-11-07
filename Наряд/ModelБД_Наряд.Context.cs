@@ -25,6 +25,7 @@ namespace Наряд
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Денна_тарифна_ставка> Денна_тарифна_ставка { get; set; }
         public virtual DbSet<Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР> Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР { get; set; }
         public virtual DbSet<Категорії_робіт> Категорії_робіт { get; set; }
         public virtual DbSet<РГК_ССР_без_трелювання> РГК_ССР_без_трелювання { get; set; }
