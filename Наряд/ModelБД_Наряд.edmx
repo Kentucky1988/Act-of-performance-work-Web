@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Хранилище БД_НарядModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Вид_рубки">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_рубки" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Денна_тарифна_ставка">
           <Key>
             <PropertyRef Name="РозцінкаID" />
@@ -12,16 +19,23 @@
           <Property Name="РозцінкаID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
           <Property Name="Комплексна_индивідуальна" Type="nvarchar" MaxLength="15" Nullable="false" />
-          <Property Name="Разряд1" Type="decimal" Precision="6" Scale="2" Nullable="false" />
-          <Property Name="Разряд2" Type="decimal" Precision="6" Scale="2" Nullable="false" />
-          <Property Name="Разряд3" Type="decimal" Precision="6" Scale="2" Nullable="false" />
-          <Property Name="Разряд4" Type="decimal" Precision="6" Scale="2" Nullable="false" />
-          <Property Name="Разряд5" Type="decimal" Precision="6" Scale="2" Nullable="false" />
-          <Property Name="Разряд6" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="1" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="2" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="3" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="4" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="5" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="6" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
         </EntityType>
         <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
-        <EntityType Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма">
           <Key>
             <PropertyRef Name="Вид_робітID" />
             <PropertyRef Name="Вид_робіт" />
@@ -34,7 +48,7 @@
             <PropertyRef Name="1,29" />
           </Key>
           <Property Name="Вид_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Вид_робіт" Type="int" Nullable="false" />
           <Property Name="0,12" Type="decimal" Precision="5" Scale="3" Nullable="false" />
           <Property Name="0,22" Type="decimal" Precision="5" Scale="3" Nullable="false" />
           <Property Name="0,36" Type="decimal" Precision="5" Scale="3" Nullable="false" />
@@ -43,25 +57,128 @@
           <Property Name="1,02" Type="decimal" Precision="5" Scale="3" Nullable="false" />
           <Property Name="1,29" Type="decimal" Precision="5" Scale="3" Nullable="false" />
         </EntityType>
+        <EntityType Name="Заточка_цепей">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Заточка_цепей_Норма" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Заточка_цепей_Норма">
+          <Key>
+            <PropertyRef Name="Вид_робітID" />
+            <PropertyRef Name="Вид_робіт" />
+            <PropertyRef Name="Норма_віробітку" />
+          </Key>
+          <Property Name="Вид_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="int" Nullable="false" />
+          <Property Name="Норма_віробітку" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+        </EntityType>
         <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Категорії_робіт" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="Категорії_робіт">
           <Key>
             <PropertyRef Name="Категорії_робітID" />
             <PropertyRef Name="Категорії_робіт" />
+            <PropertyRef Name="Норма_віробітку" />
+            <PropertyRef Name="ГСМ" />
             <PropertyRef Name="Комплексна_индивідуальна" />
             <PropertyRef Name="РозцінкаID" />
             <PropertyRef Name="Одиниця_виміру" />
           </Key>
           <Property Name="Категорії_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Категорії_робіт" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Категорії_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Норма_віробітку" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="ГСМ" Type="nvarchar" MaxLength="60" Nullable="false" />
           <Property Name="Комплексна_индивідуальна" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="РозцінкаID" Type="int" Nullable="false" />
           <Property Name="Одиниця_виміру" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
+        <EntityType Name="Освітлення_механічним_способом">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
+        </EntityType>
         <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.РГК_ССР_без_трелювання" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Освітлення_механічним_способом_Норма" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Освітлення_механічним_способом_Норма">
+          <Key>
+            <PropertyRef Name="Вид_робітID" />
+            <PropertyRef Name="Вид_робіт" />
+            <PropertyRef Name="Норма_віробітку" />
+          </Key>
+          <Property Name="Вид_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="int" Nullable="false" />
+          <Property Name="Норма_віробітку" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Погрузка">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Погрузка_Норма" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Погрузка_Норма">
+          <Key>
+            <PropertyRef Name="Вид_робітID" />
+            <PropertyRef Name="Вид_робіт" />
+            <PropertyRef Name="Норма_віробітку" />
+          </Key>
+          <Property Name="Вид_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="int" Nullable="false" />
+          <Property Name="Норма_віробітку" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Прибирання_небезпечних_дерев">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Прибирання_небезпечних_дерев_Норма" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Прибирання_небезпечних_дерев_Норма">
+          <Key>
+            <PropertyRef Name="Вид_робітID" />
+            <PropertyRef Name="Вид_робіт" />
+            <PropertyRef Name="0,14" />
+            <PropertyRef Name="0,17" />
+            <PropertyRef Name="0,21" />
+            <PropertyRef Name="0,25" />
+            <PropertyRef Name="0,32" />
+            <PropertyRef Name="0,39" />
+            <PropertyRef Name="0,49" />
+            <PropertyRef Name="0,75" />
+            <PropertyRef Name="1,1" />
+          </Key>
+          <Property Name="Вид_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="int" Nullable="false" />
+          <Property Name="0,14" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,17" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,21" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,25" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,32" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,39" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,49" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,75" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="1,1" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+        </EntityType>
         <EntityType Name="РГК_ССР_без_трелювання">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.РГК_ССР_без_трелювання_Норма" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="РГК_ССР_без_трелювання_Норма">
           <Key>
             <PropertyRef Name="Вид_робітID" />
             <PropertyRef Name="Вид_робіт" />
@@ -74,7 +191,7 @@
             <PropertyRef Name="1,1" />
           </Key>
           <Property Name="Вид_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Вид_робіт" Type="int" Nullable="false" />
           <Property Name="0,219" Type="decimal" Precision="5" Scale="3" Nullable="false" />
           <Property Name="0,25" Type="decimal" Precision="5" Scale="3" Nullable="false" />
           <Property Name="0,32" Type="decimal" Precision="5" Scale="3" Nullable="false" />
@@ -83,9 +200,16 @@
           <Property Name="0,75" Type="decimal" Precision="5" Scale="3" Nullable="false" />
           <Property Name="1,1" Type="decimal" Precision="5" Scale="3" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма">
           <Key>
             <PropertyRef Name="Вид_робітID" />
             <PropertyRef Name="Вид_робіт" />
@@ -116,7 +240,7 @@
             <PropertyRef Name="1,5" />
           </Key>
           <Property Name="Вид_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Вид_робіт" Type="int" Nullable="false" />
           <Property Name="0,035" Type="decimal" Precision="5" Scale="3" Nullable="false" />
           <Property Name="0,04" Type="decimal" Precision="5" Scale="3" Nullable="false" />
           <Property Name="0,045" Type="decimal" Precision="5" Scale="3" Nullable="false" />
@@ -153,7 +277,192 @@
           <Property Name="СортиментиID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Назва_сортименту" Type="nvarchar" MaxLength="60" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Категорії__Розці__1F98B2C1">
+        <EntityType Name="Трелювання_підліску">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Трелювання_підліску_Норма" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Трелювання_підліску_Норма">
+          <Key>
+            <PropertyRef Name="Вид_робітID" />
+            <PropertyRef Name="Вид_робіт" />
+            <PropertyRef Name="Норма_віробітку" />
+          </Key>
+          <Property Name="Вид_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="int" Nullable="false" />
+          <Property Name="Норма_віробітку" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Трелювання_РГК">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Трелювання_РГК_Норма" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Трелювання_РГК_Норма">
+          <Key>
+            <PropertyRef Name="Вид_робітID" />
+            <PropertyRef Name="Вид_робіт" />
+            <PropertyRef Name="0,25" />
+            <PropertyRef Name="0,32" />
+            <PropertyRef Name="0,39" />
+            <PropertyRef Name="0,49" />
+            <PropertyRef Name="0,75" />
+            <PropertyRef Name="1,1" />
+          </Key>
+          <Property Name="Вид_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="int" Nullable="false" />
+          <Property Name="0,25" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,32" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,39" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,49" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,75" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="1,1" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Трелювання_РУ">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Трелювання_РУ_Норма" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Трелювання_РУ_Норма">
+          <Key>
+            <PropertyRef Name="Вид_робітID" />
+            <PropertyRef Name="Вид_робіт" />
+            <PropertyRef Name="0,1" />
+            <PropertyRef Name="0,12" />
+            <PropertyRef Name="0,14" />
+            <PropertyRef Name="0,16" />
+            <PropertyRef Name="0,18" />
+            <PropertyRef Name="0,21" />
+            <PropertyRef Name="0,24" />
+            <PropertyRef Name="0,28" />
+            <PropertyRef Name="0,34" />
+            <PropertyRef Name="0,4" />
+            <PropertyRef Name="0,49" />
+            <PropertyRef Name="0,61" />
+            <PropertyRef Name="0,77" />
+            <PropertyRef Name="0,97" />
+            <PropertyRef Name="1,5" />
+          </Key>
+          <Property Name="Вид_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="int" Nullable="false" />
+          <Property Name="0,1" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,12" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,14" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,16" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,18" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,21" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,24" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,28" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,34" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,4" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,49" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,61" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,77" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,97" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="1,5" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Трелювання_фанери_РУ">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Трелювання_фанери_РУ_Норма" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Трелювання_фанери_РУ_Норма">
+          <Key>
+            <PropertyRef Name="Вид_робітID" />
+            <PropertyRef Name="Вид_робіт" />
+            <PropertyRef Name="0,1" />
+            <PropertyRef Name="0,12" />
+            <PropertyRef Name="0,14" />
+            <PropertyRef Name="0,16" />
+            <PropertyRef Name="0,19" />
+            <PropertyRef Name="0,22" />
+            <PropertyRef Name="0,25" />
+            <PropertyRef Name="0,29" />
+            <PropertyRef Name="0,35" />
+            <PropertyRef Name="0,41" />
+            <PropertyRef Name="0,5" />
+            <PropertyRef Name="0,62" />
+            <PropertyRef Name="0,79" />
+            <PropertyRef Name="1" />
+            <PropertyRef Name="1,5" />
+          </Key>
+          <Property Name="Вид_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="int" Nullable="false" />
+          <Property Name="0,1" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,12" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,14" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,16" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,19" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,22" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,25" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,29" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,35" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,41" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,5" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,62" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="0,79" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="1" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+          <Property Name="1,5" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Устройство_площадок">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Устройство_площадок_Норма" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Устройство_площадок_Норма">
+          <Key>
+            <PropertyRef Name="Вид_робітID" />
+            <PropertyRef Name="Вид_робіт" />
+            <PropertyRef Name="Норма_віробітку" />
+          </Key>
+          <Property Name="Вид_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Вид_робіт" Type="int" Nullable="false" />
+          <Property Name="Норма_віробітку" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Заготівля__Вид_р__489AC854">
+          <End Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" Type="Self.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" Multiplicity="1" />
+          <End Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" Type="Self.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
+              <PropertyRef Name="Id_Вид_робіт" />
+            </Principal>
+            <Dependent Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма">
+              <PropertyRef Name="Вид_робіт" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Заточка_ц__Вид_р__7FEAFD3E">
+          <End Role="Заточка_цепей" Type="Self.Заточка_цепей" Multiplicity="1" />
+          <End Role="Заточка_цепей_Норма" Type="Self.Заточка_цепей_Норма" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Заточка_цепей">
+              <PropertyRef Name="Id_Вид_робіт" />
+            </Principal>
+            <Dependent Role="Заточка_цепей_Норма">
+              <PropertyRef Name="Вид_робіт" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Категорії__Розці__18B6AB08">
           <End Role="Денна_тарифна_ставка" Type="Self.Денна_тарифна_ставка" Multiplicity="1" />
           <End Role="Категорії_робіт" Type="Self.Категорії_робіт" Multiplicity="*" />
           <ReferentialConstraint>
@@ -165,73 +474,244 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Освітленн__Вид_р__59C55456">
+          <End Role="Освітлення_механічним_способом" Type="Self.Освітлення_механічним_способом" Multiplicity="1" />
+          <End Role="Освітлення_механічним_способом_Норма" Type="Self.Освітлення_механічним_способом_Норма" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Освітлення_механічним_способом">
+              <PropertyRef Name="Id_Вид_робіт" />
+            </Principal>
+            <Dependent Role="Освітлення_механічним_способом_Норма">
+              <PropertyRef Name="Вид_робіт" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Погрузка___Вид_р__0B5CAFEA">
+          <End Role="Погрузка" Type="Self.Погрузка" Multiplicity="1" />
+          <End Role="Погрузка_Норма" Type="Self.Погрузка_Норма" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Погрузка">
+              <PropertyRef Name="Id_Вид_робіт" />
+            </Principal>
+            <Dependent Role="Погрузка_Норма">
+              <PropertyRef Name="Вид_робіт" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Прибиранн__Вид_р__7A3223E8">
+          <End Role="Прибирання_небезпечних_дерев" Type="Self.Прибирання_небезпечних_дерев" Multiplicity="1" />
+          <End Role="Прибирання_небезпечних_дерев_Норма" Type="Self.Прибирання_небезпечних_дерев_Норма" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Прибирання_небезпечних_дерев">
+              <PropertyRef Name="Id_Вид_робіт" />
+            </Principal>
+            <Dependent Role="Прибирання_небезпечних_дерев_Норма">
+              <PropertyRef Name="Вид_робіт" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__РГК_ССР_б__Вид_р__367C1819">
+          <End Role="РГК_ССР_без_трелювання" Type="Self.РГК_ССР_без_трелювання" Multiplicity="1" />
+          <End Role="РГК_ССР_без_трелювання_Норма" Type="Self.РГК_ССР_без_трелювання_Норма" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="РГК_ССР_без_трелювання">
+              <PropertyRef Name="Id_Вид_робіт" />
+            </Principal>
+            <Dependent Role="РГК_ССР_без_трелювання_Норма">
+              <PropertyRef Name="Вид_робіт" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Рубки_дог__Вид_р__3C34F16F">
+          <End Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" Type="Self.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" Multiplicity="1" />
+          <End Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" Type="Self.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
+              <PropertyRef Name="Id_Вид_робіт" />
+            </Principal>
+            <Dependent Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма">
+              <PropertyRef Name="Вид_робіт" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Трелюванн__Вид_р__4E53A1AA">
+          <End Role="Трелювання_фанери_РУ" Type="Self.Трелювання_фанери_РУ" Multiplicity="1" />
+          <End Role="Трелювання_фанери_РУ_Норма" Type="Self.Трелювання_фанери_РУ_Норма" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Трелювання_фанери_РУ">
+              <PropertyRef Name="Id_Вид_робіт" />
+            </Principal>
+            <Dependent Role="Трелювання_фанери_РУ_Норма">
+              <PropertyRef Name="Вид_робіт" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Трелюванн__Вид_р__5F7E2DAC">
+          <End Role="Трелювання_РГК" Type="Self.Трелювання_РГК" Multiplicity="1" />
+          <End Role="Трелювання_РГК_Норма" Type="Self.Трелювання_РГК_Норма" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Трелювання_РГК">
+              <PropertyRef Name="Id_Вид_робіт" />
+            </Principal>
+            <Dependent Role="Трелювання_РГК_Норма">
+              <PropertyRef Name="Вид_робіт" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Трелюванн__Вид_р__690797E6">
+          <End Role="Трелювання_РУ" Type="Self.Трелювання_РУ" Multiplicity="1" />
+          <End Role="Трелювання_РУ_Норма" Type="Self.Трелювання_РУ_Норма" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Трелювання_РУ">
+              <PropertyRef Name="Id_Вид_робіт" />
+            </Principal>
+            <Dependent Role="Трелювання_РУ_Норма">
+              <PropertyRef Name="Вид_робіт" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Трелюванн__Вид_р__6EC0713C">
+          <End Role="Трелювання_підліску" Type="Self.Трелювання_підліску" Multiplicity="1" />
+          <End Role="Трелювання_підліску_Норма" Type="Self.Трелювання_підліску_Норма" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Трелювання_підліску">
+              <PropertyRef Name="Id_Вид_робіт" />
+            </Principal>
+            <Dependent Role="Трелювання_підліску_Норма">
+              <PropertyRef Name="Вид_робіт" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Устройств__Вид_р__05A3D694">
+          <End Role="Устройство_площадок" Type="Self.Устройство_площадок" Multiplicity="1" />
+          <End Role="Устройство_площадок_Норма" Type="Self.Устройство_площадок_Норма" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Устройство_площадок">
+              <PropertyRef Name="Id_Вид_робіт" />
+            </Principal>
+            <Dependent Role="Устройство_площадок_Норма">
+              <PropertyRef Name="Вид_робіт" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище БД_НарядModelContainer">
+          <EntitySet Name="Вид_рубки" EntityType="Self.Вид_рубки" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Денна_тарифна_ставка" EntityType="Self.Денна_тарифна_ставка" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" EntityType="Self.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" store:Type="Tables" store:Schema="dbo">
+          <EntitySet Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" EntityType="Self.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Заточка_цепей" EntityType="Self.Заточка_цепей" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Освітлення_механічним_способом" EntityType="Self.Освітлення_механічним_способом" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Погрузка" EntityType="Self.Погрузка" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Прибирання_небезпечних_дерев" EntityType="Self.Прибирання_небезпечних_дерев" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="РГК_ССР_без_трелювання" EntityType="Self.РГК_ССР_без_трелювання" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntityType="Self.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Трелювання_підліску" EntityType="Self.Трелювання_підліску" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Трелювання_РГК" EntityType="Self.Трелювання_РГК" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Трелювання_РУ" EntityType="Self.Трелювання_РУ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Трелювання_фанери_РУ" EntityType="Self.Трелювання_фанери_РУ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Устройство_площадок" EntityType="Self.Устройство_площадок" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" EntityType="Self.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[Вид_робітID] AS [Вид_робітID], 
-    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[Вид_робіт] AS [Вид_робіт], 
-    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[0,12] AS [0,12], 
-    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[0,22] AS [0,22], 
-    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[0,36] AS [0,36], 
-    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[0,54] AS [0,54], 
-    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[0,76] AS [0,76], 
-    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[1,02] AS [1,02], 
-    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР].[1,29] AS [1,29]
-    FROM [dbo].[Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР] AS [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР]</DefiningQuery>
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма].[Вид_робітID] AS [Вид_робітID], 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма].[Вид_робіт] AS [Вид_робіт], 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма].[0,12] AS [0,12], 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма].[0,22] AS [0,22], 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма].[0,36] AS [0,36], 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма].[0,54] AS [0,54], 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма].[0,76] AS [0,76], 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма].[1,02] AS [1,02], 
+    [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма].[1,29] AS [1,29]
+    FROM [dbo].[Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма] AS [Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Заточка_цепей_Норма" EntityType="Self.Заточка_цепей_Норма" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Заточка_цепей_Норма].[Вид_робітID] AS [Вид_робітID], 
+    [Заточка_цепей_Норма].[Вид_робіт] AS [Вид_робіт], 
+    [Заточка_цепей_Норма].[Норма_віробітку] AS [Норма_віробітку]
+    FROM [dbo].[Заточка_цепей_Норма] AS [Заточка_цепей_Норма]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Категорії_робіт" EntityType="Self.Категорії_робіт" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Категорії_робіт].[Категорії_робітID] AS [Категорії_робітID], 
     [Категорії_робіт].[Категорії_робіт] AS [Категорії_робіт], 
+    [Категорії_робіт].[Норма_віробітку] AS [Норма_віробітку], 
+    [Категорії_робіт].[ГСМ] AS [ГСМ], 
     [Категорії_робіт].[Комплексна_индивідуальна] AS [Комплексна_индивідуальна], 
     [Категорії_робіт].[РозцінкаID] AS [РозцінкаID], 
     [Категорії_робіт].[Одиниця_виміру] AS [Одиниця_виміру]
     FROM [dbo].[Категорії_робіт] AS [Категорії_робіт]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="РГК_ССР_без_трелювання" EntityType="Self.РГК_ССР_без_трелювання" store:Type="Tables" store:Schema="dbo">
+          <EntitySet Name="Освітлення_механічним_способом_Норма" EntityType="Self.Освітлення_механічним_способом_Норма" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [РГК_ССР_без_трелювання].[Вид_робітID] AS [Вид_робітID], 
-    [РГК_ССР_без_трелювання].[Вид_робіт] AS [Вид_робіт], 
-    [РГК_ССР_без_трелювання].[0,219] AS [0,219], 
-    [РГК_ССР_без_трелювання].[0,25] AS [0,25], 
-    [РГК_ССР_без_трелювання].[0,32] AS [0,32], 
-    [РГК_ССР_без_трелювання].[0,39] AS [0,39], 
-    [РГК_ССР_без_трелювання].[0,49] AS [0,49], 
-    [РГК_ССР_без_трелювання].[0,75] AS [0,75], 
-    [РГК_ССР_без_трелювання].[1,1] AS [1,1]
-    FROM [dbo].[РГК_ССР_без_трелювання] AS [РГК_ССР_без_трелювання]</DefiningQuery>
+    [Освітлення_механічним_способом_Норма].[Вид_робітID] AS [Вид_робітID], 
+    [Освітлення_механічним_способом_Норма].[Вид_робіт] AS [Вид_робіт], 
+    [Освітлення_механічним_способом_Норма].[Норма_віробітку] AS [Норма_віробітку]
+    FROM [dbo].[Освітлення_механічним_способом_Норма] AS [Освітлення_механічним_способом_Норма]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntityType="Self.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" store:Type="Tables" store:Schema="dbo">
+          <EntitySet Name="Погрузка_Норма" EntityType="Self.Погрузка_Норма" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[Вид_робітID] AS [Вид_робітID], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[Вид_робіт] AS [Вид_робіт], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,035] AS [0,035], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,04] AS [0,04], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,045] AS [0,045], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,05] AS [0,05], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,055] AS [0,055], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,06] AS [0,06], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,065] AS [0,065], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,07] AS [0,07], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,08] AS [0,08], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,09] AS [0,09], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,1] AS [0,1], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,12] AS [0,12], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,14] AS [0,14], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,16] AS [0,16], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,19] AS [0,19], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,22] AS [0,22], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,25] AS [0,25], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,29] AS [0,29], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,35] AS [0,35], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,41] AS [0,41], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,5] AS [0,5], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,62] AS [0,62], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,78] AS [0,78], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[0,98] AS [0,98], 
-    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР].[1,5] AS [1,5]
-    FROM [dbo].[Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР] AS [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР]</DefiningQuery>
+    [Погрузка_Норма].[Вид_робітID] AS [Вид_робітID], 
+    [Погрузка_Норма].[Вид_робіт] AS [Вид_робіт], 
+    [Погрузка_Норма].[Норма_віробітку] AS [Норма_віробітку]
+    FROM [dbo].[Погрузка_Норма] AS [Погрузка_Норма]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Прибирання_небезпечних_дерев_Норма" EntityType="Self.Прибирання_небезпечних_дерев_Норма" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Прибирання_небезпечних_дерев_Норма].[Вид_робітID] AS [Вид_робітID], 
+    [Прибирання_небезпечних_дерев_Норма].[Вид_робіт] AS [Вид_робіт], 
+    [Прибирання_небезпечних_дерев_Норма].[0,14] AS [0,14], 
+    [Прибирання_небезпечних_дерев_Норма].[0,17] AS [0,17], 
+    [Прибирання_небезпечних_дерев_Норма].[0,21] AS [0,21], 
+    [Прибирання_небезпечних_дерев_Норма].[0,25] AS [0,25], 
+    [Прибирання_небезпечних_дерев_Норма].[0,32] AS [0,32], 
+    [Прибирання_небезпечних_дерев_Норма].[0,39] AS [0,39], 
+    [Прибирання_небезпечних_дерев_Норма].[0,49] AS [0,49], 
+    [Прибирання_небезпечних_дерев_Норма].[0,75] AS [0,75], 
+    [Прибирання_небезпечних_дерев_Норма].[1,1] AS [1,1]
+    FROM [dbo].[Прибирання_небезпечних_дерев_Норма] AS [Прибирання_небезпечних_дерев_Норма]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="РГК_ССР_без_трелювання_Норма" EntityType="Self.РГК_ССР_без_трелювання_Норма" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [РГК_ССР_без_трелювання_Норма].[Вид_робітID] AS [Вид_робітID], 
+    [РГК_ССР_без_трелювання_Норма].[Вид_робіт] AS [Вид_робіт], 
+    [РГК_ССР_без_трелювання_Норма].[0,219] AS [0,219], 
+    [РГК_ССР_без_трелювання_Норма].[0,25] AS [0,25], 
+    [РГК_ССР_без_трелювання_Норма].[0,32] AS [0,32], 
+    [РГК_ССР_без_трелювання_Норма].[0,39] AS [0,39], 
+    [РГК_ССР_без_трелювання_Норма].[0,49] AS [0,49], 
+    [РГК_ССР_без_трелювання_Норма].[0,75] AS [0,75], 
+    [РГК_ССР_без_трелювання_Норма].[1,1] AS [1,1]
+    FROM [dbo].[РГК_ССР_без_трелювання_Норма] AS [РГК_ССР_без_трелювання_Норма]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" EntityType="Self.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[Вид_робітID] AS [Вид_робітID], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[Вид_робіт] AS [Вид_робіт], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[0,035] AS [0,035], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[0,04] AS [0,04], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[0,045] AS [0,045], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[0,05] AS [0,05], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[0,055] AS [0,055], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[0,06] AS [0,06], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[0,065] AS [0,065], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[0,07] AS [0,07], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[0,08] AS [0,08], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[0,09] AS [0,09], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[0,1] AS [0,1], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[0,12] AS [0,12], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[0,14] AS [0,14], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[0,16] AS [0,16], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[0,19] AS [0,19], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[0,22] AS [0,22], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[0,25] AS [0,25], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[0,29] AS [0,29], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[0,35] AS [0,35], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[0,41] AS [0,41], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[0,5] AS [0,5], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[0,62] AS [0,62], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[0,78] AS [0,78], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[0,98] AS [0,98], 
+    [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[1,5] AS [1,5]
+    FROM [dbo].[Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма] AS [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Сортименти" EntityType="Self.Сортименти" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -239,9 +719,125 @@
     [Сортименти].[Назва_сортименту] AS [Назва_сортименту]
     FROM [dbo].[Сортименти] AS [Сортименти]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Категорії__Розці__1F98B2C1" Association="Self.FK__Категорії__Розці__1F98B2C1">
+          <EntitySet Name="Трелювання_підліску_Норма" EntityType="Self.Трелювання_підліску_Норма" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Трелювання_підліску_Норма].[Вид_робітID] AS [Вид_робітID], 
+    [Трелювання_підліску_Норма].[Вид_робіт] AS [Вид_робіт], 
+    [Трелювання_підліску_Норма].[Норма_віробітку] AS [Норма_віробітку]
+    FROM [dbo].[Трелювання_підліску_Норма] AS [Трелювання_підліску_Норма]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Трелювання_РГК_Норма" EntityType="Self.Трелювання_РГК_Норма" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Трелювання_РГК_Норма].[Вид_робітID] AS [Вид_робітID], 
+    [Трелювання_РГК_Норма].[Вид_робіт] AS [Вид_робіт], 
+    [Трелювання_РГК_Норма].[0,25] AS [0,25], 
+    [Трелювання_РГК_Норма].[0,32] AS [0,32], 
+    [Трелювання_РГК_Норма].[0,39] AS [0,39], 
+    [Трелювання_РГК_Норма].[0,49] AS [0,49], 
+    [Трелювання_РГК_Норма].[0,75] AS [0,75], 
+    [Трелювання_РГК_Норма].[1,1] AS [1,1]
+    FROM [dbo].[Трелювання_РГК_Норма] AS [Трелювання_РГК_Норма]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Трелювання_РУ_Норма" EntityType="Self.Трелювання_РУ_Норма" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Трелювання_РУ_Норма].[Вид_робітID] AS [Вид_робітID], 
+    [Трелювання_РУ_Норма].[Вид_робіт] AS [Вид_робіт], 
+    [Трелювання_РУ_Норма].[0,1] AS [0,1], 
+    [Трелювання_РУ_Норма].[0,12] AS [0,12], 
+    [Трелювання_РУ_Норма].[0,14] AS [0,14], 
+    [Трелювання_РУ_Норма].[0,16] AS [0,16], 
+    [Трелювання_РУ_Норма].[0,18] AS [0,18], 
+    [Трелювання_РУ_Норма].[0,21] AS [0,21], 
+    [Трелювання_РУ_Норма].[0,24] AS [0,24], 
+    [Трелювання_РУ_Норма].[0,28] AS [0,28], 
+    [Трелювання_РУ_Норма].[0,34] AS [0,34], 
+    [Трелювання_РУ_Норма].[0,4] AS [0,4], 
+    [Трелювання_РУ_Норма].[0,49] AS [0,49], 
+    [Трелювання_РУ_Норма].[0,61] AS [0,61], 
+    [Трелювання_РУ_Норма].[0,77] AS [0,77], 
+    [Трелювання_РУ_Норма].[0,97] AS [0,97], 
+    [Трелювання_РУ_Норма].[1,5] AS [1,5]
+    FROM [dbo].[Трелювання_РУ_Норма] AS [Трелювання_РУ_Норма]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Трелювання_фанери_РУ_Норма" EntityType="Self.Трелювання_фанери_РУ_Норма" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Трелювання_фанери_РУ_Норма].[Вид_робітID] AS [Вид_робітID], 
+    [Трелювання_фанери_РУ_Норма].[Вид_робіт] AS [Вид_робіт], 
+    [Трелювання_фанери_РУ_Норма].[0,1] AS [0,1], 
+    [Трелювання_фанери_РУ_Норма].[0,12] AS [0,12], 
+    [Трелювання_фанери_РУ_Норма].[0,14] AS [0,14], 
+    [Трелювання_фанери_РУ_Норма].[0,16] AS [0,16], 
+    [Трелювання_фанери_РУ_Норма].[0,19] AS [0,19], 
+    [Трелювання_фанери_РУ_Норма].[0,22] AS [0,22], 
+    [Трелювання_фанери_РУ_Норма].[0,25] AS [0,25], 
+    [Трелювання_фанери_РУ_Норма].[0,29] AS [0,29], 
+    [Трелювання_фанери_РУ_Норма].[0,35] AS [0,35], 
+    [Трелювання_фанери_РУ_Норма].[0,41] AS [0,41], 
+    [Трелювання_фанери_РУ_Норма].[0,5] AS [0,5], 
+    [Трелювання_фанери_РУ_Норма].[0,62] AS [0,62], 
+    [Трелювання_фанери_РУ_Норма].[0,79] AS [0,79], 
+    [Трелювання_фанери_РУ_Норма].[1] AS [1], 
+    [Трелювання_фанери_РУ_Норма].[1,5] AS [1,5]
+    FROM [dbo].[Трелювання_фанери_РУ_Норма] AS [Трелювання_фанери_РУ_Норма]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Устройство_площадок_Норма" EntityType="Self.Устройство_площадок_Норма" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Устройство_площадок_Норма].[Вид_робітID] AS [Вид_робітID], 
+    [Устройство_площадок_Норма].[Вид_робіт] AS [Вид_робіт], 
+    [Устройство_площадок_Норма].[Норма_віробітку] AS [Норма_віробітку]
+    FROM [dbo].[Устройство_площадок_Норма] AS [Устройство_площадок_Норма]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Заготівля__Вид_р__489AC854" Association="Self.FK__Заготівля__Вид_р__489AC854">
+            <End Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" EntitySet="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" />
+            <End Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" EntitySet="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Заточка_ц__Вид_р__7FEAFD3E" Association="Self.FK__Заточка_ц__Вид_р__7FEAFD3E">
+            <End Role="Заточка_цепей" EntitySet="Заточка_цепей" />
+            <End Role="Заточка_цепей_Норма" EntitySet="Заточка_цепей_Норма" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Категорії__Розці__18B6AB08" Association="Self.FK__Категорії__Розці__18B6AB08">
             <End Role="Денна_тарифна_ставка" EntitySet="Денна_тарифна_ставка" />
             <End Role="Категорії_робіт" EntitySet="Категорії_робіт" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Освітленн__Вид_р__59C55456" Association="Self.FK__Освітленн__Вид_р__59C55456">
+            <End Role="Освітлення_механічним_способом" EntitySet="Освітлення_механічним_способом" />
+            <End Role="Освітлення_механічним_способом_Норма" EntitySet="Освітлення_механічним_способом_Норма" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Погрузка___Вид_р__0B5CAFEA" Association="Self.FK__Погрузка___Вид_р__0B5CAFEA">
+            <End Role="Погрузка" EntitySet="Погрузка" />
+            <End Role="Погрузка_Норма" EntitySet="Погрузка_Норма" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Прибиранн__Вид_р__7A3223E8" Association="Self.FK__Прибиранн__Вид_р__7A3223E8">
+            <End Role="Прибирання_небезпечних_дерев" EntitySet="Прибирання_небезпечних_дерев" />
+            <End Role="Прибирання_небезпечних_дерев_Норма" EntitySet="Прибирання_небезпечних_дерев_Норма" />
+          </AssociationSet>
+          <AssociationSet Name="FK__РГК_ССР_б__Вид_р__367C1819" Association="Self.FK__РГК_ССР_б__Вид_р__367C1819">
+            <End Role="РГК_ССР_без_трелювання" EntitySet="РГК_ССР_без_трелювання" />
+            <End Role="РГК_ССР_без_трелювання_Норма" EntitySet="РГК_ССР_без_трелювання_Норма" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Рубки_дог__Вид_р__3C34F16F" Association="Self.FK__Рубки_дог__Вид_р__3C34F16F">
+            <End Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntitySet="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" />
+            <End Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" EntitySet="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Трелюванн__Вид_р__4E53A1AA" Association="Self.FK__Трелюванн__Вид_р__4E53A1AA">
+            <End Role="Трелювання_фанери_РУ" EntitySet="Трелювання_фанери_РУ" />
+            <End Role="Трелювання_фанери_РУ_Норма" EntitySet="Трелювання_фанери_РУ_Норма" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Трелюванн__Вид_р__5F7E2DAC" Association="Self.FK__Трелюванн__Вид_р__5F7E2DAC">
+            <End Role="Трелювання_РГК" EntitySet="Трелювання_РГК" />
+            <End Role="Трелювання_РГК_Норма" EntitySet="Трелювання_РГК_Норма" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Трелюванн__Вид_р__690797E6" Association="Self.FK__Трелюванн__Вид_р__690797E6">
+            <End Role="Трелювання_РУ" EntitySet="Трелювання_РУ" />
+            <End Role="Трелювання_РУ_Норма" EntitySet="Трелювання_РУ_Норма" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Трелюванн__Вид_р__6EC0713C" Association="Self.FK__Трелюванн__Вид_р__6EC0713C">
+            <End Role="Трелювання_підліску" EntitySet="Трелювання_підліску" />
+            <End Role="Трелювання_підліску_Норма" EntitySet="Трелювання_підліску_Норма" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Устройств__Вид_р__05A3D694" Association="Self.FK__Устройств__Вид_р__05A3D694">
+            <End Role="Устройство_площадок" EntitySet="Устройство_площадок" />
+            <End Role="Устройство_площадок_Норма" EntitySet="Устройство_площадок_Норма" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -249,17 +845,94 @@
     <edmx:ConceptualModels>
       <Schema Namespace="БД_НарядModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="БД_НарядEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Вид_рубки" EntityType="БД_НарядModel.Вид_рубки" />
           <EntitySet Name="Денна_тарифна_ставка" EntityType="БД_НарядModel.Денна_тарифна_ставка" />
           <EntitySet Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" EntityType="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" />
-          <EntitySet Name="Категорії_робіт" EntityType="БД_НарядModel.Категорії_робіт" />
+          <EntitySet Name="Заточка_цепей" EntityType="БД_НарядModel.Заточка_цепей" />
+          <EntitySet Name="Освітлення_механічним_способом" EntityType="БД_НарядModel.Освітлення_механічним_способом" />
+          <EntitySet Name="Погрузка" EntityType="БД_НарядModel.Погрузка" />
+          <EntitySet Name="Прибирання_небезпечних_дерев" EntityType="БД_НарядModel.Прибирання_небезпечних_дерев" />
           <EntitySet Name="РГК_ССР_без_трелювання" EntityType="БД_НарядModel.РГК_ССР_без_трелювання" />
           <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" />
+          <EntitySet Name="Трелювання_підліску" EntityType="БД_НарядModel.Трелювання_підліску" />
+          <EntitySet Name="Трелювання_РГК" EntityType="БД_НарядModel.Трелювання_РГК" />
+          <EntitySet Name="Трелювання_РУ" EntityType="БД_НарядModel.Трелювання_РУ" />
+          <EntitySet Name="Трелювання_фанери_РУ" EntityType="БД_НарядModel.Трелювання_фанери_РУ" />
+          <EntitySet Name="Устройство_площадок" EntityType="БД_НарядModel.Устройство_площадок" />
+          <EntitySet Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" EntityType="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" />
+          <EntitySet Name="Заточка_цепей_Норма" EntityType="БД_НарядModel.Заточка_цепей_Норма" />
+          <EntitySet Name="Категорії_робіт" EntityType="БД_НарядModel.Категорії_робіт" />
+          <EntitySet Name="Освітлення_механічним_способом_Норма" EntityType="БД_НарядModel.Освітлення_механічним_способом_Норма" />
+          <EntitySet Name="Погрузка_Норма" EntityType="БД_НарядModel.Погрузка_Норма" />
+          <EntitySet Name="Прибирання_небезпечних_дерев_Норма" EntityType="БД_НарядModel.Прибирання_небезпечних_дерев_Норма" />
+          <EntitySet Name="РГК_ССР_без_трелювання_Норма" EntityType="БД_НарядModel.РГК_ССР_без_трелювання_Норма" />
+          <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" />
           <EntitySet Name="Сортименти" EntityType="БД_НарядModel.Сортименти" />
-          <AssociationSet Name="FK__Категорії__Розці__1F98B2C1" Association="БД_НарядModel.FK__Категорії__Розці__1F98B2C1">
+          <EntitySet Name="Трелювання_підліску_Норма" EntityType="БД_НарядModel.Трелювання_підліску_Норма" />
+          <EntitySet Name="Трелювання_РГК_Норма" EntityType="БД_НарядModel.Трелювання_РГК_Норма" />
+          <EntitySet Name="Трелювання_РУ_Норма" EntityType="БД_НарядModel.Трелювання_РУ_Норма" />
+          <EntitySet Name="Трелювання_фанери_РУ_Норма" EntityType="БД_НарядModel.Трелювання_фанери_РУ_Норма" />
+          <EntitySet Name="Устройство_площадок_Норма" EntityType="БД_НарядModel.Устройство_площадок_Норма" />
+          <AssociationSet Name="FK__Категорії__Розці__18B6AB08" Association="БД_НарядModel.FK__Категорії__Розці__18B6AB08">
             <End Role="Денна_тарифна_ставка" EntitySet="Денна_тарифна_ставка" />
             <End Role="Категорії_робіт" EntitySet="Категорії_робіт" />
           </AssociationSet>
+          <AssociationSet Name="FK__Заготівля__Вид_р__489AC854" Association="БД_НарядModel.FK__Заготівля__Вид_р__489AC854">
+            <End Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" EntitySet="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" />
+            <End Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" EntitySet="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Заточка_ц__Вид_р__7FEAFD3E" Association="БД_НарядModel.FK__Заточка_ц__Вид_р__7FEAFD3E">
+            <End Role="Заточка_цепей" EntitySet="Заточка_цепей" />
+            <End Role="Заточка_цепей_Норма" EntitySet="Заточка_цепей_Норма" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Освітленн__Вид_р__59C55456" Association="БД_НарядModel.FK__Освітленн__Вид_р__59C55456">
+            <End Role="Освітлення_механічним_способом" EntitySet="Освітлення_механічним_способом" />
+            <End Role="Освітлення_механічним_способом_Норма" EntitySet="Освітлення_механічним_способом_Норма" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Погрузка___Вид_р__0B5CAFEA" Association="БД_НарядModel.FK__Погрузка___Вид_р__0B5CAFEA">
+            <End Role="Погрузка" EntitySet="Погрузка" />
+            <End Role="Погрузка_Норма" EntitySet="Погрузка_Норма" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Прибиранн__Вид_р__7A3223E8" Association="БД_НарядModel.FK__Прибиранн__Вид_р__7A3223E8">
+            <End Role="Прибирання_небезпечних_дерев" EntitySet="Прибирання_небезпечних_дерев" />
+            <End Role="Прибирання_небезпечних_дерев_Норма" EntitySet="Прибирання_небезпечних_дерев_Норма" />
+          </AssociationSet>
+          <AssociationSet Name="FK__РГК_ССР_б__Вид_р__367C1819" Association="БД_НарядModel.FK__РГК_ССР_б__Вид_р__367C1819">
+            <End Role="РГК_ССР_без_трелювання" EntitySet="РГК_ССР_без_трелювання" />
+            <End Role="РГК_ССР_без_трелювання_Норма" EntitySet="РГК_ССР_без_трелювання_Норма" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Рубки_дог__Вид_р__3C34F16F" Association="БД_НарядModel.FK__Рубки_дог__Вид_р__3C34F16F">
+            <End Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntitySet="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" />
+            <End Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" EntitySet="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Трелюванн__Вид_р__6EC0713C" Association="БД_НарядModel.FK__Трелюванн__Вид_р__6EC0713C">
+            <End Role="Трелювання_підліску" EntitySet="Трелювання_підліску" />
+            <End Role="Трелювання_підліску_Норма" EntitySet="Трелювання_підліску_Норма" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Трелюванн__Вид_р__5F7E2DAC" Association="БД_НарядModel.FK__Трелюванн__Вид_р__5F7E2DAC">
+            <End Role="Трелювання_РГК" EntitySet="Трелювання_РГК" />
+            <End Role="Трелювання_РГК_Норма" EntitySet="Трелювання_РГК_Норма" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Трелюванн__Вид_р__690797E6" Association="БД_НарядModel.FK__Трелюванн__Вид_р__690797E6">
+            <End Role="Трелювання_РУ" EntitySet="Трелювання_РУ" />
+            <End Role="Трелювання_РУ_Норма" EntitySet="Трелювання_РУ_Норма" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Трелюванн__Вид_р__4E53A1AA" Association="БД_НарядModel.FK__Трелюванн__Вид_р__4E53A1AA">
+            <End Role="Трелювання_фанери_РУ" EntitySet="Трелювання_фанери_РУ" />
+            <End Role="Трелювання_фанери_РУ_Норма" EntitySet="Трелювання_фанери_РУ_Норма" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Устройств__Вид_р__05A3D694" Association="БД_НарядModel.FK__Устройств__Вид_р__05A3D694">
+            <End Role="Устройство_площадок" EntitySet="Устройство_площадок" />
+            <End Role="Устройство_площадок_Норма" EntitySet="Устройство_площадок_Норма" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Вид_рубки">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_рубки1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="Денна_тарифна_ставка">
           <Key>
             <PropertyRef Name="РозцінкаID" />
@@ -267,15 +940,111 @@
           <Property Name="РозцінкаID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
           <Property Name="Комплексна_индивідуальна" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="Разряд1" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
-          <Property Name="Разряд2" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
-          <Property Name="Разряд3" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
-          <Property Name="Разряд4" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
-          <Property Name="Разряд5" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
-          <Property Name="Разряд6" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
-          <NavigationProperty Name="Категорії_робіт" Relationship="БД_НарядModel.FK__Категорії__Розці__1F98B2C1" FromRole="Денна_тарифна_ставка" ToRole="Категорії_робіт" />
+          <Property Name="C1" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="C2" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="C3" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="C4" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="C5" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="C6" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <NavigationProperty Name="Категорії_робіт" Relationship="БД_НарядModel.FK__Категорії__Розці__18B6AB08" FromRole="Денна_тарифна_ставка" ToRole="Категорії_робіт" />
         </EntityType>
         <EntityType Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" Relationship="БД_НарядModel.FK__Заготівля__Вид_р__489AC854" FromRole="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" ToRole="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" />
+        </EntityType>
+        <EntityType Name="Заточка_цепей">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Заточка_цепей_Норма" Relationship="БД_НарядModel.FK__Заточка_ц__Вид_р__7FEAFD3E" FromRole="Заточка_цепей" ToRole="Заточка_цепей_Норма" />
+        </EntityType>
+        <EntityType Name="Освітлення_механічним_способом">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Освітлення_механічним_способом_Норма" Relationship="БД_НарядModel.FK__Освітленн__Вид_р__59C55456" FromRole="Освітлення_механічним_способом" ToRole="Освітлення_механічним_способом_Норма" />
+        </EntityType>
+        <EntityType Name="Погрузка">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Погрузка_Норма" Relationship="БД_НарядModel.FK__Погрузка___Вид_р__0B5CAFEA" FromRole="Погрузка" ToRole="Погрузка_Норма" />
+        </EntityType>
+        <EntityType Name="Прибирання_небезпечних_дерев">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Прибирання_небезпечних_дерев_Норма" Relationship="БД_НарядModel.FK__Прибиранн__Вид_р__7A3223E8" FromRole="Прибирання_небезпечних_дерев" ToRole="Прибирання_небезпечних_дерев_Норма" />
+        </EntityType>
+        <EntityType Name="РГК_ССР_без_трелювання">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="РГК_ССР_без_трелювання_Норма" Relationship="БД_НарядModel.FK__РГК_ССР_б__Вид_р__367C1819" FromRole="РГК_ССР_без_трелювання" ToRole="РГК_ССР_без_трелювання_Норма" />
+        </EntityType>
+        <EntityType Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" Relationship="БД_НарядModel.FK__Рубки_дог__Вид_р__3C34F16F" FromRole="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" ToRole="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" />
+        </EntityType>
+        <EntityType Name="Трелювання_підліску">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Трелювання_підліску_Норма" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__6EC0713C" FromRole="Трелювання_підліску" ToRole="Трелювання_підліску_Норма" />
+        </EntityType>
+        <EntityType Name="Трелювання_РГК">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Трелювання_РГК_Норма" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__5F7E2DAC" FromRole="Трелювання_РГК" ToRole="Трелювання_РГК_Норма" />
+        </EntityType>
+        <EntityType Name="Трелювання_РУ">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Трелювання_РУ_Норма" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__690797E6" FromRole="Трелювання_РУ" ToRole="Трелювання_РУ_Норма" />
+        </EntityType>
+        <EntityType Name="Трелювання_фанери_РУ">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Трелювання_фанери_РУ_Норма" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__4E53A1AA" FromRole="Трелювання_фанери_РУ" ToRole="Трелювання_фанери_РУ_Норма" />
+        </EntityType>
+        <EntityType Name="Устройство_площадок">
+          <Key>
+            <PropertyRef Name="Id_Вид_робіт" />
+          </Key>
+          <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Устройство_площадок_Норма" Relationship="БД_НарядModel.FK__Устройств__Вид_р__05A3D694" FromRole="Устройство_площадок" ToRole="Устройство_площадок_Норма" />
+        </EntityType>
+        <EntityType Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма">
           <Key>
             <PropertyRef Name="Вид_робітID" />
             <PropertyRef Name="Вид_робіт" />
@@ -288,7 +1057,7 @@
             <PropertyRef Name="C1_29" />
           </Key>
           <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
           <Property Name="C0_12" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
           <Property Name="C0_22" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
           <Property Name="C0_36" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
@@ -296,23 +1065,88 @@
           <Property Name="C0_76" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
           <Property Name="C1_02" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
           <Property Name="C1_29" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <NavigationProperty Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" Relationship="БД_НарядModel.FK__Заготівля__Вид_р__489AC854" FromRole="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" ToRole="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" />
+        </EntityType>
+        <EntityType Name="Заточка_цепей_Норма">
+          <Key>
+            <PropertyRef Name="Вид_робітID" />
+            <PropertyRef Name="Вид_робіт" />
+            <PropertyRef Name="Норма_віробітку" />
+          </Key>
+          <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+          <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="6" Scale="3" />
+          <NavigationProperty Name="Заточка_цепей" Relationship="БД_НарядModel.FK__Заточка_ц__Вид_р__7FEAFD3E" FromRole="Заточка_цепей_Норма" ToRole="Заточка_цепей" />
         </EntityType>
         <EntityType Name="Категорії_робіт">
           <Key>
             <PropertyRef Name="Категорії_робітID" />
             <PropertyRef Name="Категорії_робіт1" />
+            <PropertyRef Name="Норма_віробітку" />
+            <PropertyRef Name="ГСМ" />
             <PropertyRef Name="Комплексна_индивідуальна" />
             <PropertyRef Name="РозцінкаID" />
             <PropertyRef Name="Одиниця_виміру" />
           </Key>
           <Property Name="Категорії_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Категорії_робіт1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Категорії_робіт1" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Норма_віробітку" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="ГСМ" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
           <Property Name="Комплексна_индивідуальна" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="РозцінкаID" Type="Int32" Nullable="false" />
           <Property Name="Одиниця_виміру" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Денна_тарифна_ставка" Relationship="БД_НарядModel.FK__Категорії__Розці__1F98B2C1" FromRole="Категорії_робіт" ToRole="Денна_тарифна_ставка" />
+          <NavigationProperty Name="Денна_тарифна_ставка" Relationship="БД_НарядModel.FK__Категорії__Розці__18B6AB08" FromRole="Категорії_робіт" ToRole="Денна_тарифна_ставка" />
         </EntityType>
-        <EntityType Name="РГК_ССР_без_трелювання">
+        <EntityType Name="Освітлення_механічним_способом_Норма">
+          <Key>
+            <PropertyRef Name="Вид_робітID" />
+            <PropertyRef Name="Вид_робіт" />
+            <PropertyRef Name="Норма_віробітку" />
+          </Key>
+          <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+          <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <NavigationProperty Name="Освітлення_механічним_способом" Relationship="БД_НарядModel.FK__Освітленн__Вид_р__59C55456" FromRole="Освітлення_механічним_способом_Норма" ToRole="Освітлення_механічним_способом" />
+        </EntityType>
+        <EntityType Name="Погрузка_Норма">
+          <Key>
+            <PropertyRef Name="Вид_робітID" />
+            <PropertyRef Name="Вид_робіт" />
+            <PropertyRef Name="Норма_віробітку" />
+          </Key>
+          <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+          <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="6" Scale="3" />
+          <NavigationProperty Name="Погрузка" Relationship="БД_НарядModel.FK__Погрузка___Вид_р__0B5CAFEA" FromRole="Погрузка_Норма" ToRole="Погрузка" />
+        </EntityType>
+        <EntityType Name="Прибирання_небезпечних_дерев_Норма">
+          <Key>
+            <PropertyRef Name="Вид_робітID" />
+            <PropertyRef Name="Вид_робіт" />
+            <PropertyRef Name="C0_14" />
+            <PropertyRef Name="C0_17" />
+            <PropertyRef Name="C0_21" />
+            <PropertyRef Name="C0_25" />
+            <PropertyRef Name="C0_32" />
+            <PropertyRef Name="C0_39" />
+            <PropertyRef Name="C0_49" />
+            <PropertyRef Name="C0_75" />
+            <PropertyRef Name="C1_1" />
+          </Key>
+          <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+          <Property Name="C0_14" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_17" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_21" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_25" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_32" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_39" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_49" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_75" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C1_1" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <NavigationProperty Name="Прибирання_небезпечних_дерев" Relationship="БД_НарядModel.FK__Прибиранн__Вид_р__7A3223E8" FromRole="Прибирання_небезпечних_дерев_Норма" ToRole="Прибирання_небезпечних_дерев" />
+        </EntityType>
+        <EntityType Name="РГК_ССР_без_трелювання_Норма">
           <Key>
             <PropertyRef Name="Вид_робітID" />
             <PropertyRef Name="Вид_робіт" />
@@ -325,7 +1159,7 @@
             <PropertyRef Name="C1_1" />
           </Key>
           <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
           <Property Name="C0_219" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
           <Property Name="C0_25" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
           <Property Name="C0_32" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
@@ -333,8 +1167,9 @@
           <Property Name="C0_49" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
           <Property Name="C0_75" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
           <Property Name="C1_1" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <NavigationProperty Name="РГК_ССР_без_трелювання" Relationship="БД_НарядModel.FK__РГК_ССР_б__Вид_р__367C1819" FromRole="РГК_ССР_без_трелювання_Норма" ToRole="РГК_ССР_без_трелювання" />
         </EntityType>
-        <EntityType Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
+        <EntityType Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма">
           <Key>
             <PropertyRef Name="Вид_робітID" />
             <PropertyRef Name="Вид_робіт" />
@@ -365,7 +1200,7 @@
             <PropertyRef Name="C1_5" />
           </Key>
           <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
           <Property Name="C0_035" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
           <Property Name="C0_04" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
           <Property Name="C0_045" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
@@ -391,6 +1226,7 @@
           <Property Name="C0_78" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
           <Property Name="C0_98" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
           <Property Name="C1_5" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <NavigationProperty Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" Relationship="БД_НарядModel.FK__Рубки_дог__Вид_р__3C34F16F" FromRole="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" ToRole="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" />
         </EntityType>
         <EntityType Name="Сортименти">
           <Key>
@@ -400,7 +1236,128 @@
           <Property Name="СортиментиID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Назва_сортименту" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
         </EntityType>
-        <Association Name="FK__Категорії__Розці__1F98B2C1">
+        <EntityType Name="Трелювання_підліску_Норма">
+          <Key>
+            <PropertyRef Name="Вид_робітID" />
+            <PropertyRef Name="Вид_робіт" />
+            <PropertyRef Name="Норма_віробітку" />
+          </Key>
+          <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+          <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="6" Scale="3" />
+          <NavigationProperty Name="Трелювання_підліску" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__6EC0713C" FromRole="Трелювання_підліску_Норма" ToRole="Трелювання_підліску" />
+        </EntityType>
+        <EntityType Name="Трелювання_РГК_Норма">
+          <Key>
+            <PropertyRef Name="Вид_робітID" />
+            <PropertyRef Name="Вид_робіт" />
+            <PropertyRef Name="C0_25" />
+            <PropertyRef Name="C0_32" />
+            <PropertyRef Name="C0_39" />
+            <PropertyRef Name="C0_49" />
+            <PropertyRef Name="C0_75" />
+            <PropertyRef Name="C1_1" />
+          </Key>
+          <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+          <Property Name="C0_25" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_32" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_39" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_49" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_75" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C1_1" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <NavigationProperty Name="Трелювання_РГК" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__5F7E2DAC" FromRole="Трелювання_РГК_Норма" ToRole="Трелювання_РГК" />
+        </EntityType>
+        <EntityType Name="Трелювання_РУ_Норма">
+          <Key>
+            <PropertyRef Name="Вид_робітID" />
+            <PropertyRef Name="Вид_робіт" />
+            <PropertyRef Name="C0_1" />
+            <PropertyRef Name="C0_12" />
+            <PropertyRef Name="C0_14" />
+            <PropertyRef Name="C0_16" />
+            <PropertyRef Name="C0_18" />
+            <PropertyRef Name="C0_21" />
+            <PropertyRef Name="C0_24" />
+            <PropertyRef Name="C0_28" />
+            <PropertyRef Name="C0_34" />
+            <PropertyRef Name="C0_4" />
+            <PropertyRef Name="C0_49" />
+            <PropertyRef Name="C0_61" />
+            <PropertyRef Name="C0_77" />
+            <PropertyRef Name="C0_97" />
+            <PropertyRef Name="C1_5" />
+          </Key>
+          <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+          <Property Name="C0_1" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_12" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_14" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_16" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_18" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_21" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_24" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_28" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_34" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_4" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_49" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_61" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_77" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_97" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C1_5" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <NavigationProperty Name="Трелювання_РУ" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__690797E6" FromRole="Трелювання_РУ_Норма" ToRole="Трелювання_РУ" />
+        </EntityType>
+        <EntityType Name="Трелювання_фанери_РУ_Норма">
+          <Key>
+            <PropertyRef Name="Вид_робітID" />
+            <PropertyRef Name="Вид_робіт" />
+            <PropertyRef Name="C0_1" />
+            <PropertyRef Name="C0_12" />
+            <PropertyRef Name="C0_14" />
+            <PropertyRef Name="C0_16" />
+            <PropertyRef Name="C0_19" />
+            <PropertyRef Name="C0_22" />
+            <PropertyRef Name="C0_25" />
+            <PropertyRef Name="C0_29" />
+            <PropertyRef Name="C0_35" />
+            <PropertyRef Name="C0_41" />
+            <PropertyRef Name="C0_5" />
+            <PropertyRef Name="C0_62" />
+            <PropertyRef Name="C0_79" />
+            <PropertyRef Name="C1" />
+            <PropertyRef Name="C1_5" />
+          </Key>
+          <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+          <Property Name="C0_1" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_12" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_14" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_16" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_19" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_22" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_25" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_29" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_35" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_41" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_5" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_62" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C0_79" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C1" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <Property Name="C1_5" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+          <NavigationProperty Name="Трелювання_фанери_РУ" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__4E53A1AA" FromRole="Трелювання_фанери_РУ_Норма" ToRole="Трелювання_фанери_РУ" />
+        </EntityType>
+        <EntityType Name="Устройство_площадок_Норма">
+          <Key>
+            <PropertyRef Name="Вид_робітID" />
+            <PropertyRef Name="Вид_робіт" />
+            <PropertyRef Name="Норма_віробітку" />
+          </Key>
+          <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+          <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="6" Scale="3" />
+          <NavigationProperty Name="Устройство_площадок" Relationship="БД_НарядModel.FK__Устройств__Вид_р__05A3D694" FromRole="Устройство_площадок_Норма" ToRole="Устройство_площадок" />
+        </EntityType>
+        <Association Name="FK__Категорії__Розці__18B6AB08">
           <End Type="БД_НарядModel.Денна_тарифна_ставка" Role="Денна_тарифна_ставка" Multiplicity="1" />
           <End Type="БД_НарядModel.Категорії_робіт" Role="Категорії_робіт" Multiplicity="*" />
           <ReferentialConstraint>
@@ -412,21 +1369,173 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Заготівля__Вид_р__489AC854">
+          <End Type="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" Multiplicity="1" />
+          <End Type="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
+              <PropertyRef Name="Id_Вид_робіт" />
+            </Principal>
+            <Dependent Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма">
+              <PropertyRef Name="Вид_робіт" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Заточка_ц__Вид_р__7FEAFD3E">
+          <End Type="БД_НарядModel.Заточка_цепей" Role="Заточка_цепей" Multiplicity="1" />
+          <End Type="БД_НарядModel.Заточка_цепей_Норма" Role="Заточка_цепей_Норма" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Заточка_цепей">
+              <PropertyRef Name="Id_Вид_робіт" />
+            </Principal>
+            <Dependent Role="Заточка_цепей_Норма">
+              <PropertyRef Name="Вид_робіт" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Освітленн__Вид_р__59C55456">
+          <End Type="БД_НарядModel.Освітлення_механічним_способом" Role="Освітлення_механічним_способом" Multiplicity="1" />
+          <End Type="БД_НарядModel.Освітлення_механічним_способом_Норма" Role="Освітлення_механічним_способом_Норма" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Освітлення_механічним_способом">
+              <PropertyRef Name="Id_Вид_робіт" />
+            </Principal>
+            <Dependent Role="Освітлення_механічним_способом_Норма">
+              <PropertyRef Name="Вид_робіт" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Погрузка___Вид_р__0B5CAFEA">
+          <End Type="БД_НарядModel.Погрузка" Role="Погрузка" Multiplicity="1" />
+          <End Type="БД_НарядModel.Погрузка_Норма" Role="Погрузка_Норма" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Погрузка">
+              <PropertyRef Name="Id_Вид_робіт" />
+            </Principal>
+            <Dependent Role="Погрузка_Норма">
+              <PropertyRef Name="Вид_робіт" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Прибиранн__Вид_р__7A3223E8">
+          <End Type="БД_НарядModel.Прибирання_небезпечних_дерев" Role="Прибирання_небезпечних_дерев" Multiplicity="1" />
+          <End Type="БД_НарядModel.Прибирання_небезпечних_дерев_Норма" Role="Прибирання_небезпечних_дерев_Норма" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Прибирання_небезпечних_дерев">
+              <PropertyRef Name="Id_Вид_робіт" />
+            </Principal>
+            <Dependent Role="Прибирання_небезпечних_дерев_Норма">
+              <PropertyRef Name="Вид_робіт" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__РГК_ССР_б__Вид_р__367C1819">
+          <End Type="БД_НарядModel.РГК_ССР_без_трелювання" Role="РГК_ССР_без_трелювання" Multiplicity="1" />
+          <End Type="БД_НарядModel.РГК_ССР_без_трелювання_Норма" Role="РГК_ССР_без_трелювання_Норма" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="РГК_ССР_без_трелювання">
+              <PropertyRef Name="Id_Вид_робіт" />
+            </Principal>
+            <Dependent Role="РГК_ССР_без_трелювання_Норма">
+              <PropertyRef Name="Вид_робіт" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Рубки_дог__Вид_р__3C34F16F">
+          <End Type="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" Multiplicity="1" />
+          <End Type="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
+              <PropertyRef Name="Id_Вид_робіт" />
+            </Principal>
+            <Dependent Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма">
+              <PropertyRef Name="Вид_робіт" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Трелюванн__Вид_р__6EC0713C">
+          <End Type="БД_НарядModel.Трелювання_підліску" Role="Трелювання_підліску" Multiplicity="1" />
+          <End Type="БД_НарядModel.Трелювання_підліску_Норма" Role="Трелювання_підліску_Норма" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Трелювання_підліску">
+              <PropertyRef Name="Id_Вид_робіт" />
+            </Principal>
+            <Dependent Role="Трелювання_підліску_Норма">
+              <PropertyRef Name="Вид_робіт" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Трелюванн__Вид_р__5F7E2DAC">
+          <End Type="БД_НарядModel.Трелювання_РГК" Role="Трелювання_РГК" Multiplicity="1" />
+          <End Type="БД_НарядModel.Трелювання_РГК_Норма" Role="Трелювання_РГК_Норма" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Трелювання_РГК">
+              <PropertyRef Name="Id_Вид_робіт" />
+            </Principal>
+            <Dependent Role="Трелювання_РГК_Норма">
+              <PropertyRef Name="Вид_робіт" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Трелюванн__Вид_р__690797E6">
+          <End Type="БД_НарядModel.Трелювання_РУ" Role="Трелювання_РУ" Multiplicity="1" />
+          <End Type="БД_НарядModel.Трелювання_РУ_Норма" Role="Трелювання_РУ_Норма" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Трелювання_РУ">
+              <PropertyRef Name="Id_Вид_робіт" />
+            </Principal>
+            <Dependent Role="Трелювання_РУ_Норма">
+              <PropertyRef Name="Вид_робіт" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Трелюванн__Вид_р__4E53A1AA">
+          <End Type="БД_НарядModel.Трелювання_фанери_РУ" Role="Трелювання_фанери_РУ" Multiplicity="1" />
+          <End Type="БД_НарядModel.Трелювання_фанери_РУ_Норма" Role="Трелювання_фанери_РУ_Норма" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Трелювання_фанери_РУ">
+              <PropertyRef Name="Id_Вид_робіт" />
+            </Principal>
+            <Dependent Role="Трелювання_фанери_РУ_Норма">
+              <PropertyRef Name="Вид_робіт" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Устройств__Вид_р__05A3D694">
+          <End Type="БД_НарядModel.Устройство_площадок" Role="Устройство_площадок" Multiplicity="1" />
+          <End Type="БД_НарядModel.Устройство_площадок_Норма" Role="Устройство_площадок_Норма" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Устройство_площадок">
+              <PropertyRef Name="Id_Вид_робіт" />
+            </Principal>
+            <Dependent Role="Устройство_площадок_Норма">
+              <PropertyRef Name="Вид_робіт" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище БД_НарядModelContainer" CdmEntityContainer="БД_НарядEntities1">
+          <EntitySetMapping Name="Вид_рубки">
+            <EntityTypeMapping TypeName="БД_НарядModel.Вид_рубки">
+              <MappingFragment StoreEntitySet="Вид_рубки">
+                <ScalarProperty Name="Вид_рубки1" ColumnName="Вид_рубки" />
+                <ScalarProperty Name="Id_Вид_робіт" ColumnName="Id_Вид_робіт" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Денна_тарифна_ставка">
             <EntityTypeMapping TypeName="БД_НарядModel.Денна_тарифна_ставка">
               <MappingFragment StoreEntitySet="Денна_тарифна_ставка">
-                <ScalarProperty Name="Разряд6" ColumnName="Разряд6" />
-                <ScalarProperty Name="Разряд5" ColumnName="Разряд5" />
-                <ScalarProperty Name="Разряд4" ColumnName="Разряд4" />
-                <ScalarProperty Name="Разряд3" ColumnName="Разряд3" />
-                <ScalarProperty Name="Разряд2" ColumnName="Разряд2" />
-                <ScalarProperty Name="Разряд1" ColumnName="Разряд1" />
+                <ScalarProperty Name="C6" ColumnName="6" />
+                <ScalarProperty Name="C5" ColumnName="5" />
+                <ScalarProperty Name="C4" ColumnName="4" />
+                <ScalarProperty Name="C3" ColumnName="3" />
+                <ScalarProperty Name="C2" ColumnName="2" />
+                <ScalarProperty Name="C1" ColumnName="1" />
                 <ScalarProperty Name="Комплексна_индивідуальна" ColumnName="Комплексна_индивідуальна" />
                 <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
                 <ScalarProperty Name="РозцінкаID" ColumnName="РозцінкаID" />
@@ -436,6 +1545,102 @@
           <EntitySetMapping Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
             <EntityTypeMapping TypeName="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
               <MappingFragment StoreEntitySet="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="Id_Вид_робіт" ColumnName="Id_Вид_робіт" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Заточка_цепей">
+            <EntityTypeMapping TypeName="БД_НарядModel.Заточка_цепей">
+              <MappingFragment StoreEntitySet="Заточка_цепей">
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="Id_Вид_робіт" ColumnName="Id_Вид_робіт" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Освітлення_механічним_способом">
+            <EntityTypeMapping TypeName="БД_НарядModel.Освітлення_механічним_способом">
+              <MappingFragment StoreEntitySet="Освітлення_механічним_способом">
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="Id_Вид_робіт" ColumnName="Id_Вид_робіт" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Погрузка">
+            <EntityTypeMapping TypeName="БД_НарядModel.Погрузка">
+              <MappingFragment StoreEntitySet="Погрузка">
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="Id_Вид_робіт" ColumnName="Id_Вид_робіт" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Прибирання_небезпечних_дерев">
+            <EntityTypeMapping TypeName="БД_НарядModel.Прибирання_небезпечних_дерев">
+              <MappingFragment StoreEntitySet="Прибирання_небезпечних_дерев">
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="Id_Вид_робіт" ColumnName="Id_Вид_робіт" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="РГК_ССР_без_трелювання">
+            <EntityTypeMapping TypeName="БД_НарядModel.РГК_ССР_без_трелювання">
+              <MappingFragment StoreEntitySet="РГК_ССР_без_трелювання">
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="Id_Вид_робіт" ColumnName="Id_Вид_робіт" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
+            <EntityTypeMapping TypeName="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
+              <MappingFragment StoreEntitySet="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="Id_Вид_робіт" ColumnName="Id_Вид_робіт" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Трелювання_підліску">
+            <EntityTypeMapping TypeName="БД_НарядModel.Трелювання_підліску">
+              <MappingFragment StoreEntitySet="Трелювання_підліску">
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="Id_Вид_робіт" ColumnName="Id_Вид_робіт" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Трелювання_РГК">
+            <EntityTypeMapping TypeName="БД_НарядModel.Трелювання_РГК">
+              <MappingFragment StoreEntitySet="Трелювання_РГК">
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="Id_Вид_робіт" ColumnName="Id_Вид_робіт" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Трелювання_РУ">
+            <EntityTypeMapping TypeName="БД_НарядModel.Трелювання_РУ">
+              <MappingFragment StoreEntitySet="Трелювання_РУ">
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="Id_Вид_робіт" ColumnName="Id_Вид_робіт" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Трелювання_фанери_РУ">
+            <EntityTypeMapping TypeName="БД_НарядModel.Трелювання_фанери_РУ">
+              <MappingFragment StoreEntitySet="Трелювання_фанери_РУ">
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="Id_Вид_робіт" ColumnName="Id_Вид_робіт" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Устройство_площадок">
+            <EntityTypeMapping TypeName="БД_НарядModel.Устройство_площадок">
+              <MappingFragment StoreEntitySet="Устройство_площадок">
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="Id_Вид_робіт" ColumnName="Id_Вид_робіт" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма">
+            <EntityTypeMapping TypeName="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма">
+              <MappingFragment StoreEntitySet="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма">
                 <ScalarProperty Name="C1_29" ColumnName="1,29" />
                 <ScalarProperty Name="C1_02" ColumnName="1,02" />
                 <ScalarProperty Name="C0_76" ColumnName="0,76" />
@@ -448,20 +1653,66 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Заточка_цепей_Норма">
+            <EntityTypeMapping TypeName="БД_НарядModel.Заточка_цепей_Норма">
+              <MappingFragment StoreEntitySet="Заточка_цепей_Норма">
+                <ScalarProperty Name="Норма_віробітку" ColumnName="Норма_віробітку" />
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Категорії_робіт">
             <EntityTypeMapping TypeName="БД_НарядModel.Категорії_робіт">
               <MappingFragment StoreEntitySet="Категорії_робіт">
                 <ScalarProperty Name="Одиниця_виміру" ColumnName="Одиниця_виміру" />
                 <ScalarProperty Name="РозцінкаID" ColumnName="РозцінкаID" />
                 <ScalarProperty Name="Комплексна_индивідуальна" ColumnName="Комплексна_индивідуальна" />
+                <ScalarProperty Name="ГСМ" ColumnName="ГСМ" />
+                <ScalarProperty Name="Норма_віробітку" ColumnName="Норма_віробітку" />
                 <ScalarProperty Name="Категорії_робіт1" ColumnName="Категорії_робіт" />
                 <ScalarProperty Name="Категорії_робітID" ColumnName="Категорії_робітID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="РГК_ССР_без_трелювання">
-            <EntityTypeMapping TypeName="БД_НарядModel.РГК_ССР_без_трелювання">
-              <MappingFragment StoreEntitySet="РГК_ССР_без_трелювання">
+          <EntitySetMapping Name="Освітлення_механічним_способом_Норма">
+            <EntityTypeMapping TypeName="БД_НарядModel.Освітлення_механічним_способом_Норма">
+              <MappingFragment StoreEntitySet="Освітлення_механічним_способом_Норма">
+                <ScalarProperty Name="Норма_віробітку" ColumnName="Норма_віробітку" />
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Погрузка_Норма">
+            <EntityTypeMapping TypeName="БД_НарядModel.Погрузка_Норма">
+              <MappingFragment StoreEntitySet="Погрузка_Норма">
+                <ScalarProperty Name="Норма_віробітку" ColumnName="Норма_віробітку" />
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Прибирання_небезпечних_дерев_Норма">
+            <EntityTypeMapping TypeName="БД_НарядModel.Прибирання_небезпечних_дерев_Норма">
+              <MappingFragment StoreEntitySet="Прибирання_небезпечних_дерев_Норма">
+                <ScalarProperty Name="C1_1" ColumnName="1,1" />
+                <ScalarProperty Name="C0_75" ColumnName="0,75" />
+                <ScalarProperty Name="C0_49" ColumnName="0,49" />
+                <ScalarProperty Name="C0_39" ColumnName="0,39" />
+                <ScalarProperty Name="C0_32" ColumnName="0,32" />
+                <ScalarProperty Name="C0_25" ColumnName="0,25" />
+                <ScalarProperty Name="C0_21" ColumnName="0,21" />
+                <ScalarProperty Name="C0_17" ColumnName="0,17" />
+                <ScalarProperty Name="C0_14" ColumnName="0,14" />
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="РГК_ССР_без_трелювання_Норма">
+            <EntityTypeMapping TypeName="БД_НарядModel.РГК_ССР_без_трелювання_Норма">
+              <MappingFragment StoreEntitySet="РГК_ССР_без_трелювання_Норма">
                 <ScalarProperty Name="C1_1" ColumnName="1,1" />
                 <ScalarProperty Name="C0_75" ColumnName="0,75" />
                 <ScalarProperty Name="C0_49" ColumnName="0,49" />
@@ -474,9 +1725,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
-            <EntityTypeMapping TypeName="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
-              <MappingFragment StoreEntitySet="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
+          <EntitySetMapping Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма">
+            <EntityTypeMapping TypeName="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма">
+              <MappingFragment StoreEntitySet="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма">
                 <ScalarProperty Name="C1_5" ColumnName="1,5" />
                 <ScalarProperty Name="C0_98" ColumnName="0,98" />
                 <ScalarProperty Name="C0_78" ColumnName="0,78" />
@@ -512,6 +1763,84 @@
               <MappingFragment StoreEntitySet="Сортименти">
                 <ScalarProperty Name="Назва_сортименту" ColumnName="Назва_сортименту" />
                 <ScalarProperty Name="СортиментиID" ColumnName="СортиментиID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Трелювання_підліску_Норма">
+            <EntityTypeMapping TypeName="БД_НарядModel.Трелювання_підліску_Норма">
+              <MappingFragment StoreEntitySet="Трелювання_підліску_Норма">
+                <ScalarProperty Name="Норма_віробітку" ColumnName="Норма_віробітку" />
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Трелювання_РГК_Норма">
+            <EntityTypeMapping TypeName="БД_НарядModel.Трелювання_РГК_Норма">
+              <MappingFragment StoreEntitySet="Трелювання_РГК_Норма">
+                <ScalarProperty Name="C1_1" ColumnName="1,1" />
+                <ScalarProperty Name="C0_75" ColumnName="0,75" />
+                <ScalarProperty Name="C0_49" ColumnName="0,49" />
+                <ScalarProperty Name="C0_39" ColumnName="0,39" />
+                <ScalarProperty Name="C0_32" ColumnName="0,32" />
+                <ScalarProperty Name="C0_25" ColumnName="0,25" />
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Трелювання_РУ_Норма">
+            <EntityTypeMapping TypeName="БД_НарядModel.Трелювання_РУ_Норма">
+              <MappingFragment StoreEntitySet="Трелювання_РУ_Норма">
+                <ScalarProperty Name="C1_5" ColumnName="1,5" />
+                <ScalarProperty Name="C0_97" ColumnName="0,97" />
+                <ScalarProperty Name="C0_77" ColumnName="0,77" />
+                <ScalarProperty Name="C0_61" ColumnName="0,61" />
+                <ScalarProperty Name="C0_49" ColumnName="0,49" />
+                <ScalarProperty Name="C0_4" ColumnName="0,4" />
+                <ScalarProperty Name="C0_34" ColumnName="0,34" />
+                <ScalarProperty Name="C0_28" ColumnName="0,28" />
+                <ScalarProperty Name="C0_24" ColumnName="0,24" />
+                <ScalarProperty Name="C0_21" ColumnName="0,21" />
+                <ScalarProperty Name="C0_18" ColumnName="0,18" />
+                <ScalarProperty Name="C0_16" ColumnName="0,16" />
+                <ScalarProperty Name="C0_14" ColumnName="0,14" />
+                <ScalarProperty Name="C0_12" ColumnName="0,12" />
+                <ScalarProperty Name="C0_1" ColumnName="0,1" />
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Трелювання_фанери_РУ_Норма">
+            <EntityTypeMapping TypeName="БД_НарядModel.Трелювання_фанери_РУ_Норма">
+              <MappingFragment StoreEntitySet="Трелювання_фанери_РУ_Норма">
+                <ScalarProperty Name="C1_5" ColumnName="1,5" />
+                <ScalarProperty Name="C1" ColumnName="1" />
+                <ScalarProperty Name="C0_79" ColumnName="0,79" />
+                <ScalarProperty Name="C0_62" ColumnName="0,62" />
+                <ScalarProperty Name="C0_5" ColumnName="0,5" />
+                <ScalarProperty Name="C0_41" ColumnName="0,41" />
+                <ScalarProperty Name="C0_35" ColumnName="0,35" />
+                <ScalarProperty Name="C0_29" ColumnName="0,29" />
+                <ScalarProperty Name="C0_25" ColumnName="0,25" />
+                <ScalarProperty Name="C0_22" ColumnName="0,22" />
+                <ScalarProperty Name="C0_19" ColumnName="0,19" />
+                <ScalarProperty Name="C0_16" ColumnName="0,16" />
+                <ScalarProperty Name="C0_14" ColumnName="0,14" />
+                <ScalarProperty Name="C0_12" ColumnName="0,12" />
+                <ScalarProperty Name="C0_1" ColumnName="0,1" />
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Устройство_площадок_Норма">
+            <EntityTypeMapping TypeName="БД_НарядModel.Устройство_площадок_Норма">
+              <MappingFragment StoreEntitySet="Устройство_площадок_Норма">
+                <ScalarProperty Name="Норма_віробітку" ColumnName="Норма_віробітку" />
+                <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+                <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

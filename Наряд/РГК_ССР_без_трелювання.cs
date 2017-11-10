@@ -14,14 +14,16 @@ namespace Наряд
     
     public partial class РГК_ССР_без_трелювання
     {
-        public int Вид_робітID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public РГК_ССР_без_трелювання()
+        {
+            this.РГК_ССР_без_трелювання_Норма = new HashSet<РГК_ССР_без_трелювання_Норма>();
+        }
+    
+        public int Id_Вид_робіт { get; set; }
         public string Вид_робіт { get; set; }
-        public decimal C0_219 { get; set; }
-        public decimal C0_25 { get; set; }
-        public decimal C0_32 { get; set; }
-        public decimal C0_39 { get; set; }
-        public decimal C0_49 { get; set; }
-        public decimal C0_75 { get; set; }
-        public decimal C1_1 { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<РГК_ССР_без_трелювання_Норма> РГК_ССР_без_трелювання_Норма { get; set; }
     }
 }

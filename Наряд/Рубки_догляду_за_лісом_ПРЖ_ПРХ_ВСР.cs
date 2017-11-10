@@ -14,32 +14,16 @@ namespace Наряд
     
     public partial class Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР
     {
-        public int Вид_робітID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР()
+        {
+            this.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма = new HashSet<Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма>();
+        }
+    
+        public int Id_Вид_робіт { get; set; }
         public string Вид_робіт { get; set; }
-        public decimal C0_035 { get; set; }
-        public decimal C0_04 { get; set; }
-        public decimal C0_045 { get; set; }
-        public decimal C0_05 { get; set; }
-        public decimal C0_055 { get; set; }
-        public decimal C0_06 { get; set; }
-        public decimal C0_065 { get; set; }
-        public decimal C0_07 { get; set; }
-        public decimal C0_08 { get; set; }
-        public decimal C0_09 { get; set; }
-        public decimal C0_1 { get; set; }
-        public decimal C0_12 { get; set; }
-        public decimal C0_14 { get; set; }
-        public decimal C0_16 { get; set; }
-        public decimal C0_19 { get; set; }
-        public decimal C0_22 { get; set; }
-        public decimal C0_25 { get; set; }
-        public decimal C0_29 { get; set; }
-        public decimal C0_35 { get; set; }
-        public decimal C0_41 { get; set; }
-        public decimal C0_5 { get; set; }
-        public decimal C0_62 { get; set; }
-        public decimal C0_78 { get; set; }
-        public decimal C0_98 { get; set; }
-        public decimal C1_5 { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма> Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма { get; set; }
     }
 }

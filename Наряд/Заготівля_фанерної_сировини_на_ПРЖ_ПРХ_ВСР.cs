@@ -14,14 +14,16 @@ namespace Наряд
     
     public partial class Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР
     {
-        public int Вид_робітID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР()
+        {
+            this.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма = new HashSet<Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма>();
+        }
+    
+        public int Id_Вид_робіт { get; set; }
         public string Вид_робіт { get; set; }
-        public decimal C0_12 { get; set; }
-        public decimal C0_22 { get; set; }
-        public decimal C0_36 { get; set; }
-        public decimal C0_54 { get; set; }
-        public decimal C0_76 { get; set; }
-        public decimal C1_02 { get; set; }
-        public decimal C1_29 { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма> Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма { get; set; }
     }
 }

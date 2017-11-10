@@ -47,10 +47,23 @@ namespace Наряд.Controllers
             }
         }
 
+        public JsonResult PricingUnit(string pricingID, string rank)//расценка за единицу   
+        {
+            using (БД_НарядEntities1 context = new БД_НарядEntities1())
+            {
+                string colum = (rank == "") ? "1" : rank; //индивидуальна / комплексна
+
+                var PricingUnit = context.Database.SqlQuery<decimal>(
+                                                 $"SELECT [{colum}] FROM Денна_тарифна_ставка WHERE РозцінкаID = N'{pricingID}'").ToList();
+
+                return new JsonResult { Data = double.Parse(PricingUnit[0].ToString()), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+        }
+
         public JsonResult getUnit(string category)
         {
             using (БД_НарядEntities1 context = new БД_НарядEntities1())
-            {               
+            {
                 var TypeOfWork = context.Категорії_робіт.Where(a => a.Категорії_робіт1 == category)
                                                        .Select(a => new { a.Комплексна_индивідуальна, a.РозцінкаID, a.Одиниця_виміру })
                                                        .ToList();
@@ -63,6 +76,28 @@ namespace Наряд.Controllers
         {
             double column = 0;
             double volumeWoods = 0;
+
+            string tableNormOfWork;
+            using (БД_НарядEntities1 db = new БД_НарядEntities1())
+            {
+                var tableNorm = db.Категорії_робіт.Where(a => a.Категорії_робіт1 == table)
+                                    .Select(a => a.Норма_віробітку).ToList();
+                tableNormOfWork = tableNorm[0];
+
+                var oil = db.Категорії_робіт.Where(a => a.Категорії_робіт1 == table)
+                                    .Select(a => a.ГСМ).ToList();
+
+                if (oil[0] == "-")//если нет ГСМ, тогда пропескаем расчет с V хлиста и возращаем значение в колонке "Норма_віробітку"
+                {
+                    var normID = db.Database.SqlQuery<int>(
+                              $"SELECT Id_Вид_робіт FROM {table} WHERE Вид_робіт = N'{typeOfWork}'").ToList();
+
+                    var normList = db.Database.SqlQuery<decimal>(
+                                  $"SELECT Норма_віробітку FROM {tableNormOfWork} WHERE Вид_робіт = '{normID[0]}'").ToList();
+
+                    return new JsonResult { Data = Convert.ToDouble(normList[0]), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                }
+            }
 
             try
             {
@@ -77,7 +112,7 @@ namespace Наряд.Controllers
             using (БД_НарядEntities1 db = new БД_НарядEntities1())
             {
                 var normList = db.Database.SqlQuery<string>(
-                                   $"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'{table}'").ToList();
+                                   $"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'{tableNormOfWork}'").ToList();
                 properties = normList;
             }
 
@@ -118,8 +153,12 @@ namespace Наряд.Controllers
 
                 using (БД_НарядEntities1 db = new БД_НарядEntities1())
                 {
+                    var normID = db.Database.SqlQuery<int>(
+                              $"SELECT Id_Вид_робіт FROM {table} WHERE Вид_робіт = N'{typeOfWork}'").ToList();
+
                     var normList = db.Database.SqlQuery<decimal>(
-                                  $"SELECT[{amountOfWood}] FROM {table} WHERE Вид_робіт = N'{typeOfWork}'").ToList();
+                                  $"SELECT [{amountOfWood}] FROM {tableNormOfWork} WHERE Вид_робіт = '{normID[0]}'").ToList();
+
                     normOfWork = Convert.ToDouble(normList[0]);
                 }
             }

@@ -25,11 +25,33 @@ namespace Наряд
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Вид_рубки> Вид_рубки { get; set; }
         public virtual DbSet<Денна_тарифна_ставка> Денна_тарифна_ставка { get; set; }
         public virtual DbSet<Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР> Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР { get; set; }
-        public virtual DbSet<Категорії_робіт> Категорії_робіт { get; set; }
+        public virtual DbSet<Заточка_цепей> Заточка_цепей { get; set; }
+        public virtual DbSet<Освітлення_механічним_способом> Освітлення_механічним_способом { get; set; }
+        public virtual DbSet<Погрузка> Погрузка { get; set; }
+        public virtual DbSet<Прибирання_небезпечних_дерев> Прибирання_небезпечних_дерев { get; set; }
         public virtual DbSet<РГК_ССР_без_трелювання> РГК_ССР_без_трелювання { get; set; }
         public virtual DbSet<Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР> Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР { get; set; }
+        public virtual DbSet<Трелювання_підліску> Трелювання_підліску { get; set; }
+        public virtual DbSet<Трелювання_РГК> Трелювання_РГК { get; set; }
+        public virtual DbSet<Трелювання_РУ> Трелювання_РУ { get; set; }
+        public virtual DbSet<Трелювання_фанери_РУ> Трелювання_фанери_РУ { get; set; }
+        public virtual DbSet<Устройство_площадок> Устройство_площадок { get; set; }
+        public virtual DbSet<Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма> Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма { get; set; }
+        public virtual DbSet<Заточка_цепей_Норма> Заточка_цепей_Норма { get; set; }
+        public virtual DbSet<Категорії_робіт> Категорії_робіт { get; set; }
+        public virtual DbSet<Освітлення_механічним_способом_Норма> Освітлення_механічним_способом_Норма { get; set; }
+        public virtual DbSet<Погрузка_Норма> Погрузка_Норма { get; set; }
+        public virtual DbSet<Прибирання_небезпечних_дерев_Норма> Прибирання_небезпечних_дерев_Норма { get; set; }
+        public virtual DbSet<РГК_ССР_без_трелювання_Норма> РГК_ССР_без_трелювання_Норма { get; set; }
+        public virtual DbSet<Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма> Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма { get; set; }
         public virtual DbSet<Сортименти> Сортименти { get; set; }
+        public virtual DbSet<Трелювання_підліску_Норма> Трелювання_підліску_Норма { get; set; }
+        public virtual DbSet<Трелювання_РГК_Норма> Трелювання_РГК_Норма { get; set; }
+        public virtual DbSet<Трелювання_РУ_Норма> Трелювання_РУ_Норма { get; set; }
+        public virtual DbSet<Трелювання_фанери_РУ_Норма> Трелювання_фанери_РУ_Норма { get; set; }
+        public virtual DbSet<Устройство_площадок_Норма> Устройство_площадок_Норма { get; set; }
     }
 }
