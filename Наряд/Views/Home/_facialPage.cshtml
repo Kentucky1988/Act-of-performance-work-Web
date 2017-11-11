@@ -49,9 +49,14 @@
                     <td class="paddingLeft">Якого року лісосіка</td>
                     <td> <select name="year"> </select> </td>
                     <td class="paddingLeft">Вид рубки</td>
-                    <td> <input type="text" /> </td>
+                    <td>
+                        <!--выпадающий список Вид рубки-->
+                        <select id="typeOfFelling">
+                            <option></option>
+                        </select>
+                    </td>
                     <td class="paddingLeft">Середній обєм хлиста, м<sup>3</sup></td>
-                    <td> <input type="text" id="volumeWood"/> </td>
+                    <td> <input type="text" id="volumeWood" /> </td>
                 </tr>
             </table>
             <table style="margin-top:5px">
@@ -97,35 +102,35 @@
                 <tr class="mycontainer" id="mainrow">
                     <td>
                         <!--выпадающий список категория работ-->
-                        <select id="productCategory" class="pc" style="min-width:250px"> 
+                        <select id="productCategory" class="pc" style="min-width:250px">
                             <option></option>
                         </select>
                     </td>
                     <td>
                         <!--выпадающий список вид работ-->
-                        <select id="product" class="product autocompleteCombobox form-control quantity" >
+                        <select id="product" class="product autocompleteCombobox form-control quantity">
                             <option></option>
                         </select>
                     </td>
                     <td>
                         <!--выпадающий список разряд робот-->
-                        <select id="Rank" disabled>  
+                        <select id="Rank" disabled>
                             <option></option>
                             <option>1</option>
                             <option>2</option>
                             <option>3</option>
                             <option>4</option>
                             <option>5</option>
-                            <option>6</option>                            
+                            <option>6</option>
                         </select>
                     </td>
-                    <td> <input type="text" class="quantity" id="Unit"/> </td>
-                    <td> <input type="text" class="quantity" id="set"/> </td>
-                    <td> <input type="text" class="quantity" id="executed"/> </td>
-                    <td> <input type="text" class="quantity" id="norm" disabled/> </td>
-                    <td> <input type="text" class="quantity" id="executedNorm" disabled/> </td>
-                    <td> <input type="text" class="quantity" id="UnitPrice" disabled/> </td>
-                    <td> <input type="text" class="quantity" id="Sum" disabled/> </td>
+                    <td> <input type="text" class="quantity" id="Unit" /> </td>
+                    <td> <input type="text" class="quantity" id="set" /> </td>
+                    <td> <input type="text" class="quantity" id="executed" /> </td>
+                    <td> <input type="text" class="quantity" id="norm" disabled /> </td>
+                    <td> <input type="text" class="quantity" id="executedNorm" disabled /> </td>
+                    <td> <input type="text" class="quantity" id="UnitPrice" disabled /> </td>
+                    <td> <input type="text" class="quantity" id="Sum" disabled /> </td>
                     <td> <input type="text" class="quantity" /> </td>
                     <td> <input type="text" class="quantity" /> </td>
                     <td>

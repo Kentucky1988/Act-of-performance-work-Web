@@ -88,6 +88,31 @@ function columnSum() {//сумма строк
     });
 };
 
+$(document).ready(function () {
+    typeOfFelling($('#typeOfFelling'));
+});
+
+var TypeOfFelling = []
+function typeOfFelling(element) {//вид рубок
+    $.ajax({
+        type: "GET",
+        url: '/home/TypeOfFelling',
+        success: function (data) {
+            TypeOfFelling = data;
+            rendertypeOfFelling(element);
+        }
+    })
+}
+
+function rendertypeOfFelling(element) {//создание списка категорий
+    var $ele = $(element);
+    $ele.empty();
+    $ele.append($('<option/>').val('0').text('Вибрати'));
+    $.each(TypeOfFelling, function (i, val) {
+        $ele.append($('<option/>').text(val));
+    })
+}
+
 
 
 

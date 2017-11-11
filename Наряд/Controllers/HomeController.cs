@@ -26,6 +26,15 @@ namespace Наряд.Controllers
             }
         }
 
+        public JsonResult TypeOfFelling()
+        {
+            using (БД_НарядEntities1 dc = new БД_НарядEntities1())
+            {
+                var materials = dc.Вид_рубки.OrderBy(a => a.Вид_рубки1).Select(a => a.Вид_рубки1).ToList();
+                return new JsonResult { Data = materials, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+        }
+
         public JsonResult getCategories()
         {
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
