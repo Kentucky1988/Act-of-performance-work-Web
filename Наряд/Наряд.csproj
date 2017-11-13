@@ -171,13 +171,22 @@
       <DependentUpon>ModelБД_Наряд.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Вид_ГСМ.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
     <Compile Include="Вид_рубки.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Витрати_ГСМ.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
     <Compile Include="Денна_тарифна_ставка.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
     <Compile Include="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
     <Compile Include="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма.cs">
@@ -192,7 +201,13 @@
     <Compile Include="Категорії_робіт.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
+    <Compile Include="Механізми.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
     <Compile Include="Освітлення_механічним_способом.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Освітлення_механічним_способом_ГСМ.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
     <Compile Include="Освітлення_механічним_способом_Норма.cs">
@@ -207,16 +222,25 @@
     <Compile Include="Прибирання_небезпечних_дерев.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
+    <Compile Include="Прибирання_небезпечних_дерев_ГСМ.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
     <Compile Include="Прибирання_небезпечних_дерев_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
     <Compile Include="РГК_ССР_без_трелювання.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
+    <Compile Include="РГК_ССР_без_трелювання_ГСМ.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
     <Compile Include="РГК_ССР_без_трелювання_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
     <Compile Include="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
     <Compile Include="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма.cs">
@@ -228,10 +252,16 @@
     <Compile Include="Трелювання_підліску.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
+    <Compile Include="Трелювання_підліску_ГСМ.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
     <Compile Include="Трелювання_підліску_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
     <Compile Include="Трелювання_РГК.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Трелювання_РГК_ГСМ.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
     <Compile Include="Трелювання_РГК_Норма.cs">
@@ -240,10 +270,16 @@
     <Compile Include="Трелювання_РУ.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
+    <Compile Include="Трелювання_РУ_ГСМ.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
     <Compile Include="Трелювання_РУ_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
     <Compile Include="Трелювання_фанери_РУ.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Трелювання_фанери_РУ_ГСМ.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
     <Compile Include="Трелювання_фанери_РУ_Норма.cs">

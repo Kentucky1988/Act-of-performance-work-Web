@@ -17,12 +17,15 @@ namespace Наряд
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР()
         {
+            this.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ = new HashSet<Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ>();
             this.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма = new HashSet<Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма>();
         }
     
         public int Id_Вид_робіт { get; set; }
         public string Вид_робіт { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ> Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма> Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма { get; set; }
     }

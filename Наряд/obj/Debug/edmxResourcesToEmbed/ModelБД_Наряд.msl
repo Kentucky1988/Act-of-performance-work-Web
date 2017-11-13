@@ -1,6 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="Хранилище БД_НарядModelContainer" CdmEntityContainer="БД_НарядEntities1">
+    <EntitySetMapping Name="Вид_ГСМ">
+      <EntityTypeMapping TypeName="БД_НарядModel.Вид_ГСМ">
+        <MappingFragment StoreEntitySet="Вид_ГСМ">
+          <ScalarProperty Name="Ціні_палива" ColumnName="Ціні_палива" />
+          <ScalarProperty Name="Вид_ГСМ1" ColumnName="Вид_ГСМ" />
+          <ScalarProperty Name="Id_Палива" ColumnName="Id_Палива" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Вид_рубки">
       <EntityTypeMapping TypeName="БД_НарядModel.Вид_рубки">
         <MappingFragment StoreEntitySet="Вид_рубки">
@@ -37,6 +46,14 @@
         <MappingFragment StoreEntitySet="Заточка_цепей">
           <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
           <ScalarProperty Name="Id_Вид_робіт" ColumnName="Id_Вид_робіт" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Механізми">
+      <EntityTypeMapping TypeName="БД_НарядModel.Механізми">
+        <MappingFragment StoreEntitySet="Механізми">
+          <ScalarProperty Name="Механізми1" ColumnName="Механізми" />
+          <ScalarProperty Name="Id_Механізма" ColumnName="Id_Механізма" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -120,6 +137,38 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Витрати_ГСМ">
+      <EntityTypeMapping TypeName="БД_НарядModel.Витрати_ГСМ">
+        <MappingFragment StoreEntitySet="Витрати_ГСМ">
+          <ScalarProperty Name="Витрати_ГСМ__" ColumnName="Витрати_ГСМ_%" />
+          <ScalarProperty Name="Id_Палива" ColumnName="Id_Палива" />
+          <ScalarProperty Name="Id_механізма" ColumnName="Id_механізма" />
+          <ScalarProperty Name="Id_ВитратГСМ" ColumnName="Id_ВитратГСМ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ">
+      <EntityTypeMapping TypeName="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ">
+        <MappingFragment StoreEntitySet="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ">
+          <ScalarProperty Name="C0_98" ColumnName="0,98" />
+          <ScalarProperty Name="C0_78" ColumnName="0,78" />
+          <ScalarProperty Name="C0_62" ColumnName="0,62" />
+          <ScalarProperty Name="C0_5" ColumnName="0,5" />
+          <ScalarProperty Name="C0_41" ColumnName="0,41" />
+          <ScalarProperty Name="C0_35" ColumnName="0,35" />
+          <ScalarProperty Name="C0_29" ColumnName="0,29" />
+          <ScalarProperty Name="C0_25" ColumnName="0,25" />
+          <ScalarProperty Name="C0_22" ColumnName="0,22" />
+          <ScalarProperty Name="C0_19" ColumnName="0,19" />
+          <ScalarProperty Name="C0_16" ColumnName="0,16" />
+          <ScalarProperty Name="C0_14" ColumnName="0,14" />
+          <ScalarProperty Name="C0_13" ColumnName="0,13" />
+          <ScalarProperty Name="C0_12" ColumnName="0,12" />
+          <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+          <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма">
       <EntityTypeMapping TypeName="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма">
         <MappingFragment StoreEntitySet="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма">
@@ -147,6 +196,7 @@
     <EntitySetMapping Name="Категорії_робіт">
       <EntityTypeMapping TypeName="БД_НарядModel.Категорії_робіт">
         <MappingFragment StoreEntitySet="Категорії_робіт">
+          <ScalarProperty Name="Id_механізма" ColumnName="Id_механізма" />
           <ScalarProperty Name="Одиниця_виміру" ColumnName="Одиниця_виміру" />
           <ScalarProperty Name="РозцінкаID" ColumnName="РозцінкаID" />
           <ScalarProperty Name="Комплексна_индивідуальна" ColumnName="Комплексна_индивідуальна" />
@@ -154,6 +204,15 @@
           <ScalarProperty Name="Норма_віробітку" ColumnName="Норма_віробітку" />
           <ScalarProperty Name="Категорії_робіт1" ColumnName="Категорії_робіт" />
           <ScalarProperty Name="Категорії_робітID" ColumnName="Категорії_робітID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Освітлення_механічним_способом_ГСМ">
+      <EntityTypeMapping TypeName="БД_НарядModel.Освітлення_механічним_способом_ГСМ">
+        <MappingFragment StoreEntitySet="Освітлення_механічним_способом_ГСМ">
+          <ScalarProperty Name="Норма_витрат_ГСМ" ColumnName="Норма_витрат_ГСМ" />
+          <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+          <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -170,6 +229,23 @@
       <EntityTypeMapping TypeName="БД_НарядModel.Погрузка_Норма">
         <MappingFragment StoreEntitySet="Погрузка_Норма">
           <ScalarProperty Name="Норма_віробітку" ColumnName="Норма_віробітку" />
+          <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+          <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Прибирання_небезпечних_дерев_ГСМ">
+      <EntityTypeMapping TypeName="БД_НарядModel.Прибирання_небезпечних_дерев_ГСМ">
+        <MappingFragment StoreEntitySet="Прибирання_небезпечних_дерев_ГСМ">
+          <ScalarProperty Name="C1_1" ColumnName="1,1" />
+          <ScalarProperty Name="C0_75" ColumnName="0,75" />
+          <ScalarProperty Name="C0_49" ColumnName="0,49" />
+          <ScalarProperty Name="C0_39" ColumnName="0,39" />
+          <ScalarProperty Name="C0_32" ColumnName="0,32" />
+          <ScalarProperty Name="C0_25" ColumnName="0,25" />
+          <ScalarProperty Name="C0_21" ColumnName="0,21" />
+          <ScalarProperty Name="C0_17" ColumnName="0,17" />
+          <ScalarProperty Name="C0_14" ColumnName="0,14" />
           <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
           <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
         </MappingFragment>
@@ -192,6 +268,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="РГК_ССР_без_трелювання_ГСМ">
+      <EntityTypeMapping TypeName="БД_НарядModel.РГК_ССР_без_трелювання_ГСМ">
+        <MappingFragment StoreEntitySet="РГК_ССР_без_трелювання_ГСМ">
+          <ScalarProperty Name="C1_1" ColumnName="1,1" />
+          <ScalarProperty Name="C0_75" ColumnName="0,75" />
+          <ScalarProperty Name="C0_49" ColumnName="0,49" />
+          <ScalarProperty Name="C0_39" ColumnName="0,39" />
+          <ScalarProperty Name="C0_32" ColumnName="0,32" />
+          <ScalarProperty Name="C0_25" ColumnName="0,25" />
+          <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+          <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="РГК_ССР_без_трелювання_Норма">
       <EntityTypeMapping TypeName="БД_НарядModel.РГК_ССР_без_трелювання_Норма">
         <MappingFragment StoreEntitySet="РГК_ССР_без_трелювання_Норма">
@@ -202,6 +292,39 @@
           <ScalarProperty Name="C0_32" ColumnName="0,32" />
           <ScalarProperty Name="C0_25" ColumnName="0,25" />
           <ScalarProperty Name="C0_219" ColumnName="0,219" />
+          <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+          <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ">
+      <EntityTypeMapping TypeName="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ">
+        <MappingFragment StoreEntitySet="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ">
+          <ScalarProperty Name="C1_5" ColumnName="1,5" />
+          <ScalarProperty Name="C0_98" ColumnName="0,98" />
+          <ScalarProperty Name="C0_78" ColumnName="0,78" />
+          <ScalarProperty Name="C0_62" ColumnName="0,62" />
+          <ScalarProperty Name="C0_5" ColumnName="0,5" />
+          <ScalarProperty Name="C0_41" ColumnName="0,41" />
+          <ScalarProperty Name="C0_35" ColumnName="0,35" />
+          <ScalarProperty Name="C0_29" ColumnName="0,29" />
+          <ScalarProperty Name="C0_25" ColumnName="0,25" />
+          <ScalarProperty Name="C0_22" ColumnName="0,22" />
+          <ScalarProperty Name="C0_19" ColumnName="0,19" />
+          <ScalarProperty Name="C0_16" ColumnName="0,16" />
+          <ScalarProperty Name="C0_14" ColumnName="0,14" />
+          <ScalarProperty Name="C0_12" ColumnName="0,12" />
+          <ScalarProperty Name="C0_1" ColumnName="0,1" />
+          <ScalarProperty Name="C0_09" ColumnName="0,09" />
+          <ScalarProperty Name="C0_08" ColumnName="0,08" />
+          <ScalarProperty Name="C0_07" ColumnName="0,07" />
+          <ScalarProperty Name="C0_065" ColumnName="0,065" />
+          <ScalarProperty Name="C0_06" ColumnName="0,06" />
+          <ScalarProperty Name="C0_055" ColumnName="0,055" />
+          <ScalarProperty Name="C0_05" ColumnName="0,05" />
+          <ScalarProperty Name="C0_045" ColumnName="0,045" />
+          <ScalarProperty Name="C0_04" ColumnName="0,04" />
+          <ScalarProperty Name="C0_035" ColumnName="0,035" />
           <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
           <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
         </MappingFragment>
@@ -248,10 +371,33 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Трелювання_підліску_ГСМ">
+      <EntityTypeMapping TypeName="БД_НарядModel.Трелювання_підліску_ГСМ">
+        <MappingFragment StoreEntitySet="Трелювання_підліску_ГСМ">
+          <ScalarProperty Name="кг_скл_м" ColumnName="кг_скл_м" />
+          <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+          <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Трелювання_підліску_Норма">
       <EntityTypeMapping TypeName="БД_НарядModel.Трелювання_підліску_Норма">
         <MappingFragment StoreEntitySet="Трелювання_підліску_Норма">
           <ScalarProperty Name="Норма_віробітку" ColumnName="Норма_віробітку" />
+          <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+          <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Трелювання_РГК_ГСМ">
+      <EntityTypeMapping TypeName="БД_НарядModel.Трелювання_РГК_ГСМ">
+        <MappingFragment StoreEntitySet="Трелювання_РГК_ГСМ">
+          <ScalarProperty Name="C1_1" ColumnName="1,1" />
+          <ScalarProperty Name="C0_75" ColumnName="0,75" />
+          <ScalarProperty Name="C0_49" ColumnName="0,49" />
+          <ScalarProperty Name="C0_39" ColumnName="0,39" />
+          <ScalarProperty Name="C0_32" ColumnName="0,32" />
+          <ScalarProperty Name="C0_25" ColumnName="0,25" />
           <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
           <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
         </MappingFragment>
@@ -271,9 +417,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Трелювання_РУ_Норма">
-      <EntityTypeMapping TypeName="БД_НарядModel.Трелювання_РУ_Норма">
-        <MappingFragment StoreEntitySet="Трелювання_РУ_Норма">
+    <EntitySetMapping Name="Трелювання_РУ_ГСМ">
+      <EntityTypeMapping TypeName="БД_НарядModel.Трелювання_РУ_ГСМ">
+        <MappingFragment StoreEntitySet="Трелювання_РУ_ГСМ">
           <ScalarProperty Name="C1_5" ColumnName="1,5" />
           <ScalarProperty Name="C0_97" ColumnName="0,97" />
           <ScalarProperty Name="C0_77" ColumnName="0,77" />
@@ -285,6 +431,52 @@
           <ScalarProperty Name="C0_24" ColumnName="0,24" />
           <ScalarProperty Name="C0_21" ColumnName="0,21" />
           <ScalarProperty Name="C0_18" ColumnName="0,18" />
+          <ScalarProperty Name="C0_16" ColumnName="0,16" />
+          <ScalarProperty Name="C0_14" ColumnName="0,14" />
+          <ScalarProperty Name="C0_12" ColumnName="0,12" />
+          <ScalarProperty Name="C0_1" ColumnName="0,1" />
+          <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+          <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Трелювання_РУ_Норма">
+      <EntityTypeMapping TypeName="БД_НарядModel.Трелювання_РУ_Норма">
+        <MappingFragment StoreEntitySet="Трелювання_РУ_Норма">
+          <ScalarProperty Name="C1_5" ColumnName="1,5" />
+          <ScalarProperty Name="C0_98" ColumnName="0,98" />
+          <ScalarProperty Name="C0_78" ColumnName="0,78" />
+          <ScalarProperty Name="C0_62" ColumnName="0,62" />
+          <ScalarProperty Name="C0_5" ColumnName="0,5" />
+          <ScalarProperty Name="C0_41" ColumnName="0,41" />
+          <ScalarProperty Name="C0_35" ColumnName="0,35" />
+          <ScalarProperty Name="C0_29" ColumnName="0,29" />
+          <ScalarProperty Name="C0_25" ColumnName="0,25" />
+          <ScalarProperty Name="C0_22" ColumnName="0,22" />
+          <ScalarProperty Name="C0_19" ColumnName="0,19" />
+          <ScalarProperty Name="C0_16" ColumnName="0,16" />
+          <ScalarProperty Name="C0_14" ColumnName="0,14" />
+          <ScalarProperty Name="C0_12" ColumnName="0,12" />
+          <ScalarProperty Name="C0_1" ColumnName="0,1" />
+          <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+          <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Трелювання_фанери_РУ_ГСМ">
+      <EntityTypeMapping TypeName="БД_НарядModel.Трелювання_фанери_РУ_ГСМ">
+        <MappingFragment StoreEntitySet="Трелювання_фанери_РУ_ГСМ">
+          <ScalarProperty Name="C1_5" ColumnName="1,5" />
+          <ScalarProperty Name="C1" ColumnName="1" />
+          <ScalarProperty Name="C0_79" ColumnName="0,79" />
+          <ScalarProperty Name="C0_62" ColumnName="0,62" />
+          <ScalarProperty Name="C0_5" ColumnName="0,5" />
+          <ScalarProperty Name="C0_41" ColumnName="0,41" />
+          <ScalarProperty Name="C0_35" ColumnName="0,35" />
+          <ScalarProperty Name="C0_29" ColumnName="0,29" />
+          <ScalarProperty Name="C0_25" ColumnName="0,25" />
+          <ScalarProperty Name="C0_22" ColumnName="0,22" />
+          <ScalarProperty Name="C0_19" ColumnName="0,19" />
           <ScalarProperty Name="C0_16" ColumnName="0,16" />
           <ScalarProperty Name="C0_14" ColumnName="0,14" />
           <ScalarProperty Name="C0_12" ColumnName="0,12" />

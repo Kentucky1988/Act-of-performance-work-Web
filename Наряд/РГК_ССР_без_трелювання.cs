@@ -17,12 +17,15 @@ namespace Наряд
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public РГК_ССР_без_трелювання()
         {
+            this.РГК_ССР_без_трелювання_ГСМ = new HashSet<РГК_ССР_без_трелювання_ГСМ>();
             this.РГК_ССР_без_трелювання_Норма = new HashSet<РГК_ССР_без_трелювання_Норма>();
         }
     
         public int Id_Вид_робіт { get; set; }
         public string Вид_робіт { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<РГК_ССР_без_трелювання_ГСМ> РГК_ССР_без_трелювання_ГСМ { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<РГК_ССР_без_трелювання_Норма> РГК_ССР_без_трелювання_Норма { get; set; }
     }

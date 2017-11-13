@@ -12,12 +12,12 @@ namespace Наряд
     using System;
     using System.Collections.Generic;
     
-    public partial class Трелювання_РУ_Норма
+    public partial class Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ
     {
         public int Вид_робітID { get; set; }
         public int Вид_робіт { get; set; }
-        public decimal C0_1 { get; set; }
         public decimal C0_12 { get; set; }
+        public decimal C0_13 { get; set; }
         public decimal C0_14 { get; set; }
         public decimal C0_16 { get; set; }
         public decimal C0_19 { get; set; }
@@ -30,8 +30,7 @@ namespace Наряд
         public decimal C0_62 { get; set; }
         public decimal C0_78 { get; set; }
         public decimal C0_98 { get; set; }
-        public decimal C1_5 { get; set; }
     
-        public virtual Трелювання_РУ Трелювання_РУ { get; set; }
+        public virtual Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР { get; set; }
     }
 }

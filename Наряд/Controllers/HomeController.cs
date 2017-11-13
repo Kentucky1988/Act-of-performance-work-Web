@@ -83,10 +83,11 @@ namespace Наряд.Controllers
 
         public JsonResult normWork(string table, string typeOfWork, string volumeWood)//норма выполнения робот
         {
-            double column = 0;
+            List<double> norm = new List<double>();
             double volumeWoods = 0;
 
             string tableNormOfWork;
+            string tableNormOfOil;
             using (БД_НарядEntities1 db = new БД_НарядEntities1())
             {
                 var tableNorm = db.Категорії_робіт.Where(a => a.Категорії_робіт1 == table)
@@ -95,8 +96,9 @@ namespace Наряд.Controllers
 
                 var oil = db.Категорії_робіт.Where(a => a.Категорії_робіт1 == table)
                                     .Select(a => a.ГСМ).ToList();
+                tableNormOfOil = oil[0];
 
-                if (oil[0] == "-")//если нет ГСМ, тогда пропескаем расчет с V хлиста и возращаем значение в колонке "Норма_віробітку"
+                if (oil[0] == "-")//если нет ГСМ, тогда пропускаем расчет с V хлиста и возращаем значение в колонке "Норма_віробітку"
                 {
                     var normID = db.Database.SqlQuery<int>(
                               $"SELECT Id_Вид_робіт FROM {table} WHERE Вид_робіт = N'{typeOfWork}'").ToList();
@@ -104,7 +106,9 @@ namespace Наряд.Controllers
                     var normList = db.Database.SqlQuery<decimal>(
                                   $"SELECT Норма_віробітку FROM {tableNormOfWork} WHERE Вид_робіт = '{normID[0]}'").ToList();
 
-                    return new JsonResult { Data = Convert.ToDouble(normList[0]), JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                    norm.Add(Convert.ToDouble(normList[0]));
+                    norm.Add(0);
+                    return new JsonResult { Data = norm, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
                 }
             }
 
@@ -114,14 +118,24 @@ namespace Наряд.Controllers
             }
             catch (Exception)
             {
-                return new JsonResult { Data = column, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                return new JsonResult { Data = norm, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
+
+            norm.Add(NormFromTable(table, tableNormOfWork, typeOfWork, volumeWoods)); //норма выроботка
+            norm.Add(NormFromTable(table, tableNormOfOil, typeOfWork, volumeWoods)); //норма расхода ГСМ
+
+            return new JsonResult { Data = norm, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
+        public double NormFromTable(string table, string tableNorm, string typeOfWork, double volumeWoods)//расчет норм выроботки и расхода ГСМ
+        {
+            double column = 0;
 
             List<string> properties = null;
             using (БД_НарядEntities1 db = new БД_НарядEntities1())
             {
                 var normList = db.Database.SqlQuery<string>(
-                                   $"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'{tableNormOfWork}'").ToList();
+                                   $"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'{tableNorm}'").ToList();
                 properties = normList;
             }
 
@@ -154,7 +168,7 @@ namespace Наряд.Controllers
                 }
             }
 
-            double normOfWork = 0;
+            double norm = 0;
 
             try
             {
@@ -166,17 +180,17 @@ namespace Наряд.Controllers
                               $"SELECT Id_Вид_робіт FROM {table} WHERE Вид_робіт = N'{typeOfWork}'").ToList();
 
                     var normList = db.Database.SqlQuery<decimal>(
-                                  $"SELECT [{amountOfWood}] FROM {tableNormOfWork} WHERE Вид_робіт = '{normID[0]}'").ToList();
+                                  $"SELECT [{amountOfWood}] FROM {tableNorm} WHERE Вид_робіт = '{normID[0]}'").ToList();
 
-                    normOfWork = Convert.ToDouble(normList[0]);
+                    norm = Convert.ToDouble(normList[0]);
                 }
             }
             catch (Exception)
             {
-                normOfWork = 0;
+                norm = 0;
             }
 
-            return new JsonResult { Data = normOfWork, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            return norm;
         }
 
         //[HttpPost]

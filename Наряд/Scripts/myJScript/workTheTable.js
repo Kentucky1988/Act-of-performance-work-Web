@@ -6,7 +6,7 @@
             url: '/home/normWork',
             data: { 'table': $('#productCategory').val(), 'typeOfWork': typeOfWork, 'volumeWood': $("#volumeWood").val() },
             success: function (norm) {
-                $('#norm').val(norm);
+                $('#norm').val(norm[0]);
             }
         });
     }

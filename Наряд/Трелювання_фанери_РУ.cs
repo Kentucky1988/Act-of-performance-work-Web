@@ -17,12 +17,15 @@ namespace Наряд
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Трелювання_фанери_РУ()
         {
+            this.Трелювання_фанери_РУ_ГСМ = new HashSet<Трелювання_фанери_РУ_ГСМ>();
             this.Трелювання_фанери_РУ_Норма = new HashSet<Трелювання_фанери_РУ_Норма>();
         }
     
         public int Id_Вид_робіт { get; set; }
         public string Вид_робіт { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Трелювання_фанери_РУ_ГСМ> Трелювання_фанери_РУ_ГСМ { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Трелювання_фанери_РУ_Норма> Трелювання_фанери_РУ_Норма { get; set; }
     }

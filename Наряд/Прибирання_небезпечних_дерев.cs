@@ -17,12 +17,15 @@ namespace Наряд
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Прибирання_небезпечних_дерев()
         {
+            this.Прибирання_небезпечних_дерев_ГСМ = new HashSet<Прибирання_небезпечних_дерев_ГСМ>();
             this.Прибирання_небезпечних_дерев_Норма = new HashSet<Прибирання_небезпечних_дерев_Норма>();
         }
     
         public int Id_Вид_робіт { get; set; }
         public string Вид_робіт { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Прибирання_небезпечних_дерев_ГСМ> Прибирання_небезпечних_дерев_ГСМ { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Прибирання_небезпечних_дерев_Норма> Прибирання_небезпечних_дерев_Норма { get; set; }
     }

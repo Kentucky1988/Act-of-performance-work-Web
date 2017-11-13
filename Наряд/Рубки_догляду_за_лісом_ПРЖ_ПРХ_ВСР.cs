@@ -17,12 +17,15 @@ namespace Наряд
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР()
         {
+            this.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ = new HashSet<Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ>();
             this.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма = new HashSet<Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма>();
         }
     
         public int Id_Вид_робіт { get; set; }
         public string Вид_робіт { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ> Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма> Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма { get; set; }
     }

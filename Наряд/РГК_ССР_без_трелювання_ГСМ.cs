@@ -12,26 +12,17 @@ namespace Наряд
     using System;
     using System.Collections.Generic;
     
-    public partial class Трелювання_РУ_Норма
+    public partial class РГК_ССР_без_трелювання_ГСМ
     {
         public int Вид_робітID { get; set; }
         public int Вид_робіт { get; set; }
-        public decimal C0_1 { get; set; }
-        public decimal C0_12 { get; set; }
-        public decimal C0_14 { get; set; }
-        public decimal C0_16 { get; set; }
-        public decimal C0_19 { get; set; }
-        public decimal C0_22 { get; set; }
         public decimal C0_25 { get; set; }
-        public decimal C0_29 { get; set; }
-        public decimal C0_35 { get; set; }
-        public decimal C0_41 { get; set; }
-        public decimal C0_5 { get; set; }
-        public decimal C0_62 { get; set; }
-        public decimal C0_78 { get; set; }
-        public decimal C0_98 { get; set; }
-        public decimal C1_5 { get; set; }
+        public decimal C0_32 { get; set; }
+        public decimal C0_39 { get; set; }
+        public decimal C0_49 { get; set; }
+        public decimal C0_75 { get; set; }
+        public decimal C1_1 { get; set; }
     
-        public virtual Трелювання_РУ Трелювання_РУ { get; set; }
+        public virtual РГК_ССР_без_трелювання РГК_ССР_без_трелювання { get; set; }
     }
 }

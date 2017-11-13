@@ -12,21 +12,19 @@ namespace Наряд
     using System;
     using System.Collections.Generic;
     
-    public partial class Трелювання_РУ
+    public partial class Вид_ГСМ
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Трелювання_РУ()
+        public Вид_ГСМ()
         {
-            this.Трелювання_РУ_ГСМ = new HashSet<Трелювання_РУ_ГСМ>();
-            this.Трелювання_РУ_Норма = new HashSet<Трелювання_РУ_Норма>();
+            this.Витрати_ГСМ = new HashSet<Витрати_ГСМ>();
         }
     
-        public int Id_Вид_робіт { get; set; }
-        public string Вид_робіт { get; set; }
+        public int Id_Палива { get; set; }
+        public string Вид_ГСМ1 { get; set; }
+        public decimal Ціні_палива { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Трелювання_РУ_ГСМ> Трелювання_РУ_ГСМ { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Трелювання_РУ_Норма> Трелювання_РУ_Норма { get; set; }
+        public virtual ICollection<Витрати_ГСМ> Витрати_ГСМ { get; set; }
     }
 }

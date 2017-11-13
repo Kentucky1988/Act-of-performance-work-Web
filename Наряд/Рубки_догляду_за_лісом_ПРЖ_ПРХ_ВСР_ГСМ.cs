@@ -12,10 +12,20 @@ namespace Наряд
     using System;
     using System.Collections.Generic;
     
-    public partial class Трелювання_РУ_Норма
+    public partial class Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ
     {
         public int Вид_робітID { get; set; }
         public int Вид_робіт { get; set; }
+        public decimal C0_035 { get; set; }
+        public decimal C0_04 { get; set; }
+        public decimal C0_045 { get; set; }
+        public decimal C0_05 { get; set; }
+        public decimal C0_055 { get; set; }
+        public decimal C0_06 { get; set; }
+        public decimal C0_065 { get; set; }
+        public decimal C0_07 { get; set; }
+        public decimal C0_08 { get; set; }
+        public decimal C0_09 { get; set; }
         public decimal C0_1 { get; set; }
         public decimal C0_12 { get; set; }
         public decimal C0_14 { get; set; }
@@ -32,6 +42,6 @@ namespace Наряд
         public decimal C0_98 { get; set; }
         public decimal C1_5 { get; set; }
     
-        public virtual Трелювання_РУ Трелювання_РУ { get; set; }
+        public virtual Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР { get; set; }
     }
 }

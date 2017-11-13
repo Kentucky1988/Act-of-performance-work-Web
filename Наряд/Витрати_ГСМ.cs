@@ -12,18 +12,14 @@ namespace Наряд
     using System;
     using System.Collections.Generic;
     
-    public partial class Категорії_робіт
+    public partial class Витрати_ГСМ
     {
-        public int Категорії_робітID { get; set; }
-        public string Категорії_робіт1 { get; set; }
-        public string Норма_віробітку { get; set; }
-        public string ГСМ { get; set; }
-        public string Комплексна_индивідуальна { get; set; }
-        public int РозцінкаID { get; set; }
-        public string Одиниця_виміру { get; set; }
+        public int Id_ВитратГСМ { get; set; }
         public int Id_механізма { get; set; }
+        public int Id_Палива { get; set; }
+        public decimal Витрати_ГСМ__ { get; set; }
     
-        public virtual Денна_тарифна_ставка Денна_тарифна_ставка { get; set; }
+        public virtual Вид_ГСМ Вид_ГСМ { get; set; }
         public virtual Механізми Механізми { get; set; }
     }
 }
