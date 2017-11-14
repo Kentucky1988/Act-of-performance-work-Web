@@ -1,6 +1,5 @@
 ﻿function normOfWork(typeOfWork) {//норма выроботки
     if ($('#productCategory').val() != 0 && $("#volumeWood").val() != 0) {
-
         $.ajax({
             type: "GET",
             url: '/home/normWork',
@@ -39,34 +38,43 @@ function RankActiv() {//выпадающий список разряд робо�
 };
 
 function pricingUnit() {//расценка за единицу   
-    $.ajax({
-        type: "GET",
-        url: '/home/PricingUnit',
-        data: { 'pricingID': pricingID, 'rank': $("#Rank").val() },
-        success: function (unitPrice) {
-            $('#UnitPrice').val(unitPrice);           
-            var executed = $('#executedNorm').val();
-            var price = unitPrice;
-           // alert(executed + "*" + unitPrice + "=" + executed * price);
-            $('#Sum').val((executed * price).toFixed(2)); 
-        }
-    });
+    if ($('#productCategory').val() != 0 && ((typeOfBrigade == "індивідуальна" && $('#Rank').val() > 0) || typeOfBrigade == "комплексна")) {
+        $.ajax({
+            type: "GET",
+            url: '/home/PricingUnit',
+            data: { 'pricingID': pricingID, 'rank': $("#Rank").val() },
+            success: function (unitPrice) {
+                $('#UnitPrice').val(unitPrice);
+                var executed = $('#executedNorm').val();
+                var price = unitPrice;
+                // alert(executed + "*" + unitPrice + "=" + executed * price);
+                if (executed != 0) {
+                    $('#Sum').val((executed * price).toFixed(2));
+                }
+            }
+        });
+    }
 };
 
 $("#volumeWood").change(function () {// событие на изминеие обьема хлыста   
     normOfWork($('#product').val());
+    $("#executed").change();
 });
 
 $("#productCategory").change(function () {// событие на изминеие категории работ
     LoadProduct(this);
     Unit($('#productCategory').val());
+    $('.tbodyTable .quantity').not('#Unit').val('');//очистка 1 строки
+});
+
+$("#Rank").change(function () {// событие на изминеие ячейки Разряд робот
+    pricingUnit();//найти в БД расценку за единицу    
 });
 
 $("#executed").change(function () {// событие на изминеие ячейки выполнено    
     if ($('#executed').val() != 0 && $('#norm').val() != 0) {// расчет выполненно норм   
         $('#executedNorm').val(($('#executed').val().replace(',', '.') / $('#norm').val()).toFixed(3));
     }
-
     pricingUnit();//найти в БД расценку за единицу    
 });
 

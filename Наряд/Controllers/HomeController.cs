@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Linq.Dynamic;
 using System.Web.DynamicData;
+using Наряд.ExtendedModel;
 
 namespace Наряд.Controllers
 {
@@ -83,11 +84,12 @@ namespace Наряд.Controllers
 
         public JsonResult normWork(string table, string typeOfWork, string volumeWood)//норма выполнения робот
         {
-            List<double> norm = new List<double>();
+            NormFromDB normFromDB = new NormFromDB();
+            ArrayList norm = new ArrayList();
             double volumeWoods = 0;
-
             string tableNormOfWork;
             string tableNormOfOil;
+
             using (БД_НарядEntities1 db = new БД_НарядEntities1())
             {
                 var tableNorm = db.Категорії_робіт.Where(a => a.Категорії_робіт1 == table)
@@ -96,20 +98,17 @@ namespace Наряд.Controllers
 
                 var oil = db.Категорії_робіт.Where(a => a.Категорії_робіт1 == table)
                                     .Select(a => a.ГСМ).ToList();
-                tableNormOfOil = oil[0];
+                tableNormOfOil = oil[0];              
+            }
 
-                if (oil[0] == "-")//если нет ГСМ, тогда пропускаем расчет с V хлиста и возращаем значение в колонке "Норма_віробітку"
-                {
-                    var normID = db.Database.SqlQuery<int>(
-                              $"SELECT Id_Вид_робіт FROM {table} WHERE Вид_робіт = N'{typeOfWork}'").ToList();
+            if (tableNormOfOil == "-")//если нет ГСМ, тогда пропускаем расчет с V хлиста и возращаем значение в колонке "Норма_віробітку"
+            {
+                string str = "Норма_віробітку";
+                normFromDB.Norm(str, table, tableNormOfWork, typeOfWork);
 
-                    var normList = db.Database.SqlQuery<decimal>(
-                                  $"SELECT Норма_віробітку FROM {tableNormOfWork} WHERE Вид_робіт = '{normID[0]}'").ToList();
-
-                    norm.Add(Convert.ToDouble(normList[0]));
-                    norm.Add(0);
-                    return new JsonResult { Data = norm, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-                }
+                norm.Add(normFromDB.Norm(str, table, tableNormOfWork, typeOfWork));
+                norm.Add(0);
+                return new JsonResult { Data = norm, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
 
             try
@@ -120,78 +119,20 @@ namespace Наряд.Controllers
             {
                 return new JsonResult { Data = norm, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
+           
+            norm.Add(normFromDB.NormFromTable(table, tableNormOfWork, typeOfWork, volumeWoods)); //норма выроботка
+            double normOil = normFromDB.NormFromTable(table, tableNormOfOil, typeOfWork, volumeWoods); //норма расхода ГСМ
 
-            norm.Add(NormFromTable(table, tableNormOfWork, typeOfWork, volumeWoods)); //норма выроботка
-            norm.Add(NormFromTable(table, tableNormOfOil, typeOfWork, volumeWoods)); //норма расхода ГСМ
+            NormOil oilCalculation = new NormOil();
+            List<Oil> collectionOilCosts = oilCalculation.CollectionOilCosts(table, normOil);
+                       
+            norm.Add(collectionOilCosts);
+            norm.Add(все види топлива); //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             return new JsonResult { Data = norm, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
-        public double NormFromTable(string table, string tableNorm, string typeOfWork, double volumeWoods)//расчет норм выроботки и расхода ГСМ
-        {
-            double column = 0;
-
-            List<string> properties = null;
-            using (БД_НарядEntities1 db = new БД_НарядEntities1())
-            {
-                var normList = db.Database.SqlQuery<string>(
-                                   $"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'{tableNorm}'").ToList();
-                properties = normList;
-            }
-
-            int columnNumber = 0;
-            for (; columnNumber < properties.Count; columnNumber++)
-            {
-                double columName = 0;
-                double nextColumName = 0;
-
-                try
-                {
-                    columName = double.Parse(properties[columnNumber].Replace('_', ','));
-                    nextColumName = double.Parse(properties[columnNumber + 1].Replace('_', ','));
-                }
-                catch (Exception)
-                {
-                    continue;
-                }
-
-                if (columName < volumeWoods && nextColumName >= volumeWoods)
-                {
-                    column = nextColumName;
-                    columnNumber++;
-                    break;
-                }
-                else if (volumeWoods <= columName)
-                {
-                    column = columName;
-                    break;
-                }
-            }
-
-            double norm = 0;
-
-            try
-            {
-                string amountOfWood = properties[columnNumber];
-
-                using (БД_НарядEntities1 db = new БД_НарядEntities1())
-                {
-                    var normID = db.Database.SqlQuery<int>(
-                              $"SELECT Id_Вид_робіт FROM {table} WHERE Вид_робіт = N'{typeOfWork}'").ToList();
-
-                    var normList = db.Database.SqlQuery<decimal>(
-                                  $"SELECT [{amountOfWood}] FROM {tableNorm} WHERE Вид_робіт = '{normID[0]}'").ToList();
-
-                    norm = Convert.ToDouble(normList[0]);
-                }
-            }
-            catch (Exception)
-            {
-                norm = 0;
-            }
-
-            return norm;
-        }
+        
 
         //[HttpPost]
         //public JsonResult save(OrderMaster order)

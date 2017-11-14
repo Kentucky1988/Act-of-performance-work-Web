@@ -136,7 +136,8 @@
 
     $(".tbodyTable .autocompleteCombobox").combobox({ //событие ни изминение значения выпадающего списка
         select: function (event, ui) {                // расчет норм
-            normOfWork(this.value);           
+            normOfWork(this.value);    
+            $("#executed").change();
         }   
     });
 });

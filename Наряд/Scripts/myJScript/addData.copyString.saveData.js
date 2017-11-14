@@ -144,6 +144,7 @@ $(document).ready(function () {
             $('span.error', $newRow).remove();
             $('input.custom-combobox-input', $table).val('');
             //$('#productCategory', $table).val('0');
+            $('#Rank', $table).not('#Unit').val('');
             $('.quantity', $table).not('#Unit').val('');
             $('#orderItemError', $table).empty();
         }
