@@ -27,6 +27,15 @@ namespace Наряд.Controllers
             }
         }
 
+        public JsonResult getcolectionSortOil()
+        {
+            using (БД_НарядEntities1 dc = new БД_НарядEntities1())
+            {
+                var colectionSortOil = dc.Вид_ГСМ.OrderBy(a => a.Вид_ГСМ1).Select(a => a.Вид_ГСМ1).ToList();
+                return new JsonResult { Data = colectionSortOil, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+        }
+
         public JsonResult TypeOfFelling()
         {
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
@@ -86,25 +95,12 @@ namespace Наряд.Controllers
         {
             NormFromDB normFromDB = new NormFromDB();
             ArrayList norm = new ArrayList();
-            double volumeWoods = 0;
-            string tableNormOfWork;
-            string tableNormOfOil;
+                       
+            string tableNormOfWork = normFromDB.TableNorm(table);    
 
-            using (БД_НарядEntities1 db = new БД_НарядEntities1())
+            if (new NormOil().TableNormOfOil(table) == "-")//если нет ГСМ, тогда пропускаем расчет с V хлиста и возращаем значение в колонке "Норма_віробітку"
             {
-                var tableNorm = db.Категорії_робіт.Where(a => a.Категорії_робіт1 == table)
-                                    .Select(a => a.Норма_віробітку).ToList();
-                tableNormOfWork = tableNorm[0];
-
-                var oil = db.Категорії_робіт.Where(a => a.Категорії_робіт1 == table)
-                                    .Select(a => a.ГСМ).ToList();
-                tableNormOfOil = oil[0];              
-            }
-
-            if (tableNormOfOil == "-")//если нет ГСМ, тогда пропускаем расчет с V хлиста и возращаем значение в колонке "Норма_віробітку"
-            {
-                string str = "Норма_віробітку";
-                normFromDB.Norm(str, table, tableNormOfWork, typeOfWork);
+                string str = "Норма_віробітку";               
 
                 norm.Add(normFromDB.Norm(str, table, tableNormOfWork, typeOfWork));
                 norm.Add(0);
@@ -113,49 +109,65 @@ namespace Наряд.Controllers
 
             try
             {
-                volumeWoods = Convert.ToDouble(volumeWood.Replace('.', ','));
+                volumeWood = volumeWood.Replace('.', ',');
             }
             catch (Exception)
             {
-                return new JsonResult { Data = norm, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                return new JsonResult { Data = 0, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
            
-            norm.Add(normFromDB.NormFromTable(table, tableNormOfWork, typeOfWork, volumeWoods)); //норма выроботка
-            double normOil = normFromDB.NormFromTable(table, tableNormOfOil, typeOfWork, volumeWoods); //норма расхода ГСМ
-
-            NormOil oilCalculation = new NormOil();
-            List<Oil> collectionOilCosts = oilCalculation.CollectionOilCosts(table, normOil);
-                       
-            norm.Add(collectionOilCosts);
-            norm.Add(все види топлива); //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+            norm.Add(normFromDB.NormFromTable(table, tableNormOfWork, typeOfWork, volumeWood)); //норма выроботка   
             return new JsonResult { Data = norm, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
-        
 
-        //[HttpPost]
-        //public JsonResult save(OrderMaster order)
-        //{
-        //    bool status = false;
-        //    DateTime dateOrg;
-        //    var isValidDate = DateTime.TryParseExact(order.OrderDateString, "mm-dd-yyyy", null, System.Globalization.DateTimeStyles.None, out dateOrg);
-        //    if (isValidDate)
-        //    {
-        //        order.OrderDate = dateOrg;
-        //    }
+        public JsonResult CollectionOilCosts(string table, string typeOfWork, string volumeWood, string executed)//нормарасхода ГСМ
+        {
+            NormOil oilCalculation = new NormOil();
 
-        //    var isValidModel = TryUpdateModel(order);
-        //    if (isValidModel)
-        //    {
-        //        using (БД_НарядEntities1 dc = new БД_НарядEntities1())
-        //        {
-        //            dc.OrderMaster.Add(order);
-        //            dc.SaveChanges();
-        //            status = true;
-        //        }
-        //    }
-        //    return new JsonResult { Data = new { status = status } };
-        //}
-    }
+            try
+            {
+                volumeWood = volumeWood.Replace('.', ',');
+                executed = executed.Replace('.', ',');
+            }
+            catch (Exception)
+            {
+                return new JsonResult { Data = 0, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+
+            string tableNormOil = oilCalculation.TableNormOfOil(table);
+            double normOil = new NormFromDB().NormFromTable(table, tableNormOil, typeOfWork, volumeWood); //норма расхода ГСМ      
+
+            double fuelCosts = Convert.ToDouble(executed) * normOil;//расход топлива
+            List<Oil> collectionOilCosts = oilCalculation.CollectionOilCosts(table, fuelCosts);
+            
+            return new JsonResult { Data = collectionOilCosts, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
+
+
+            //[HttpPost]
+            //public JsonResult save(OrderMaster order)
+            //{
+            //    bool status = false;
+            //    DateTime dateOrg;
+            //    var isValidDate = DateTime.TryParseExact(order.OrderDateString, "mm-dd-yyyy", null, System.Globalization.DateTimeStyles.None, out dateOrg);
+            //    if (isValidDate)
+            //    {
+            //        order.OrderDate = dateOrg;
+            //    }
+
+            //    var isValidModel = TryUpdateModel(order);
+            //    if (isValidModel)
+            //    {
+            //        using (БД_НарядEntities1 dc = new БД_НарядEntities1())
+            //        {
+            //            dc.OrderMaster.Add(order);
+            //            dc.SaveChanges();
+            //            status = true;
+            //        }
+            //    }
+            //    return new JsonResult { Data = new { status = status } };
+            //}
+        }
 }

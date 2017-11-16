@@ -135,8 +135,9 @@
     });
 
     $(".tbodyTable .autocompleteCombobox").combobox({ //событие ни изминение значения выпадающего списка
-        select: function (event, ui) {                // расчет норм
-            normOfWork(this.value);    
+        select: function (event, ui) {               
+            normOfWork(this.value);  // расчет норм
+            pricingUnit();           //единицы измерения
             $("#executed").change();
         }   
     });

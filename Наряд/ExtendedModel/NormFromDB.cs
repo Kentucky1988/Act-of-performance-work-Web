@@ -5,14 +5,24 @@ using System.Web;
 
 namespace Наряд.ExtendedModel
 {
-	public class NormFromDB
-	{
-        public double NormFromTable(string table, string tableNorm, string typeOfWork, double volumeWoods)
-        {           
+    public class NormFromDB
+    {
+        public string TableNorm(string table)
+        {
+            using (БД_НарядEntities1 db = new БД_НарядEntities1())
+            {
+                var tableNorm = db.Категорії_робіт.Where(a => a.Категорії_робіт1 == table)
+                                    .Select(a => a.Норма_віробітку).ToList();
+                return tableNorm[0];
+            }
+        }
+
+        public double NormFromTable(string table, string tableNorm, string typeOfWork, string volumeWood)
+        {
             List<string> properties = ColumnList(tableNorm);
-            int columnNumber = ColumnNumber(properties, volumeWoods);
+            int columnNumber = ColumnNumber(properties, double.Parse(volumeWood));
             string amountOfWood = properties[columnNumber];
-            return Norm(amountOfWood, table, tableNorm, typeOfWork);           
+            return Norm(amountOfWood, table, tableNorm, typeOfWork);
         }
 
         public List<string> ColumnList(string tableNorm)//получаем список колонок в таблице
@@ -25,7 +35,7 @@ namespace Наряд.ExtendedModel
             }
         }
 
-        public int ColumnNumber(List<string> properties, double volumeWoods)//получение имени колонки, которая соответствует Vср
+        public int ColumnNumber(List<string> properties, double volumeWood)//получение имени колонки, которая соответствует Vср
         {
             double column = 0;
             int columnNumber = 0;
@@ -44,13 +54,13 @@ namespace Наряд.ExtendedModel
                     continue;
                 }
 
-                if (columName < volumeWoods && nextColumName >= volumeWoods)
+                if (columName < volumeWood && nextColumName >= volumeWood)
                 {
                     column = nextColumName;
                     columnNumber++;
                     break;
                 }
-                else if (volumeWoods <= columName)
+                else if (volumeWood <= columName)
                 {
                     column = columName;
                     break;
@@ -64,7 +74,7 @@ namespace Наряд.ExtendedModel
             double norm = 0;
 
             try
-            {               
+            {
                 using (БД_НарядEntities1 db = new БД_НарядEntities1())
                 {
                     var normID = db.Database.SqlQuery<int>(
@@ -93,7 +103,17 @@ namespace Наряд.ExtendedModel
 
     public class NormOil
     {
-        public List<Oil> CollectionOilCosts(string table, double normOil)// расхода ГСМ по видам
+        public string TableNormOfOil(string table)
+        {
+            using (БД_НарядEntities1 db = new БД_НарядEntities1())
+            {
+                var oil = db.Категорії_робіт.Where(a => a.Категорії_робіт1 == table)
+                                    .Select(a => a.ГСМ).ToList();
+                return oil[0];
+            }
+        }
+
+        public List<Oil> CollectionOilCosts(string table, double fuelCosts)//колекция расхода ГСМ по видам
         {
             List<Oil> collectionOilCosts = new List<Oil>();
 
@@ -109,12 +129,11 @@ namespace Наряд.ExtendedModel
                 {
                     var typeOil = db.Вид_ГСМ.Where(a => a.Id_Палива == oil.Id_Палива)
                                                  .Select(a => a.Вид_ГСМ1).ToList(); //название топлива                   
-                    double oilCosts = Convert.ToDouble(oil.Витрати_ГСМ__) * normOil / 100; //расход топлива
+                    double oilCosts = Math.Round((Convert.ToDouble(oil.Витрати_ГСМ__) / 100) * fuelCosts, 3); //расход ГСМ
 
                     collectionOilCosts.Add(new Oil { Вид_палива = typeOil[0], Витрити_ГСМ = oilCosts });
                 }
             }
-
             return collectionOilCosts;
         }
     }

@@ -1,4 +1,6 @@
-﻿function normOfWork(typeOfWork) {//норма выроботки
+﻿var typeOfWork;//вид робот
+function normOfWork(element) {//норма выроботки
+    typeOfWork = element;
     if ($('#productCategory').val() != 0 && $("#volumeWood").val() != 0) {
         $.ajax({
             type: "GET",
@@ -28,8 +30,7 @@ function Unit(element) { //единица измерения
     });
 };
 
-function RankActiv() {//выпадающий список разряд робот Активный/Неактивный
-    //alert(typeOfBrigade);
+function RankActiv() {//выпадающий список разряд робот Активный/Неактивный   
     if (typeOfBrigade == "комплексна") {
         $('#Rank').val(" ").prop("disabled", true)
     } else if (typeOfBrigade == "індивідуальна") {
@@ -45,12 +46,6 @@ function pricingUnit() {//расценка за единицу
             data: { 'pricingID': pricingID, 'rank': $("#Rank").val() },
             success: function (unitPrice) {
                 $('#UnitPrice').val(unitPrice);
-                var executed = $('#executedNorm').val();
-                var price = unitPrice;
-                // alert(executed + "*" + unitPrice + "=" + executed * price);
-                if (executed != 0) {
-                    $('#Sum').val((executed * price).toFixed(2));
-                }
             }
         });
     }
@@ -74,8 +69,8 @@ $("#Rank").change(function () {// событие на изминеие ячей�
 $("#executed").change(function () {// событие на изминеие ячейки выполнено    
     if ($('#executed').val() != 0 && $('#norm').val() != 0) {// расчет выполненно норм   
         $('#executedNorm').val(($('#executed').val().replace(',', '.') / $('#norm').val()).toFixed(3));
+        $('#Sum').val(($('#executedNorm').val() * $('#UnitPrice').val()).toFixed(2));
     }
-    pricingUnit();//найти в БД расценку за единицу    
 });
 
 function columnSum() {//сумма строк   
@@ -97,8 +92,14 @@ function columnSum() {//сумма строк
 };
 
 $(document).ready(function () {
+    LoadCategory($('#productCategory'));
     typeOfFelling($('#typeOfFelling'));
+    ColectionSortOil();
 });
+
+$('.materials').each(function () {//выпадающий список сыря и материалов
+    LoadMaterials($(this));
+})
 
 var TypeOfFelling = []
 function typeOfFelling(element) {//вид рубок
@@ -120,6 +121,60 @@ function rendertypeOfFelling(element) {//создание списка кате�
         $ele.append($('<option/>').text(val));
     })
 }
+
+var colectionSortOil = []
+function ColectionSortOil() {// виды ГСМ
+    $.ajax({
+        type: "GET",
+        url: '/home/getcolectionSortOil',
+        success: function (data) {
+            //colectionSortOil = data;
+            $(data).each(function (i, val) {
+                colectionSortOil.push({ 'Вид_палива': val, 'Витрити_ГСМ': 0 });
+            })           
+        }
+    })
+}
+
+var CollectionOilCosts = []
+function collectionOilCosts() {//колекция расхода ГСМ
+    $.ajax({
+        type: "GET",
+        url: '/home/CollectionOilCosts',
+        data: {
+            'table': $('#productCategory').val(), 'typeOfWork': typeOfWork, 'volumeWood': $("#volumeWood").val(), 'executed': $("#executed").val()
+        },
+        success: function (data) {
+            CollectionOilCosts.push(data);
+            countValColectionSortOil();//подсчет расхода ГСМ по строкам
+        }
+    })
+}
+
+function countValColectionSortOil() {//подсчет расхода ГСМ по строкам
+    $(colectionSortOil).each(function (iSort, valSort) {
+        this['Витрити_ГСМ'] = 0;
+        $(CollectionOilCosts).each(function (iCosts, valCosts) {
+            $(this).each(function (i, val) {
+                if (colectionSortOil[iSort]['Вид_палива'] == this['Вид_палива']) {
+                    colectionSortOil[iSort]['Витрити_ГСМ'] += this['Витрити_ГСМ'];
+                }
+            })
+        })
+    })
+}
+
+function deleteValCollectionOilCosts() {//удаление обекта из колекции при удалеине строки
+
+    
+}
+
+
+$('#submit').click(function myfunction() {
+    alert(colectionSortOil[1]['Вид_палива'] + '/' + colectionSortOil[1]['Витрити_ГСМ']);
+})
+
+
 
 
 
