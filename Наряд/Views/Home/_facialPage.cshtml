@@ -162,40 +162,35 @@
     <div align="center">
         <h4>Витрачено сировини, матеріалів та відходів виробництва</h4>
     </div>
-    <div class="details">
+    <div class="material">
         <table class="table-bordered table-hover">
             <thead>
                 <tr>
                     <td rowspan="2">Найменування сировини, матеріалів та на що витрачено</td>
                     <td rowspan="2">Одиниця виміру</td>
                     <td colspan="2">Кількість</td>
-                    <td rowspan="2">Вартість</td>
-                    <td rowspan="2">Добавити<br />строку</td>
+                    <td rowspan="2">Вартість</td>   
+                    <td rowspan="2">Найменування сировини, матеріалів та на що витрачено</td>
+                    <td rowspan="2">Одиниця виміру</td>
+                    <td colspan="2">Кількість</td>
+                    <td rowspan="2">Вартість</td> 
                 </tr>
                 <tr>
                     <td>по нормі</td>
                     <td>фактично</td>
+                    <td>по нормі</td>
+                    <td>фактично</td>
                 </tr>
             </thead>
-            <tbody class="tbodyTable">
+            <tbody>
                 <!--тело таблицы-->
-                <tr class="mycontainer quantity" id="mainrow" align="center">
-                    <td>
-                        <!--выпадающий список материалы, сырье-->
-                        <select class="pc autocompleteCombobox materials quantity">
-                            <option></option>
-                        </select>
-                    </td>
+                @*<tr>
+                    <td id="nameOil"/> 
+                    <td id="unitOil"/>  
+                    <td id="quantityNormal"/>  
                     <td> <input type="text" class="quantity" /> </td>
-                    <td> <input type="text" class="quantity" /> </td>
-                    <td> <input type="text" class="quantity" /> </td>
-                    <td> <input type="text" class="quantity" /> </td>
-                    <td>
-                        <button class="btn btn-success add">
-                            <span id="addIcon" class="glyphicon glyphicon-plus" />
-                        </button> <!--кнопка добавления строки-->
-                    </td>
-                </tr>
+                    <td/>                     
+                </tr>*@
             </tbody>
         </table>
     </div>

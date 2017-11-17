@@ -138,17 +138,23 @@ function copyString(element) {
     }
 }
 
-//Удаление строки
-$('.tbodyTable').each(function () {
-
-    $(this).on('click', '.remove', function () {
-        var $obj = $(this).parents('.tbodyTable').next().is("tfoot");
-        $(this).parents('tr').remove();
+$('.tbodyTable').each(function () { 
+    $(this).on('click', '.remove', function () {   //событие на нажатие кнопки удалить строку 
+       var indexDeleteElement = $('.tbodyTable tr:not(:first)').index($(this).parents('tr'))//получить номер удаляемой строки
+       var $obj = $(this).parents('.tbodyTable').next().is("tfoot");
+       deleteTr(this);//Удаление строки      
+       deleteValCollectionOilCosts(indexDeleteElement);//удаление обекта из колекции расход ГСМ при удалеине строки
+       countValColectionSortOil();//пересчитать расхода ГСМ по строкам
+       addStringDetails(colectionSortOil);//пересчитать строки расход материалов
         if ($obj) {
-            columnSum(); //перещитать сумму строк после удаленных
-        }
+            columnSum(); //пересчитать сумму строк после удаленных
+       } 
     })
 });
+
+function deleteTr(element) {//Удаление строки
+    $(element).parents('tr').remove();
+}
 
  //Сохранить
  //$('#submit').click(function () {

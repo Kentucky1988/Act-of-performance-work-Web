@@ -122,7 +122,7 @@ function rendertypeOfFelling(element) {//создание списка кате�
     })
 }
 
-var colectionSortOil = []
+var colectionSortOil = []  //колекция расхода ГСМ по видам
 function ColectionSortOil() {// виды ГСМ
     $.ajax({
         type: "GET",
@@ -131,13 +131,13 @@ function ColectionSortOil() {// виды ГСМ
             //colectionSortOil = data;
             $(data).each(function (i, val) {
                 colectionSortOil.push({ 'Вид_палива': val, 'Витрити_ГСМ': 0 });
-            })           
+            })
         }
     })
 }
 
-var CollectionOilCosts = []
-function collectionOilCosts() {//колекция расхода ГСМ
+var CollectionOilCosts = [] //колекция расхода ГСМ по строкам
+function collectionOilCosts() { //расхода ГСМ по строке
     $.ajax({
         type: "GET",
         url: '/home/CollectionOilCosts',
@@ -146,12 +146,13 @@ function collectionOilCosts() {//колекция расхода ГСМ
         },
         success: function (data) {
             CollectionOilCosts.push(data);
-            countValColectionSortOil();//подсчет расхода ГСМ по строкам
+            countValColectionSortOil();//подсчет расхода ГСМ по видам
+            addStringDetails(colectionSortOil);//посчитать строки расход материалов
         }
     })
 }
 
-function countValColectionSortOil() {//подсчет расхода ГСМ по строкам
+function countValColectionSortOil() {//подсчет расхода ГСМ по видам
     $(colectionSortOil).each(function (iSort, valSort) {
         this['Витрити_ГСМ'] = 0;
         $(CollectionOilCosts).each(function (iCosts, valCosts) {
@@ -164,9 +165,63 @@ function countValColectionSortOil() {//подсчет расхода ГСМ по
     })
 }
 
-function deleteValCollectionOilCosts() {//удаление обекта из колекции при удалеине строки
+function deleteValCollectionOilCosts(indexDeleteElement) {//удаление обекта из колекции /расход ГСМ по строкам/ при удалеине строки
+    CollectionOilCosts.splice(indexDeleteElement, 1);
+}
 
-    
+function notNullInColection(colection) {//убрать из колекции /расхода ГСМ по видам/ пустые поля 
+    var colectionSortOilNotNull = []
+    $(colection).each(function () {
+        alert(this['Витрити_ГСМ']);
+        if (this['Витрити_ГСМ'] > 0) {
+            colectionSortOilNotNull.push({ 'Вид_палива': this['Вид_палива'], 'Витрити_ГСМ': this['Витрити_ГСМ'] });
+        }
+    })
+    return colectionSortOilNotNull;
+}
+
+function addStringDetails(colection) {//добавить строку в расход материалов
+    var index = 0;
+    var $table = $('.material tbody');
+    $('tr', $table).remove();
+
+    for (var i = 0; i <= colection.length; i++) {
+
+        var typeOil, unit, consumption, td_input, td;
+
+        if (i < colection.length && colection[i]['Витрити_ГСМ'] > 0) {
+            typeOil = colection[i]['Вид_палива'];
+            unit = "кг";
+            consumption = colection[i]['Витрити_ГСМ'].toFixed(3);
+            td_input = "<td><input type='text'/></td>";
+            td = "<td/>";
+
+            addString($table, index, typeOil, unit, consumption, td_input, td);
+            index++;
+        } else if (i == colection.length) {
+            typeOil = "";
+            unit = "";
+            consumption = "";
+            td_input = "<td/>";
+            td = "<td/>";
+
+            addString($table, index, typeOil, unit, consumption, td_input, td);
+            index++;
+        }       
+    }
+}
+
+function addString($table, index, typeOil, unit, consumption, td_input, td) {
+
+    if (index == 0 || index % 2 == 0) {
+        $("<tr>").appendTo($table);//добавляем нижнюю строку  
+    }
+
+    $("<td/>", { text: typeOil }).appendTo($("tr:last", $table));
+    $("<td/>", { text: unit }).appendTo($("tr:last", $table));
+    $("<td/>", { text: consumption }).appendTo($("tr:last", $table));
+    $(td_input).appendTo($("tr:last", $table));
+    $(td).appendTo($("tr:last", $table));
 }
 
 
