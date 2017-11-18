@@ -205,6 +205,9 @@
     <Compile Include="Механізми.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
+    <Compile Include="Найменування_заходу.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
     <Compile Include="Освітлення_механічним_способом.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
@@ -218,6 +221,15 @@
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
     <Compile Include="Погрузка_Норма.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Поправочний_коефіцієнт.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Поправочний_коефіцієнт_Переїзд.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Поправочний_коефіцієнт_Перешкоди.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
     <Compile Include="Прибирання_небезпечних_дерев.cs">

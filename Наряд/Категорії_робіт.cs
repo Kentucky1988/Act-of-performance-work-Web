@@ -15,6 +15,7 @@ namespace Наряд
     public partial class Категорії_робіт
     {
         public int Категорії_робітID { get; set; }
+        public int Найменування_заходуID { get; set; }
         public string Категорії_робіт1 { get; set; }
         public string Норма_віробітку { get; set; }
         public string ГСМ { get; set; }
@@ -25,5 +26,6 @@ namespace Наряд
     
         public virtual Денна_тарифна_ставка Денна_тарифна_ставка { get; set; }
         public virtual Механізми Механізми { get; set; }
+        public virtual Найменування_заходу Найменування_заходу { get; set; }
     }
 }

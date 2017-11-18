@@ -1,87 +1,36 @@
-﻿var Categories = []
-//fetch categories from database
-function LoadCategory(element) {
-    if (Categories.length == 0) {
-        //ajax function for fetch data
-        $.ajax({
-            type: "GET",
-            url: '/home/getCategories',
-            success: function (data) {
-                Categories = data;
-                renderCategory(element);
-            }
-        })
-    }
-    else {
-        //render catagory to the element
-        renderCategory(element);
-    }
+﻿
+function LoadCategory(element, val) {//категории робот
+    $.ajax({
+        type: "GET",
+        url: '/home/getCategories',
+        data: { 'valueWorksTitlee': val },
+        success: function (data) {
+            renderCategory(element, data);
+        }
+    })
 }
 
-function renderCategory(element) {//создание списка категорий
+function renderCategory(element, List) {//создание списка категорий
     var $ele = $(element);
     $ele.empty();
-    $ele.append($('<option/>').val('0').text('Вибрати'));
-    $.each(Categories, function (i, val) {
+    $ele.append($('<option/>').text('Вибрати'));
+    $.each(List, function (i, val) {
         $ele.append($('<option/>').text(val));
     })
 }
 
-//вид робот
-var TypeOfWork = []
-function LoadProduct(element) {
-    if (TypeOfWork.length == 0) {
-        $.ajax({
-            type: "GET",
-            url: "/home/getTypeOfWork",
-            data: { 'categoryOfWork': $(element).val() },
-            success: function (data) {
+function LoadProduct(element) {//вид робот
+    $.ajax({
+        type: "GET",
+        url: "/home/getTypeOfWork",
+        data: { 'categoryOfWork': $(element).val() },
+        success: function (data) {
+            element = $(element).parents('.mycontainer').find('select#product');
+            renderCategory(element, data);
 
-                //render products to appropriate dropdown
-                renderProduct($(element).parents('.mycontainer').find('select.product'), data);
-            },
-            error: function (error) {
-                console.log(error);
-            }
-        })
-    }
-    else {
-        renderProduct(element);
-    }
-}
-
-function renderProduct(element, data) {//создание ведомого списка   
-    var $ele = $(element);
-    $ele.empty();
-    $.each(data, function (i, val) {
-        $ele.append($('<option/>').val(val).text(val));
-    })
-    $('.custom-combobox-input').val(" ");
-}
-
-var Materials = []
-function LoadMaterials(element) { //материалы
-    if (Materials.length == 0) {
-        $.ajax({
-            type: "GET",
-            url: '/home/getMaterials',
-            success: function (data) {
-                Materials = data;
-                renderMaterials(element);
-            }
-        })
-    }
-    else {
-        //добавляем материалы в список
-        renderMaterials(element);
-    }
-}
-
-function renderMaterials(element) {//создание списка материалов
-    var $ele = $(element);
-    $ele.empty();
-    $.each(Materials, function (i, val) {
-        $ele.append($('<option/>').val(val.Назва_сортименту).text(val.Назва_сортименту));
+            $("option:contains('Вибрати')", element).remove();
+            $(element).parents('td').find('.custom-combobox-input').val(" ");
+        }
     })
 }
 
@@ -95,7 +44,7 @@ function copyString(element) {
     var isAllValid = true;
 
     $("tr td input:not(:disabled)", $table).each(function () {//проверка не пустые строки
-        if ($(this).val().trim() == '') {
+        if ($(this).val().trim() === '') {
             isAllValid = false;
         }
     });
@@ -110,9 +59,9 @@ function copyString(element) {
                 str = $("input", this).val();
             }
 
-            if (indx == 1 && ($($table).next().is("tfoot"))) {
+            if (indx === 1 && ($($table).next().is("tfoot"))) {
                 $("<td/>").attr("colspan", "3").text(str).appendTo($("tr:last", $table));
-            } else if (indx >= 3 || (indx == 0 && !($($table).next().is("tfoot")))) {
+            } else if (indx >= 3 || (indx === 0 && !($($table).next().is("tfoot")))) {
                 $("<td/>", { text: str }).appendTo($("tr:last", $table));
             }
             else {
@@ -138,17 +87,17 @@ function copyString(element) {
     }
 }
 
-$('.tbodyTable').each(function () { 
-    $(this).on('click', '.remove', function () {   //событие на нажатие кнопки удалить строку 
-       var indexDeleteElement = $('.tbodyTable tr:not(:first)').index($(this).parents('tr'))//получить номер удаляемой строки
-       var $obj = $(this).parents('.tbodyTable').next().is("tfoot");
-       deleteTr(this);//Удаление строки      
-       deleteValCollectionOilCosts(indexDeleteElement);//удаление обекта из колекции расход ГСМ при удалеине строки
-       countValColectionSortOil();//пересчитать расхода ГСМ по строкам
-       addStringDetails(colectionSortOil);//пересчитать строки расход материалов
+$('.tbodyTable').each(function () {
+    $(this).on('click', '.remove', function () {   //событие на нажатие кнопки удалить строку         
+        var $obj = $(this).parents('.tbodyTable').next().is("tfoot");
+        var indexDeleteElement = $('.tbodyTable tr:not(:first)').index($(this).parents('tr'))//получить номер удаляемой строки
+        deleteTr(this);//Удаление строки      
+        deleteValCollectionOilCosts(indexDeleteElement);//удаление обекта из колекции расход ГСМ при удалеине строки
+        countValColectionSortOil();//пересчитать расхода ГСМ по строкам
+        addStringDetails(colectionSortOil);//пересчитать строки расход материалов
         if ($obj) {
             columnSum(); //пересчитать сумму строк после удаленных
-       } 
+        }
     })
 });
 

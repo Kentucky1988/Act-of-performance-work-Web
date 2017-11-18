@@ -136,6 +136,7 @@
   <EntityType Name="Категорії_робіт">
     <Key>
       <PropertyRef Name="Категорії_робітID" />
+      <PropertyRef Name="Найменування_заходуID" />
       <PropertyRef Name="Категорії_робіт" />
       <PropertyRef Name="Норма_віробітку" />
       <PropertyRef Name="ГСМ" />
@@ -145,6 +146,7 @@
       <PropertyRef Name="Id_механізма" />
     </Key>
     <Property Name="Категорії_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Найменування_заходуID" Type="int" Nullable="false" />
     <Property Name="Категорії_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
     <Property Name="Норма_віробітку" Type="nvarchar" MaxLength="60" Nullable="false" />
     <Property Name="ГСМ" Type="nvarchar" MaxLength="60" Nullable="false" />
@@ -159,6 +161,13 @@
     </Key>
     <Property Name="Id_Механізма" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Механізми" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Найменування_заходу">
+    <Key>
+      <PropertyRef Name="Id_Найменування_заходу" />
+    </Key>
+    <Property Name="Id_Найменування_заходу" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Найменування_заходу" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Освітлення_механічним_способом">
     <Key>
@@ -209,6 +218,44 @@
     <Property Name="Вид_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Вид_робіт" Type="int" Nullable="false" />
     <Property Name="Норма_віробітку" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Поправочний_коефіцієнт" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Поправочний_коефіцієнт">
+    <Key>
+      <PropertyRef Name="Id_Умови_праці" />
+      <PropertyRef Name="Умови_праці" />
+      <PropertyRef Name="Поправочний_коефіцієнт_Норма" />
+      <PropertyRef Name="Поправочний_коефіцієнт_ГСМ" />
+    </Key>
+    <Property Name="Id_Умови_праці" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Умови_праці" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Поправочний_коефіцієнт_Норма" Type="decimal" Precision="3" Scale="2" Nullable="false" />
+    <Property Name="Поправочний_коефіцієнт_ГСМ" Type="decimal" Precision="3" Scale="2" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Поправочний_коефіцієнт_Переїзд" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Поправочний_коефіцієнт_Переїзд">
+    <Key>
+      <PropertyRef Name="Id_Відстань_переїзду" />
+      <PropertyRef Name="Відстань_переїзду" />
+      <PropertyRef Name="Поправочний_коефіцієнт" />
+    </Key>
+    <Property Name="Id_Відстань_переїзду" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Відстань_переїзду" Type="int" Nullable="false" />
+    <Property Name="Поправочний_коефіцієнт" Type="decimal" Precision="3" Scale="2" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Поправочний_коефіцієнт_Перешкоди" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Поправочний_коефіцієнт_Перешкоди">
+    <Key>
+      <PropertyRef Name="Id_Перешкоди" />
+      <PropertyRef Name="Відсоток_Перешкоди" />
+      <PropertyRef Name="Поправочний_коефіцієнт" />
+    </Key>
+    <Property Name="Id_Перешкоди" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Відсоток_Перешкоди" Type="int" Nullable="false" />
+    <Property Name="Поправочний_коефіцієнт" Type="decimal" Precision="3" Scale="2" Nullable="false" />
   </EntityType>
   <EntityType Name="Прибирання_небезпечних_дерев">
     <Key>
@@ -798,7 +845,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Категорії__Id_ме__2334397B">
+  <Association Name="FK__Категорії__Id_ме__589C25F3">
     <End Role="Механізми" Type="Self.Механізми" Multiplicity="1" />
     <End Role="Категорії_робіт" Type="Self.Категорії_робіт" Multiplicity="*" />
     <ReferentialConstraint>
@@ -810,7 +857,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Категорії__Розці__18B6AB08">
+  <Association Name="FK__Категорії__Найме__5A846E65">
+    <End Role="Найменування_заходу" Type="Self.Найменування_заходу" Multiplicity="1" />
+    <End Role="Категорії_робіт" Type="Self.Категорії_робіт" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Найменування_заходу">
+        <PropertyRef Name="Id_Найменування_заходу" />
+      </Principal>
+      <Dependent Role="Категорії_робіт">
+        <PropertyRef Name="Найменування_заходуID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Категорії__Розці__57A801BA">
     <End Role="Денна_тарифна_ставка" Type="Self.Денна_тарифна_ставка" Multiplicity="1" />
     <End Role="Категорії_робіт" Type="Self.Категорії_робіт" Multiplicity="*" />
     <ReferentialConstraint>
@@ -1045,6 +1104,7 @@
     <EntitySet Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" EntityType="Self.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Заточка_цепей" EntityType="Self.Заточка_цепей" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Механізми" EntityType="Self.Механізми" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Найменування_заходу" EntityType="Self.Найменування_заходу" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Освітлення_механічним_способом" EntityType="Self.Освітлення_механічним_способом" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Погрузка" EntityType="Self.Погрузка" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Прибирання_небезпечних_дерев" EntityType="Self.Прибирання_небезпечних_дерев" Schema="dbo" store:Type="Tables" />
@@ -1106,6 +1166,7 @@
     <EntitySet Name="Категорії_робіт" EntityType="Self.Категорії_робіт" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [Категорії_робіт].[Категорії_робітID] AS [Категорії_робітID], 
+    [Категорії_робіт].[Найменування_заходуID] AS [Найменування_заходуID], 
     [Категорії_робіт].[Категорії_робіт] AS [Категорії_робіт], 
     [Категорії_робіт].[Норма_віробітку] AS [Норма_віробітку], 
     [Категорії_робіт].[ГСМ] AS [ГСМ], 
@@ -1135,6 +1196,28 @@
     [Погрузка_Норма].[Вид_робіт] AS [Вид_робіт], 
     [Погрузка_Норма].[Норма_віробітку] AS [Норма_віробітку]
     FROM [dbo].[Погрузка_Норма] AS [Погрузка_Норма]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Поправочний_коефіцієнт" EntityType="Self.Поправочний_коефіцієнт" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Поправочний_коефіцієнт].[Id_Умови_праці] AS [Id_Умови_праці], 
+    [Поправочний_коефіцієнт].[Умови_праці] AS [Умови_праці], 
+    [Поправочний_коефіцієнт].[Поправочний_коефіцієнт_Норма] AS [Поправочний_коефіцієнт_Норма], 
+    [Поправочний_коефіцієнт].[Поправочний_коефіцієнт_ГСМ] AS [Поправочний_коефіцієнт_ГСМ]
+    FROM [dbo].[Поправочний_коефіцієнт] AS [Поправочний_коефіцієнт]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Поправочний_коефіцієнт_Переїзд" EntityType="Self.Поправочний_коефіцієнт_Переїзд" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Поправочний_коефіцієнт_Переїзд].[Id_Відстань_переїзду] AS [Id_Відстань_переїзду], 
+    [Поправочний_коефіцієнт_Переїзд].[Відстань_переїзду] AS [Відстань_переїзду], 
+    [Поправочний_коефіцієнт_Переїзд].[Поправочний_коефіцієнт] AS [Поправочний_коефіцієнт]
+    FROM [dbo].[Поправочний_коефіцієнт_Переїзд] AS [Поправочний_коефіцієнт_Переїзд]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Поправочний_коефіцієнт_Перешкоди" EntityType="Self.Поправочний_коефіцієнт_Перешкоди" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Поправочний_коефіцієнт_Перешкоди].[Id_Перешкоди] AS [Id_Перешкоди], 
+    [Поправочний_коефіцієнт_Перешкоди].[Відсоток_Перешкоди] AS [Відсоток_Перешкоди], 
+    [Поправочний_коефіцієнт_Перешкоди].[Поправочний_коефіцієнт] AS [Поправочний_коефіцієнт]
+    FROM [dbo].[Поправочний_коефіцієнт_Перешкоди] AS [Поправочний_коефіцієнт_Перешкоди]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="Прибирання_небезпечних_дерев_ГСМ" EntityType="Self.Прибирання_небезпечних_дерев_ГСМ" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -1408,11 +1491,15 @@
       <End Role="Заточка_цепей" EntitySet="Заточка_цепей" />
       <End Role="Заточка_цепей_Норма" EntitySet="Заточка_цепей_Норма" />
     </AssociationSet>
-    <AssociationSet Name="FK__Категорії__Id_ме__2334397B" Association="Self.FK__Категорії__Id_ме__2334397B">
+    <AssociationSet Name="FK__Категорії__Id_ме__589C25F3" Association="Self.FK__Категорії__Id_ме__589C25F3">
       <End Role="Механізми" EntitySet="Механізми" />
       <End Role="Категорії_робіт" EntitySet="Категорії_робіт" />
     </AssociationSet>
-    <AssociationSet Name="FK__Категорії__Розці__18B6AB08" Association="Self.FK__Категорії__Розці__18B6AB08">
+    <AssociationSet Name="FK__Категорії__Найме__5A846E65" Association="Self.FK__Категорії__Найме__5A846E65">
+      <End Role="Найменування_заходу" EntitySet="Найменування_заходу" />
+      <End Role="Категорії_робіт" EntitySet="Категорії_робіт" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Категорії__Розці__57A801BA" Association="Self.FK__Категорії__Розці__57A801BA">
       <End Role="Денна_тарифна_ставка" EntitySet="Денна_тарифна_ставка" />
       <End Role="Категорії_робіт" EntitySet="Категорії_робіт" />
     </AssociationSet>

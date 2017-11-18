@@ -50,27 +50,44 @@
                     <td> <select name="year" style="min-width:80px"> </select> </td>
                     <td class="paddingLeft">Вид рубки</td>
                     <td>
-                        <!--выпадающий список Вид рубки-->
                         <select id="typeOfFelling">
                             <option></option>
                         </select>
                     </td>
-                    <td class="paddingLeft">Середній обєм хлиста, м<sup>3</sup></td>
+                </tr>
+                <tr>
+                    <td> Найменування заходу</td>
+                    <td> <select id="worksTitlee" style="min-width:100px"> </select> </td>
+                    <td class="paddingLeft">Початок роботи</td>
+                    <td> <input type="text" class="calendar" name="firstWorkingDay" />  </td>
+                    <td class="paddingLeft">Закінчення роботи</td>
+                    <td> <input type="text" class="calendar" name="lastWorkingDay" /> </td>
+                    <td class="paddingLeft">Щоденник приймання робіт №</td>
+                    <td> <input type="text" id="orderDate" /> </td>
+                    <td class="paddingLeft">Середній об'єм хлиста, м<sup>3</sup></td>
                     <td> <input type="text" id="volumeWood" /> </td>
                 </tr>
             </table>
-            <table style="margin-top:5px">
-                <tr>
-                    <td> Найменування заходу</td>
-                    <td> <input type="text" id="orderDate" />  </td>
-                    <td class="paddingLeft">Початок роботи</td>
-                    <td>  <input type="text" class="calendar" name="firstWorkingDay" />  </td>
-                    <td class="paddingLeft">Закінчення роботи</td>
-                    <td>  <input type="text" class="calendar" name="lastWorkingDay" /> </td>
-                    <td class="paddingLeft">Щоденник приймання робіт №</td>
-                    <td>  <input type="text" id="orderDate" /> </td>
-                </tr>
-            </table>
+
+            <div id="coefficientTractor" style="padding:5px">
+                <label>Умови трелювання:</label>
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-primary active">
+                        <input type="radio" name="options" id="option1" autocomplete="off" checked> Літні
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="radio" name="options" id="option2" autocomplete="off"> Зимові
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="checkbox" autocomplete="off"> Тяжкі
+                    </label>
+                </div>
+                <label>Сумарний переїзд трактора, км:</label>
+                <input type="text"/>
+                <label>Наявність перешкод на ділянці, %:</label>
+                <input type="text"/>
+            </div>
+
         </div>
     </div>
     <br />
@@ -102,13 +119,13 @@
                 <tr class="mycontainer" id="mainrow">
                     <td>
                         <!--выпадающий список категория работ-->
-                        <select id="productCategory" class="pc" style="min-width:250px">
+                        <select id="productCategory" style="min-width:250px">
                             <option></option>
                         </select>
                     </td>
                     <td>
                         <!--выпадающий список вид работ-->
-                        <select id="product" class="product autocompleteCombobox form-control quantity">
+                        <select id="product" class="autocompleteCombobox form-control quantity">
                             <option></option>
                         </select>
                     </td>
@@ -124,7 +141,7 @@
                             <option>6</option>
                         </select>
                     </td>
-                    <td> <input type="text" class="quantity" id="Unit" disabled/> </td>
+                    <td> <input type="text" class="quantity" id="Unit" disabled /> </td>
                     <td> <input type="text" class="quantity" id="set" /> </td>
                     <td> <input type="text" class="quantity" id="executed" /> </td>
                     <td> <input type="text" class="quantity" id="norm" disabled /> </td>
@@ -169,11 +186,11 @@
                     <td rowspan="2">Найменування сировини, матеріалів та на що витрачено</td>
                     <td rowspan="2">Одиниця виміру</td>
                     <td colspan="2">Кількість</td>
-                    <td rowspan="2">Вартість</td>   
+                    <td rowspan="2">Вартість</td>
                     <td rowspan="2">Найменування сировини, матеріалів та на що витрачено</td>
                     <td rowspan="2">Одиниця виміру</td>
                     <td colspan="2">Кількість</td>
-                    <td rowspan="2">Вартість</td> 
+                    <td rowspan="2">Вартість</td>
                 </tr>
                 <tr>
                     <td>по нормі</td>
@@ -185,39 +202,31 @@
             <tbody>
                 <!--тело таблицы-->
                 @*<tr>
-                    <td id="nameOil"/> 
-                    <td id="unitOil"/>  
-                    <td id="quantityNormal"/>  
-                    <td> <input type="text" class="quantity" /> </td>
-                    <td/>                     
-                </tr>*@
+                        <td id="nameOil"/>
+                        <td id="unitOil"/>
+                        <td id="quantityNormal"/>
+                        <td> <input type="text" class="quantity" /> </td>
+                        <td/>
+                    </tr>*@
             </tbody>
         </table>
     </div>
     <br />
     <div class="container-fluid">
-        <div>
-            <table>
-                <tr>
-                    <td style="text-align:right">Наряд видав</td>
-                    <td> <input type="text" /> </td>
-                    <td class="paddingLeft">До виконання прийняв</td>
-                    <td> <input type="text" /> </td>
-                    <td class="paddingLeft">Виконану роботу здав</td>
-                    <td> <input type="text" /> </td>
-                </tr>
-            </table>
-        </div>
-        <div>
-            <table style="margin-top:5px">
-                <tr>
-                    <td>Оцінка якості виконаних робіт</td>
-                    <td> <input type="text" id="orderDate" />  </td>
-                    <td class="paddingLeft">Роботу прийняв</td>
-                    <td> <input type="text" id="orderDate" />  </td>
-                </tr>
-            </table>
-        </div>
+        <table>
+            <tr>
+                <td style="text-align:right">Наряд видав</td>
+                <td> <input type="text" /> </td>
+                <td class="paddingLeft">До виконання прийняв</td>
+                <td> <input type="text" /> </td>
+                <td class="paddingLeft">Виконану роботу здав</td>
+                <td> <input type="text" /> </td>
+                <td class="paddingLeft">Оцінка якості виконаних робіт</td>
+                <td> <input type="text" id="orderDate" />  </td>
+                <td class="paddingLeft">Роботу прийняв</td>
+                <td> <input type="text" id="orderDate" />  </td>
+            </tr>
+        </table>
     </div>
     <div align="right">
         <button id="submit" class="btn btn-warning" style="width:100px">

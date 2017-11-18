@@ -6,7 +6,7 @@
             language: 'uk',
             changeYear: true,
             changeMonth: true
-        }).width(100)
+        })
     })
 });
 

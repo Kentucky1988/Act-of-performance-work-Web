@@ -1,4 +1,34 @@
-﻿var typeOfWork;//вид робот
+﻿function LoadMaterials(element) { //сортименты   
+    $.ajax({
+        type: "GET",
+        url: '/home/getMaterials',
+        success: function (data) {
+            renderCategory(element, data);
+        }
+    })
+}
+
+function worksTitlee(element) {//найменування заходу
+    $.ajax({
+        type: "GET",
+        url: '/home/getworksTitlee',
+        success: function (data) {
+            renderCategory(element, data);
+        }
+    })
+}
+
+function typeOfFelling(element) {//вид рубок
+    $.ajax({
+        type: "GET",
+        url: '/home/TypeOfFelling',
+        success: function (data) {
+            renderCategory(element, data);
+        }
+    })
+}
+
+var typeOfWork;//вид робот
 function normOfWork(element) {//норма выроботки
     typeOfWork = element;
     if ($('#productCategory').val() != 0 && $("#volumeWood").val() != 0) {
@@ -56,6 +86,16 @@ $("#volumeWood").change(function () {// событие на изминеие о�
     $("#executed").change();
 });
 
+$("#worksTitlee").change(function () {// событие на изминеие найменування заходу   
+    LoadCategory($('#productCategory'), $(this).val());
+    normOfWork($('#product').val());  
+    if ($(this).val() == "Трелювання деревини") {       
+        $('#coefficientTractor').show();//отобразить строку
+    } else {
+        $('#coefficientTractor').hide();//скрыть строку
+    }
+});
+
 $("#productCategory").change(function () {// событие на изминеие категории работ
     LoadProduct(this);
     Unit($('#productCategory').val());
@@ -91,44 +131,23 @@ function columnSum() {//сумма строк
     });
 };
 
-$(document).ready(function () {
-    LoadCategory($('#productCategory'));
+$(document).ready(function () {   
+    $('#coefficientTractor').hide();//скрыть строку /Поправочный коефициент/
     typeOfFelling($('#typeOfFelling'));
     ColectionSortOil();
+    worksTitlee('#worksTitlee');
 });
 
 $('.materials').each(function () {//выпадающий список сыря и материалов
     LoadMaterials($(this));
 })
 
-var TypeOfFelling = []
-function typeOfFelling(element) {//вид рубок
-    $.ajax({
-        type: "GET",
-        url: '/home/TypeOfFelling',
-        success: function (data) {
-            TypeOfFelling = data;
-            rendertypeOfFelling(element);
-        }
-    })
-}
-
-function rendertypeOfFelling(element) {//создание списка категорий
-    var $ele = $(element);
-    $ele.empty();
-    $ele.append($('<option/>').val('0').text('Вибрати'));
-    $.each(TypeOfFelling, function (i, val) {
-        $ele.append($('<option/>').text(val));
-    })
-}
-
 var colectionSortOil = []  //колекция расхода ГСМ по видам
 function ColectionSortOil() {// виды ГСМ
     $.ajax({
         type: "GET",
         url: '/home/getcolectionSortOil',
-        success: function (data) {
-            //colectionSortOil = data;
+        success: function (data) {           
             $(data).each(function (i, val) {
                 colectionSortOil.push({ 'Вид_палива': val, 'Витрити_ГСМ': 0 });
             })
@@ -180,7 +199,7 @@ function notNullInColection(colection) {//убрать из колекции /р
     return colectionSortOilNotNull;
 }
 
-function addStringDetails(colection) {//добавить строку в расход материалов
+function addStringDetails(colection) {//добавить строку в таблицу расход материалов
     var index = 0;
     var $table = $('.material tbody');
     $('tr', $table).remove();
@@ -191,7 +210,7 @@ function addStringDetails(colection) {//добавить строку в рас�
 
         if (i < colection.length && colection[i]['Витрити_ГСМ'] > 0) {
             typeOil = colection[i]['Вид_палива'];
-            unit = "кг";
+            unit = "л";
             consumption = colection[i]['Витрити_ГСМ'].toFixed(3);
             td_input = "<td><input type='text'/></td>";
             td = "<td/>";
@@ -211,10 +230,10 @@ function addStringDetails(colection) {//добавить строку в рас�
     }
 }
 
-function addString($table, index, typeOil, unit, consumption, td_input, td) {
+function addString($table, index, typeOil, unit, consumption, td_input, td) {//добавляем нижнюю строку в таблице
 
     if (index == 0 || index % 2 == 0) {
-        $("<tr>").appendTo($table);//добавляем нижнюю строку  
+        $("<tr>").appendTo($table);
     }
 
     $("<td/>", { text: typeOil }).appendTo($("tr:last", $table));
@@ -224,8 +243,7 @@ function addString($table, index, typeOil, unit, consumption, td_input, td) {
     $(td).appendTo($("tr:last", $table));
 }
 
-
-$('#submit').click(function myfunction() {
+$('#submit').click(function myfunction() {   
     alert(colectionSortOil[1]['Вид_палива'] + '/' + colectionSortOil[1]['Витрити_ГСМ']);
 })
 

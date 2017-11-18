@@ -12,12 +12,12 @@
 
 }
 
-.custom-combobox-input { /*поле ввода выпадающего списока*/
+.custom-combobox-input { /*поле ввода выпадающего списка*/
     /*position: relative;*/
     color: dimgray;
     padding: 6px;
     font-size: 10pt; /*шрифт*/
-    min-width: 400px;
+    min-width: 340px;
 }
 
 .ui-autocomplete {/*полоcа прокрута для выпадающего списка*/

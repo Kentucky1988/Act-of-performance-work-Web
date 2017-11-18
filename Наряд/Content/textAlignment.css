@@ -10,7 +10,7 @@
 td { /*Отображать содержимое ячеек заголовка по центру*/
     vertical-align: middle; /*вертикаль*/
     text-align: center; /*горизонталь*/
-    padding: 0px;    
+    padding: 0px;
 }
 
 input.form-control { /*выравнивать текст в полях ввода по центу с отступом 0*/

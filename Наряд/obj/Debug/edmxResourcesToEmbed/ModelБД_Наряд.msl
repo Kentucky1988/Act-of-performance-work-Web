@@ -57,6 +57,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Найменування_заходу">
+      <EntityTypeMapping TypeName="БД_НарядModel.Найменування_заходу">
+        <MappingFragment StoreEntitySet="Найменування_заходу">
+          <ScalarProperty Name="Найменування_заходу1" ColumnName="Найменування_заходу" />
+          <ScalarProperty Name="Id_Найменування_заходу" ColumnName="Id_Найменування_заходу" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Освітлення_механічним_способом">
       <EntityTypeMapping TypeName="БД_НарядModel.Освітлення_механічним_способом">
         <MappingFragment StoreEntitySet="Освітлення_механічним_способом">
@@ -203,6 +211,7 @@
           <ScalarProperty Name="ГСМ" ColumnName="ГСМ" />
           <ScalarProperty Name="Норма_віробітку" ColumnName="Норма_віробітку" />
           <ScalarProperty Name="Категорії_робіт1" ColumnName="Категорії_робіт" />
+          <ScalarProperty Name="Найменування_заходуID" ColumnName="Найменування_заходуID" />
           <ScalarProperty Name="Категорії_робітID" ColumnName="Категорії_робітID" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -231,6 +240,34 @@
           <ScalarProperty Name="Норма_віробітку" ColumnName="Норма_віробітку" />
           <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
           <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Поправочний_коефіцієнт">
+      <EntityTypeMapping TypeName="БД_НарядModel.Поправочний_коефіцієнт">
+        <MappingFragment StoreEntitySet="Поправочний_коефіцієнт">
+          <ScalarProperty Name="Поправочний_коефіцієнт_ГСМ" ColumnName="Поправочний_коефіцієнт_ГСМ" />
+          <ScalarProperty Name="Поправочний_коефіцієнт_Норма" ColumnName="Поправочний_коефіцієнт_Норма" />
+          <ScalarProperty Name="Умови_праці" ColumnName="Умови_праці" />
+          <ScalarProperty Name="Id_Умови_праці" ColumnName="Id_Умови_праці" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Поправочний_коефіцієнт_Переїзд">
+      <EntityTypeMapping TypeName="БД_НарядModel.Поправочний_коефіцієнт_Переїзд">
+        <MappingFragment StoreEntitySet="Поправочний_коефіцієнт_Переїзд">
+          <ScalarProperty Name="Поправочний_коефіцієнт" ColumnName="Поправочний_коефіцієнт" />
+          <ScalarProperty Name="Відстань_переїзду" ColumnName="Відстань_переїзду" />
+          <ScalarProperty Name="Id_Відстань_переїзду" ColumnName="Id_Відстань_переїзду" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Поправочний_коефіцієнт_Перешкоди">
+      <EntityTypeMapping TypeName="БД_НарядModel.Поправочний_коефіцієнт_Перешкоди">
+        <MappingFragment StoreEntitySet="Поправочний_коефіцієнт_Перешкоди">
+          <ScalarProperty Name="Поправочний_коефіцієнт" ColumnName="Поправочний_коефіцієнт" />
+          <ScalarProperty Name="Відсоток_Перешкоди" ColumnName="Відсоток_Перешкоди" />
+          <ScalarProperty Name="Id_Перешкоди" ColumnName="Id_Перешкоди" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -22,7 +22,16 @@ namespace Наряд.Controllers
         {
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
             {
-                var materials = dc.Сортименти.OrderBy(a => a.Назва_сортименту).ToList();
+                var materials = dc.Сортименти.OrderBy(a => a.Назва_сортименту).Select(a => a.Назва_сортименту).ToList();
+                return new JsonResult { Data = materials, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+        }
+
+        public JsonResult getworksTitlee()
+        {
+            using (БД_НарядEntities1 dc = new БД_НарядEntities1())
+            {
+                var materials = dc.Найменування_заходу.OrderBy(a => a.Найменування_заходу1).Select(a => a.Найменування_заходу1).ToList();
                 return new JsonResult { Data = materials, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
@@ -45,15 +54,16 @@ namespace Наряд.Controllers
             }
         }
 
-        public JsonResult getCategories()
+        public JsonResult getCategories(string valueWorksTitlee)
         {
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
             {
-                var categories = dc.Категорії_робіт.OrderBy(a => a.Категорії_робіт1).Select(a => a.Категорії_робіт1).ToList();
+                var worksTitlee = dc.Найменування_заходу.Where(a => a.Найменування_заходу1 == valueWorksTitlee).Select(a => a.Id_Найменування_заходу).ToList();
+                int worksTitleeID = worksTitlee[0];
+                var categories = dc.Категорії_робіт.Where(a => a.Найменування_заходуID == worksTitleeID).Select(a => a.Категорії_робіт1).ToList();
                 return new JsonResult { Data = categories, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
-
 
         public JsonResult getTypeOfWork(string categoryOfWork)
         {
@@ -95,12 +105,12 @@ namespace Наряд.Controllers
         {
             NormFromDB normFromDB = new NormFromDB();
             ArrayList norm = new ArrayList();
-                       
-            string tableNormOfWork = normFromDB.TableNorm(table);    
+
+            string tableNormOfWork = normFromDB.TableNorm(table);
 
             if (new NormOil().TableNormOfOil(table) == "-")//если нет ГСМ, тогда пропускаем расчет с V хлиста и возращаем значение в колонке "Норма_віробітку"
             {
-                string str = "Норма_віробітку";               
+                string str = "Норма_віробітку";
 
                 norm.Add(normFromDB.Norm(str, table, tableNormOfWork, typeOfWork));
                 norm.Add(0);
@@ -115,7 +125,7 @@ namespace Наряд.Controllers
             {
                 return new JsonResult { Data = 0, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
-           
+
             norm.Add(normFromDB.NormFromTable(table, tableNormOfWork, typeOfWork, volumeWood)); //норма выроботка   
             return new JsonResult { Data = norm, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
@@ -140,34 +150,34 @@ namespace Наряд.Controllers
 
             double fuelCosts = Convert.ToDouble(executed) * normOil;//расход топлива
             List<Oil> collectionOilCosts = oilCalculation.CollectionOilCosts(table, fuelCosts);
-            
+
             return new JsonResult { Data = collectionOilCosts, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
 
 
-            //[HttpPost]
-            //public JsonResult save(OrderMaster order)
-            //{
-            //    bool status = false;
-            //    DateTime dateOrg;
-            //    var isValidDate = DateTime.TryParseExact(order.OrderDateString, "mm-dd-yyyy", null, System.Globalization.DateTimeStyles.None, out dateOrg);
-            //    if (isValidDate)
-            //    {
-            //        order.OrderDate = dateOrg;
-            //    }
+        //[HttpPost]
+        //public JsonResult save(OrderMaster order)
+        //{
+        //    bool status = false;
+        //    DateTime dateOrg;
+        //    var isValidDate = DateTime.TryParseExact(order.OrderDateString, "mm-dd-yyyy", null, System.Globalization.DateTimeStyles.None, out dateOrg);
+        //    if (isValidDate)
+        //    {
+        //        order.OrderDate = dateOrg;
+        //    }
 
-            //    var isValidModel = TryUpdateModel(order);
-            //    if (isValidModel)
-            //    {
-            //        using (БД_НарядEntities1 dc = new БД_НарядEntities1())
-            //        {
-            //            dc.OrderMaster.Add(order);
-            //            dc.SaveChanges();
-            //            status = true;
-            //        }
-            //    }
-            //    return new JsonResult { Data = new { status = status } };
-            //}
-        }
+        //    var isValidModel = TryUpdateModel(order);
+        //    if (isValidModel)
+        //    {
+        //        using (БД_НарядEntities1 dc = new БД_НарядEntities1())
+        //        {
+        //            dc.OrderMaster.Add(order);
+        //            dc.SaveChanges();
+        //            status = true;
+        //        }
+        //    }
+        //    return new JsonResult { Data = new { status = status } };
+        //}
+    }
 }
