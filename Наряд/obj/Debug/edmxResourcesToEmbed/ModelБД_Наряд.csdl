@@ -465,7 +465,7 @@
       <PropertyRef Name="Поправочний_коефіцієнт" />
     </Key>
     <Property Name="Id_Відстань_переїзду" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Відстань_переїзду" Type="Int32" Nullable="false" />
+    <Property Name="Відстань_переїзду" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
     <Property Name="Поправочний_коефіцієнт" Type="Decimal" Nullable="false" Precision="3" Scale="2" />
   </EntityType>
   <EntityType Name="Поправочний_коефіцієнт_Перешкоди">

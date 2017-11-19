@@ -101,10 +101,11 @@ namespace Наряд.Controllers
             }
         }
 
-        public JsonResult normWork(string table, string typeOfWork, string volumeWood)//норма выполнения робот
+        public JsonResult normWork(string table, string typeOfWork, string volumeWood, string checkedConditionsWinter, string checkedConditionsHard, string tractorMoving, string block)//норма выполнения робот
         {
             NormFromDB normFromDB = new NormFromDB();
-            ArrayList norm = new ArrayList();
+            CoefficientNorm coefficientNorm = new CoefficientNorm();
+            ArrayList normArray = new ArrayList();
 
             string tableNormOfWork = normFromDB.TableNorm(table);
 
@@ -112,24 +113,39 @@ namespace Наряд.Controllers
             {
                 string str = "Норма_віробітку";
 
-                norm.Add(normFromDB.Norm(str, table, tableNormOfWork, typeOfWork));
-                norm.Add(0);
-                return new JsonResult { Data = norm, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                normArray.Add(normFromDB.Norm(str, table, tableNormOfWork, typeOfWork));
+                normArray.Add(0);
+                return new JsonResult { Data = normArray, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
 
+            var norm = normFromDB.NormFromTable(table, tableNormOfWork, typeOfWork, Replace(volumeWood)); //норма выроботка  
+            double coefficientWinter = checkedConditionsWinter != "" ? coefficientNorm.CoefficientNorm_Winter_Hard(checkedConditionsWinter) : 1;//поправочный коефиц. Зима
+            double coefficientHard = checkedConditionsHard != "" ? coefficientNorm.CoefficientNorm_Winter_Hard(checkedConditionsHard) : 1;//поправочный коефиц. Тяжелые условия
+            double coefficientDistance = tractorMoving != "" ? coefficientNorm.CoefficientTractorMoving(Replace(tractorMoving)) : 1;//поправочный коефиц. переезд
+            double coefficientBlock = block != "" ? coefficientNorm.CoefficientBlock(Replace(block)) : 1;//поправочный коефиц. помехи
+
+            norm = norm * (coefficientWinter * coefficientHard * coefficientDistance * coefficientBlock);
+            normArray.Add(norm);
+
+            //normArray.Add(coefficientWinter);
+            //normArray.Add(coefficientHard);
+            //normArray.Add(coefficientDistance);
+            //normArray.Add(coefficientBlock);
+            return new JsonResult { Data = normArray, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
+        public string Replace(string value)
+        {
             try
             {
-                volumeWood = volumeWood.Replace('.', ',');
+                value = value.Replace('.', ',');
+                return value;
             }
             catch (Exception)
             {
-                return new JsonResult { Data = 0, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                return value = "0";
             }
-
-            norm.Add(normFromDB.NormFromTable(table, tableNormOfWork, typeOfWork, volumeWood)); //норма выроботка   
-            return new JsonResult { Data = norm, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
-
 
         public JsonResult CollectionOilCosts(string table, string typeOfWork, string volumeWood, string executed)//нормарасхода ГСМ
         {

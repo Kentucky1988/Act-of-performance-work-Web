@@ -10,84 +10,82 @@
     </div>
     <br />
     <div>
-        <div>
-            <table class="table-bordered">
-                <tr>
-                    <td>Дата</td>
-                    <td>Підприємство</td>
-                    <td>Ідентифікаційний код ЄДРПОУ</td>
-                    <td>Підрозділ</td>
-                    <td>Бригада</td>
-                    <td>Кількістьть осіб</td>
-                    <td>Прізвище та ініціали робітника</td>
-                    <td>Табельний номер</td>
-                    <td>Вид діяльності</td>
-                </tr>
-                <tr>
-                    <td> <input type="text" class="calendar" name="getDate" />  </td>
-                    <td> <input type="text" /> </td>
-                    <td> <input type="text" /> </td>
-                    <td> <input type="text" /> </td>
-                    <td> <input type="text" /> </td>
-                    <td> <input type="text" /> </td>
-                    <td> <input type="text" /> </td>
-                    <td> <input type="text" /> </td>
-                    <td> <input type="text" /> </td>
-                </tr>
-            </table>
-        </div>
-        <br />
-        <div>
-            <table>
-                <tr>
-                    <td style="text-align:right">Місце роботи Кв.</td>
-                    <td> <input type="text" /> </td>
-                    <td class="paddingLeft">Виділ</td>
-                    <td> <input type="text" /> </td>
-                    <td class="paddingLeft">Лісорубний квиток №</td>
-                    <td> <input type="text" /> </td>
-                    <td class="paddingLeft">Якого року лісосіка</td>
-                    <td> <select name="year" style="min-width:80px"> </select> </td>
-                    <td class="paddingLeft">Вид рубки</td>
-                    <td>
-                        <select id="typeOfFelling">
-                            <option></option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td> Найменування заходу</td>
-                    <td> <select id="worksTitlee" style="min-width:100px"> </select> </td>
-                    <td class="paddingLeft">Початок роботи</td>
-                    <td> <input type="text" class="calendar" name="firstWorkingDay" />  </td>
-                    <td class="paddingLeft">Закінчення роботи</td>
-                    <td> <input type="text" class="calendar" name="lastWorkingDay" /> </td>
-                    <td class="paddingLeft">Щоденник приймання робіт №</td>
-                    <td> <input type="text" id="orderDate" /> </td>
-                    <td class="paddingLeft">Середній об'єм хлиста, м<sup>3</sup></td>
-                    <td> <input type="text" id="volumeWood" /> </td>
-                </tr>
-            </table>
-
-            <div id="coefficientTractor" style="padding:5px">
+        <table class="table-bordered container-fluid">
+            <tr>
+                <td>Дата</td>
+                <td>Підприємство</td>
+                <td>Ідентифікаційний код ЄДРПОУ</td>
+                <td>Підрозділ</td>
+                <td>Бригада</td>
+                <td>Кількістьть осіб</td>
+                <td>Прізвище та ініціали робітника</td>
+                <td>Табельний номер</td>
+                <td>Вид діяльності</td>
+            </tr>
+            <tr>
+                <td> <input type="text" class="calendar" name="getDate" />  </td>
+                <td> <input type="text" /> </td>
+                <td> <input type="text" /> </td>
+                <td> <input type="text" /> </td>
+                <td> <input type="text" /> </td>
+                <td> <input type="text" /> </td>
+                <td> <input type="text" /> </td>
+                <td> <input type="text" /> </td>
+                <td> <input type="text" /> </td>
+            </tr>
+        </table>
+    </div>
+    <br />
+    <div>
+        <table>
+            <tr>
+                <td style="text-align:right">Місце роботи Кв.</td>
+                <td> <input type="text" /> </td>
+                <td class="paddingLeft">Виділ</td>
+                <td> <input type="text" /> </td>
+                <td class="paddingLeft">Лісорубний квиток №</td>
+                <td> <input type="text" /> </td>
+                <td class="paddingLeft">Якого року лісосіка</td>
+                <td> <select name="year" style="min-width:80px"> </select> </td>
+                <td class="paddingLeft">Вид рубки</td>
+                <td>
+                    <select id="typeOfFelling">
+                        <option></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td> Найменування заходу</td>
+                <td> <select id="worksTitlee" style="min-width:100px"> </select> </td>
+                <td class="paddingLeft">Початок роботи</td>
+                <td> <input type="text" class="calendar" name="firstWorkingDay" />  </td>
+                <td class="paddingLeft">Закінчення роботи</td>
+                <td> <input type="text" class="calendar" name="lastWorkingDay" /> </td>
+                <td class="paddingLeft">Щоденник приймання робіт №</td>
+                <td> <input type="text" id="orderDate" /> </td>
+                <td class="paddingLeft">Середній об'єм хлиста, м<sup>3</sup></td>
+                <td> <input type="text" id="volumeWood" /> </td>
+            </tr>
+        </table>
+        <div id="coefficientTractor">
+            <form class="navbar-form">
                 <label>Умови трелювання:</label>
                 <div class="btn-group" data-toggle="buttons">
-                    <label class="btn btn-primary active">
-                        <input type="radio" name="options" id="option1" autocomplete="off" checked> Літні
+                    <label class="btn btn-primary active" id="workingConditionsSummer">
+                        <input type="radio" checked> Літні
                     </label>
-                    <label class="btn btn-primary">
-                        <input type="radio" name="options" id="option2" autocomplete="off"> Зимові
+                    <label class="btn btn-primary" id="workingConditionsWinter">
+                        <input type="radio" > Зимові
                     </label>
-                    <label class="btn btn-primary">
-                        <input type="checkbox" autocomplete="off"> Тяжкі
+                    <label class="btn btn-primary" id="workingConditionsHard">
+                        <input type="checkbox"> Тяжкі
                     </label>
                 </div>
                 <label>Сумарний переїзд трактора, км:</label>
-                <input type="text"/>
+                <input type="text" id="tractorMoving"/>
                 <label>Наявність перешкод на ділянці, %:</label>
-                <input type="text"/>
-            </div>
-
+                <input type="text" id="block"/>
+            </form>
         </div>
     </div>
     <br />
@@ -180,7 +178,7 @@
         <h4>Витрачено сировини, матеріалів та відходів виробництва</h4>
     </div>
     <div class="material">
-        <table class="table-bordered table-hover">
+        <table class="table-bordered table-hover container-fluid">
             <thead>
                 <tr>
                     <td rowspan="2">Найменування сировини, матеріалів та на що витрачено</td>
@@ -199,34 +197,33 @@
                     <td>фактично</td>
                 </tr>
             </thead>
-            <tbody>
-                <!--тело таблицы-->
-                @*<tr>
-                        <td id="nameOil"/>
-                        <td id="unitOil"/>
-                        <td id="quantityNormal"/>
-                        <td> <input type="text" class="quantity" /> </td>
-                        <td/>
-                    </tr>*@
-            </tbody>
+            <tbody />
         </table>
     </div>
     <br />
-    <div class="container-fluid">
-        <table>
-            <tr>
-                <td style="text-align:right">Наряд видав</td>
-                <td> <input type="text" /> </td>
-                <td class="paddingLeft">До виконання прийняв</td>
-                <td> <input type="text" /> </td>
-                <td class="paddingLeft">Виконану роботу здав</td>
-                <td> <input type="text" /> </td>
-                <td class="paddingLeft">Оцінка якості виконаних робіт</td>
-                <td> <input type="text" id="orderDate" />  </td>
-                <td class="paddingLeft">Роботу прийняв</td>
-                <td> <input type="text" id="orderDate" />  </td>
-            </tr>
-        </table>
+    <div>
+        <form class="navbar-form" autocomplete="on">
+            <div class="form-group">
+                <label> Наряд видав:</label>
+                <input type="text" />
+            </div>
+            <div class="form-group">
+                <label> До виконання прийняв:</label>
+                <input type="text" />
+            </div>
+            <div class="form-group">
+                <label> Виконану роботу здав:</label>
+                <input type="text" />
+            </div>
+            <div class="form-group">
+                <label> Оцінка якості виконаних робіт:</label>
+                <input type="text" id="orderDate" />
+            </div>
+            <div class="form-group">
+                <label> Роботу прийняв:</label>
+                <input type="text" id="orderDate" />
+            </div>
+        </form>
     </div>
     <div align="right">
         <button id="submit" class="btn btn-warning" style="width:100px">

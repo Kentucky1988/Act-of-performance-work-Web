@@ -242,7 +242,7 @@
       <PropertyRef Name="Поправочний_коефіцієнт" />
     </Key>
     <Property Name="Id_Відстань_переїзду" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Відстань_переїзду" Type="int" Nullable="false" />
+    <Property Name="Відстань_переїзду" Type="decimal" Precision="4" Scale="2" Nullable="false" />
     <Property Name="Поправочний_коефіцієнт" Type="decimal" Precision="3" Scale="2" Nullable="false" />
   </EntityType>
   <!--Ошибки, обнаруженные при создании:

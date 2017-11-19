@@ -29,13 +29,23 @@ function typeOfFelling(element) {//вид рубок
 }
 
 var typeOfWork;//вид робот
-function normOfWork(element) {//норма выроботки
-    typeOfWork = element;
-    if ($('#productCategory').val() != 0 && $("#volumeWood").val() != 0) {
+function normOfWork(element) {//норма выроботки 
+    if ($('#product').val() != 0 && $("#volumeWood").val() != 0) {
+        var table = $('#productCategory').val();
+        typeOfWork = element;
+        var checkedConditionsWinter = $('#workingConditionsWinter').hasClass('active') ? "Зимові умови" :"";
+        var checkedConditionsHard = $('#workingConditionsHard').hasClass('active') ? "Тяжкі умови" : "";
+        var volumeWood = $("#volumeWood").val();
+        var tractorMoving = $("#tractorMoving").val();
+        var block = $("#block").val();
+
         $.ajax({
             type: "GET",
             url: '/home/normWork',
-            data: { 'table': $('#productCategory').val(), 'typeOfWork': typeOfWork, 'volumeWood': $("#volumeWood").val() },
+            data: {
+                'table': table, 'typeOfWork': typeOfWork, 'volumeWood': volumeWood, 'checkedConditionsWinter': checkedConditionsWinter,
+                'checkedConditionsHard': checkedConditionsHard, 'tractorMoving': tractorMoving, 'block': block
+            },
             success: function (norm) {
                 $('#norm').val(norm[0]);
             }
@@ -88,10 +98,11 @@ $("#volumeWood").change(function () {// событие на изминеие о�
 
 $("#worksTitlee").change(function () {// событие на изминеие найменування заходу   
     LoadCategory($('#productCategory'), $(this).val());
-    normOfWork($('#product').val());  
-    if ($(this).val() == "Трелювання деревини") {       
+    // normOfWork($('#product').val());  
+    if ($(this).val() == "Трелювання деревини") {
         $('#coefficientTractor').show();//отобразить строку
     } else {
+        $("#workingConditionsSummer").click();
         $('#coefficientTractor').hide();//скрыть строку
     }
 });
@@ -131,7 +142,7 @@ function columnSum() {//сумма строк
     });
 };
 
-$(document).ready(function () {   
+$(document).ready(function () {
     $('#coefficientTractor').hide();//скрыть строку /Поправочный коефициент/
     typeOfFelling($('#typeOfFelling'));
     ColectionSortOil();
@@ -147,7 +158,7 @@ function ColectionSortOil() {// виды ГСМ
     $.ajax({
         type: "GET",
         url: '/home/getcolectionSortOil',
-        success: function (data) {           
+        success: function (data) {
             $(data).each(function (i, val) {
                 colectionSortOil.push({ 'Вид_палива': val, 'Витрити_ГСМ': 0 });
             })
@@ -226,7 +237,7 @@ function addStringDetails(colection) {//добавить строку в таб�
 
             addString($table, index, typeOil, unit, consumption, td_input, td);
             index++;
-        }       
+        }
     }
 }
 
@@ -243,7 +254,7 @@ function addString($table, index, typeOil, unit, consumption, td_input, td) {//�
     $(td).appendTo($("tr:last", $table));
 }
 
-$('#submit').click(function myfunction() {   
+$('#submit').click(function myfunction() {
     alert(colectionSortOil[1]['Вид_палива'] + '/' + colectionSortOil[1]['Витрити_ГСМ']);
 })
 

@@ -29,3 +29,8 @@ input.form-control { /*выравнивать текст в полях ввод�
     width: 70px;
 }
 
+label {
+    font-weight: normal;
+    padding-left:10px;
+}
+

@@ -15,7 +15,7 @@ namespace Наряд
     public partial class Поправочний_коефіцієнт_Переїзд
     {
         public int Id_Відстань_переїзду { get; set; }
-        public int Відстань_переїзду { get; set; }
+        public decimal Відстань_переїзду { get; set; }
         public decimal Поправочний_коефіцієнт { get; set; }
     }
 }

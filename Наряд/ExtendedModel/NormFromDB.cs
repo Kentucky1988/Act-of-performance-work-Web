@@ -137,4 +137,58 @@ namespace Наряд.ExtendedModel
             return collectionOilCosts;
         }
     }
+    class CoefficientNorm
+    {
+        public double CoefficientNorm_Winter_Hard(string workingСonditions)
+        {
+            try
+            {
+                using (БД_НарядEntities1 db = new БД_НарядEntities1())
+                {
+                    var tableNorm = db.Поправочний_коефіцієнт.Where(a => a.Умови_праці == workingСonditions)
+                                        .Select(a => a.Поправочний_коефіцієнт_Норма).ToList();
+                    return Convert.ToDouble(tableNorm[0]);
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }           
+        }
+
+        public double CoefficientTractorMoving(string distanceMoving)
+        {
+            try
+            {
+                decimal distance = Convert.ToDecimal(distanceMoving);
+                using (БД_НарядEntities1 db = new БД_НарядEntities1())
+                {
+                    var tableNorm = db.Поправочний_коефіцієнт_Переїзд.Where(a => a.Відстань_переїзду >= distance).Select(a => a.Поправочний_коефіцієнт).ToList();
+                    return Convert.ToDouble(tableNorm[0]);
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+           
+        }
+
+        public double CoefficientBlock(string distanceMoving)
+        {
+            try
+            {
+                decimal distance = Convert.ToDecimal(distanceMoving);
+                using (БД_НарядEntities1 db = new БД_НарядEntities1())
+                {
+                    var tableNorm = db.Поправочний_коефіцієнт_Перешкоди.Where(a => a.Відсоток_Перешкоди >= distance).Select(a => a.Поправочний_коефіцієнт).ToList();
+                    return Convert.ToDouble(tableNorm[0]);
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }           
+        }
+    }
 }
