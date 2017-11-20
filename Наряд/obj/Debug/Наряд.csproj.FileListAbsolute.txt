@@ -81,3 +81,4 @@ E:\GitHub\Наряд\Наряд\obj\Debug\Наряд.csproj.CoreCompileInputs.ca
 E:\GitHub\Наряд\Наряд\obj\Debug\Наряд.dll
 E:\GitHub\Наряд\Наряд\obj\Debug\Наряд.pdb
 E:\GitHub\Наряд\Наряд\bin\System.Linq.Dynamic.dll
+E:\GitHub\Наряд\Наряд\bin\roslyn\Содержание OneNote.onetoc2

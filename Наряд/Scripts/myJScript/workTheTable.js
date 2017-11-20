@@ -29,25 +29,29 @@ function typeOfFelling(element) {//вид рубок
 }
 
 var typeOfWork;//вид робот
+var checkedConditionsWinter;//условия труда /зима/
+var checkedConditionsHard;//условия труда /тяжелые/
+
 function normOfWork(element) {//норма выроботки 
     if ($('#product').val() != 0 && $("#volumeWood").val() != 0) {
         var table = $('#productCategory').val();
         typeOfWork = element;
-        var checkedConditionsWinter = $('#workingConditionsWinter').hasClass('active') ? "Зимові умови" :"";
-        var checkedConditionsHard = $('#workingConditionsHard').hasClass('active') ? "Тяжкі умови" : "";
+        checkedConditionsWinter = $('#workingConditionsWinter').hasClass('active') ? "Зимові умови" : "";
+        checkedConditionsHard = $('#workingConditionsHard').hasClass('active') ? "Тяжкі умови" : "";
         var volumeWood = $("#volumeWood").val();
         var tractorMoving = $("#tractorMoving").val();
         var block = $("#block").val();
-
+        var reduceDeforestationCoefficient = $('#reduceDeforestationCoefficient').val();
         $.ajax({
             type: "GET",
             url: '/home/normWork',
             data: {
                 'table': table, 'typeOfWork': typeOfWork, 'volumeWood': volumeWood, 'checkedConditionsWinter': checkedConditionsWinter,
-                'checkedConditionsHard': checkedConditionsHard, 'tractorMoving': tractorMoving, 'block': block
+                'checkedConditionsHard': checkedConditionsHard, 'tractorMoving': tractorMoving, 'block': block, 'reduceDeforestationCoefficient': reduceDeforestationCoefficient
             },
             success: function (norm) {
                 $('#norm').val(norm[0]);
+                $("#executed").change();
             }
         });
     }
@@ -86,6 +90,7 @@ function pricingUnit() {//расценка за единицу
             data: { 'pricingID': pricingID, 'rank': $("#Rank").val() },
             success: function (unitPrice) {
                 $('#UnitPrice').val(unitPrice);
+                $("#executed").change();
             }
         });
     }
@@ -98,12 +103,18 @@ $("#volumeWood").change(function () {// событие на изминеие о�
 
 $("#worksTitlee").change(function () {// событие на изминеие найменування заходу   
     LoadCategory($('#productCategory'), $(this).val());
-    // normOfWork($('#product').val());  
-    if ($(this).val() == "Трелювання деревини") {
-        $('#coefficientTractor').show();//отобразить строку
-    } else {
-        $("#workingConditionsSummer").click();
-        $('#coefficientTractor').hide();//скрыть строку
+    normOfWork($('#product').val());
+    $("#workingConditionsSummer").click();
+    $('#coefficient input').val('');
+    if ($(this).val() == "Трелювання деревини") {       
+        $('#coefficient, #workingConditionsHard, #tractorCoefficient').show();//отобразить строку
+        $('#deforestationCoefficient').hide();//скрыть строку /Поправочный коефициент лесозаготовка/
+    } else if ($(this).val() == "Лісозаготівельні роботи") {      
+        $('#coefficient, #deforestationCoefficient').show();//отобразить строку
+        $('#workingConditionsHard, #tractorCoefficient').hide();//скрыть строку /Поправочный коефициент тежолые условия/
+    }
+    else {      
+        $('#coefficient').hide();//скрыть строку
     }
 });
 
@@ -117,24 +128,29 @@ $("#Rank").change(function () {// событие на изминеие ячей�
     pricingUnit();//найти в БД расценку за единицу    
 });
 
-$("#executed").change(function () {// событие на изминеие ячейки выполнено    
+$("#executed").change(function changeExecuted() {// событие на изминеие ячейки выполнено    
     if ($('#executed').val() != 0 && $('#norm').val() != 0) {// расчет выполненно норм   
         $('#executedNorm').val(($('#executed').val().replace(',', '.') / $('#norm').val()).toFixed(3));
         $('#Sum').val(($('#executedNorm').val() * $('#UnitPrice').val()).toFixed(2));
     }
 });
 
+function changeWorksTitle(value) {//функция оброботчика изминения значения /найменування робіт/
+    normOfWork(value);  // расчет норм
+    pricingUnit();      //расценка за единицу  
+}
+
 function columnSum() {//сумма строк   
     $("tfoot tr td:not(:first)").text(function (indx) {//"tfoot tr td:not(:first)"
         if (indx == 1 || indx == 2) {
             var sum = 0;
-            $("tr:not(:first) td:nth-child(" + (indx + 2) + ")", "#tbodyTable1").each(function () {//
+            $("tr:not(:first) td:nth-child(" + (indx + 2) + ")", "#tbodyTable1").each(function () {
                 sum += +$(this).text().replace(',', '.');
             });
             $(this).text((sum).toFixed(3))
         } else if (indx == 4 || indx == 6 || indx == 7 || indx == 8) {
             var sum = 0;
-            $("tr:not(:first) td:nth-child(" + (indx + 2) + ")", "#tbodyTable1").each(function () {//
+            $("tr:not(:first) td:nth-child(" + (indx + 2) + ")", "#tbodyTable1").each(function () {
                 sum += +$(this).text()
             });
             $(this).text((sum).toFixed(2))
@@ -143,7 +159,7 @@ function columnSum() {//сумма строк
 };
 
 $(document).ready(function () {
-    $('#coefficientTractor').hide();//скрыть строку /Поправочный коефициент/
+    $('#coefficient').hide();//скрыть строку /Поправочный коефициент/
     typeOfFelling($('#typeOfFelling'));
     ColectionSortOil();
     worksTitlee('#worksTitlee');
@@ -172,12 +188,14 @@ function collectionOilCosts() { //расхода ГСМ по строке
         type: "GET",
         url: '/home/CollectionOilCosts',
         data: {
-            'table': $('#productCategory').val(), 'typeOfWork': typeOfWork, 'volumeWood': $("#volumeWood").val(), 'executed': $("#executed").val()
-        },
+            'table': $('#productCategory').val(), 'typeOfWork': typeOfWork, 'volumeWood': $("#volumeWood").val(), 'executed': $("#executed").val(),
+            'checkedConditionsWinter': checkedConditionsWinter, 'checkedConditionsHard': checkedConditionsHard
+        },//!!!!!!!!!!!!!!!!добавить проверку checkedConditionsWinter если Найменування заходу(worksTitlee) = Лісозаготівельні роботи тогда равно 1
+        //чтоб не изминять норму расхода ГСМ при заготовке!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         success: function (data) {
             CollectionOilCosts.push(data);
             countValColectionSortOil();//подсчет расхода ГСМ по видам
-            addStringDetails(colectionSortOil);//посчитать строки расход материалов
+            addStringDetails(colectionSortOil);//пересчитать строки расход материалов
         }
     })
 }

@@ -134,11 +134,9 @@
         $(".autocompleteCombobox").toggle();
     });
 
-    $(".tbodyTable .autocompleteCombobox").combobox({ //событие ни изминение значения выпадающего списка
-        select: function (event, ui) {               
-            normOfWork(this.value);  // расчет норм
-            pricingUnit();           //единицы измерения
-            $("#executed").change();
+    $(".tbodyTable .autocompleteCombobox").combobox({ //событие ни изминение значения выпадающего списка        
+        select: function (event, ui) { 
+            changeWorksTitle(this.value);   //вызов функции оброботчика изминения значения /найменування робіт/       
         }   
     });
 });

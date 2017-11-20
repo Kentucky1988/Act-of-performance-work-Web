@@ -67,24 +67,34 @@
                 <td> <input type="text" id="volumeWood" /> </td>
             </tr>
         </table>
-        <div id="coefficientTractor">
+        <div id="coefficient">
             <form class="navbar-form">
                 <label>Умови трелювання:</label>
-                <div class="btn-group" data-toggle="buttons">
+                <div class="btn-group form-group" data-toggle="buttons">
                     <label class="btn btn-primary active" id="workingConditionsSummer">
                         <input type="radio" checked> Літні
-                    </label>
-                    <label class="btn btn-primary" id="workingConditionsWinter">
-                        <input type="radio" > Зимові
                     </label>
                     <label class="btn btn-primary" id="workingConditionsHard">
                         <input type="checkbox"> Тяжкі
                     </label>
+                    <label class="btn btn-primary" id="workingConditionsWinter">
+                        <input type="radio"> Зимові
+                    </label>
                 </div>
-                <label>Сумарний переїзд трактора, км:</label>
-                <input type="text" id="tractorMoving"/>
-                <label>Наявність перешкод на ділянці, %:</label>
-                <input type="text" id="block"/>
+                <div id="tractorCoefficient" class="form-group">
+                    <label>Сумарний переїзд трактора, км:</label>
+                    <input type="text" id="tractorMoving" />
+                    <label>Наявність перешкод на ділянці, %:</label>
+                    <input type="text" id="block" />
+                </div>
+                <div id="deforestationCoefficient" class="form-group">
+                    <label>Коефіцієнт зменшення норм:</label>
+                    <input type="text" id="reduceDeforestationCoefficient"/>
+                    <label> Згідно наказу №:</label>
+                    <input type="text" />
+                    <label>від:</label>
+                    <input type="text" class="calendar" />
+                </div>
             </form>
         </div>
     </div>

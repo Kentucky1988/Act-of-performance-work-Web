@@ -1,6 +1,7 @@
 /.git
 /.vs
-/packages
-/Наряд.Tests
-/Наряд/bin
-/Наряд/obj
+/packages/
+/Наряд.Tests/
+/Наряд/bin/
+/Наряд/obj/
+/Содержание/

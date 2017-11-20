@@ -139,7 +139,7 @@ namespace Наряд.ExtendedModel
     }
     class CoefficientNorm
     {
-        public double CoefficientNorm_Winter_Hard(string workingСonditions)
+        public double CoefficientNorm_Winter_Hard(string workingСonditions)//поправочный коефициент Норма (зима, тяжелые)
         {
             try
             {
@@ -156,7 +156,24 @@ namespace Наряд.ExtendedModel
             }           
         }
 
-        public double CoefficientTractorMoving(string distanceMoving)
+        public double CoefficientOil_Winter_Hard(string workingСonditions)//поправочный коефициент ГСМ (зима, тяжелые)
+        {
+            try
+            {
+                using (БД_НарядEntities1 db = new БД_НарядEntities1())
+                {
+                    var tableNorm = db.Поправочний_коефіцієнт.Where(a => a.Умови_праці == workingСonditions)
+                                        .Select(a => a.Поправочний_коефіцієнт_ГСМ).ToList();
+                    return Convert.ToDouble(tableNorm[0]);
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+
+        public double CoefficientTractorMoving(string distanceMoving)//поправочный коефициент переезд трактора
         {
             try
             {
@@ -170,11 +187,10 @@ namespace Наряд.ExtendedModel
             catch (Exception)
             {
                 return 0;
-            }
-           
+            }           
         }
 
-        public double CoefficientBlock(string distanceMoving)
+        public double CoefficientBlock(string distanceMoving)//поправочный коефициент помехи на делянке
         {
             try
             {

@@ -84,3 +84,4 @@ E:\GitHub\Наряд\Наряд.Tests\bin\Debug\roslyn\vbc.exe.config
 E:\GitHub\Наряд\Наряд.Tests\bin\Debug\roslyn\vbc.rsp
 E:\GitHub\Наряд\Наряд.Tests\bin\Debug\roslyn\VBCSCompiler.exe
 E:\GitHub\Наряд\Наряд.Tests\bin\Debug\roslyn\VBCSCompiler.exe.config
+E:\GitHub\Наряд\Наряд.Tests\bin\Debug\roslyn\Содержание OneNote.onetoc2
