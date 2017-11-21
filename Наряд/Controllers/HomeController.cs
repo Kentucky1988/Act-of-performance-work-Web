@@ -109,26 +109,24 @@ namespace Наряд.Controllers
             ArrayList normArray = new ArrayList();
 
             string tableNormOfWork = normFromDB.TableNorm(table);
+            double norm = normFromDB.NormFromTable(table, tableNormOfWork, typeOfWork, Replace(volumeWood)); //норма выроботка  
 
-            if (new NormOil().TableNormOfOil(table) == "-")//если нет ГСМ, тогда пропускаем расчет с V хлиста и возращаем значение в колонке "Норма_віробітку"
-            {
-                string str = "Норма_віробітку";
-
-                normArray.Add(normFromDB.Norm(str, table, tableNormOfWork, typeOfWork));
-                normArray.Add(0);
-                return new JsonResult { Data = normArray, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            if (new NormOil().TableNormOfOil(table) == "-")
+            {//если нет ГСМ, тогда пропускаем расчет поправочных коефициентов
+                normArray.Add(norm);
+                normArray.Add(0);               
             }
-                       
-            var norm = normFromDB.NormFromTable(table, tableNormOfWork, typeOfWork, Replace(volumeWood)); //норма выроботка  
-            double coefficientWinter = checkedConditionsWinter != "" ? coefficientNorm.CoefficientNorm_Winter_Hard(checkedConditionsWinter) : 1;//поправочный коефиц. Зима
-            double coefficientHard = checkedConditionsHard != "" ? coefficientNorm.CoefficientNorm_Winter_Hard(checkedConditionsHard) : 1;//поправочный коефиц. Тяжелые условия
-            double coefficientDistance = tractorMoving != "" ? coefficientNorm.CoefficientTractorMoving(Replace(tractorMoving)) : 1;//поправочный коефиц. переезд
-            double coefficientBlock = block != "" ? coefficientNorm.CoefficientBlock(Replace(block)) : 1;//поправочный коефиц. помехи
-            double deforestationCoefficient = reduceDeforestationCoefficient != "" ? Convert.ToDouble(Replace(reduceDeforestationCoefficient)) : 1;//поправочный коефиц. заготовка (по приказу)
+            else
+            {
+                double coefficientWinter = checkedConditionsWinter != "" ? coefficientNorm.CoefficientNorm_Winter_Hard(checkedConditionsWinter) : 1;//поправочный коефиц. Зима
+                double coefficientHard = checkedConditionsHard != "" ? coefficientNorm.CoefficientNorm_Winter_Hard(checkedConditionsHard) : 1;//поправочный коефиц. Тяжелые условия
+                double coefficientDistance = tractorMoving != "" ? coefficientNorm.CoefficientTractorMoving(Replace(tractorMoving)) : 1;//поправочный коефиц. переезд
+                double coefficientBlock = block != "" ? coefficientNorm.CoefficientBlock(Replace(block)) : 1;//поправочный коефиц. помехи
+                double deforestationCoefficient = reduceDeforestationCoefficient != "" ? Convert.ToDouble(Replace(reduceDeforestationCoefficient)) : 1;//поправочный коефиц. заготовка (по приказу)
 
-            norm = Math.Round(norm * (coefficientWinter * coefficientHard * coefficientDistance * coefficientBlock * deforestationCoefficient),3);
-            normArray.Add(norm);
-            
+                norm = Math.Round(norm * (coefficientWinter * coefficientHard * coefficientDistance * coefficientBlock * deforestationCoefficient), 3);
+                normArray.Add(norm);
+            }           
             return new JsonResult { Data = normArray, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
@@ -148,18 +146,14 @@ namespace Наряд.Controllers
         public JsonResult CollectionOilCosts(string table, string typeOfWork, string volumeWood, string executed, string checkedConditionsWinter, string checkedConditionsHard)//нормарасхода ГСМ
         {
             NormOil oilCalculation = new NormOil();
+            NormFromDB normFromDB = new NormFromDB();
             CoefficientNorm coefficientNorm = new CoefficientNorm();
-
-            volumeWood = Replace(volumeWood);
-            executed = Replace(executed);
-
+                        
             string tableNormOil = oilCalculation.TableNormOfOil(table);
-            double normOil = new NormFromDB().NormFromTable(table, tableNormOil, typeOfWork, volumeWood); //норма расхода ГСМ      
-
+            double normOil = normFromDB.NormFromTable(table, tableNormOil, typeOfWork, Replace(volumeWood)); //норма расхода ГСМ              
             double coefficientWinter = checkedConditionsWinter != "" ? coefficientNorm.CoefficientOil_Winter_Hard(checkedConditionsWinter) : 1;//поправочный коефиц. Зима
             double coefficientHard = checkedConditionsHard != "" ? coefficientNorm.CoefficientOil_Winter_Hard(checkedConditionsHard) : 1;//поправочный коефиц. Тяжелые условия
-           
-            double fuelCosts = Convert.ToDouble(executed) * normOil * (coefficientWinter * coefficientHard);//расход топлива
+            double fuelCosts = Convert.ToDouble(Replace(executed)) * normOil * (coefficientWinter * coefficientHard);//расход топлива
             List<Oil> collectionOilCosts = oilCalculation.CollectionOilCosts(table, fuelCosts);
 
             return new JsonResult { Data = collectionOilCosts, JsonRequestBehavior = JsonRequestBehavior.AllowGet };

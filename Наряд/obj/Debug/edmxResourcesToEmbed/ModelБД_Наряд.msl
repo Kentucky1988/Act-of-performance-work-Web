@@ -33,6 +33,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Догляд_за_л_к_мотокущорізом">
+      <EntityTypeMapping TypeName="БД_НарядModel.Догляд_за_л_к_мотокущорізом">
+        <MappingFragment StoreEntitySet="Догляд_за_л_к_мотокущорізом">
+          <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+          <ScalarProperty Name="Id_Вид_робіт" ColumnName="Id_Вид_робіт" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
       <EntityTypeMapping TypeName="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
         <MappingFragment StoreEntitySet="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
@@ -105,6 +113,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Садіння_лісу_Додаткові_роботи">
+      <EntityTypeMapping TypeName="БД_НарядModel.Садіння_лісу_Додаткові_роботи">
+        <MappingFragment StoreEntitySet="Садіння_лісу_Додаткові_роботи">
+          <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+          <ScalarProperty Name="Id_Вид_робіт" ColumnName="Id_Вид_робіт" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Трелювання_підліску">
       <EntityTypeMapping TypeName="БД_НарядModel.Трелювання_підліску">
         <MappingFragment StoreEntitySet="Трелювання_підліску">
@@ -152,6 +168,24 @@
           <ScalarProperty Name="Id_Палива" ColumnName="Id_Палива" />
           <ScalarProperty Name="Id_механізма" ColumnName="Id_механізма" />
           <ScalarProperty Name="Id_ВитратГСМ" ColumnName="Id_ВитратГСМ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Догляд_за_л_к_мотокущорізом_ГСМ">
+      <EntityTypeMapping TypeName="БД_НарядModel.Догляд_за_л_к_мотокущорізом_ГСМ">
+        <MappingFragment StoreEntitySet="Догляд_за_л_к_мотокущорізом_ГСМ">
+          <ScalarProperty Name="Норма_витрат_ГСМ" ColumnName="Норма_витрат_ГСМ" />
+          <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+          <ScalarProperty Name="Id_Норма_витрат_ГСМ" ColumnName="Id_Норма_витрат_ГСМ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Догляд_за_л_к_мотокущорізом_Норма">
+      <EntityTypeMapping TypeName="БД_НарядModel.Догляд_за_л_к_мотокущорізом_Норма">
+        <MappingFragment StoreEntitySet="Догляд_за_л_к_мотокущорізом_Норма">
+          <ScalarProperty Name="Норма_віробітку" ColumnName="Норма_віробітку" />
+          <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+          <ScalarProperty Name="Id_Норма_віробітку" ColumnName="Id_Норма_віробітку" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -397,6 +431,15 @@
           <ScalarProperty Name="C0_035" ColumnName="0,035" />
           <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
           <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Садіння_лісу_Додаткові_роботи_Норма">
+      <EntityTypeMapping TypeName="БД_НарядModel.Садіння_лісу_Додаткові_роботи_Норма">
+        <MappingFragment StoreEntitySet="Садіння_лісу_Додаткові_роботи_Норма">
+          <ScalarProperty Name="Норма_віробітку" ColumnName="Норма_віробітку" />
+          <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+          <ScalarProperty Name="Id_Норма_віробітку" ColumnName="Id_Норма_віробітку" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -33,7 +33,7 @@ var checkedConditionsWinter;//условия труда /зима/
 var checkedConditionsHard;//условия труда /тяжелые/
 
 function normOfWork(element) {//норма выроботки 
-    if ($('#product').val() != 0 && $("#volumeWood").val() != 0) {
+    if ($('#product').val() != 0) {
         var table = $('#productCategory').val();
         typeOfWork = element;
         checkedConditionsWinter = $('#workingConditionsWinter').hasClass('active') ? "Зимові умови" : "";

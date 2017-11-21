@@ -184,6 +184,15 @@
     <Compile Include="Денна_тарифна_ставка.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
+    <Compile Include="Догляд_за_л_к_мотокущорізом.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Догляд_за_л_к_мотокущорізом_ГСМ.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Догляд_за_л_к_мотокущорізом_Норма.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
     <Compile Include="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
@@ -257,6 +266,12 @@
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
     <Compile Include="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Садіння_лісу_Додаткові_роботи.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Садіння_лісу_Додаткові_роботи_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
     <Compile Include="Сортименти.cs">

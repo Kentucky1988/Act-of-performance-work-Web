@@ -43,6 +43,37 @@
     <Property Name="5" Type="decimal" Precision="6" Scale="2" Nullable="false" />
     <Property Name="6" Type="decimal" Precision="6" Scale="2" Nullable="false" />
   </EntityType>
+  <EntityType Name="Догляд_за_л_к_мотокущорізом">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Догляд_за_л_к_мотокущорізом_ГСМ" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Догляд_за_л_к_мотокущорізом_ГСМ">
+    <Key>
+      <PropertyRef Name="Id_Норма_витрат_ГСМ" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="Норма_витрат_ГСМ" />
+    </Key>
+    <Property Name="Id_Норма_витрат_ГСМ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Вид_робіт" Type="int" Nullable="false" />
+    <Property Name="Норма_витрат_ГСМ" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Догляд_за_л_к_мотокущорізом_Норма" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Догляд_за_л_к_мотокущорізом_Норма">
+    <Key>
+      <PropertyRef Name="Id_Норма_віробітку" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="Норма_віробітку" />
+    </Key>
+    <Property Name="Id_Норма_віробітку" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Вид_робіт" Type="int" Nullable="false" />
+    <Property Name="Норма_віробітку" Type="decimal" Precision="4" Scale="3" Nullable="false" />
+  </EntityType>
   <EntityType Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
     <Key>
       <PropertyRef Name="Id_Вид_робіт" />
@@ -500,6 +531,25 @@
     <Property Name="0,98" Type="decimal" Precision="5" Scale="3" Nullable="false" />
     <Property Name="1,5" Type="decimal" Precision="5" Scale="3" Nullable="false" />
   </EntityType>
+  <EntityType Name="Садіння_лісу_Додаткові_роботи">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Вид_робіт" Type="nvarchar" MaxLength="75" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Садіння_лісу_Додаткові_роботи_Норма" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Садіння_лісу_Додаткові_роботи_Норма">
+    <Key>
+      <PropertyRef Name="Id_Норма_віробітку" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="Норма_віробітку" />
+    </Key>
+    <Property Name="Id_Норма_віробітку" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Вид_робіт" Type="int" Nullable="false" />
+    <Property Name="Норма_віробітку" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+  </EntityType>
   <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Сортименти" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
   <EntityType Name="Сортименти">
@@ -809,6 +859,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Догляд_за__Вид_р__11D4A34F">
+    <End Role="Догляд_за_л_к_мотокущорізом" Type="Self.Догляд_за_л_к_мотокущорізом" Multiplicity="1" />
+    <End Role="Догляд_за_л_к_мотокущорізом_Норма" Type="Self.Догляд_за_л_к_мотокущорізом_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Догляд_за_л_к_мотокущорізом">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Догляд_за_л_к_мотокущорізом_Норма">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Догляд_за__Вид_р__14B10FFA">
+    <End Role="Догляд_за_л_к_мотокущорізом" Type="Self.Догляд_за_л_к_мотокущорізом" Multiplicity="1" />
+    <End Role="Догляд_за_л_к_мотокущорізом_ГСМ" Type="Self.Догляд_за_л_к_мотокущорізом_ГСМ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Догляд_за_л_к_мотокущорізом">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Догляд_за_л_к_мотокущорізом_ГСМ">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Заготівля__Вид_р__2EA5EC27">
     <End Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" Type="Self.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" Multiplicity="1" />
     <End Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ" Type="Self.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ" Multiplicity="*" />
@@ -989,6 +1063,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Садіння_л__Вид_р__0E04126B">
+    <End Role="Садіння_лісу_Додаткові_роботи" Type="Self.Садіння_лісу_Додаткові_роботи" Multiplicity="1" />
+    <End Role="Садіння_лісу_Додаткові_роботи_Норма" Type="Self.Садіння_лісу_Додаткові_роботи_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Садіння_лісу_Додаткові_роботи">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Садіння_лісу_Додаткові_роботи_Норма">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Трелюванн__Вид_р__345EC57D">
     <End Role="Трелювання_фанери_РУ" Type="Self.Трелювання_фанери_РУ" Multiplicity="1" />
     <End Role="Трелювання_фанери_РУ_ГСМ" Type="Self.Трелювання_фанери_РУ_ГСМ" Multiplicity="*" />
@@ -1101,6 +1187,7 @@
     <EntitySet Name="Вид_ГСМ" EntityType="Self.Вид_ГСМ" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Вид_рубки" EntityType="Self.Вид_рубки" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Денна_тарифна_ставка" EntityType="Self.Денна_тарифна_ставка" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Догляд_за_л_к_мотокущорізом" EntityType="Self.Догляд_за_л_к_мотокущорізом" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" EntityType="Self.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Заточка_цепей" EntityType="Self.Заточка_цепей" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Механізми" EntityType="Self.Механізми" Schema="dbo" store:Type="Tables" />
@@ -1110,6 +1197,7 @@
     <EntitySet Name="Прибирання_небезпечних_дерев" EntityType="Self.Прибирання_небезпечних_дерев" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="РГК_ССР_без_трелювання" EntityType="Self.РГК_ССР_без_трелювання" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntityType="Self.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Садіння_лісу_Додаткові_роботи" EntityType="Self.Садіння_лісу_Додаткові_роботи" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Трелювання_підліску" EntityType="Self.Трелювання_підліску" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Трелювання_РГК" EntityType="Self.Трелювання_РГК" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Трелювання_РУ" EntityType="Self.Трелювання_РУ" Schema="dbo" store:Type="Tables" />
@@ -1122,6 +1210,20 @@
     [Витрати_ГСМ].[Id_Палива] AS [Id_Палива], 
     [Витрати_ГСМ].[Витрати_ГСМ_%] AS [Витрати_ГСМ_%]
     FROM [dbo].[Витрати_ГСМ] AS [Витрати_ГСМ]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Догляд_за_л_к_мотокущорізом_ГСМ" EntityType="Self.Догляд_за_л_к_мотокущорізом_ГСМ" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Догляд_за_л_к_мотокущорізом_ГСМ].[Id_Норма_витрат_ГСМ] AS [Id_Норма_витрат_ГСМ], 
+    [Догляд_за_л_к_мотокущорізом_ГСМ].[Вид_робіт] AS [Вид_робіт], 
+    [Догляд_за_л_к_мотокущорізом_ГСМ].[Норма_витрат_ГСМ] AS [Норма_витрат_ГСМ]
+    FROM [dbo].[Догляд_за_л_к_мотокущорізом_ГСМ] AS [Догляд_за_л_к_мотокущорізом_ГСМ]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Догляд_за_л_к_мотокущорізом_Норма" EntityType="Self.Догляд_за_л_к_мотокущорізом_Норма" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Догляд_за_л_к_мотокущорізом_Норма].[Id_Норма_віробітку] AS [Id_Норма_віробітку], 
+    [Догляд_за_л_к_мотокущорізом_Норма].[Вид_робіт] AS [Вид_робіт], 
+    [Догляд_за_л_к_мотокущорізом_Норма].[Норма_віробітку] AS [Норма_віробітку]
+    FROM [dbo].[Догляд_за_л_к_мотокущорізом_Норма] AS [Догляд_за_л_к_мотокущорізом_Норма]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ" EntityType="Self.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -1336,6 +1438,13 @@
     [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[1,5] AS [1,5]
     FROM [dbo].[Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма] AS [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="Садіння_лісу_Додаткові_роботи_Норма" EntityType="Self.Садіння_лісу_Додаткові_роботи_Норма" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Садіння_лісу_Додаткові_роботи_Норма].[Id_Норма_віробітку] AS [Id_Норма_віробітку], 
+    [Садіння_лісу_Додаткові_роботи_Норма].[Вид_робіт] AS [Вид_робіт], 
+    [Садіння_лісу_Додаткові_роботи_Норма].[Норма_віробітку] AS [Норма_віробітку]
+    FROM [dbo].[Садіння_лісу_Додаткові_роботи_Норма] AS [Садіння_лісу_Додаткові_роботи_Норма]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="Сортименти" EntityType="Self.Сортименти" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [Сортименти].[СортиментиID] AS [СортиментиID], 
@@ -1479,6 +1588,14 @@
       <End Role="Вид_ГСМ" EntitySet="Вид_ГСМ" />
       <End Role="Витрати_ГСМ" EntitySet="Витрати_ГСМ" />
     </AssociationSet>
+    <AssociationSet Name="FK__Догляд_за__Вид_р__11D4A34F" Association="Self.FK__Догляд_за__Вид_р__11D4A34F">
+      <End Role="Догляд_за_л_к_мотокущорізом" EntitySet="Догляд_за_л_к_мотокущорізом" />
+      <End Role="Догляд_за_л_к_мотокущорізом_Норма" EntitySet="Догляд_за_л_к_мотокущорізом_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Догляд_за__Вид_р__14B10FFA" Association="Self.FK__Догляд_за__Вид_р__14B10FFA">
+      <End Role="Догляд_за_л_к_мотокущорізом" EntitySet="Догляд_за_л_к_мотокущорізом" />
+      <End Role="Догляд_за_л_к_мотокущорізом_ГСМ" EntitySet="Догляд_за_л_к_мотокущорізом_ГСМ" />
+    </AssociationSet>
     <AssociationSet Name="FK__Заготівля__Вид_р__2EA5EC27" Association="Self.FK__Заготівля__Вид_р__2EA5EC27">
       <End Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" EntitySet="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" />
       <End Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ" EntitySet="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ" />
@@ -1538,6 +1655,10 @@
     <AssociationSet Name="FK__Рубки_дог__Вид_р__3C34F16F" Association="Self.FK__Рубки_дог__Вид_р__3C34F16F">
       <End Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntitySet="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" />
       <End Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" EntitySet="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Садіння_л__Вид_р__0E04126B" Association="Self.FK__Садіння_л__Вид_р__0E04126B">
+      <End Role="Садіння_лісу_Додаткові_роботи" EntitySet="Садіння_лісу_Додаткові_роботи" />
+      <End Role="Садіння_лісу_Додаткові_роботи_Норма" EntitySet="Садіння_лісу_Додаткові_роботи_Норма" />
     </AssociationSet>
     <AssociationSet Name="FK__Трелюванн__Вид_р__345EC57D" Association="Self.FK__Трелюванн__Вид_р__345EC57D">
       <End Role="Трелювання_фанери_РУ" EntitySet="Трелювання_фанери_РУ" />

@@ -4,6 +4,7 @@
     <EntitySet Name="Вид_ГСМ" EntityType="БД_НарядModel.Вид_ГСМ" />
     <EntitySet Name="Вид_рубки" EntityType="БД_НарядModel.Вид_рубки" />
     <EntitySet Name="Денна_тарифна_ставка" EntityType="БД_НарядModel.Денна_тарифна_ставка" />
+    <EntitySet Name="Догляд_за_л_к_мотокущорізом" EntityType="БД_НарядModel.Догляд_за_л_к_мотокущорізом" />
     <EntitySet Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" EntityType="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" />
     <EntitySet Name="Заточка_цепей" EntityType="БД_НарядModel.Заточка_цепей" />
     <EntitySet Name="Механізми" EntityType="БД_НарядModel.Механізми" />
@@ -13,12 +14,15 @@
     <EntitySet Name="Прибирання_небезпечних_дерев" EntityType="БД_НарядModel.Прибирання_небезпечних_дерев" />
     <EntitySet Name="РГК_ССР_без_трелювання" EntityType="БД_НарядModel.РГК_ССР_без_трелювання" />
     <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" />
+    <EntitySet Name="Садіння_лісу_Додаткові_роботи" EntityType="БД_НарядModel.Садіння_лісу_Додаткові_роботи" />
     <EntitySet Name="Трелювання_підліску" EntityType="БД_НарядModel.Трелювання_підліску" />
     <EntitySet Name="Трелювання_РГК" EntityType="БД_НарядModel.Трелювання_РГК" />
     <EntitySet Name="Трелювання_РУ" EntityType="БД_НарядModel.Трелювання_РУ" />
     <EntitySet Name="Трелювання_фанери_РУ" EntityType="БД_НарядModel.Трелювання_фанери_РУ" />
     <EntitySet Name="Устройство_площадок" EntityType="БД_НарядModel.Устройство_площадок" />
     <EntitySet Name="Витрати_ГСМ" EntityType="БД_НарядModel.Витрати_ГСМ" />
+    <EntitySet Name="Догляд_за_л_к_мотокущорізом_ГСМ" EntityType="БД_НарядModel.Догляд_за_л_к_мотокущорізом_ГСМ" />
+    <EntitySet Name="Догляд_за_л_к_мотокущорізом_Норма" EntityType="БД_НарядModel.Догляд_за_л_к_мотокущорізом_Норма" />
     <EntitySet Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ" EntityType="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ" />
     <EntitySet Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" EntityType="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" />
     <EntitySet Name="Заточка_цепей_Норма" EntityType="БД_НарядModel.Заточка_цепей_Норма" />
@@ -35,6 +39,7 @@
     <EntitySet Name="РГК_ССР_без_трелювання_Норма" EntityType="БД_НарядModel.РГК_ССР_без_трелювання_Норма" />
     <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" />
     <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" />
+    <EntitySet Name="Садіння_лісу_Додаткові_роботи_Норма" EntityType="БД_НарядModel.Садіння_лісу_Додаткові_роботи_Норма" />
     <EntitySet Name="Сортименти" EntityType="БД_НарядModel.Сортименти" />
     <EntitySet Name="Трелювання_підліску_ГСМ" EntityType="БД_НарядModel.Трелювання_підліску_ГСМ" />
     <EntitySet Name="Трелювання_підліску_Норма" EntityType="БД_НарядModel.Трелювання_підліску_Норма" />
@@ -52,6 +57,14 @@
     <AssociationSet Name="FK__Категорії__Розці__57A801BA" Association="БД_НарядModel.FK__Категорії__Розці__57A801BA">
       <End Role="Денна_тарифна_ставка" EntitySet="Денна_тарифна_ставка" />
       <End Role="Категорії_робіт" EntitySet="Категорії_робіт" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Догляд_за__Вид_р__11D4A34F" Association="БД_НарядModel.FK__Догляд_за__Вид_р__11D4A34F">
+      <End Role="Догляд_за_л_к_мотокущорізом" EntitySet="Догляд_за_л_к_мотокущорізом" />
+      <End Role="Догляд_за_л_к_мотокущорізом_Норма" EntitySet="Догляд_за_л_к_мотокущорізом_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Догляд_за__Вид_р__14B10FFA" Association="БД_НарядModel.FK__Догляд_за__Вид_р__14B10FFA">
+      <End Role="Догляд_за_л_к_мотокущорізом" EntitySet="Догляд_за_л_к_мотокущорізом" />
+      <End Role="Догляд_за_л_к_мотокущорізом_ГСМ" EntitySet="Догляд_за_л_к_мотокущорізом_ГСМ" />
     </AssociationSet>
     <AssociationSet Name="FK__Заготівля__Вид_р__2EA5EC27" Association="БД_НарядModel.FK__Заготівля__Вид_р__2EA5EC27">
       <End Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" EntitySet="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" />
@@ -112,6 +125,10 @@
     <AssociationSet Name="FK__Рубки_дог__Вид_р__3C34F16F" Association="БД_НарядModel.FK__Рубки_дог__Вид_р__3C34F16F">
       <End Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntitySet="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" />
       <End Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" EntitySet="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Садіння_л__Вид_р__0E04126B" Association="БД_НарядModel.FK__Садіння_л__Вид_р__0E04126B">
+      <End Role="Садіння_лісу_Додаткові_роботи" EntitySet="Садіння_лісу_Додаткові_роботи" />
+      <End Role="Садіння_лісу_Додаткові_роботи_Норма" EntitySet="Садіння_лісу_Додаткові_роботи_Норма" />
     </AssociationSet>
     <AssociationSet Name="FK__Трелюванн__Вид_р__4865BE2A" Association="БД_НарядModel.FK__Трелюванн__Вид_р__4865BE2A">
       <End Role="Трелювання_підліску" EntitySet="Трелювання_підліску" />
@@ -180,6 +197,15 @@
     <Property Name="C5" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
     <Property Name="C6" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
     <NavigationProperty Name="Категорії_робіт" Relationship="БД_НарядModel.FK__Категорії__Розці__57A801BA" FromRole="Денна_тарифна_ставка" ToRole="Категорії_робіт" />
+  </EntityType>
+  <EntityType Name="Догляд_за_л_к_мотокущорізом">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Догляд_за_л_к_мотокущорізом_Норма" Relationship="БД_НарядModel.FK__Догляд_за__Вид_р__11D4A34F" FromRole="Догляд_за_л_к_мотокущорізом" ToRole="Догляд_за_л_к_мотокущорізом_Норма" />
+    <NavigationProperty Name="Догляд_за_л_к_мотокущорізом_ГСМ" Relationship="БД_НарядModel.FK__Догляд_за__Вид_р__14B10FFA" FromRole="Догляд_за_л_к_мотокущорізом" ToRole="Догляд_за_л_к_мотокущорізом_ГСМ" />
   </EntityType>
   <EntityType Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
     <Key>
@@ -259,6 +285,14 @@
     <NavigationProperty Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" Relationship="БД_НарядModel.FK__Рубки_дог__Вид_р__318258D2" FromRole="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" ToRole="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" />
     <NavigationProperty Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" Relationship="БД_НарядModel.FK__Рубки_дог__Вид_р__3C34F16F" FromRole="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" ToRole="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" />
   </EntityType>
+  <EntityType Name="Садіння_лісу_Додаткові_роботи">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Садіння_лісу_Додаткові_роботи_Норма" Relationship="БД_НарядModel.FK__Садіння_л__Вид_р__0E04126B" FromRole="Садіння_лісу_Додаткові_роботи" ToRole="Садіння_лісу_Додаткові_роботи_Норма" />
+  </EntityType>
   <EntityType Name="Трелювання_підліску">
     <Key>
       <PropertyRef Name="Id_Вид_робіт" />
@@ -316,6 +350,28 @@
     <Property Name="Витрати_ГСМ__" Type="Decimal" Nullable="false" Precision="6" Scale="3" />
     <NavigationProperty Name="Вид_ГСМ" Relationship="БД_НарядModel.FK__Витрати_Г__Id_Па__2610A626" FromRole="Витрати_ГСМ" ToRole="Вид_ГСМ" />
     <NavigationProperty Name="Механізми" Relationship="БД_НарядModel.FK__Витрати_Г__Id_ме__251C81ED" FromRole="Витрати_ГСМ" ToRole="Механізми" />
+  </EntityType>
+  <EntityType Name="Догляд_за_л_к_мотокущорізом_ГСМ">
+    <Key>
+      <PropertyRef Name="Id_Норма_витрат_ГСМ" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="Норма_витрат_ГСМ" />
+    </Key>
+    <Property Name="Id_Норма_витрат_ГСМ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="Норма_витрат_ГСМ" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <NavigationProperty Name="Догляд_за_л_к_мотокущорізом" Relationship="БД_НарядModel.FK__Догляд_за__Вид_р__14B10FFA" FromRole="Догляд_за_л_к_мотокущорізом_ГСМ" ToRole="Догляд_за_л_к_мотокущорізом" />
+  </EntityType>
+  <EntityType Name="Догляд_за_л_к_мотокущорізом_Норма">
+    <Key>
+      <PropertyRef Name="Id_Норма_віробітку" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="Норма_віробітку" />
+    </Key>
+    <Property Name="Id_Норма_віробітку" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <NavigationProperty Name="Догляд_за_л_к_мотокущорізом" Relationship="БД_НарядModel.FK__Догляд_за__Вид_р__11D4A34F" FromRole="Догляд_за_л_к_мотокущорізом_Норма" ToRole="Догляд_за_л_к_мотокущорізом" />
   </EntityType>
   <EntityType Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ">
     <Key>
@@ -694,6 +750,17 @@
     <Property Name="C1_5" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
     <NavigationProperty Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" Relationship="БД_НарядModel.FK__Рубки_дог__Вид_р__3C34F16F" FromRole="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" ToRole="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" />
   </EntityType>
+  <EntityType Name="Садіння_лісу_Додаткові_роботи_Норма">
+    <Key>
+      <PropertyRef Name="Id_Норма_віробітку" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="Норма_віробітку" />
+    </Key>
+    <Property Name="Id_Норма_віробітку" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="6" Scale="3" />
+    <NavigationProperty Name="Садіння_лісу_Додаткові_роботи" Relationship="БД_НарядModel.FK__Садіння_л__Вид_р__0E04126B" FromRole="Садіння_лісу_Додаткові_роботи_Норма" ToRole="Садіння_лісу_Додаткові_роботи" />
+  </EntityType>
   <EntityType Name="Сортименти">
     <Key>
       <PropertyRef Name="СортиментиID" />
@@ -957,6 +1024,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Догляд_за__Вид_р__11D4A34F">
+    <End Type="БД_НарядModel.Догляд_за_л_к_мотокущорізом" Role="Догляд_за_л_к_мотокущорізом" Multiplicity="1" />
+    <End Type="БД_НарядModel.Догляд_за_л_к_мотокущорізом_Норма" Role="Догляд_за_л_к_мотокущорізом_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Догляд_за_л_к_мотокущорізом">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Догляд_за_л_к_мотокущорізом_Норма">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Догляд_за__Вид_р__14B10FFA">
+    <End Type="БД_НарядModel.Догляд_за_л_к_мотокущорізом" Role="Догляд_за_л_к_мотокущорізом" Multiplicity="1" />
+    <End Type="БД_НарядModel.Догляд_за_л_к_мотокущорізом_ГСМ" Role="Догляд_за_л_к_мотокущорізом_ГСМ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Догляд_за_л_к_мотокущорізом">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Догляд_за_л_к_мотокущорізом_ГСМ">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Заготівля__Вид_р__2EA5EC27">
     <End Type="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" Multiplicity="1" />
     <End Type="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ" Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ" Multiplicity="*" />
@@ -1133,6 +1224,18 @@
         <PropertyRef Name="Id_Вид_робіт" />
       </Principal>
       <Dependent Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Садіння_л__Вид_р__0E04126B">
+    <End Type="БД_НарядModel.Садіння_лісу_Додаткові_роботи" Role="Садіння_лісу_Додаткові_роботи" Multiplicity="1" />
+    <End Type="БД_НарядModel.Садіння_лісу_Додаткові_роботи_Норма" Role="Садіння_лісу_Додаткові_роботи_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Садіння_лісу_Додаткові_роботи">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Садіння_лісу_Додаткові_роботи_Норма">
         <PropertyRef Name="Вид_робіт" />
       </Dependent>
     </ReferentialConstraint>

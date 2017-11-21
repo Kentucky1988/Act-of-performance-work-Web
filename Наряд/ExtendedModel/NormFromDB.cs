@@ -17,11 +17,30 @@ namespace Наряд.ExtendedModel
             }
         }
 
-        public double NormFromTable(string table, string tableNorm, string typeOfWork, string volumeWood)
+        public string Units(string category)
         {
-            List<string> properties = ColumnList(tableNorm);
-            int columnNumber = ColumnNumber(properties, double.Parse(volumeWood));
-            string amountOfWood = properties[columnNumber];
+            using (БД_НарядEntities1 db = new БД_НарядEntities1())
+            {
+                var tableNorm = db.Категорії_робіт.Where(a => a.Категорії_робіт1 == category)
+                                    .Select(a => a.Одиниця_виміру).ToList();
+                return tableNorm[0];
+            }
+        }
+
+        public double NormFromTable(string table, string tableNorm, string typeOfWork, string volumeWood)
+        {                    
+            string amountOfWood = null;            
+
+            if (new NormOil().TableNormOfOil(table) == " - " || (Units(table) != "м3" && table != "Прибирання_небезпечних_дерев"))
+            {//если нет ГСМ и м3, тогда пропускаем расчет с V хлиста и возращаем значение в колонке "Норма_віробітку"
+                amountOfWood = "Норма_віробітку";
+            }
+            else
+            {
+                List<string> properties = ColumnList(tableNorm);
+                int columnNumber = ColumnNumber(properties, double.Parse(volumeWood));
+                amountOfWood = properties[columnNumber];
+            }
             return Norm(amountOfWood, table, tableNorm, typeOfWork);
         }
 
@@ -153,7 +172,7 @@ namespace Наряд.ExtendedModel
             catch (Exception)
             {
                 return 0;
-            }           
+            }
         }
 
         public double CoefficientOil_Winter_Hard(string workingСonditions)//поправочный коефициент ГСМ (зима, тяжелые)
@@ -187,7 +206,7 @@ namespace Наряд.ExtendedModel
             catch (Exception)
             {
                 return 0;
-            }           
+            }
         }
 
         public double CoefficientBlock(string distanceMoving)//поправочный коефициент помехи на делянке
@@ -204,7 +223,7 @@ namespace Наряд.ExtendedModel
             catch (Exception)
             {
                 return 0;
-            }           
+            }
         }
     }
 }
