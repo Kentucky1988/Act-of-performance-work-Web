@@ -355,11 +355,11 @@
     <Key>
       <PropertyRef Name="Id_Норма_витрат_ГСМ" />
       <PropertyRef Name="Вид_робіт" />
-      <PropertyRef Name="Норма_витрат_ГСМ" />
+      <PropertyRef Name="Норма_віробітку" />
     </Key>
     <Property Name="Id_Норма_витрат_ГСМ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
-    <Property Name="Норма_витрат_ГСМ" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
     <NavigationProperty Name="Догляд_за_л_к_мотокущорізом" Relationship="БД_НарядModel.FK__Догляд_за__Вид_р__14B10FFA" FromRole="Догляд_за_л_к_мотокущорізом_ГСМ" ToRole="Догляд_за_л_к_мотокущорізом" />
   </EntityType>
   <EntityType Name="Догляд_за_л_к_мотокущорізом_Норма">
@@ -473,11 +473,11 @@
     <Key>
       <PropertyRef Name="Вид_робітID" />
       <PropertyRef Name="Вид_робіт" />
-      <PropertyRef Name="Норма_витрат_ГСМ" />
+      <PropertyRef Name="Норма_віробітку" />
     </Key>
     <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
-    <Property Name="Норма_витрат_ГСМ" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
     <NavigationProperty Name="Освітлення_механічним_способом" Relationship="БД_НарядModel.FK__Освітленн__Вид_р__373B3228" FromRole="Освітлення_механічним_способом_ГСМ" ToRole="Освітлення_механічним_способом" />
   </EntityType>
   <EntityType Name="Освітлення_механічним_способом_Норма">
@@ -773,11 +773,11 @@
     <Key>
       <PropertyRef Name="Вид_робітID" />
       <PropertyRef Name="Вид_робіт" />
-      <PropertyRef Name="кг_скл_м" />
+      <PropertyRef Name="Норма_віробітку" />
     </Key>
     <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
-    <Property Name="кг_скл_м" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
     <NavigationProperty Name="Трелювання_підліску" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__4865BE2A" FromRole="Трелювання_підліску_ГСМ" ToRole="Трелювання_підліску" />
   </EntityType>
   <EntityType Name="Трелювання_підліску_Норма">

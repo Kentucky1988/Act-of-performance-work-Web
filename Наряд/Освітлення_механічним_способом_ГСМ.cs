@@ -16,7 +16,7 @@ namespace Наряд
     {
         public int Вид_робітID { get; set; }
         public int Вид_робіт { get; set; }
-        public decimal Норма_витрат_ГСМ { get; set; }
+        public decimal Норма_віробітку { get; set; }
     
         public virtual Освітлення_механічним_способом Освітлення_механічним_способом { get; set; }
     }

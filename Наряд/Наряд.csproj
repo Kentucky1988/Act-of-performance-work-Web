@@ -140,12 +140,13 @@
       <DependentUpon>ModelБД_Наряд.edmx</DependentUpon>
       <LastGenOutput>ModelБД_Наряд.cs</LastGenOutput>
     </Content>
-    <Content Include="Scripts\myJScript\workTheTable.js" />
+    <Content Include="Scripts\myJScript\workTheTableFacial.js" />
     <Content Include="Scripts\myJScript\autocomplete.combobox.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\myJScript\addData.copyString.saveData.js" />
+    <Content Include="Scripts\myJScript\workTheTableReverse.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

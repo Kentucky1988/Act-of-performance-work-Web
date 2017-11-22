@@ -16,7 +16,7 @@ namespace Наряд
     {
         public int Вид_робітID { get; set; }
         public int Вид_робіт { get; set; }
-        public decimal кг_скл_м { get; set; }
+        public decimal Норма_віробітку { get; set; }
     
         public virtual Трелювання_підліску Трелювання_підліску { get; set; }
     }

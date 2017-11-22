@@ -174,7 +174,7 @@
     <EntitySetMapping Name="Догляд_за_л_к_мотокущорізом_ГСМ">
       <EntityTypeMapping TypeName="БД_НарядModel.Догляд_за_л_к_мотокущорізом_ГСМ">
         <MappingFragment StoreEntitySet="Догляд_за_л_к_мотокущорізом_ГСМ">
-          <ScalarProperty Name="Норма_витрат_ГСМ" ColumnName="Норма_витрат_ГСМ" />
+          <ScalarProperty Name="Норма_віробітку" ColumnName="Норма_віробітку" />
           <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
           <ScalarProperty Name="Id_Норма_витрат_ГСМ" ColumnName="Id_Норма_витрат_ГСМ" />
         </MappingFragment>
@@ -253,7 +253,7 @@
     <EntitySetMapping Name="Освітлення_механічним_способом_ГСМ">
       <EntityTypeMapping TypeName="БД_НарядModel.Освітлення_механічним_способом_ГСМ">
         <MappingFragment StoreEntitySet="Освітлення_механічним_способом_ГСМ">
-          <ScalarProperty Name="Норма_витрат_ГСМ" ColumnName="Норма_витрат_ГСМ" />
+          <ScalarProperty Name="Норма_віробітку" ColumnName="Норма_віробітку" />
           <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
           <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
         </MappingFragment>
@@ -454,7 +454,7 @@
     <EntitySetMapping Name="Трелювання_підліску_ГСМ">
       <EntityTypeMapping TypeName="БД_НарядModel.Трелювання_підліску_ГСМ">
         <MappingFragment StoreEntitySet="Трелювання_підліску_ГСМ">
-          <ScalarProperty Name="кг_скл_м" ColumnName="кг_скл_м" />
+          <ScalarProperty Name="Норма_віробітку" ColumnName="Норма_віробітку" />
           <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
           <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
         </MappingFragment>

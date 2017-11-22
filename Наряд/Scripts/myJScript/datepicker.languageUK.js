@@ -105,14 +105,16 @@ function colorCellDayOff() { //выделение ячеек с выходным
     var lasMonthDay = new Date(dateObject.getFullYear(), dateObject.getMonth() + 1, 0);//последний день месяца
 
     $('.employee thead td').each(function () {
-        if ($(this).html() > 0 || $(this).html() < 31) {
+        var date = $(this).html(); 
+
+        if (date > 0 || date < 31) {
             $(this).css('background-color', 'transparent');//очистить предыдущий цвет фона
-            var lasMonthDay = new Date(dateObject.getFullYear(), dateObject.getMonth(), $(this).html());
+            var lasMonthDay = new Date(dateObject.getFullYear(), dateObject.getMonth(), date);
             if (lasMonthDay.getDay() > 5 || lasMonthDay.getDay() < 1) {
                 $(this).css('background-color', '#5cb85c');
             }
 
-            if ($(this).html() > lasMonthDay.getDate()) {
+            if (date > lasMonthDay.getDate()) {
                 $(this).css('background-color', '#f0ad4e');
             }
         }
@@ -125,9 +127,10 @@ function titleDay() { //добавить вспл. подсказку /День 
     var dateObject = new Date(firstWorkingDate[2], firstWorkingDate[1] - 1, firstWorkingDate[0]);
     var lasMonthDay = new Date(dateObject.getFullYear(), dateObject.getMonth() + 1, 0);//последний день месяца
 
-    $('.employee tbody td[id]').each(function () {
+    $('.employee tbody tr').filter(':eq(0), :eq(1)').find('td[id]').each(function () {
 
         $('input', this).prop("disabled", false).removeAttr("title"); //отключить *не активен* убрать title
+        
         var attrId = this.id;
 
         if (attrId > 0 && attrId <= lasMonthDay.getDate()) {

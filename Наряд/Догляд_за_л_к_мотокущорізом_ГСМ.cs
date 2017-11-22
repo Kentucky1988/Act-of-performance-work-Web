@@ -16,7 +16,7 @@ namespace Наряд
     {
         public int Id_Норма_витрат_ГСМ { get; set; }
         public int Вид_робіт { get; set; }
-        public decimal Норма_витрат_ГСМ { get; set; }
+        public decimal Норма_віробітку { get; set; }
     
         public virtual Догляд_за_л_к_мотокущорізом Догляд_за_л_к_мотокущорізом { get; set; }
     }

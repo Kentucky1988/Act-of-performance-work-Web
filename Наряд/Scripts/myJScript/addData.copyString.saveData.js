@@ -35,52 +35,48 @@ function LoadProduct(element) {//вид робот
 }
 
 $('.add').click(function () {//событие на нажатие кнопки ДОБАВИТ 
-    collectionOilCosts(); //получить колекцию расхода ГСМ   
-    copyString(this); //копировать строку ввода    
-});
-
-function copyString(element) {
-    var $table = $(element).parents('.tbodyTable');//таблица в которой добовляем строки
+    var $table = $(this).parents('.tbodyTable');//таблица в которой добовляем строки
     var isAllValid = true;
 
-    $("tr td input:not(:disabled)", $table).each(function () {//проверка не пустые строки
+    $("tr:first td input:not(:disabled)", $table).each(function () {//проверка не пустые строки
         if ($(this).val().trim() === '') {
             isAllValid = false;
         }
     });
 
     if (isAllValid) {//копирование строки   
-
-        $("<tr>").appendTo($table);//добавляем нижнюю строку            
-        $("tr:first td", $table).each(function (indx) {//заполняем последнюю строку данными     
-            var str;
-
-            if ($("input", this).attr('type', 'text')) {
-                str = $("input", this).val();
-            }
-
-            if (indx === 1 && ($($table).next().is("tfoot"))) {
-                $("<td/>").attr("colspan", "3").text(str).appendTo($("tr:last", $table));
-            } else if (indx >= 3 || (indx === 0 && !($($table).next().is("tfoot")))) {
-                $("<td/>", { text: str }).appendTo($("tr:last", $table));
-            }
-            else {
-                return;
-            }
-        });
-
-        var $newRow = $(element).clone();//клонирование кнопки add
-        $($newRow).addClass('remove').toggleClass('btn-success btn-danger');//сменить стиль success - danger
-        $('#addIcon', $newRow).toggleClass('glyphicon-plus glyphicon-trash');//сменить иконку кнопки
-        $($newRow).appendTo($("tr:last td:last", $table));//добавление клонированой кнопки add         
-
-        $('span.error', $newRow).remove();
-        $('input.custom-combobox-input', $table).val('');
-        //$('#productCategory', $table).val('0');
-        $('#Rank', $table).not('#Unit').val('');
-        $('.quantity', $table).not('#Unit').val('');
-        $('#orderItemError', $table).empty();
+        collectionOilCosts(); //получить колекцию расхода ГСМ   
+        copyString(this); //копировать строку ввода  
     }
+});
+
+function copyString(element) {
+    var $table = $(element).parents('.tbodyTable');//таблица в которой добовляем строки
+
+    $("<tr>").appendTo($table);//добавляем нижнюю строку            
+    $("tr:first td", $table).each(function (indx) {//заполняем последнюю строку данными     
+        var str;
+
+        if ($("input", this).attr('type', 'text')) {
+            str = $("input", this).val();
+        }
+
+        if (indx === 1 && ($($table).next().is("tfoot"))) {
+            $("<td/>").attr("colspan", "3").text(str).appendTo($("tr:last", $table));
+        } else if (indx >= 3 || (indx === 0 && !($($table).next().is("tfoot")))) {
+            $("<td/>", { text: str }).appendTo($("tr:last", $table));
+        }
+        else {
+            return;
+        }
+    });
+
+    var $newRow = $(element).clone();//клонирование кнопки add
+    $($newRow).addClass('remove').toggleClass('btn-success btn-danger');//сменить стиль success - danger
+    $('#addIcon', $newRow).toggleClass('glyphicon-plus glyphicon-trash');//сменить иконку кнопки
+    $($newRow).appendTo($("tr:last td:last", $table));//добавление клонированой кнопки add         
+       
+    clearRow($table);
 
     if ($($table).next().is("tfoot")) {
         columnSum(); //сумма строк      
@@ -103,6 +99,13 @@ $('.tbodyTable').each(function () {
 
 function deleteTr(element) {//Удаление строки
     $(element).parents('tr').remove();
+}
+
+function clearRow($table) {
+    $('input.custom-combobox-input', $table).val('');
+    //$('#productCategory', $table).val('0');
+    $('#Rank', $table).val('');
+    $('.quantity', $table).not('#Unit').val(''); 
 }
 
  //Сохранить

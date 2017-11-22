@@ -94,7 +94,7 @@ namespace Наряд.Controllers
             using (БД_НарядEntities1 context = new БД_НарядEntities1())
             {
                 var TypeOfWork = context.Категорії_робіт.Where(a => a.Категорії_робіт1 == category)
-                                                       .Select(a => new { a.Комплексна_индивідуальна, a.РозцінкаID, a.Одиниця_виміру })
+                                                       .Select(a => new { a.Комплексна_индивідуальна, a.РозцінкаID, a.Одиниця_виміру})
                                                        .ToList();
 
                 return new JsonResult { Data = TypeOfWork, JsonRequestBehavior = JsonRequestBehavior.AllowGet };

@@ -13,11 +13,11 @@
                     <td rowspan="3" class="verticalText">Професія</td>
                     <td rowspan="3" class="verticalText">Тарифний розряд,&nbsp;коеф.</td>
                     <td colspan="16">Відпрацьовано годин по числам місяця</td>
-                    <td colspan="3">Годин</td>
+                    <td colspan="2">Всього</td>
                     <td rowspan="3" class="verticalText">Тарифна&nbsp;ставка</td>
                     <td rowspan="3" class="verticalText">Сумма&nbsp;коеф.</td>
                     <td colspan="2">Виконанно норм</td>
-                    <td colspan="3">Належить нарахувати зарплати</td>
+                    <td rowspan="3">Всього належить нарахувати зарплати</td>
                     <td rowspan="3">Добавити строку</td>
                 </tr>
                 <tr>
@@ -37,13 +37,10 @@
                     <td>14</td>
                     <td>15</td>
                     <td>&nbsp;</td>
-                    <td rowspan="3" class="verticalText">Всього</td>
-                    <td colspan="2">в т. ч.</td>
+                    <td rowspan="2">Днів</td>
+                    <td rowspan="2">Годин</td>
                     <td rowspan="2" class="verticalText">Кількість</td>
-                    <td rowspan="2">%  </td>
-                    <td rowspan="2">&nbsp;</td>
-                    <td rowspan="2">&nbsp;</td>
-                    <td rowspan="2">Всього</td>
+                    <td rowspan="2">%</td>    
                 </tr>
                 <tr>
                     <td>16</td>
@@ -61,9 +58,7 @@
                     <td>28</td>
                     <td>29</td>
                     <td>30</td>
-                    <td>31</td>
-                    <td>відря-дно</td>
-                    <td>пого-динно</td>
+                    <td>31</td>                    
                 </tr>
             </thead>
             <tbody class="tbodyTableRevers" id="tbodyTable1">
@@ -75,36 +70,33 @@
                             <option></option>
                         </select>
                     </td>
-                    <td rowspan="2"> <input type="text" class="quantity" disabled /> </td>
-                    <td rowspan="2"> <input type="text" class="quantity"/> </td>
-                    <td rowspan="2"> <input type="text" class="quantity"/> </td>
-                    <td rowspan="2"> <input type="text" class="quantity" disabled /> </td>
-                    <td id="1"> <input type="text" class="quantity"/> </td>
-                    <td id="2"> <input type="text" class="quantity"/> </td>
-                    <td id="3"> <input type="text" class="quantity"/> </td>
-                    <td id="4"> <input type="text" class="quantity"/> </td>
-                    <td id="5"> <input type="text" class="quantity"/> </td>
-                    <td id="6"> <input type="text" class="quantity"/> </td>
-                    <td id="7"> <input type="text" class="quantity"/> </td>
-                    <td id="8"> <input type="text" class="quantity"/> </td>
-                    <td id="9"> <input type="text" class="quantity"/> </td>
-                    <td id="10"> <input type="text" class="quantity"/> </td>
-                    <td id="11"> <input type="text" class="quantity"/> </td>
-                    <td id="12"> <input type="text" class="quantity"/> </td>
-                    <td id="13"> <input type="text" class="quantity"/> </td>
-                    <td id="14"> <input type="text" class="quantity"/> </td>
-                    <td id="15"> <input type="text" class="quantity"/> </td>
+                    <td rowspan="2"> <input type="text" disabled /> </td>
+                    <td rowspan="2"> <input type="text"/> </td>
+                    <td rowspan="2"> <input type="text"/> </td>
+                    <td rowspan="2"> <input type="text" disabled /> </td>
+                    <td id="1"> <input type="text"/> </td>
+                    <td id="2"> <input type="text"/> </td>
+                    <td id="3"> <input type="text"/> </td>
+                    <td id="4"> <input type="text"/> </td>
+                    <td id="5"> <input type="text"/> </td>
+                    <td id="6"> <input type="text"/> </td>
+                    <td id="7"> <input type="text"/> </td>
+                    <td id="8"> <input type="text"/> </td>
+                    <td id="9"> <input type="text"/> </td>
+                    <td id="10"> <input type="text"/> </td>
+                    <td id="11"> <input type="text"/> </td>
+                    <td id="12"> <input type="text"/> </td>
+                    <td id="13"> <input type="text"/> </td>
+                    <td id="14"> <input type="text"/> </td>
+                    <td id="15"> <input type="text"/> </td>
                     <td> <input type="text" disabled/> </td>
-                    <td rowspan="2"> <input type="text" class="quantity"/> </td>
-                    <td rowspan="2"> <input type="text" class="quantity"/> </td>
-                    <td rowspan="2"> <input type="text" class="quantity"/> </td>
-                    <td rowspan="2"> <input type="text" class="quantity"/> </td>
-                    <td rowspan="2"> <input type="text" class="quantity"/> </td>
-                    <td rowspan="2"> <input type="text" class="quantity"/> </td>
-                    <td rowspan="2"> <input type="text" class="quantity"/> </td>
-                    <td rowspan="2"> <input type="text" class="quantity"/> </td>
-                    <td rowspan="2"> <input type="text" class="quantity"/> </td>
-                    <td rowspan="2"> <input type="text" class="quantity"/> </td>
+                    <td rowspan="2"> <input type="text"/> </td>
+                    <td rowspan="2"> <input type="text"/> </td>
+                    <td rowspan="2"> <input type="text"/> </td>
+                    <td rowspan="2"> <input type="text"/> </td>                   
+                    <td rowspan="2"> <input type="text"/> </td>                    
+                    <td rowspan="2"> <input type="text"/> </td>
+                    <td rowspan="2"> <input type="text"/> </td>
                     <td rowspan="2">
                         <button class="btn btn-success add">
                             <!--кнопка добавления строки-->
@@ -113,22 +105,22 @@
                     </td>
                 </tr>
                 <tr>
-                    <td id="16"> <input type="text" class="quantity"/> </td>
-                    <td id="17"> <input type="text" class="quantity"/> </td>
-                    <td id="18"> <input type="text" class="quantity"/> </td>
-                    <td id="19"> <input type="text" class="quantity"/> </td>
-                    <td id="20"> <input type="text" class="quantity"/> </td>
-                    <td id="21"> <input type="text" class="quantity"/> </td>
-                    <td id="22"> <input type="text" class="quantity"/> </td>
-                    <td id="23"> <input type="text" class="quantity"/> </td>
-                    <td id="24"> <input type="text" class="quantity"/> </td>
-                    <td id="25"> <input type="text" class="quantity"/> </td>
-                    <td id="26"> <input type="text" class="quantity"/> </td>
-                    <td id="27"> <input type="text" class="quantity"/> </td>
-                    <td id="28"> <input type="text" class="quantity"/> </td>
-                    <td id="29"> <input type="text" class="quantity"/> </td>
-                    <td id="30"> <input type="text" class="quantity"/> </td>
-                    <td id="31"> <input type="text" class="quantity"/> </td>
+                    <td id="16"> <input type="text"/> </td>
+                    <td id="17"> <input type="text"/> </td>
+                    <td id="18"> <input type="text"/> </td>
+                    <td id="19"> <input type="text"/> </td>
+                    <td id="20"> <input type="text"/> </td>
+                    <td id="21"> <input type="text"/> </td>
+                    <td id="22"> <input type="text"/> </td>
+                    <td id="23"> <input type="text"/> </td>
+                    <td id="24"> <input type="text"/> </td>
+                    <td id="25"> <input type="text"/> </td>
+                    <td id="26"> <input type="text"/> </td>
+                    <td id="27"> <input type="text"/> </td>
+                    <td id="28"> <input type="text"/> </td>
+                    <td id="29"> <input type="text"/> </td>
+                    <td id="30"> <input type="text"/> </td>
+                    <td id="31"> <input type="text"/> </td>
                 </tr>
             <tfoot>
                 <!--нижняя строка с суммой-->
@@ -145,9 +137,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td></td>                   
                     <td></td>
                     <td></td>
                     <td></td>
@@ -181,47 +171,55 @@
     </div>
     <br />
     <div align="left">
-        <h4 style="padding-left:150px">Лісопродукцію:</h4>
+        <h4 style="padding-left:150px">Лісопродукція:</h4>
     </div>
     <div class="details">
         <table class="table-bordered table-hover">
             <thead>
-                <tr>
-                    <td rowspan="2">Найменування</td>
-                    <td rowspan="2">Порода</td>
+                <tr>     
+                    <td rowspan="2">Сортимент</td>                   
+                    <td rowspan="2">Довжина</td>                  
+                    <td colspan="2">Один. виміру</td>
+                    <td rowspan="2">Кількість</td>
                     <td rowspan="2">Сортимент</td>
-                    <td rowspan="2">Сорт</td>
-                    <td rowspan="2">Довжина</td>
-                    <td rowspan="2">Діаметр</td>
+                    <td rowspan="2">Довжина</td>                  
                     <td colspan="2">Один. виміру</td>
                     <td rowspan="2">Кількість</td>
                     <td rowspan="2">Добавити строку</td>
                 </tr>
                 <tr>
                     <td>штук</td>
-                    <td>м<sup>3</sup></td>                    
+                    <td>м<sup>3</sup></td>        
+                    <td>штук</td>
+                    <td>м<sup>3</sup></td>         
                 </tr>
             </thead>
-            <tbody class="tbodyTable">
+            <tbody>
                 <!--тело таблицы-->
-                <tr class="mycontainer" id="mainrow" align="center">
+                <tr align="center">
                     <td>
-                        <!--выпадающий список материалы, сырье-->
-                        <select class="pc autocompleteCombobox materials">
+                        <!--выпадающий список сортименты-->
+                        <select class="autocompleteCombobox materials">
                             <option></option>
                         </select>
                     </td>
-                    <td> <input type="text" class="quantity"/> </td>
-                    <td> <input type="text" class="quantity"/> </td>
-                    <td> <input type="text" class="quantity"/> </td>
-                    <td> <input type="text" class="quantity"/> </td>                    
-                    <td> <input type="text" class="quantity"/> </td>
-                    <td> <input type="text" class="quantity"/> </td>
-                    <td> <input type="text" class="quantity"/> </td>
-                    <td> <input type="text" class="quantity"/> </td>
+                    <td> <input type="text" /> </td>                   
+                    <td> <input type="text" /> </td>
+                    <td> <input type="text" /> </td>  
+                    <td> <input type="text" /> </td>   
                     <td>
-                        <button class="btn btn-success add">
-                            <span id="addIcon" class="glyphicon glyphicon-plus" />
+                        <!--выпадающий список сортименты-->
+                        <select class="autocompleteCombobox materials">
+                            <option></option>
+                        </select>
+                    </td>
+                    <td> <input type="text" /> </td>                   
+                    <td> <input type="text" /> </td>
+                    <td> <input type="text" /> </td>
+                    <td> <input type="text" /> </td>
+                    <td>
+                        <button class="btn btn-success addDetails">
+                            <span id="addIconDetails" class="glyphicon glyphicon-plus" />
                         </button> <!--кнопка добавления строки-->
                     </td>
                 </tr>
@@ -260,9 +258,9 @@
             $($this).css('background-color', 'lavender');
         }
     });
-
+    
     $('.verticalText').css({ 'max-width': '20px', 'transform': 'rotate(-90deg) translateX(-7px)' });
-    $('.employee tr:first td').filter('.verticalText').css({ 'transform': 'rotate(-90deg) translateX(-2em)', 'line-height': '1em' });
+    $('.employee tr:first td').filter('.verticalText').css({ 'transform': 'rotate(-90deg) translateX(-2.2em)', 'height': '110px' });
     $('.employee thead tr').not(':first').css('height', '35px');
     
 </script>

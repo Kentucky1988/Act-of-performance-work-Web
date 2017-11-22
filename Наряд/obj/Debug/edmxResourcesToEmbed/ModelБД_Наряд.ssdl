@@ -56,11 +56,11 @@
     <Key>
       <PropertyRef Name="Id_Норма_витрат_ГСМ" />
       <PropertyRef Name="Вид_робіт" />
-      <PropertyRef Name="Норма_витрат_ГСМ" />
+      <PropertyRef Name="Норма_віробітку" />
     </Key>
     <Property Name="Id_Норма_витрат_ГСМ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Вид_робіт" Type="int" Nullable="false" />
-    <Property Name="Норма_витрат_ГСМ" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+    <Property Name="Норма_віробітку" Type="decimal" Precision="5" Scale="3" Nullable="false" />
   </EntityType>
   <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Догляд_за_л_к_мотокущорізом_Норма" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
@@ -213,11 +213,11 @@
     <Key>
       <PropertyRef Name="Вид_робітID" />
       <PropertyRef Name="Вид_робіт" />
-      <PropertyRef Name="Норма_витрат_ГСМ" />
+      <PropertyRef Name="Норма_віробітку" />
     </Key>
     <Property Name="Вид_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Вид_робіт" Type="int" Nullable="false" />
-    <Property Name="Норма_витрат_ГСМ" Type="decimal" Precision="4" Scale="3" Nullable="false" />
+    <Property Name="Норма_віробітку" Type="decimal" Precision="4" Scale="3" Nullable="false" />
   </EntityType>
   <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Освітлення_механічним_способом_Норма" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
@@ -573,11 +573,11 @@
     <Key>
       <PropertyRef Name="Вид_робітID" />
       <PropertyRef Name="Вид_робіт" />
-      <PropertyRef Name="кг_скл_м" />
+      <PropertyRef Name="Норма_віробітку" />
     </Key>
     <Property Name="Вид_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Вид_робіт" Type="int" Nullable="false" />
-    <Property Name="кг_скл_м" Type="decimal" Precision="4" Scale="3" Nullable="false" />
+    <Property Name="Норма_віробітку" Type="decimal" Precision="4" Scale="3" Nullable="false" />
   </EntityType>
   <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Трелювання_підліску_Норма" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
@@ -1215,7 +1215,7 @@
       <DefiningQuery>SELECT 
     [Догляд_за_л_к_мотокущорізом_ГСМ].[Id_Норма_витрат_ГСМ] AS [Id_Норма_витрат_ГСМ], 
     [Догляд_за_л_к_мотокущорізом_ГСМ].[Вид_робіт] AS [Вид_робіт], 
-    [Догляд_за_л_к_мотокущорізом_ГСМ].[Норма_витрат_ГСМ] AS [Норма_витрат_ГСМ]
+    [Догляд_за_л_к_мотокущорізом_ГСМ].[Норма_віробітку] AS [Норма_віробітку]
     FROM [dbo].[Догляд_за_л_к_мотокущорізом_ГСМ] AS [Догляд_за_л_к_мотокущорізом_ГСМ]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="Догляд_за_л_к_мотокущорізом_Норма" EntityType="Self.Догляд_за_л_к_мотокущорізом_Норма" store:Type="Tables" store:Schema="dbo">
@@ -1282,7 +1282,7 @@
       <DefiningQuery>SELECT 
     [Освітлення_механічним_способом_ГСМ].[Вид_робітID] AS [Вид_робітID], 
     [Освітлення_механічним_способом_ГСМ].[Вид_робіт] AS [Вид_робіт], 
-    [Освітлення_механічним_способом_ГСМ].[Норма_витрат_ГСМ] AS [Норма_витрат_ГСМ]
+    [Освітлення_механічним_способом_ГСМ].[Норма_віробітку] AS [Норма_віробітку]
     FROM [dbo].[Освітлення_механічним_способом_ГСМ] AS [Освітлення_механічним_способом_ГСМ]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="Освітлення_механічним_способом_Норма" EntityType="Self.Освітлення_механічним_способом_Норма" store:Type="Tables" store:Schema="dbo">
@@ -1455,7 +1455,7 @@
       <DefiningQuery>SELECT 
     [Трелювання_підліску_ГСМ].[Вид_робітID] AS [Вид_робітID], 
     [Трелювання_підліску_ГСМ].[Вид_робіт] AS [Вид_робіт], 
-    [Трелювання_підліску_ГСМ].[кг_скл_м] AS [кг_скл_м]
+    [Трелювання_підліску_ГСМ].[Норма_віробітку] AS [Норма_віробітку]
     FROM [dbo].[Трелювання_підліску_ГСМ] AS [Трелювання_підліску_ГСМ]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="Трелювання_підліску_Норма" EntityType="Self.Трелювання_підліску_Норма" store:Type="Tables" store:Schema="dbo">
