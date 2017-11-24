@@ -17,6 +17,7 @@ function renderCategory(element, List) {//создание списка кате
     $.each(List, function (i, val) {
         $ele.append($('<option/>').text(val));
     })
+    $ele.prop('selectedIndex', 0); //значение по умолчанию
 }
 
 function LoadProduct(element) {//вид робот

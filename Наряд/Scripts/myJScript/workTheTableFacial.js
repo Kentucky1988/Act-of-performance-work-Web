@@ -8,10 +8,52 @@
     })
 }
 
+
+
+var ListCompany = []
+function Company(element) { //предприятие   
+    $.ajax({
+        type: "GET",
+        url: '/home/getCompany',
+        success: function (data) {
+            ListCompany = data;
+            getEmployees(element, ListCompany, 'Підприємство1');
+        }
+    })
+}
+
+function LoadMaterials(element) { //сортименты   
+    $.ajax({
+        type: "GET",
+        url: '/home/getMaterials',
+        success: function (data) {
+            renderCategory(element, data);
+        }
+    })
+}
+
+var Employees = []
+function loadEmployees() { //роботники   
+    $.ajax({
+        type: "GET",
+        url: '/home/getEmployees',
+        success: function (data) {
+            Employees = data;    
+            addEmploySelect();
+        }
+    })
+}
+
+function addEmploySelect() {
+    $('.employees').each(function () {//выпадающий список сотрудников      
+        getEmployees(this, Employees, 'П_І_Б');
+    })
+}
+
 function worksTitlee(element) {//найменування заходу
     $.ajax({
         type: "GET",
-        url: '/home/getworksTitlee',
+        url: '/home/getWorksTitlee',
         success: function (data) {
             renderCategory(element, data);
         }
@@ -161,14 +203,21 @@ function columnSum() {//сумма строк
 
 $(document).ready(function () {
     $('#coefficient').hide();//скрыть строку /Поправочный коефициент/
-    typeOfFelling($('#typeOfFelling'));
+    typeOfFelling('#typeOfFelling');
     ColectionSortOil();
     worksTitlee('#worksTitlee');
+    loadEmployees();
+
+    $('.materials').each(function () {//выпадающий список сыря и материалов
+        LoadMaterials($(this));
+    })
+
+    Company('#company');
+
+    $('.tbodyTable .custom-combobox-input, .details .custom-combobox-input').css('min-width', '340px');
+    $('.employees').parent('td').find('.custom-combobox-input').css('min-width', '200px');
 });
 
-$('.materials').each(function () {//выпадающий список сыря и материалов
-    LoadMaterials($(this));
-})
 
 var colectionSortOil = []  //колекция расхода ГСМ по видам
 function ColectionSortOil() {// виды ГСМ
@@ -273,9 +322,20 @@ function addString($table, index, typeOil, unit, consumption, td_input, td) {//�
     $(td).appendTo($("tr:last", $table));
 }
 
+function getEmployees(element, List, nameColum) {//добавить список сотрудников в выподающий список 
+    var $ele = $(element);
+    $ele.empty();
+    $ele.append($('<option/>').text('Вибрати'));
+    $.each(List, function () {
+        $ele.append($('<option/>').text(this[nameColum]));
+    })   
+}
+
 $('#submit').click(function myfunction() {
     alert(colectionSortOil[1]['Вид_палива'] + '/' + colectionSortOil[1]['Витрити_ГСМ']);
 })
+
+
 
 
 

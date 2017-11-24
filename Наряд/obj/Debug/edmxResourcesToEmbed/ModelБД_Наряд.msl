@@ -81,6 +81,24 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Підприємство">
+      <EntityTypeMapping TypeName="БД_НарядModel.Підприємство">
+        <MappingFragment StoreEntitySet="Підприємство">
+          <ScalarProperty Name="Код_ЄДРПОУ" ColumnName="Код_ЄДРПОУ" />
+          <ScalarProperty Name="Підприємство1" ColumnName="Підприємство" />
+          <ScalarProperty Name="Id_Підприємства" ColumnName="Id_Підприємства" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Підрозділ">
+      <EntityTypeMapping TypeName="БД_НарядModel.Підрозділ">
+        <MappingFragment StoreEntitySet="Підрозділ">
+          <ScalarProperty Name="Підрозділ1" ColumnName="Підрозділ" />
+          <ScalarProperty Name="Id_Підприємства" ColumnName="Id_Підприємства" />
+          <ScalarProperty Name="Id_Підрозділу" ColumnName="Id_Підрозділу" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Погрузка">
       <EntityTypeMapping TypeName="БД_НарядModel.Погрузка">
         <MappingFragment StoreEntitySet="Погрузка">
@@ -365,6 +383,17 @@
           <ScalarProperty Name="C0_219" ColumnName="0,219" />
           <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
           <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Робітники">
+      <EntityTypeMapping TypeName="БД_НарядModel.Робітники">
+        <MappingFragment StoreEntitySet="Робітники">
+          <ScalarProperty Name="Категорія" ColumnName="Категорія" />
+          <ScalarProperty Name="Тарифний_розряд" ColumnName="Тарифний_розряд" />
+          <ScalarProperty Name="Професія" ColumnName="Професія" />
+          <ScalarProperty Name="П_І_Б" ColumnName="П_І_Б" />
+          <ScalarProperty Name="Id_Робітника" ColumnName="Id_Робітника" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

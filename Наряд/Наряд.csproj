@@ -227,6 +227,12 @@
     <Compile Include="Освітлення_механічним_способом_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
+    <Compile Include="Підприємство.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Підрозділ.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
     <Compile Include="Погрузка.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
@@ -258,6 +264,9 @@
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
     <Compile Include="РГК_ССР_без_трелювання_Норма.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Робітники.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
     <Compile Include="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР.cs">

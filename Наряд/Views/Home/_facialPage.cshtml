@@ -24,14 +24,30 @@
             </tr>
             <tr>
                 <td> <input type="text" class="calendar" name="getDate" />  </td>
-                <td> <input type="text" /> </td>
-                <td> <input type="text" /> </td>
-                <td> <input type="text" /> </td>
-                <td> <input type="text" /> </td>
-                <td> <input type="text" /> </td>
-                <td> <input type="text" /> </td>
-                <td> <input type="text" /> </td>
-                <td> <input type="text" /> </td>
+                <td> 
+                    <select id="company">
+                        <option></option>
+                    </select>
+                </td>
+                <td>                
+                    <label id="codeEDRPOY"></label>
+                </td>
+                <td> 
+                    <select id="subdivision">
+                        <option></option>
+                    </select>
+                </td>
+                <td> <input type="text"/> </td>
+                <td> <input type="text"/> </td>
+                <td>
+                    <select class="autocompleteCombobox employees">
+                        <option></option>
+                    </select>
+                </td>
+                <td>  
+                    <label id="tableNumber"></label>
+                </td>
+                <td> <input type="text"/> </td>
             </tr>
         </table>
     </div>
@@ -89,7 +105,7 @@
                 </div>
                 <div id="deforestationCoefficient" class="form-group">
                     <label>Коефіцієнт зменшення норм:</label>
-                    <input type="text" id="reduceDeforestationCoefficient"/>
+                    <input type="text" id="reduceDeforestationCoefficient" />
                     <label> Згідно наказу №:</label>
                     <input type="text" />
                     <label>від:</label>
@@ -215,23 +231,38 @@
         <form class="navbar-form" autocomplete="on">
             <div class="form-group">
                 <label> Наряд видав:</label>
-                <input type="text" />
+                <label></label>
+                <select class="autocompleteCombobox employees">
+                    <option></option>
+                </select>
             </div>
             <div class="form-group">
                 <label> До виконання прийняв:</label>
-                <input type="text" />
+                <label></label>
+                <select class="autocompleteCombobox employees">
+                    <option></option>
+                </select>
             </div>
             <div class="form-group">
                 <label> Виконану роботу здав:</label>
-                <input type="text" />
+                <label></label>
+                <select class="autocompleteCombobox employees">
+                    <option></option>
+                </select>
             </div>
             <div class="form-group">
                 <label> Оцінка якості виконаних робіт:</label>
-                <input type="text" id="orderDate" />
+                <select id="PerformanceEvaluation">                   
+                    <option>Задовільно</option>
+                    <option>Не задовільно</option>
+                </select>
             </div>
             <div class="form-group">
                 <label> Роботу прийняв:</label>
-                <input type="text" id="orderDate" />
+                <label></label>
+                <select class="autocompleteCombobox employees">
+                    <option></option>
+                </select>
             </div>
         </form>
     </div>
@@ -243,7 +274,7 @@
 </div>
 
 <script type="text/javascript">
-
+    $("#PerformanceEvaluation").prop('selectedIndex', 0); //значение по умолчанию /оценка работы/
 
 
 </script>

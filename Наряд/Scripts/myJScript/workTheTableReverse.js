@@ -24,27 +24,37 @@ function copyStringDetails(element) {
             str = $("input", this).val();
         }
 
-        $("<td/>", { text: str }).appendTo($("tr:last", $table));  
+        $("<td/>", { text: str }).appendTo($("tr:last", $table));
     });
 
-var $newRow = $(element).clone();//клонирование кнопки add
+    var $newRow = $(element).clone();//клонирование кнопки add
     $($newRow).addClass('removeDetails').toggleClass('btn-success btn-danger');//сменить стиль success - danger
     $('#addIconDetails', $newRow).toggleClass('glyphicon-plus glyphicon-trash');//сменить иконку кнопки
-$($newRow).appendTo($("tr:last td:last", $table));//добавление клонированой кнопки add         
+    $($newRow).appendTo($("tr:last td:last", $table));//добавление клонированой кнопки add         
 
-clearRow($table);
+    clearRowDetails($table);
 }
 
 $('.details').each(function () {
     $(this).on('click', '.removeDetails', function () {   //событие на нажатие кнопки удалить строку   
-        $(this).parents('tr').remove();//Удаление строки   
+        deleteTr(this);//Удаление строки   
     })
 });
 
 function clearRowDetails($table) {
-    $('tr:first input', $table).each(function() {
-        $(this).val('');   
-    })        
+    $('.details input').each(function () {
+        $(this).val('');
+    })
 }
+
+function position(element) {
+    $.each(Employees, function () {
+        if ($(element).val() === this['П_І_Б']) {           
+            $(element).parent('div').find('label:odd').text(this['Професія']);
+        }
+    })
+}
+
+
 
 

@@ -17,7 +17,7 @@
     color: dimgray;
     padding: 6px;
     font-size: 10pt; /*шрифт*/
-    min-width: 340px;
+    /*min-width: 340px;*/
 }
 
 .ui-autocomplete {/*полоcа прокрута для выпадающего списка*/

@@ -34,6 +34,8 @@ namespace Наряд
         public virtual DbSet<Механізми> Механізми { get; set; }
         public virtual DbSet<Найменування_заходу> Найменування_заходу { get; set; }
         public virtual DbSet<Освітлення_механічним_способом> Освітлення_механічним_способом { get; set; }
+        public virtual DbSet<Підприємство> Підприємство { get; set; }
+        public virtual DbSet<Підрозділ> Підрозділ { get; set; }
         public virtual DbSet<Погрузка> Погрузка { get; set; }
         public virtual DbSet<Прибирання_небезпечних_дерев> Прибирання_небезпечних_дерев { get; set; }
         public virtual DbSet<РГК_ССР_без_трелювання> РГК_ССР_без_трелювання { get; set; }
@@ -61,6 +63,7 @@ namespace Наряд
         public virtual DbSet<Прибирання_небезпечних_дерев_Норма> Прибирання_небезпечних_дерев_Норма { get; set; }
         public virtual DbSet<РГК_ССР_без_трелювання_ГСМ> РГК_ССР_без_трелювання_ГСМ { get; set; }
         public virtual DbSet<РГК_ССР_без_трелювання_Норма> РГК_ССР_без_трелювання_Норма { get; set; }
+        public virtual DbSet<Робітники> Робітники { get; set; }
         public virtual DbSet<Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ> Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ { get; set; }
         public virtual DbSet<Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма> Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма { get; set; }
         public virtual DbSet<Садіння_лісу_Додаткові_роботи_Норма> Садіння_лісу_Додаткові_роботи_Норма { get; set; }

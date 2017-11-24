@@ -10,6 +10,8 @@
     <EntitySet Name="Механізми" EntityType="БД_НарядModel.Механізми" />
     <EntitySet Name="Найменування_заходу" EntityType="БД_НарядModel.Найменування_заходу" />
     <EntitySet Name="Освітлення_механічним_способом" EntityType="БД_НарядModel.Освітлення_механічним_способом" />
+    <EntitySet Name="Підприємство" EntityType="БД_НарядModel.Підприємство" />
+    <EntitySet Name="Підрозділ" EntityType="БД_НарядModel.Підрозділ" />
     <EntitySet Name="Погрузка" EntityType="БД_НарядModel.Погрузка" />
     <EntitySet Name="Прибирання_небезпечних_дерев" EntityType="БД_НарядModel.Прибирання_небезпечних_дерев" />
     <EntitySet Name="РГК_ССР_без_трелювання" EntityType="БД_НарядModel.РГК_ССР_без_трелювання" />
@@ -37,6 +39,7 @@
     <EntitySet Name="Прибирання_небезпечних_дерев_Норма" EntityType="БД_НарядModel.Прибирання_небезпечних_дерев_Норма" />
     <EntitySet Name="РГК_ССР_без_трелювання_ГСМ" EntityType="БД_НарядModel.РГК_ССР_без_трелювання_ГСМ" />
     <EntitySet Name="РГК_ССР_без_трелювання_Норма" EntityType="БД_НарядModel.РГК_ССР_без_трелювання_Норма" />
+    <EntitySet Name="Робітники" EntityType="БД_НарядModel.Робітники" />
     <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" />
     <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" />
     <EntitySet Name="Садіння_лісу_Додаткові_роботи_Норма" EntityType="БД_НарядModel.Садіння_лісу_Додаткові_роботи_Норма" />
@@ -97,6 +100,10 @@
     <AssociationSet Name="FK__Освітленн__Вид_р__59C55456" Association="БД_НарядModel.FK__Освітленн__Вид_р__59C55456">
       <End Role="Освітлення_механічним_способом" EntitySet="Освітлення_механічним_способом" />
       <End Role="Освітлення_механічним_способом_Норма" EntitySet="Освітлення_механічним_способом_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Підрозділ__Id_Пі__26CFC035" Association="БД_НарядModel.FK__Підрозділ__Id_Пі__26CFC035">
+      <End Role="Підприємство" EntitySet="Підприємство" />
+      <End Role="Підрозділ" EntitySet="Підрозділ" />
     </AssociationSet>
     <AssociationSet Name="FK__Погрузка___Вид_р__0B5CAFEA" Association="БД_НарядModel.FK__Погрузка___Вид_р__0B5CAFEA">
       <End Role="Погрузка" EntitySet="Погрузка" />
@@ -249,6 +256,24 @@
     <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Освітлення_механічним_способом_ГСМ" Relationship="БД_НарядModel.FK__Освітленн__Вид_р__373B3228" FromRole="Освітлення_механічним_способом" ToRole="Освітлення_механічним_способом_ГСМ" />
     <NavigationProperty Name="Освітлення_механічним_способом_Норма" Relationship="БД_НарядModel.FK__Освітленн__Вид_р__59C55456" FromRole="Освітлення_механічним_способом" ToRole="Освітлення_механічним_способом_Норма" />
+  </EntityType>
+  <EntityType Name="Підприємство">
+    <Key>
+      <PropertyRef Name="Id_Підприємства" />
+    </Key>
+    <Property Name="Id_Підприємства" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Підприємство1" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Код_ЄДРПОУ" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Підрозділ" Relationship="БД_НарядModel.FK__Підрозділ__Id_Пі__26CFC035" FromRole="Підприємство" ToRole="Підрозділ" />
+  </EntityType>
+  <EntityType Name="Підрозділ">
+    <Key>
+      <PropertyRef Name="Id_Підрозділу" />
+    </Key>
+    <Property Name="Id_Підрозділу" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Підприємства" Type="Int32" Nullable="false" />
+    <Property Name="Підрозділ1" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Підприємство" Relationship="БД_НарядModel.FK__Підрозділ__Id_Пі__26CFC035" FromRole="Підрозділ" ToRole="Підприємство" />
   </EntityType>
   <EntityType Name="Погрузка">
     <Key>
@@ -631,6 +656,18 @@
     <Property Name="C0_75" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
     <Property Name="C1_1" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
     <NavigationProperty Name="РГК_ССР_без_трелювання" Relationship="БД_НарядModel.FK__РГК_ССР_б__Вид_р__367C1819" FromRole="РГК_ССР_без_трелювання_Норма" ToRole="РГК_ССР_без_трелювання" />
+  </EntityType>
+  <EntityType Name="Робітники">
+    <Key>
+      <PropertyRef Name="Id_Робітника" />
+      <PropertyRef Name="П_І_Б" />
+      <PropertyRef Name="Професія" />
+    </Key>
+    <Property Name="Id_Робітника" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="П_І_Б" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Професія" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Тарифний_розряд" Type="Int32" />
+    <Property Name="Категорія" Type="Int32" />
   </EntityType>
   <EntityType Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ">
     <Key>
@@ -1141,6 +1178,18 @@
       </Principal>
       <Dependent Role="Освітлення_механічним_способом_Норма">
         <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Підрозділ__Id_Пі__26CFC035">
+    <End Type="БД_НарядModel.Підприємство" Role="Підприємство" Multiplicity="1" />
+    <End Type="БД_НарядModel.Підрозділ" Role="Підрозділ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Підприємство">
+        <PropertyRef Name="Id_Підприємства" />
+      </Principal>
+      <Dependent Role="Підрозділ">
+        <PropertyRef Name="Id_Підприємства" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

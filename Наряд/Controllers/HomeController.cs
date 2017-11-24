@@ -27,7 +27,25 @@ namespace Наряд.Controllers
             }
         }
 
-        public JsonResult getworksTitlee()
+        public JsonResult getEmployees()
+        {
+            using (БД_НарядEntities1 dc = new БД_НарядEntities1())
+            {
+                var materials = dc.Робітники.OrderBy(a => a.П_І_Б).Select(a => new { a.Id_Робітника, a.П_І_Б, a.Професія, a.Тарифний_розряд, a.Категорія }).ToList();
+                return new JsonResult { Data = materials, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+        }
+
+        public JsonResult getCompany()
+        {
+            using (БД_НарядEntities1 dc = new БД_НарядEntities1())
+            {
+                var materials = dc.Підприємство.OrderBy(a => a.Підприємство1).Select(a => new { a.Підприємство1, a.Код_ЄДРПОУ }).ToList();
+                return new JsonResult { Data = materials, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+        }
+
+        public JsonResult getWorksTitlee()
         {
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
             {

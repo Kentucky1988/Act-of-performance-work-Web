@@ -231,6 +231,22 @@
     <Property Name="Вид_робіт" Type="int" Nullable="false" />
     <Property Name="Норма_віробітку" Type="decimal" Precision="5" Scale="3" Nullable="false" />
   </EntityType>
+  <EntityType Name="Підприємство">
+    <Key>
+      <PropertyRef Name="Id_Підприємства" />
+    </Key>
+    <Property Name="Id_Підприємства" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Підприємство" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="Код_ЄДРПОУ" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Підрозділ">
+    <Key>
+      <PropertyRef Name="Id_Підрозділу" />
+    </Key>
+    <Property Name="Id_Підрозділу" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Підприємства" Type="int" Nullable="false" />
+    <Property Name="Підрозділ" Type="nvarchar" MaxLength="40" Nullable="false" />
+  </EntityType>
   <EntityType Name="Погрузка">
     <Key>
       <PropertyRef Name="Id_Вид_робіт" />
@@ -403,6 +419,20 @@
     <Property Name="0,49" Type="decimal" Precision="5" Scale="3" Nullable="false" />
     <Property Name="0,75" Type="decimal" Precision="5" Scale="3" Nullable="false" />
     <Property Name="1,1" Type="decimal" Precision="5" Scale="3" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Робітники" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Робітники">
+    <Key>
+      <PropertyRef Name="Id_Робітника" />
+      <PropertyRef Name="П_І_Б" />
+      <PropertyRef Name="Професія" />
+    </Key>
+    <Property Name="Id_Робітника" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="П_І_Б" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Професія" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Тарифний_розряд" Type="int" />
+    <Property Name="Категорія" Type="int" />
   </EntityType>
   <EntityType Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
     <Key>
@@ -979,6 +1009,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Підрозділ__Id_Пі__26CFC035">
+    <End Role="Підприємство" Type="Self.Підприємство" Multiplicity="1" />
+    <End Role="Підрозділ" Type="Self.Підрозділ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Підприємство">
+        <PropertyRef Name="Id_Підприємства" />
+      </Principal>
+      <Dependent Role="Підрозділ">
+        <PropertyRef Name="Id_Підприємства" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Погрузка___Вид_р__0B5CAFEA">
     <End Role="Погрузка" Type="Self.Погрузка" Multiplicity="1" />
     <End Role="Погрузка_Норма" Type="Self.Погрузка_Норма" Multiplicity="*" />
@@ -1193,6 +1235,8 @@
     <EntitySet Name="Механізми" EntityType="Self.Механізми" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Найменування_заходу" EntityType="Self.Найменування_заходу" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Освітлення_механічним_способом" EntityType="Self.Освітлення_механічним_способом" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Підприємство" EntityType="Self.Підприємство" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Підрозділ" EntityType="Self.Підрозділ" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Погрузка" EntityType="Self.Погрузка" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Прибирання_небезпечних_дерев" EntityType="Self.Прибирання_небезпечних_дерев" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="РГК_ССР_без_трелювання" EntityType="Self.РГК_ССР_без_трелювання" Schema="dbo" store:Type="Tables" />
@@ -1375,6 +1419,15 @@
     [РГК_ССР_без_трелювання_Норма].[0,75] AS [0,75], 
     [РГК_ССР_без_трелювання_Норма].[1,1] AS [1,1]
     FROM [dbo].[РГК_ССР_без_трелювання_Норма] AS [РГК_ССР_без_трелювання_Норма]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Робітники" EntityType="Self.Робітники" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Робітники].[Id_Робітника] AS [Id_Робітника], 
+    [Робітники].[П_І_Б] AS [П_І_Б], 
+    [Робітники].[Професія] AS [Професія], 
+    [Робітники].[Тарифний_розряд] AS [Тарифний_розряд], 
+    [Робітники].[Категорія] AS [Категорія]
+    FROM [dbo].[Робітники] AS [Робітники]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" EntityType="Self.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -1627,6 +1680,10 @@
     <AssociationSet Name="FK__Освітленн__Вид_р__59C55456" Association="Self.FK__Освітленн__Вид_р__59C55456">
       <End Role="Освітлення_механічним_способом" EntitySet="Освітлення_механічним_способом" />
       <End Role="Освітлення_механічним_способом_Норма" EntitySet="Освітлення_механічним_способом_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Підрозділ__Id_Пі__26CFC035" Association="Self.FK__Підрозділ__Id_Пі__26CFC035">
+      <End Role="Підприємство" EntitySet="Підприємство" />
+      <End Role="Підрозділ" EntitySet="Підрозділ" />
     </AssociationSet>
     <AssociationSet Name="FK__Погрузка___Вид_р__0B5CAFEA" Association="Self.FK__Погрузка___Вид_р__0B5CAFEA">
       <End Role="Погрузка" EntitySet="Погрузка" />
