@@ -101,7 +101,7 @@
       <End Role="Освітлення_механічним_способом" EntitySet="Освітлення_механічним_способом" />
       <End Role="Освітлення_механічним_способом_Норма" EntitySet="Освітлення_механічним_способом_Норма" />
     </AssociationSet>
-    <AssociationSet Name="FK__Підрозділ__Id_Пі__26CFC035" Association="БД_НарядModel.FK__Підрозділ__Id_Пі__26CFC035">
+    <AssociationSet Name="FK__Підрозділ__Id_Пі__370627FE" Association="БД_НарядModel.FK__Підрозділ__Id_Пі__370627FE">
       <End Role="Підприємство" EntitySet="Підприємство" />
       <End Role="Підрозділ" EntitySet="Підрозділ" />
     </AssociationSet>
@@ -264,7 +264,7 @@
     <Property Name="Id_Підприємства" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Підприємство1" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
     <Property Name="Код_ЄДРПОУ" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Підрозділ" Relationship="БД_НарядModel.FK__Підрозділ__Id_Пі__26CFC035" FromRole="Підприємство" ToRole="Підрозділ" />
+    <NavigationProperty Name="Підрозділ" Relationship="БД_НарядModel.FK__Підрозділ__Id_Пі__370627FE" FromRole="Підприємство" ToRole="Підрозділ" />
   </EntityType>
   <EntityType Name="Підрозділ">
     <Key>
@@ -273,7 +273,7 @@
     <Property Name="Id_Підрозділу" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Id_Підприємства" Type="Int32" Nullable="false" />
     <Property Name="Підрозділ1" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Підприємство" Relationship="БД_НарядModel.FK__Підрозділ__Id_Пі__26CFC035" FromRole="Підрозділ" ToRole="Підприємство" />
+    <NavigationProperty Name="Підприємство" Relationship="БД_НарядModel.FK__Підрозділ__Id_Пі__370627FE" FromRole="Підрозділ" ToRole="Підприємство" />
   </EntityType>
   <EntityType Name="Погрузка">
     <Key>
@@ -1181,7 +1181,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Підрозділ__Id_Пі__26CFC035">
+  <Association Name="FK__Підрозділ__Id_Пі__370627FE">
     <End Type="БД_НарядModel.Підприємство" Role="Підприємство" Multiplicity="1" />
     <End Type="БД_НарядModel.Підрозділ" Role="Підрозділ" Multiplicity="*" />
     <ReferentialConstraint>

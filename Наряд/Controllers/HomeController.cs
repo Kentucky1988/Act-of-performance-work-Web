@@ -40,8 +40,21 @@ namespace Наряд.Controllers
         {
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
             {
-                var materials = dc.Підприємство.OrderBy(a => a.Підприємство1).Select(a => new { a.Підприємство1, a.Код_ЄДРПОУ }).ToList();
+                var materials = dc.Підприємство.OrderBy(a => a.Підприємство1).Select(a => new {a.Id_Підприємства, a.Підприємство1, a.Код_ЄДРПОУ }).ToList();
                 return new JsonResult { Data = materials, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+        }
+
+        public JsonResult getSubdivision(string сompanyIDstring)
+        {
+            using (БД_НарядEntities1 dc = new БД_НарядEntities1())
+            {
+                //var listCompanyID = dc.Підприємство.Where(a => a.Підприємство1 == сompany).Select(a => a.Id_Підприємства).ToList();
+                ////int сompanyID = сompany[0];
+
+                int сompanyID = Convert.ToInt32(сompanyIDstring);
+                var subdivision = dc.Підрозділ.Where(a => a.Id_Підприємства == сompanyID).Select(a => a.Id_Підприємства).ToList();
+                return new JsonResult { Data = subdivision, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
 
@@ -112,7 +125,7 @@ namespace Наряд.Controllers
             using (БД_НарядEntities1 context = new БД_НарядEntities1())
             {
                 var TypeOfWork = context.Категорії_робіт.Where(a => a.Категорії_робіт1 == category)
-                                                       .Select(a => new { a.Комплексна_индивідуальна, a.РозцінкаID, a.Одиниця_виміру})
+                                                       .Select(a => new { a.Комплексна_индивідуальна, a.РозцінкаID, a.Одиниця_виміру })
                                                        .ToList();
 
                 return new JsonResult { Data = TypeOfWork, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
@@ -132,7 +145,7 @@ namespace Наряд.Controllers
             if (new NormOil().TableNormOfOil(table) == "-")
             {//если нет ГСМ, тогда пропускаем расчет поправочных коефициентов
                 normArray.Add(norm);
-                normArray.Add(0);               
+                normArray.Add(0);
             }
             else
             {
@@ -144,7 +157,7 @@ namespace Наряд.Controllers
 
                 norm = Math.Round(norm * (coefficientWinter * coefficientHard * coefficientDistance * coefficientBlock * deforestationCoefficient), 3);
                 normArray.Add(norm);
-            }           
+            }
             return new JsonResult { Data = normArray, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
@@ -166,7 +179,7 @@ namespace Наряд.Controllers
             NormOil oilCalculation = new NormOil();
             NormFromDB normFromDB = new NormFromDB();
             CoefficientNorm coefficientNorm = new CoefficientNorm();
-                        
+
             string tableNormOil = oilCalculation.TableNormOfOil(table);
             double normOil = normFromDB.NormFromTable(table, tableNormOil, typeOfWork, Replace(volumeWood)); //норма расхода ГСМ              
             double coefficientWinter = checkedConditionsWinter != "" ? coefficientNorm.CoefficientOil_Winter_Hard(checkedConditionsWinter) : 1;//поправочный коефиц. Зима

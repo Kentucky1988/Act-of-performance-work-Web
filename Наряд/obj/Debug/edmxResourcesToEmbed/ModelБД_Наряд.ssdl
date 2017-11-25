@@ -1009,7 +1009,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Підрозділ__Id_Пі__26CFC035">
+  <Association Name="FK__Підрозділ__Id_Пі__370627FE">
     <End Role="Підприємство" Type="Self.Підприємство" Multiplicity="1" />
     <End Role="Підрозділ" Type="Self.Підрозділ" Multiplicity="*" />
     <ReferentialConstraint>
@@ -1681,7 +1681,7 @@
       <End Role="Освітлення_механічним_способом" EntitySet="Освітлення_механічним_способом" />
       <End Role="Освітлення_механічним_способом_Норма" EntitySet="Освітлення_механічним_способом_Норма" />
     </AssociationSet>
-    <AssociationSet Name="FK__Підрозділ__Id_Пі__26CFC035" Association="Self.FK__Підрозділ__Id_Пі__26CFC035">
+    <AssociationSet Name="FK__Підрозділ__Id_Пі__370627FE" Association="Self.FK__Підрозділ__Id_Пі__370627FE">
       <End Role="Підприємство" EntitySet="Підприємство" />
       <End Role="Підрозділ" EntitySet="Підрозділ" />
     </AssociationSet>

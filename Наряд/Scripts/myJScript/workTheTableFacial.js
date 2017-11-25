@@ -8,8 +8,6 @@
     })
 }
 
-
-
 var ListCompany = []
 function Company(element) { //предприятие   
     $.ajax({
@@ -18,6 +16,18 @@ function Company(element) { //предприятие
         success: function (data) {
             ListCompany = data;
             getEmployees(element, ListCompany, 'Підприємство1');
+        }
+    })
+}
+
+function subdivision(element) {//Підрозділи
+    $.ajax({
+        type: "GET",
+        url: "/home/getSubdivision",
+        data: { 'company': element },
+        success: function (data) {
+            $element = $('#subdivision');
+            renderCategory($element, data);
         }
     })
 }
@@ -38,15 +48,9 @@ function loadEmployees() { //роботники
         type: "GET",
         url: '/home/getEmployees',
         success: function (data) {
-            Employees = data;    
-            addEmploySelect();
+            Employees = data;
+            getEmployees('.employees', Employees, 'П_І_Б');
         }
-    })
-}
-
-function addEmploySelect() {
-    $('.employees').each(function () {//выпадающий список сотрудников      
-        getEmployees(this, Employees, 'П_І_Б');
     })
 }
 
@@ -145,17 +149,17 @@ $("#volumeWood").change(function () {// событие на изминеие о�
 
 $("#worksTitlee").change(function () {// событие на изминеие найменування заходу   
     LoadCategory($('#productCategory'), $(this).val());
-   // normOfWork($('#product').val());
+    // normOfWork($('#product').val());
     $("#workingConditionsSummer").click();
     $('#coefficient input').val('');
-    if ($(this).val() === "Трелювання деревини") {       
+    if ($(this).val() === "Трелювання деревини") {
         $('#coefficient, #workingConditionsHard, #tractorCoefficient').show();//отобразить строку
         $('#deforestationCoefficient').hide();//скрыть строку /Поправочный коефициент лесозаготовка/
-    } else if ($(this).val() === "Лісозаготівельні роботи") {      
+    } else if ($(this).val() === "Лісозаготівельні роботи") {
         $('#coefficient, #deforestationCoefficient').show();//отобразить строку
         $('#workingConditionsHard, #tractorCoefficient').hide();//скрыть строку /Поправочный коефициент тежолые условия/
     }
-    else {      
+    else {
         $('#coefficient').hide();//скрыть строку
     }
     clearRow($('.tbodyTable'));
@@ -170,6 +174,22 @@ $("#productCategory").change(function () {// событие на изминеи�
 $("#Rank").change(function () {// событие на изминеие ячейки Разряд робот
     pricingUnit();//найти в БД расценку за единицу    
 });
+
+$("#company").change(function () {// событие на изминеие ячейки /Предприятие/
+    var id = getIdCompany($(this).val());//получить Id выбраного елемента   
+    $('#codeEDRPOY').empty().text(ListCompany[id]['Код_ЄДРПОУ']);//вывести код ЭДРПОУ
+    subdivision(ListCompany[id]['Id_Підприємства']);//создать выпадающий список /Підрозділи/
+});
+
+function getIdCompany(element) {
+    var id;
+    $.each(ListCompany, function (i, value) {
+        if (element === this['Підприємство1']) {            
+            id = i;           
+        }
+    })
+    return id;
+}
 
 $("#executed").change(function changeExecuted() {// событие на изминеие ячейки выполнено    
     if ($('#executed').val() !== 0 && $('#norm').val() !== 0) {// расчет выполненно норм   
@@ -206,12 +226,8 @@ $(document).ready(function () {
     typeOfFelling('#typeOfFelling');
     ColectionSortOil();
     worksTitlee('#worksTitlee');
-    loadEmployees();
-
-    $('.materials').each(function () {//выпадающий список сыря и материалов
-        LoadMaterials($(this));
-    })
-
+    loadEmployees('.employees');
+    LoadMaterials('.materials');
     Company('#company');
 
     $('.tbodyTable .custom-combobox-input, .details .custom-combobox-input').css('min-width', '340px');
@@ -328,7 +344,7 @@ function getEmployees(element, List, nameColum) {//добавить список
     $ele.append($('<option/>').text('Вибрати'));
     $.each(List, function () {
         $ele.append($('<option/>').text(this[nameColum]));
-    })   
+    })
 }
 
 $('#submit').click(function myfunction() {
