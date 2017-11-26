@@ -40,20 +40,16 @@ namespace Наряд.Controllers
         {
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
             {
-                var materials = dc.Підприємство.OrderBy(a => a.Підприємство1).Select(a => new {a.Id_Підприємства, a.Підприємство1, a.Код_ЄДРПОУ }).ToList();
+                var materials = dc.Підприємство.OrderBy(a => a.Підприємство1).Select(a => new { a.Id_Підприємства, a.Підприємство1, a.Код_ЄДРПОУ }).ToList();
                 return new JsonResult { Data = materials, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
 
-        public JsonResult getSubdivision(string сompanyIDstring)
-        {
+        public JsonResult getSubdivision(int companyID)
+        {            
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
-            {
-                //var listCompanyID = dc.Підприємство.Where(a => a.Підприємство1 == сompany).Select(a => a.Id_Підприємства).ToList();
-                ////int сompanyID = сompany[0];
-
-                int сompanyID = Convert.ToInt32(сompanyIDstring);
-                var subdivision = dc.Підрозділ.Where(a => a.Id_Підприємства == сompanyID).Select(a => a.Id_Підприємства).ToList();
+            {              
+                var subdivision = dc.Підрозділ.Where(a => a.Id_Підприємства == companyID).Select(a => a.Підрозділ1).ToList();
                 return new JsonResult { Data = subdivision, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
@@ -110,7 +106,7 @@ namespace Наряд.Controllers
         public JsonResult PricingUnit(string pricingID, string rank)//расценка за единицу   
         {
             using (БД_НарядEntities1 context = new БД_НарядEntities1())
-            {
+            {                
                 string colum = (rank == "") ? "1" : rank; //индивидуальна / комплексна
 
                 var PricingUnit = context.Database.SqlQuery<decimal>(

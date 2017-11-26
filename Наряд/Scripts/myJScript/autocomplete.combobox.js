@@ -141,8 +141,8 @@
     });
 
     $(".employees").combobox({ //событие ни изминение значения выпадающего списка        
-        select: function (event, ui) {
-            position(this);   //вызов функции оброботчика изминения значения /найменування робіт/       
+        select: function (event, ui) {            
+            emmployeesChange(this); 
         }
     });
 });

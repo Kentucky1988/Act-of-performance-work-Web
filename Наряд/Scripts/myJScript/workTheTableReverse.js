@@ -47,14 +47,32 @@ function clearRowDetails($table) {
     })
 }
 
-function position(element) {
-    $.each(Employees, function () {
-        if ($(element).val() === this['П_І_Б']) {           
-            $(element).parent('div').find('label:odd').text(this['Професія']);
-        }
-    })
+function emmployeesChange(element) {
+    var id = getIdList($(element).val(), 'П_І_Б', Employees);
+    $(element).parent('div').find('label:odd').text(Employees[id]['Професія']);               //указать должность DIV
+    $(element).parents('table').find('#timesheetNumber').text(Employees[id]['Id_Робітника']); //указать табельный номер
+    $(element).parents('table').find('#position').text(Employees[id]['Професія']);            //указать должность table
 }
 
+$('.employee tbody tr').filter(':eq(0), :eq(1)').find('td[id]').change(function () {
+    var numberHours = getNumberHours();
+    $('#hoursWorked').text(numberHours);
+    $('#dayWorked').text(numberHours / 8); 
+})
+
+function getNumberHours() {
+    var numberHours = 0;
+
+    $('.employee tbody tr').filter(':eq(0), :eq(1)').find('td[id]').each(function () {
+        var day = this.id;       
+        var hours = +$('input', this).val();
+
+        if ((day >= 1 || day <= 31) && hours > 0) {   
+            numberHours += hours;
+        }
+    });
+    return numberHours;   
+}
 
 
 

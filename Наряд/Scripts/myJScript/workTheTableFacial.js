@@ -24,7 +24,7 @@ function subdivision(element) {//Підрозділи
     $.ajax({
         type: "GET",
         url: "/home/getSubdivision",
-        data: { 'company': element },
+        data: { 'companyID': element },
         success: function (data) {
             $element = $('#subdivision');
             renderCategory($element, data);
@@ -176,15 +176,15 @@ $("#Rank").change(function () {// событие на изминеие ячей�
 });
 
 $("#company").change(function () {// событие на изминеие ячейки /Предприятие/
-    var id = getIdCompany($(this).val());//получить Id выбраного елемента   
-    $('#codeEDRPOY').empty().text(ListCompany[id]['Код_ЄДРПОУ']);//вывести код ЭДРПОУ
+    var id = getIdList($(this).val(), 'Підприємство1', ListCompany);//получить Id выбраного елемента   
+    $('#codeEDRPOY').empty().text(ListCompany[id]['Код_ЄДРПОУ']);//вывести код ЭДРПОУ   
     subdivision(ListCompany[id]['Id_Підприємства']);//создать выпадающий список /Підрозділи/
 });
 
-function getIdCompany(element) {
+function getIdList(val, colum, List) {
     var id;
-    $.each(ListCompany, function (i, value) {
-        if (element === this['Підприємство1']) {            
+    $.each(List, function (i, value) {
+        if (val === this[colum]) {            
             id = i;           
         }
     })
@@ -214,7 +214,7 @@ function columnSum() {//сумма строк
         } else if (indx === 4 || indx === 6 || indx === 7 || indx === 8) {
             var sum = 0;
             $("tr:not(:first) td:nth-child(" + (indx + 2) + ")", "#tbodyTable1").each(function () {
-                sum += +$(this).text()
+                sum += +$(this).text().replace(',', '.');
             });
             $(this).text((sum).toFixed(2))
         }
@@ -347,8 +347,8 @@ function getEmployees(element, List, nameColum) {//добавить список
     })
 }
 
-$('#submit').click(function myfunction() {
-    alert(colectionSortOil[1]['Вид_палива'] + '/' + colectionSortOil[1]['Витрити_ГСМ']);
+$('#submit').click(function myfunction() {//кнопка добавить /ТЕСТОВАЯ/
+    getNumberHours();
 })
 
 
