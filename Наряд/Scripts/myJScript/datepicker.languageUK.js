@@ -103,19 +103,17 @@ function colorCellDayOff() { //выделение ячеек с выходным
     var firstWorkingDate = $("[name='firstWorkingDay']").val().split("/");
     var dateObject = new Date(firstWorkingDate[2], firstWorkingDate[1] - 1, firstWorkingDate[0]);
     var lasMonthDay = new Date(dateObject.getFullYear(), dateObject.getMonth() + 1, 0);//последний день месяца
+        
+    $('.employee tbody tr').filter(':eq(0), :eq(1)').find('td[id]').each(function () {
+        var date = this.id;
 
-    $('.employee thead td').each(function () {
-        var date = $(this).html(); 
-
-        if (date > 0 || date < 31) {
-            $(this).css('background-color', 'transparent');//очистить предыдущий цвет фона
+        if (date >= 1 || date <= 31) {
+            $('input' ,this).add(this).css('background-color', 'transparent');//очистить предыдущий цвет фона
             var lasMonthDay = new Date(dateObject.getFullYear(), dateObject.getMonth(), date);
             if (lasMonthDay.getDay() > 5 || lasMonthDay.getDay() < 1) {
-                $(this).css('background-color', '#5cb85c');
-            }
-
-            if (date > lasMonthDay.getDate()) {
-                $(this).css('background-color', '#f0ad4e');
+                $('input', this).add(this).css('background-color', '#5cb85c');
+            }else if (date > lasMonthDay.getDate()) {
+                $('input', this).add(this).css('background-color', '#f0ad4e');
             }
         }
     });
@@ -128,11 +126,9 @@ function titleDay() { //добавить вспл. подсказку /День 
     var lasMonthDay = new Date(dateObject.getFullYear(), dateObject.getMonth() + 1, 0);//последний день месяца
 
     $('.employee tbody tr').filter(':eq(0), :eq(1)').find('td[id]').each(function () {
-
         $('input', this).prop("disabled", false).removeAttr("title"); //отключить *не активен* убрать title
-        
-        var attrId = this.id;
 
+        var attrId = this.id;
         if (attrId > 0 && attrId <= lasMonthDay.getDate()) {
             var currentDate = new Date(dateObject.getFullYear(), dateObject.getMonth(), attrId);
             var data = dayNames(currentDate.getDay()) + ": " + currentDate.getDate();
@@ -148,28 +144,22 @@ function dayNames(day) {//конвертирует дату в день неде
         case 0: {
             return day = 'Неділя';
             break;
-        }
-        case 1: {
+        } case 1: {
             return day = 'Понеділок';
             break;
-        }
-        case 2: {
+        } case 2: {
             return day = 'Вівторок';
             break;
-        }
-        case 3: {
+        } case 3: {
             return day = 'Середа';
             break;
-        }
-        case 4: {
+        } case 4: {
             return day = 'Четверг';
             break;
-        }
-        case 5: {
+        } case 5: {
             return day = "П'ятница";
             break;
-        }
-        case 6: {
+        } case 6: {
             return day = 'Суббота';
             break;
         }

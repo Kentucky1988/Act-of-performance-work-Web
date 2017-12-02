@@ -32,7 +32,7 @@ function copyStringDetails(element) {
     $('#addIconDetails', $newRow).toggleClass('glyphicon-plus glyphicon-trash');//сменить иконку кнопки
     $($newRow).appendTo($("tr:last td:last", $table));//добавление клонированой кнопки add         
 
-    clearRowDetails($table);
+    clearRow($table);
 }
 
 $('.details').each(function () {
@@ -41,38 +41,103 @@ $('.details').each(function () {
     })
 });
 
-function clearRowDetails($table) {
-    $('.details input').each(function () {
-        $(this).val('');
-    })
-}
-
 function emmployeesChange(element) {
     var id = getIdList($(element).val(), 'П_І_Б', Employees);
-    $(element).parent('div').find('label:odd').text(Employees[id]['Професія']);               //указать должность DIV
-    $(element).parents('table').find('#timesheetNumber').text(Employees[id]['Id_Робітника']); //указать табельный номер
-    $(element).parents('table').find('#position').text(Employees[id]['Професія']);            //указать должность table
+    var $element = $(element).parents('table');
+    $(element).parent('div').find('label:odd').text(Employees[id]['Професія']);     //указать должность DIV
+    $('#timesheetNumber', $element).text(Employees[id]['Id_Робітника']);            //указать табельный номер  table 
+    $('#position', $element).text(Employees[id]['Професія']);                       //указать должность        table
+    var RankEmployee = Employees[id]['Тарифний_розряд']
+    if (RankEmployee != null) {
+        $('#RankEmployee', $element).text(RankEmployee);                            //указать Тарифний_розряд  table
+    }
 }
 
-$('.employee tbody tr').filter(':eq(0), :eq(1)').find('td[id]').change(function () {
+var $arrayHoursUsed = $('.employee tbody tr').filter(':eq(0), :eq(1)').find('td[id]');
+$arrayHoursUsed.change(function () {
     var numberHours = getNumberHours();
     $('#hoursWorked').text(numberHours);
-    $('#dayWorked').text(numberHours / 8); 
+    $('#dayWorked').text(numberHours / 8);
+    $('#fulfilledTheNorms').text(fulfilledTheNorms());
 })
 
 function getNumberHours() {
     var numberHours = 0;
-
-    $('.employee tbody tr').filter(':eq(0), :eq(1)').find('td[id]').each(function () {
-        var day = this.id;       
+    $arrayHoursUsed.each(function () {
+        var day = this.id;
         var hours = +$('input', this).val();
 
-        if ((day >= 1 || day <= 31) && hours > 0) {   
+        if ((day >= 1 || day <= 31) && hours > 0) {
             numberHours += hours;
         }
     });
-    return numberHours;   
+    return numberHours;
 }
+
+function fulfilledTheNorms() {//расчет /Виконано норм/
+    //columnSumNorm
+
+}
+
+$('.addEmployees').click(function myfunction() {
+    addStringEmployee(this);
+});
+
+function addStringEmployee(element) {//добавляем нижнюю строку в таблице /employee(табель)/
+    var $table = $(element).parents('tbody');//таблица в которой добовляем строки
+
+    $("<tr>").css('height', '20px').appendTo($table);//добавляем нижнюю строку            
+    $('tr:eq(0) td', $table).each(function (indx) {//копируем первую строку    
+        var str;
+
+        if ($('input', this).length) {
+            str = $('input', this).val();
+        } else if ($(':button', this).length) {
+            str = '';
+        }
+        else {
+            str = $(this).html();
+        }
+
+        if ((indx >= 0 && indx <= 4) || (indx >= 21 && indx <= 28)) {
+            $("<td/>").attr("rowspan", "2").text(str).appendTo($("tr:last", $table));
+        } else {
+            $("<td/>", { text: str }).appendTo($("tr:last", $table));
+        }
+    });
+
+    $("<tr>").css('height', '20px').appendTo($table);//добавляем нижнюю строку      
+    $('tr:eq(1) td', $table).each(function () {//копируем вторую строку  
+        var $val = $('input', this).val();
+        var str = $val != 0 ? $val : '';
+        $("<td/>", { text: str }).appendTo($("tr:last", $table));
+    });
+
+    var $newRow = $(element).clone();//клонирование кнопки add
+    $($newRow).addClass('remove').toggleClass('btn-success btn-danger');//сменить стиль success - danger
+    $('#addIcon', $newRow).toggleClass('glyphicon-plus glyphicon-trash');//сменить иконку кнопки
+    $($newRow).appendTo($("tr:eq(-2) td:last", $table));//добавление клонированой кнопки add         
+
+    clearRowEmployee($table); //удаление строки
+    columnSumEmployee($table); //сумма строк   -- сделать суму строк   
+}
+
+function clearRowEmployee($table) {
+    $('input', $table).val('');
+    $('tr:first td[rowspan]:not(:first, :last)', $table).text('');
+}
+
+function columnSumEmployee($table) {//сумма строк  ??????????????????????????????????????????????????
+    $(':next(tfoot) tr td:not(:first)', $table).text(function (indx) {//"tfoot tr td:not(:first)"
+        if (indx >= 21 && indx <= 27){
+            var sum = 0;
+            $("tr:not(:eq(0), :eq(1)) td:nth-child(" + (indx + 2) + ")", $table).each(function () {
+                sum += +$(this).text().replace(',', '.');
+            });
+            $(this).text((sum).toFixed(2));
+        } 
+    });
+};
 
 
 

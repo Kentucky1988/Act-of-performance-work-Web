@@ -205,18 +205,19 @@ function changeWorksTitle(value) {//функция оброботчика изм
 
 function columnSum() {//сумма строк   
     $("tfoot tr td:not(:first)").text(function (indx) {//"tfoot tr td:not(:first)"
-        if (indx === 1 || indx === 2) {
+        if (indx === 1 || indx === 2 || indx === 4) {
+            
             var sum = 0;
             $("tr:not(:first) td:nth-child(" + (indx + 2) + ")", "#tbodyTable1").each(function () {
                 sum += +$(this).text().replace(',', '.');
             });
-            $(this).text((sum).toFixed(3))
-        } else if (indx === 4 || indx === 6 || indx === 7 || indx === 8) {
+            $(this).attr('id', indx == 4 ?'columnSumNorm':'').text((sum).toFixed(3))
+        } else if (indx === 6 || indx === 7 || indx === 8) {
             var sum = 0;
             $("tr:not(:first) td:nth-child(" + (indx + 2) + ")", "#tbodyTable1").each(function () {
                 sum += +$(this).text().replace(',', '.');
             });
-            $(this).text((sum).toFixed(2))
+            $(this).text((sum).toFixed(2));
         }
     });
 };
@@ -250,14 +251,13 @@ function ColectionSortOil() {// виды ГСМ
 
 var CollectionOilCosts = [] //колекция расхода ГСМ по строкам
 function collectionOilCosts() { //расхода ГСМ по строке
+   var checkedConditionsWinterOil = $('#worksTitlee').val() === 'Лісозаготівельні роботи' ? '' : checkedConditionsWinter;
     $.ajax({
         type: "GET",
         url: '/home/CollectionOilCosts',
         data: {
             'table': $('#productCategory').val(), 'typeOfWork': typeOfWork, 'volumeWood': $("#volumeWood").val(), 'executed': $("#executed").val(),
-            'checkedConditionsWinter': checkedConditionsWinter, 'checkedConditionsHard': checkedConditionsHard
-        },//!!!!!!!!!!!!!!!!добавить проверку checkedConditionsWinter если Найменування заходу(worksTitlee) = Лісозаготівельні роботи тогда равно 1
-        //чтоб не изминять норму расхода ГСМ при заготовке!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            'checkedConditionsWinter': checkedConditionsWinterOil, 'checkedConditionsHard': checkedConditionsHard },
         success: function (data) {
             CollectionOilCosts.push(data);
             countValColectionSortOil();//подсчет расхода ГСМ по видам
@@ -325,7 +325,7 @@ function addStringDetails(colection) {//добавить строку в таб�
     }
 }
 
-function addString($table, index, typeOil, unit, consumption, td_input, td) {//добавляем нижнюю строку в таблице
+function addString($table, index, typeOil, unit, consumption, td_input, td) {//добавляем нижнюю строку в таблице /details(лісопродукція)/
 
     if (index === 0 || index % 2 === 0) {
         $("<tr>").appendTo($table);
@@ -348,7 +348,7 @@ function getEmployees(element, List, nameColum) {//добавить список
 }
 
 $('#submit').click(function myfunction() {//кнопка добавить /ТЕСТОВАЯ/
-    getNumberHours();
+   alert($('#worksTitlee').val());
 })
 
 

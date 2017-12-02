@@ -71,9 +71,9 @@
                         </select>
                     </td>
                     <td rowspan="2" id="timesheetNumber"></td>
-                    <td rowspan="2"> <input type="text" /> </td>
+                    <td rowspan="2"> </td>
                     <td rowspan="2" id="position"> </td>
-                    <td rowspan="2"> <input type="text" disabled /> </td>
+                    <td rowspan="2" id="RankEmployee"> </td>
                     <td id="1"> <input type="text" /> </td>
                     <td id="2"> <input type="text" /> </td>
                     <td id="3"> <input type="text" /> </td>
@@ -91,14 +91,14 @@
                     <td id="15"> <input type="text" /> </td>
                     <td> <input type="text" disabled /> </td>
                     <td rowspan="2" id="dayWorked"> </td>
-                    <td rowspan="2" id="hoursWorked"> <input type="text" /> </td>
-                    <td rowspan="2"> <input type="text" /> </td>
-                    <td rowspan="2"> <input type="text" /> </td>
-                    <td rowspan="2"> <input type="text" /> </td>
-                    <td rowspan="2"> <input type="text" /> </td>
-                    <td rowspan="2"> <input type="text" /> </td>
+                    <td rowspan="2" id="hoursWorked"> </td>
+                    <td rowspan="2"> </td>
+                    <td rowspan="2"> </td>
+                    <td rowspan="2" id="fulfilledTheNorms"> </td>
+                    <td rowspan="2"> </td>
+                    <td rowspan="2"> </td>
                     <td rowspan="2">
-                        <button class="btn btn-success add">
+                        <button class="btn btn-success addEmployees">
                             <!--кнопка добавления строки-->
                             <span id="addIcon" class="glyphicon glyphicon-plus" />
                         </button>
@@ -148,8 +148,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
+                    <td></td>                   
                 </tr>
             </tfoot>
         </table>
@@ -268,10 +267,10 @@
     $('.tbodyTableRevers td').each(function () {
         $this = this;
         if ($($this).attr('rowspan')) {
-            $('input', $this).css({ 'border': 'none', 'height': '68px' });
+            $('input', $this).css({ 'border': 'none', 'height': '60px' });
         }
         else {
-            $('input', $this).css({ 'border': 'none', 'height': '34px' });
+            $('input', $this).css({ 'border': 'none', 'height': '30px' });
         }
 
         if ($('input', $this).attr('disabled')) {
@@ -282,6 +281,7 @@
     $('.verticalText').css({ 'max-width': '20px', 'transform': 'rotate(-90deg) translateX(-7px)' });
     $('.employee tr:first td').filter('.verticalText').css({ 'transform': 'rotate(-90deg) translateX(-2.2em)', 'height': '110px' });
     $('.employee thead tr').not(':first').css('height', '35px');
+    $('#RankEmployee').css('min-width', '40px');
 </script>
 
 

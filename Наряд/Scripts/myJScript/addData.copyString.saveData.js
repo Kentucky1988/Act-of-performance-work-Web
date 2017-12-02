@@ -58,7 +58,7 @@ function copyString(element) {
     $("tr:first td", $table).each(function (indx) {//заполняем последнюю строку данными     
         var str;
 
-        if ($("input", this).attr('type', 'text')) {
+        if ($("input", this).length) {
             str = $("input", this).val();
         }
 
@@ -103,10 +103,7 @@ function deleteTr(element) {//Удаление строки
 }
 
 function clearRow($table) {
-    $('input.custom-combobox-input', $table).val('');
-    //$('#productCategory', $table).val('0');
-    $('#Rank', $table).val('');
-    $('.quantity', $table).not('#Unit').val(''); 
+    $('input, select', $table).not('#Unit').val('');     
 }
 
  //Сохранить
