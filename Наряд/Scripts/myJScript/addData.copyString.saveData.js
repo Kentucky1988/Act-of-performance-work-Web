@@ -45,15 +45,15 @@ $('.add').click(function () {//событие на нажатие кнопки �
         }
     });
 
-    if (isAllValid) {//копирование строки   
-        collectionOilCosts(); //получить колекцию расхода ГСМ   
-        copyString(this); //копировать строку ввода  
+    if (isAllValid) {             //копирование строки   
+        collectionOilCosts();     //получить колекцию расхода ГСМ   
+        copyString(this, $table); //копировать строку ввода 
+        clearRow($table);         //очистка строк        
+        columnSum(this);        //сумма строк  
     }
 });
 
-function copyString(element) {
-    var $table = $(element).parents('.tbodyTable');//таблица в которой добовляем строки
-
+function copyString(element, $table) {   
     $("<tr>").appendTo($table);//добавляем нижнюю строку            
     $("tr:first td", $table).each(function (indx) {//заполняем последнюю строку данными     
         var str;
@@ -75,26 +75,18 @@ function copyString(element) {
     var $newRow = $(element).clone();//клонирование кнопки add
     $($newRow).addClass('remove').toggleClass('btn-success btn-danger');//сменить стиль success - danger
     $('#addIcon', $newRow).toggleClass('glyphicon-plus glyphicon-trash');//сменить иконку кнопки
-    $($newRow).appendTo($("tr:last td:last", $table));//добавление клонированой кнопки add         
-       
-    clearRow($table);
-
-    if ($($table).next().is("tfoot")) {
-        columnSum(); //сумма строк      
-    }
+    $($newRow).appendTo($("tr:last td:last", $table));//добавление клонированой кнопки add 
 }
 
 $('.tbodyTable').each(function () {
     $(this).on('click', '.remove', function () {   //событие на нажатие кнопки удалить строку         
-        var $obj = $(this).parents('.tbodyTable').next().is("tfoot");
+        var $table = $(this).parents('.tbodyTable').next().is("tfoot");
         var indexDeleteElement = $('.tbodyTable tr:not(:first)').index($(this).parents('tr'))//получить номер удаляемой строки
         deleteTr(this);//Удаление строки      
         deleteValCollectionOilCosts(indexDeleteElement);//удаление обекта из колекции расход ГСМ при удалеине строки
         countValColectionSortOil();//пересчитать расхода ГСМ по строкам
-        addStringDetails(colectionSortOil);//пересчитать строки расход материалов
-        if ($obj) {
-            columnSum(); //пересчитать сумму строк после удаленных
-        }
+        addStringDetails(colectionSortOil);//пересчитать строки расход материалов       
+        columnSum(this); //пересчитать сумму строк после удаленных
     })
 });
 
@@ -103,7 +95,7 @@ function deleteTr(element) {//Удаление строки
 }
 
 function clearRow($table) {
-    $('input, select', $table).not('#Unit').val('');     
+    $('input, select', $table).not('#Unit, #productCategory').val('');
 }
 
  //Сохранить

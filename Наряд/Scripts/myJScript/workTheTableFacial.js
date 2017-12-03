@@ -203,8 +203,14 @@ function changeWorksTitle(value) {//функция оброботчика изм
     pricingUnit();      //расценка за единицу  
 }
 
-function columnSum() {//сумма строк   
-    $("tfoot tr td:not(:first)").text(function (indx) {//"tfoot tr td:not(:first)"
+function columnSum(element) {//сумма строк  
+    var $table = $(element).parents('.tbodyTable').css({
+        "border-color": "red",
+        "border-width": "2px",
+        "border-style": "solid"
+    });
+
+     $($table).next('tfoot').find('td:not(:first)').text(function (indx) {//"tfoot tr td:not(:first)"
         if (indx === 1 || indx === 2 || indx === 4) {
             
             var sum = 0;

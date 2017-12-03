@@ -80,12 +80,15 @@ function fulfilledTheNorms() {//расчет /Виконано норм/
 }
 
 $('.addEmployees').click(function myfunction() {
-    addStringEmployee(this);
+    var $table = $(this).parents('tbody');//таблица в которой добовляем строки
+
+    addStringEmployee($table); //добавляем нижнюю строку в таблице
+    clearRowEmployee($table);  //удаление строки
+    columnSumEmployee($table); //сумма строк  
 });
 
 function addStringEmployee(element) {//добавляем нижнюю строку в таблице /employee(табель)/
-    var $table = $(element).parents('tbody');//таблица в которой добовляем строки
-
+   
     $("<tr>").css('height', '20px').appendTo($table);//добавляем нижнюю строку            
     $('tr:eq(0) td', $table).each(function (indx) {//копируем первую строку    
         var str;
@@ -116,10 +119,7 @@ function addStringEmployee(element) {//добавляем нижнюю стро�
     var $newRow = $(element).clone();//клонирование кнопки add
     $($newRow).addClass('remove').toggleClass('btn-success btn-danger');//сменить стиль success - danger
     $('#addIcon', $newRow).toggleClass('glyphicon-plus glyphicon-trash');//сменить иконку кнопки
-    $($newRow).appendTo($("tr:eq(-2) td:last", $table));//добавление клонированой кнопки add         
-
-    clearRowEmployee($table); //удаление строки
-    columnSumEmployee($table); //сумма строк   -- сделать суму строк   
+    $($newRow).appendTo($("tr:eq(-2) td:last", $table));//добавление клонированой кнопки add  
 }
 
 function clearRowEmployee($table) {
@@ -127,14 +127,14 @@ function clearRowEmployee($table) {
     $('tr:first td[rowspan]:not(:first, :last)', $table).text('');
 }
 
-function columnSumEmployee($table) {//сумма строк  ??????????????????????????????????????????????????
-    $(':next(tfoot) tr td:not(:first)', $table).text(function (indx) {//"tfoot tr td:not(:first)"
-        if (indx >= 21 && indx <= 27){
+function columnSumEmployee($table) {//сумма строк  
+    $($table).next('tfoot').find('td:not(:first)').text(function (indx) {
+        if (indx >= 16 && indx <= 23){
             var sum = 0;
-            $("tr:not(:eq(0), :eq(1)) td:nth-child(" + (indx + 2) + ")", $table).each(function () {
+            $("tr:not(:eq(0), :eq(1)) td:nth-child(" + (indx + 6) + ")", $table).each(function () {
                 sum += +$(this).text().replace(',', '.');
             });
-            $(this).text((sum).toFixed(2));
+            $(this).text(sum > 0 ? (sum).toFixed(2) : '');
         } 
     });
 };
