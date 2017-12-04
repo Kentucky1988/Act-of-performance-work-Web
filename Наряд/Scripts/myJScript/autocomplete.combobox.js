@@ -134,7 +134,7 @@
         $(".autocompleteCombobox").toggle();
     });
 
-    $(".tbodyTable .autocompleteCombobox").combobox({ //событие ни изминение значения выпадающего списка        
+    $("#tbodyTable .autocompleteCombobox").combobox({ //событие ни изминение значения выпадающего списка        
         select: function (event, ui) { 
             changeWorksTitle(this.value);   //вызов функции оброботчика изминения значения /найменування робіт/       
         }   

@@ -36,7 +36,7 @@ function LoadProduct(element) {//вид робот
 }
 
 $('.add').click(function () {//событие на нажатие кнопки ДОБАВИТ 
-    var $table = $(this).parents('.tbodyTable');//таблица в которой добовляем строки
+    var $table = $(this).parents('#tbodyTable');//таблица в которой добовляем строки
     var isAllValid = true;
 
     $("tr:first td input:not(:disabled)", $table).each(function () {//проверка не пустые строки
@@ -49,7 +49,7 @@ $('.add').click(function () {//событие на нажатие кнопки �
         collectionOilCosts();     //получить колекцию расхода ГСМ   
         copyString(this, $table); //копировать строку ввода 
         clearRow($table);         //очистка строк        
-        columnSum(this);        //сумма строк  
+        columnSum($table);        //сумма строк  
     }
 });
 
@@ -78,15 +78,15 @@ function copyString(element, $table) {
     $($newRow).appendTo($("tr:last td:last", $table));//добавление клонированой кнопки add 
 }
 
-$('.tbodyTable').each(function () {
-    $(this).on('click', '.remove', function () {   //событие на нажатие кнопки удалить строку         
-        var $table = $(this).parents('.tbodyTable').next().is("tfoot");
-        var indexDeleteElement = $('.tbodyTable tr:not(:first)').index($(this).parents('tr'))//получить номер удаляемой строки
+$('#tbodyTable').each(function () {
+    $(this).on('click', '.remove', function () {   //событие на нажатие кнопки удалить строку 
+        var $table = $(this).parents('tbody');//таблица в которой добовляем строки
+        var indexDeleteElement = $('tr:not(:first)', $table).index($(this).parents('tr'))//получить номер удаляемой строки
         deleteTr(this);//Удаление строки      
         deleteValCollectionOilCosts(indexDeleteElement);//удаление обекта из колекции расход ГСМ при удалеине строки
         countValColectionSortOil();//пересчитать расхода ГСМ по строкам
-        addStringDetails(colectionSortOil);//пересчитать строки расход материалов       
-        columnSum(this); //пересчитать сумму строк после удаленных
+        addStringDetails(colectionSortOil);//перестроить таблицу расход материалов       
+        columnSum($table); //пересчитать сумму строк после удаленных       
     })
 });
 

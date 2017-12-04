@@ -162,13 +162,13 @@ $("#worksTitlee").change(function () {// событие на изминеие н
     else {
         $('#coefficient').hide();//скрыть строку
     }
-    clearRow($('.tbodyTable'));
+    clearRow($('#tbodyTable'));
 });
 
 $("#productCategory").change(function () {// событие на изминеие категории работ
     LoadProduct(this);
     Unit($('#productCategory').val());
-    $('.tbodyTable .quantity').not('#Unit').val('');//очистка 1 строки
+    $('#tbodyTable input:not(":first, #Unit")').val('');//очистка 1 строки
 });
 
 $("#Rank").change(function () {// событие на изминеие ячейки Разряд робот
@@ -184,8 +184,8 @@ $("#company").change(function () {// событие на изминеие яче
 function getIdList(val, colum, List) {
     var id;
     $.each(List, function (i, value) {
-        if (val === this[colum]) {            
-            id = i;           
+        if (val === this[colum]) {
+            id = i;
         }
     })
     return id;
@@ -203,29 +203,24 @@ function changeWorksTitle(value) {//функция оброботчика изм
     pricingUnit();      //расценка за единицу  
 }
 
-function columnSum(element) {//сумма строк  
-    var $table = $(element).parents('.tbodyTable').css({
-        "border-color": "red",
-        "border-width": "2px",
-        "border-style": "solid"
-    });
+function columnSum($table) {//сумма строк    
 
-     $($table).next('tfoot').find('td:not(:first)').text(function (indx) {//"tfoot tr td:not(:first)"
+    $($table).next('tfoot').find('td:not(:first)').text(function (indx) {//"tfoot tr td:not(:first)"
         if (indx === 1 || indx === 2 || indx === 4) {
-            
+
             var sum = 0;
-            $("tr:not(:first) td:nth-child(" + (indx + 2) + ")", "#tbodyTable1").each(function () {
+            $("tr:not(:first) td:nth-child(" + (indx + 2) + ")", "#tbodyTable").each(function () {
                 sum += +$(this).text().replace(',', '.');
             });
-            $(this).attr('id', indx == 4 ?'columnSumNorm':'').text((sum).toFixed(3))
+            $(this).attr('id', indx == 4 ? 'columnSumNorm' : '').text((sum).toFixed(3))
         } else if (indx === 6 || indx === 7 || indx === 8) {
             var sum = 0;
-            $("tr:not(:first) td:nth-child(" + (indx + 2) + ")", "#tbodyTable1").each(function () {
+            $("tr:not(:first) td:nth-child(" + (indx + 2) + ")", "#tbodyTable").each(function () {
                 sum += +$(this).text().replace(',', '.');
             });
             $(this).text((sum).toFixed(2));
         }
-    });
+    });   
 };
 
 $(document).ready(function () {
@@ -237,7 +232,7 @@ $(document).ready(function () {
     LoadMaterials('.materials');
     Company('#company');
 
-    $('.tbodyTable .custom-combobox-input, .details .custom-combobox-input').css('min-width', '340px');
+    $('#tbodyTable .custom-combobox-input, .details .custom-combobox-input').css('min-width', '340px');
     $('.employees').parent('td').find('.custom-combobox-input').css('min-width', '200px');
 });
 
@@ -257,13 +252,14 @@ function ColectionSortOil() {// виды ГСМ
 
 var CollectionOilCosts = [] //колекция расхода ГСМ по строкам
 function collectionOilCosts() { //расхода ГСМ по строке
-   var checkedConditionsWinterOil = $('#worksTitlee').val() === 'Лісозаготівельні роботи' ? '' : checkedConditionsWinter;
+    var checkedConditionsWinterOil = $('#worksTitlee').val() === 'Лісозаготівельні роботи' ? '' : checkedConditionsWinter;
     $.ajax({
         type: "GET",
         url: '/home/CollectionOilCosts',
         data: {
             'table': $('#productCategory').val(), 'typeOfWork': typeOfWork, 'volumeWood': $("#volumeWood").val(), 'executed': $("#executed").val(),
-            'checkedConditionsWinter': checkedConditionsWinterOil, 'checkedConditionsHard': checkedConditionsHard },
+            'checkedConditionsWinter': checkedConditionsWinterOil, 'checkedConditionsHard': checkedConditionsHard
+        },
         success: function (data) {
             CollectionOilCosts.push(data);
             countValColectionSortOil();//подсчет расхода ГСМ по видам
@@ -354,7 +350,7 @@ function getEmployees(element, List, nameColum) {//добавить список
 }
 
 $('#submit').click(function myfunction() {//кнопка добавить /ТЕСТОВАЯ/
-   alert($('#worksTitlee').val());
+    alert($('#worksTitlee').val());
 })
 
 
