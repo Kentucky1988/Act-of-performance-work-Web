@@ -212,15 +212,15 @@ function columnSum($table) {//сумма строк
             $("tr:not(:first) td:nth-child(" + (indx + 2) + ")", "#tbodyTable").each(function () {
                 sum += +$(this).text().replace(',', '.');
             });
-            $(this).attr('id', indx == 4 ? 'columnSumNorm' : '').text((sum).toFixed(3))
-        } else if (indx === 6 || indx === 7 || indx === 8) {
+            $(this).attr('id', indx == 4 ? 'columnSumNorm' : '').text((sum).toFixed(3));     
+        } else if (indx >= 6 && indx <= 8) {
             var sum = 0;
             $("tr:not(:first) td:nth-child(" + (indx + 2) + ")", "#tbodyTable").each(function () {
                 sum += +$(this).text().replace(',', '.');
             });
-            $(this).text((sum).toFixed(2));
-        }
-    });   
+            $(this).attr('id', indx == 6 ? 'columnSumSalary' : '').text((sum).toFixed(2));
+        } 
+    });
 };
 
 $(document).ready(function () {

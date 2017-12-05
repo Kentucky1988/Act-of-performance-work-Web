@@ -44,31 +44,39 @@ $('.details').each(function () {
 function emmployeesChange(element) {
     var id = getIdList($(element).val(), 'П_І_Б', Employees);
     var $element = $(element).parents('table');
-    $(element).parent('div').find('label:odd').text(Employees[id]['Професія']);     //указать должность DIV
-    $('#timesheetNumber', $element).text(Employees[id]['Id_Робітника']);            //указать табельный номер  table 
-    $('#position', $element).text(Employees[id]['Професія']);                       //указать должность        table
+    $(element).parent('div').find('label:odd').text(Employees[id]['Професія']);  //указать должность DIV
+    $('#timesheetNumber', $element).text(Employees[id]['Id_Робітника']);         //указать табельный номер  table 
+    $('#position', $element).text(Employees[id]['Професія']);                    //указать должность        table
     var RankEmployee = Employees[id]['Тарифний_розряд']
     if (RankEmployee != null) {
-        $('#RankEmployee', $element).text(RankEmployee);                            //указать Тарифний_розряд  table
+        $('#RankEmployee', $element).text(RankEmployee);                         //указать Тарифний_розряд  table
     }
 }
 
-var $arrayHoursUsed = $('.employee tbody tr').filter(':eq(0), :eq(1)').find('td[id]');
+var $table = $('.employee tbody');
+var $arrayHoursUsed = $('tr', $table).filter(':eq(0), :eq(1)').find('td[id]');
 $arrayHoursUsed.change(function () {
-    var numberHours = getNumberHours();
-    $('#hoursWorked').text(numberHours);
-    $('.dayWorked').eq(0).text(numberHours / 8);
-   
-    var $table = $(this).parents('tbody');//таблица в которой считаем сумму строк
-    columnSumEmployee($table);  //сумма строк  
-    fulfilledTheNorms();        //выполнено норм     
-    percentFulfilledTheNorms(); //процент выполнения норм 
-    columnSumEmployee($table);  //сумма строк  
+
+    if (testDateValid($table)) {//проверка не пустые строки
+        var numberHours = getNumberHours($arrayHoursUsed);
+        var numberDay = getNumberDay($arrayHoursUsed);
+        $('#hoursWorked').text(numberHours);
+        $('.dayWorked').eq(0).text(numberDay / 8);
+
+        var $table = $(this).parents('tbody');//таблица в которой считаем сумму строк
+        columnSumEmployee($table);      //сумма строк  
+        if (numberHours > 0) {
+            fulfilledTheNorms();        //выполнено норм     
+            percentFulfilledTheNorms(); //процент выполнения норм 
+            salary()                    //зарплата
+            columnSumEmployee($table);  //сумма строк  
+        }
+    }
 })
 
-function getNumberHours() {
+function getNumberHours($array) {
     var numberHours = 0;
-    $arrayHoursUsed.each(function () {
+    $array.each(function () {
         var day = this.id;
         var hours = +$('input', this).val();
 
@@ -79,51 +87,92 @@ function getNumberHours() {
     return numberHours;
 }
 
+function getNumberDay($array) {
+    var numberDay = 0;
+    $array.each(function () {
+        var day = this.id;
+        var hours = +$('input', this).val();
+        hours = hours === 7 ? 8 : hours;
+
+        if ((day >= 1 || day <= 31) && hours > 0) {
+            numberDay += hours;
+        }
+    });
+    return numberDay;
+}
+
 function fulfilledTheNorms() {//расчет Виконано норм
     var columnSumNorm = $('#columnSumNorm').html();             //всего выполнено норм
     var sumNumberDaysWorked = $('#sumNumberDaysWorked').html(); //всего отработано дней 
-    $('.fulfilledTheNorms').each(function() {
-        var $tr = $(this).parents('tr');        
+    $('.fulfilledTheNorms').each(function () {
+        var $tr = $(this).parents('tr');
         var dayWorked = $('.dayWorked', $tr).html();            //отработано дней  
-               
+
         var fulfilledTheNorms = (columnSumNorm / sumNumberDaysWorked) * dayWorked;
         fulfilledTheNorms = fulfilledTheNorms > 0 ? fulfilledTheNorms : 0;
         $(this).text(fulfilledTheNorms.toFixed(4));             //выполнено норм  
-    })    
+    })
 }
 
-function percentFulfilledTheNorms() {//процент выполнения норм  
-    var columnSumNorm = $('#columnSumNorm').html();       //всего выполнено норм
-    $('.fulfilledTheNorms').each(function () {        
-        var fulfilledTheNorms = $(this).html();           //выполнено норм  
+function percentFulfilledTheNorms() {                 //процент выполнения норм  
+    var columnSumNorm = $('#columnSumNorm').html();   //всего выполнено норм
+    $('.fulfilledTheNorms').each(function () {
+        var fulfilledTheNorms = $(this).html();       //выполнено норм  
         var percentFulfilledTheNorms = (fulfilledTheNorms / columnSumNorm) * 100;
         $(this).next('td').text(percentFulfilledTheNorms.toFixed(2)); //выполнено норм  
-    })    
+    })
+}
+
+function salary() {//зарплата
+    var columnSumSalary = $('#columnSumSalary').html();         //всего начислено зарплаты
+    var sumNumberDaysWorked = $('#sumNumberDaysWorked').html(); //всего отработано дней 
+    $('.fulfilledTheNorms').each(function () {
+        var $tr = $(this).parents('tr');
+        var dayWorked = $('.dayWorked', $tr).html();            //отработано дней  
+
+        var salary = (columnSumSalary / sumNumberDaysWorked) * dayWorked;
+        salary = salary > 0 ? salary : 0;
+        $(this).next('td').next('td').text(salary.toFixed(2));  //выполнено норм  
+    })
+}
+
+function testDateValid($table) {//проверка заполнения сотрудника и расчет норм
+    var isAllValid = false;
+
+    var s = $('#timesheetNumber').html();
+    alert(s);
+
+    if ($('#columnSumNorm').length && $('#columnSumNorm').html() != 0 && $("#timesheetNumber", $table).html() > 0) {
+        isAllValid = true;         
+    } 
+    return isAllValid;
 }
 
 $('.addEmployees').click(function myfunction() {
     var $table = $(this).parents('tbody');//таблица в которой добовляем строки
-    addStringEmployee(this, $table); //добавляем нижнюю строку в таблице
-    clearRowEmployee($table);        //очистка строки ввода строки    
+
+    if (testDateValid($table)) {//проверка не пустые строки
+        addStringEmployee(this, $table);  //добавляем нижнюю строку в таблице
+        clearRowEmployee($table);         //очистка строки ввода строки    
+    };
 });
 
 function addStringEmployee(element, $table) {//добавляем нижнюю строку в таблице /employee(табель)/
-
     $("<tr>").css('height', '20px').appendTo($table);//добавляем нижнюю строку
-  
-    $('tr:eq(0) td', $table).each(function (indx) {//копируем первую строку    
-        var str;     
+
+    $('tr:eq(0) td', $table).each(function (indx) {  //копируем первую строку    
+        var str;
 
         if ($('input', this).length) {
             str = $('input', this).val();
         } else if ($(':button', this).length) {
             str = '';
-        }else {
+        } else {
             str = $(this).html();
         }
 
         if ((indx >= 0 && indx <= 4) || (indx >= 21 && indx <= 28)) {
-            $("<td/>").attr("rowspan", "2").text(str).addClass(indx == 21 ? 'dayWorked' : '').addClass(indx == 25 ?'fulfilledTheNorms':'').appendTo($("tr:last", $table));
+            $("<td/>").attr("rowspan", "2").text(str).addClass(indx == 21 ? 'dayWorked' : '').addClass(indx == 25 ? 'fulfilledTheNorms' : '').appendTo($("tr:last", $table));
         } else {
             $("<td/>", { text: str }).appendTo($("tr:last", $table));
         }
@@ -154,13 +203,13 @@ function columnSumEmployee($table) {//сумма строк
             $("td:nth-child(" + (indx + 5) + ")", $table).each(function () {
                 sum += +$(this).text().replace(',', '.');
             });
-            
-            if (indx == 21) {                   
+
+            if (indx == 21) {
                 $(this).text(sum > 0 ? (sum).toFixed(3) : '');
             } else if (indx == 22) {
                 $(this).text(sum > 0 ? (sum).toFixed(1) : '');
             } else {
-            $(this).text(sum > 0 ? (sum).toFixed(2) : '');
+                $(this).text(sum > 0 ? (sum).toFixed(2) : '');
             }
         }
     });
@@ -171,7 +220,6 @@ $('.tbodyTableRevers').each(function () {
         var $table = $(this).parents('tbody');//таблица в которой добовляем строки       
         deleteTrEmployee(this);      //Удаление строки  
         $arrayHoursUsed.change();
-       // columnSumEmployee($table);   //пересчитать сумму строк после удаленных 
     })
 });
 
