@@ -225,5 +225,21 @@ namespace Наряд.ExtendedModel
                 return 0;
             }
         }
+
+        public double NormHoursUsed()//норма расход топлива на переезд
+        {
+            try
+            {               
+                using (БД_НарядEntities1 db = new БД_НарядEntities1())
+                {
+                    var normHoursUsed = db.Витрати_ГСМ_в_годину.Where(a => a.Id_Механізма >= 3).Select(a => a.Витрати_ГСМ_переїзд_кг_ч).ToList();
+                    return Convert.ToDouble(normHoursUsed[0]);
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
     }
 }

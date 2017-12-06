@@ -182,6 +182,9 @@
     <Compile Include="Витрати_ГСМ.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
+    <Compile Include="Витрати_ГСМ_в_годину.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
     <Compile Include="Денна_тарифна_ставка.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>

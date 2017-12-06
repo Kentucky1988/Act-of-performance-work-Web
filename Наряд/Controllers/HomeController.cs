@@ -170,7 +170,7 @@ namespace Наряд.Controllers
             }
         }
 
-        public JsonResult CollectionOilCosts(string table, string typeOfWork, string volumeWood, string executed, string checkedConditionsWinter, string checkedConditionsHard)//нормарасхода ГСМ
+        public JsonResult CollectionOilCosts(string table, string typeOfWork, string volumeWood, string executed, string checkedConditionsWinter, string checkedConditionsHard, string hoursUsed)//нормарасхода ГСМ
         {
             NormOil oilCalculation = new NormOil();
             NormFromDB normFromDB = new NormFromDB();
@@ -180,7 +180,9 @@ namespace Наряд.Controllers
             double normOil = normFromDB.NormFromTable(table, tableNormOil, typeOfWork, Replace(volumeWood)); //норма расхода ГСМ              
             double coefficientWinter = checkedConditionsWinter != "" ? coefficientNorm.CoefficientOil_Winter_Hard(checkedConditionsWinter) : 1;//поправочный коефиц. Зима
             double coefficientHard = checkedConditionsHard != "" ? coefficientNorm.CoefficientOil_Winter_Hard(checkedConditionsHard) : 1;//поправочный коефиц. Тяжелые условия
-            double fuelCosts = Convert.ToDouble(Replace(executed)) * normOil * (coefficientWinter * coefficientHard);//расход топлива
+            hoursUsed = hoursUsed != "" ? hoursUsed : "0";
+            double normOilHoursUsed = coefficientNorm.NormHoursUsed(); //норма расход топлива на переезд
+            double fuelCosts = Convert.ToDouble(Replace(executed)) * normOil * (coefficientWinter * coefficientHard) + (normOilHoursUsed * Convert.ToDouble(hoursUsed));//расход топлива  
             List<Oil> collectionOilCosts = oilCalculation.CollectionOilCosts(table, fuelCosts);
 
             return new JsonResult { Data = collectionOilCosts, JsonRequestBehavior = JsonRequestBehavior.AllowGet };

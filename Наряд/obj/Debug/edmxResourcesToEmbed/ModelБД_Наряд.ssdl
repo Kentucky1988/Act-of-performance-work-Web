@@ -29,6 +29,20 @@
     <Property Name="Id_Палива" Type="int" Nullable="false" />
     <Property Name="Витрати_ГСМ_%" Type="decimal" Precision="6" Scale="3" Nullable="false" />
   </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Витрати_ГСМ_в_годину" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Витрати_ГСМ_в_годину">
+    <Key>
+      <PropertyRef Name="Id_ВитратГСМ" />
+      <PropertyRef Name="Id_Механізма" />
+      <PropertyRef Name="Id_Палива" />
+    </Key>
+    <Property Name="Id_ВитратГСМ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Механізма" Type="int" Nullable="false" />
+    <Property Name="Id_Палива" Type="int" Nullable="false" />
+    <Property Name="Витрати_ГСМ_переїзд_кг_ч" Type="decimal" Precision="6" Scale="3" />
+    <Property Name="Витрати_ГСМ_зупинка_кг_ч" Type="decimal" Precision="6" Scale="3" />
+  </EntityType>
   <EntityType Name="Денна_тарифна_ставка">
     <Key>
       <PropertyRef Name="РозцінкаID" />
@@ -877,6 +891,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Витрати_Г__Id_Ме__46486B8E">
+    <End Role="Механізми" Type="Self.Механізми" Multiplicity="1" />
+    <End Role="Витрати_ГСМ_в_годину" Type="Self.Витрати_ГСМ_в_годину" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Механізми">
+        <PropertyRef Name="Id_Механізма" />
+      </Principal>
+      <Dependent Role="Витрати_ГСМ_в_годину">
+        <PropertyRef Name="Id_Механізма" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Витрати_Г__Id_Па__2610A626">
     <End Role="Вид_ГСМ" Type="Self.Вид_ГСМ" Multiplicity="1" />
     <End Role="Витрати_ГСМ" Type="Self.Витрати_ГСМ" Multiplicity="*" />
@@ -885,6 +911,18 @@
         <PropertyRef Name="Id_Палива" />
       </Principal>
       <Dependent Role="Витрати_ГСМ">
+        <PropertyRef Name="Id_Палива" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Витрати_Г__Id_Па__473C8FC7">
+    <End Role="Вид_ГСМ" Type="Self.Вид_ГСМ" Multiplicity="1" />
+    <End Role="Витрати_ГСМ_в_годину" Type="Self.Витрати_ГСМ_в_годину" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Вид_ГСМ">
+        <PropertyRef Name="Id_Палива" />
+      </Principal>
+      <Dependent Role="Витрати_ГСМ_в_годину">
         <PropertyRef Name="Id_Палива" />
       </Dependent>
     </ReferentialConstraint>
@@ -1254,6 +1292,15 @@
     [Витрати_ГСМ].[Id_Палива] AS [Id_Палива], 
     [Витрати_ГСМ].[Витрати_ГСМ_%] AS [Витрати_ГСМ_%]
     FROM [dbo].[Витрати_ГСМ] AS [Витрати_ГСМ]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Витрати_ГСМ_в_годину" EntityType="Self.Витрати_ГСМ_в_годину" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Витрати_ГСМ_в_годину].[Id_ВитратГСМ] AS [Id_ВитратГСМ], 
+    [Витрати_ГСМ_в_годину].[Id_Механізма] AS [Id_Механізма], 
+    [Витрати_ГСМ_в_годину].[Id_Палива] AS [Id_Палива], 
+    [Витрати_ГСМ_в_годину].[Витрати_ГСМ_переїзд_кг_ч] AS [Витрати_ГСМ_переїзд_кг_ч], 
+    [Витрати_ГСМ_в_годину].[Витрати_ГСМ_зупинка_кг_ч] AS [Витрати_ГСМ_зупинка_кг_ч]
+    FROM [dbo].[Витрати_ГСМ_в_годину] AS [Витрати_ГСМ_в_годину]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="Догляд_за_л_к_мотокущорізом_ГСМ" EntityType="Self.Догляд_за_л_к_мотокущорізом_ГСМ" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -1637,9 +1684,17 @@
       <End Role="Механізми" EntitySet="Механізми" />
       <End Role="Витрати_ГСМ" EntitySet="Витрати_ГСМ" />
     </AssociationSet>
+    <AssociationSet Name="FK__Витрати_Г__Id_Ме__46486B8E" Association="Self.FK__Витрати_Г__Id_Ме__46486B8E">
+      <End Role="Механізми" EntitySet="Механізми" />
+      <End Role="Витрати_ГСМ_в_годину" EntitySet="Витрати_ГСМ_в_годину" />
+    </AssociationSet>
     <AssociationSet Name="FK__Витрати_Г__Id_Па__2610A626" Association="Self.FK__Витрати_Г__Id_Па__2610A626">
       <End Role="Вид_ГСМ" EntitySet="Вид_ГСМ" />
       <End Role="Витрати_ГСМ" EntitySet="Витрати_ГСМ" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Витрати_Г__Id_Па__473C8FC7" Association="Self.FK__Витрати_Г__Id_Па__473C8FC7">
+      <End Role="Вид_ГСМ" EntitySet="Вид_ГСМ" />
+      <End Role="Витрати_ГСМ_в_годину" EntitySet="Витрати_ГСМ_в_годину" />
     </AssociationSet>
     <AssociationSet Name="FK__Догляд_за__Вид_р__11D4A34F" Association="Self.FK__Догляд_за__Вид_р__11D4A34F">
       <End Role="Догляд_за_л_к_мотокущорізом" EntitySet="Догляд_за_л_к_мотокущорізом" />

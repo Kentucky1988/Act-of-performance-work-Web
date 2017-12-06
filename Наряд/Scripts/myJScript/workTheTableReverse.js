@@ -1,16 +1,5 @@
-﻿$('.addDetails').click(function () {//событие на нажатие кнопки ДОБАВИТ 
-    var $table = $(this).parents('tbody');//таблица в которой добовляем строки
-    var isAllValid = true;
-
-    $("tr:first td input:not(:disabled)", $table).each(function () {//проверка не пустые строки
-        if ($(this).val().trim() === '') {
-            isAllValid = false;
-        }
-    });
-
-    if (isAllValid) {//копирование строки  
-        copyStringDetails(this); //копировать строку ввода  
-    }
+﻿$('.addDetails').click(function () {//событие на нажатие кнопки ДОБАВИТ
+    copyStringDetails(this); //копировать строку ввода     
 });
 
 function copyStringDetails(element) {
@@ -37,7 +26,7 @@ function copyStringDetails(element) {
 
 $('.details').each(function () {
     $(this).on('click', '.removeDetails', function () {   //событие на нажатие кнопки удалить строку   
-        deleteTr(this);//Удаление строки   
+        deleteTr(this);//Удаление строки        
     })
 });
 
@@ -48,16 +37,15 @@ function emmployeesChange(element) {
     $('#timesheetNumber', $element).text(Employees[id]['Id_Робітника']);         //указать табельный номер  table 
     $('#position', $element).text(Employees[id]['Професія']);                    //указать должность        table
     var RankEmployee = Employees[id]['Тарифний_розряд']
-    if (RankEmployee != null) {
+    if (RankEmployee !== null) {
         $('#RankEmployee', $element).text(RankEmployee);                         //указать Тарифний_розряд  table
     }
 }
 
-var $table = $('.employee tbody');
-var $arrayHoursUsed = $('tr', $table).filter(':eq(0), :eq(1)').find('td[id]');
+var $arrayHoursUsed = $('.tbodyTableRevers tr').filter(':eq(0), :eq(1)').find('td[id]');
 $arrayHoursUsed.change(function () {
 
-    if (testDateValid($table)) {//проверка не пустые строки
+    if (testDateValid()) {//проверка не пустые строки
         var numberHours = getNumberHours($arrayHoursUsed);
         var numberDay = getNumberDay($arrayHoursUsed);
         $('#hoursWorked').text(numberHours);
@@ -106,11 +94,14 @@ function fulfilledTheNorms() {//расчет Виконано норм
     var sumNumberDaysWorked = $('#sumNumberDaysWorked').html(); //всего отработано дней 
     $('.fulfilledTheNorms').each(function () {
         var $tr = $(this).parents('tr');
-        var dayWorked = $('.dayWorked', $tr).html();            //отработано дней  
-
+        var dayWorked = $('.dayWorked', $tr).html();            //отработано дней 
         var fulfilledTheNorms = (columnSumNorm / sumNumberDaysWorked) * dayWorked;
-        fulfilledTheNorms = fulfilledTheNorms > 0 ? fulfilledTheNorms : 0;
-        $(this).text(fulfilledTheNorms.toFixed(4));             //выполнено норм  
+
+        if (fulfilledTheNorms > 0) {
+            $(this).text(fulfilledTheNorms.toFixed(4));         //выполнено норм   
+        } else {
+            $(this).text('');                                   //выполнено норм  
+        }
     })
 }
 
@@ -119,7 +110,12 @@ function percentFulfilledTheNorms() {                 //процент выпо�
     $('.fulfilledTheNorms').each(function () {
         var fulfilledTheNorms = $(this).html();       //выполнено норм  
         var percentFulfilledTheNorms = (fulfilledTheNorms / columnSumNorm) * 100;
-        $(this).next('td').text(percentFulfilledTheNorms.toFixed(2)); //выполнено норм  
+
+        if (percentFulfilledTheNorms > 0) {
+            $(this).next('td').text(percentFulfilledTheNorms.toFixed(2)); //выполнено норм  
+        } else {
+            $(this).next('td').text('');                                  //выполнено норм  
+        }
     })
 }
 
@@ -129,31 +125,31 @@ function salary() {//зарплата
     $('.fulfilledTheNorms').each(function () {
         var $tr = $(this).parents('tr');
         var dayWorked = $('.dayWorked', $tr).html();            //отработано дней  
-
         var salary = (columnSumSalary / sumNumberDaysWorked) * dayWorked;
-        salary = salary > 0 ? salary : 0;
-        $(this).next('td').next('td').text(salary.toFixed(2));  //выполнено норм  
+
+        if (salary > 0) {
+            $(this).next('td').next('td').text(salary.toFixed(2));  //выполнено норм  
+        } else {
+            $(this).next('td').next('td').text('');  //выполнено норм  
+        }
     })
 }
 
-function testDateValid($table) {//проверка заполнения сотрудника и расчет норм
+function testDateValid() {//проверка выбора сотрудника и расчет норм
     var isAllValid = false;
 
-    var s = $('#timesheetNumber').html();
-    alert(s);
-
-    if ($('#columnSumNorm').length && $('#columnSumNorm').html() != 0 && $("#timesheetNumber", $table).html() > 0) {
-        isAllValid = true;         
-    } 
+    if ($('#columnSumNorm').length && $('#columnSumNorm').html() !== 0 && $('.tbodyTableRevers .autocompleteCombobox').val() !== 'Вибрати') {
+        isAllValid = true;
+    }
     return isAllValid;
 }
 
 $('.addEmployees').click(function myfunction() {
     var $table = $(this).parents('tbody');//таблица в которой добовляем строки
 
-    if (testDateValid($table)) {//проверка не пустые строки
+    if (testDateValid()) {//проверка не пустые строки
         addStringEmployee(this, $table);  //добавляем нижнюю строку в таблице
-        clearRowEmployee($table);         //очистка строки ввода строки    
+        clearRowEmployee($table);         //очистка строки ввода     
     };
 });
 
@@ -172,7 +168,7 @@ function addStringEmployee(element, $table) {//добавляем нижнюю �
         }
 
         if ((indx >= 0 && indx <= 4) || (indx >= 21 && indx <= 28)) {
-            $("<td/>").attr("rowspan", "2").text(str).addClass(indx == 21 ? 'dayWorked' : '').addClass(indx == 25 ? 'fulfilledTheNorms' : '').appendTo($("tr:last", $table));
+            $("<td/>").attr("rowspan", "2").text(str).addClass(indx === 21 ? 'dayWorked' : '').addClass(indx === 25 ? 'fulfilledTheNorms' : '').appendTo($("tr:last", $table));
         } else {
             $("<td/>", { text: str }).appendTo($("tr:last", $table));
         }
@@ -181,7 +177,7 @@ function addStringEmployee(element, $table) {//добавляем нижнюю �
     $("<tr>").css('height', '20px').appendTo($table);//добавляем нижнюю строку      
     $('tr:eq(1) td', $table).each(function () {//копируем вторую строку  
         var $val = $('input', this).val();
-        var str = $val != 0 ? $val : '';
+        var str = $val !== 0 ? $val : '';
         $("<td/>", { text: str }).appendTo($("tr:last", $table));
     });
 
@@ -192,6 +188,7 @@ function addStringEmployee(element, $table) {//добавляем нижнюю �
 }
 
 function clearRowEmployee($table) {///очистка строки ввода строки
+    $('.autocompleteCombobox', $table).prop('selectedIndex', 0);
     $('input', $table).val('');
     $('tr:first td[rowspan]:not(:first, :last)', $table).text('');
 }
@@ -204,9 +201,9 @@ function columnSumEmployee($table) {//сумма строк
                 sum += +$(this).text().replace(',', '.');
             });
 
-            if (indx == 21) {
+            if (indx === 21) {
                 $(this).text(sum > 0 ? (sum).toFixed(3) : '');
-            } else if (indx == 22) {
+            } else if (indx === 22) {
                 $(this).text(sum > 0 ? (sum).toFixed(1) : '');
             } else {
                 $(this).text(sum > 0 ? (sum).toFixed(2) : '');
@@ -218,8 +215,12 @@ function columnSumEmployee($table) {//сумма строк
 $('.tbodyTableRevers').each(function () {
     $(this).on('click', '.remove', function () {   //событие на нажатие кнопки удалить строку 
         var $table = $(this).parents('tbody');//таблица в которой добовляем строки       
-        deleteTrEmployee(this);      //Удаление строки  
-        $arrayHoursUsed.change();
+        deleteTrEmployee(this);     //Удаление строки  
+        columnSumEmployee($table);  //сумма строк  
+        fulfilledTheNorms();        //выполнено норм     
+        percentFulfilledTheNorms(); //процент выполнения норм 
+        salary()                    //зарплата
+        columnSumEmployee($table);  //сумма строк  
     })
 });
 

@@ -212,13 +212,13 @@ function columnSum($table) {//сумма строк
             $("tr:not(:first) td:nth-child(" + (indx + 2) + ")", "#tbodyTable").each(function () {
                 sum += +$(this).text().replace(',', '.');
             });
-            $(this).attr('id', indx == 4 ? 'columnSumNorm' : '').text((sum).toFixed(3));     
+            $(this).attr('id', indx === 4 ? 'columnSumNorm' : '').text((sum).toFixed(3));     
         } else if (indx >= 6 && indx <= 8) {
             var sum = 0;
             $("tr:not(:first) td:nth-child(" + (indx + 2) + ")", "#tbodyTable").each(function () {
                 sum += +$(this).text().replace(',', '.');
             });
-            $(this).attr('id', indx == 6 ? 'columnSumSalary' : '').text((sum).toFixed(2));
+            $(this).attr('id', indx === 6 ? 'columnSumSalary' : '').text((sum).toFixed(2));
         } 
     });
 };
@@ -258,7 +258,7 @@ function collectionOilCosts() { //расхода ГСМ по строке
         url: '/home/CollectionOilCosts',
         data: {
             'table': $('#productCategory').val(), 'typeOfWork': typeOfWork, 'volumeWood': $("#volumeWood").val(), 'executed': $("#executed").val(),
-            'checkedConditionsWinter': checkedConditionsWinterOil, 'checkedConditionsHard': checkedConditionsHard
+            'checkedConditionsWinter': checkedConditionsWinterOil, 'checkedConditionsHard': checkedConditionsHard, 'hoursUsed': $("#hoursUsed").val()
         },
         success: function (data) {
             CollectionOilCosts.push(data);
@@ -349,8 +349,8 @@ function getEmployees(element, List, nameColum) {//добавить список
     })
 }
 
-$('#submit').click(function myfunction() {//кнопка добавить /ТЕСТОВАЯ/
-    alert($('#worksTitlee').val());
+$('#submit').click(function myfunction() {//кнопка добавить /ТЕСТОВАЯ/   
+    alert('Тест');
 })
 
 

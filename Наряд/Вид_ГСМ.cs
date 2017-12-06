@@ -18,6 +18,7 @@ namespace Наряд
         public Вид_ГСМ()
         {
             this.Витрати_ГСМ = new HashSet<Витрати_ГСМ>();
+            this.Витрати_ГСМ_в_годину = new HashSet<Витрати_ГСМ_в_годину>();
         }
     
         public int Id_Палива { get; set; }
@@ -26,5 +27,7 @@ namespace Наряд
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Витрати_ГСМ> Витрати_ГСМ { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Витрати_ГСМ_в_годину> Витрати_ГСМ_в_годину { get; set; }
     }
 }

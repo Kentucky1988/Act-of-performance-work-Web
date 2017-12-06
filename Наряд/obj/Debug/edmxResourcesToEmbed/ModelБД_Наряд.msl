@@ -189,6 +189,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Витрати_ГСМ_в_годину">
+      <EntityTypeMapping TypeName="БД_НарядModel.Витрати_ГСМ_в_годину">
+        <MappingFragment StoreEntitySet="Витрати_ГСМ_в_годину">
+          <ScalarProperty Name="Витрати_ГСМ_зупинка_кг_ч" ColumnName="Витрати_ГСМ_зупинка_кг_ч" />
+          <ScalarProperty Name="Витрати_ГСМ_переїзд_кг_ч" ColumnName="Витрати_ГСМ_переїзд_кг_ч" />
+          <ScalarProperty Name="Id_Палива" ColumnName="Id_Палива" />
+          <ScalarProperty Name="Id_Механізма" ColumnName="Id_Механізма" />
+          <ScalarProperty Name="Id_ВитратГСМ" ColumnName="Id_ВитратГСМ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Догляд_за_л_к_мотокущорізом_ГСМ">
       <EntityTypeMapping TypeName="БД_НарядModel.Догляд_за_л_к_мотокущорізом_ГСМ">
         <MappingFragment StoreEntitySet="Догляд_за_л_к_мотокущорізом_ГСМ">
