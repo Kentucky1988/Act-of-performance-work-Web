@@ -153,11 +153,11 @@ $("#worksTitlee").change(function () {// событие на изминеие н
     $("#workingConditionsSummer").click();
     $('#coefficient input').val('');
     if ($(this).val() === "Трелювання деревини") {
-        $('#coefficient, #workingConditionsHard, #tractorCoefficient').show();//отобразить строку
-        $('#deforestationCoefficient').hide();//скрыть строку /Поправочный коефициент лесозаготовка/
+        $('#coefficient, #conditionsLumbering, #workingConditionsHard, #tractorCoefficient').show();//отобразить строку
+        $('#deforestationCoefficient, #divForestPlantingConditions').hide();//скрыть строку /Поправочный коефициент лесозаготовка/
     } else if ($(this).val() === "Лісозаготівельні роботи") {
-        $('#coefficient, #deforestationCoefficient').show();//отобразить строку
-        $('#workingConditionsHard, #tractorCoefficient').hide();//скрыть строку /Поправочный коефициент тежолые условия/
+        $('#coefficient, #conditionsLumbering, #deforestationCoefficient').show();//отобразить строку
+        $('#workingConditionsHard, #tractorCoefficient, #divForestPlantingConditions').hide();//скрыть строку /Поправочный коефициент тежолые условия/
     }
     else {
         $('#coefficient').hide();//скрыть строку
@@ -165,9 +165,21 @@ $("#worksTitlee").change(function () {// событие на изминеие н
     clearRow($('#tbodyTable'));
 });
 
+function showDivForestPlantingConditions(productCategory) {
+    if (productCategory === "Садіння_лісу" || productCategory === "Прополювання_лісу" || productCategory === "Ручний_догляд_за_л_к") {
+        $('#coefficient, #divForestPlantingConditions').show();//отобразить строку   
+        $('#conditionsLumbering, #tractorCoefficient, #deforestationCoefficient').hide();//скрыть строку 
+    } else {
+        $('#coefficient, #divForestPlantingConditions').hide();//скрыть строку 
+        $('#forestPlantingConditions').prop('selectedIndex', 0);
+    }
+}
+
 $("#productCategory").change(function () {// событие на изминеие категории работ
+    var productCategory = $('#productCategory').val()
+    showDivForestPlantingConditions(productCategory);
     LoadProduct(this);
-    Unit($('#productCategory').val());
+    Unit(productCategory);
     $('#tbodyTable input:not(":first, #Unit")').val('');//очистка 1 строки
 });
 
@@ -212,14 +224,14 @@ function columnSum($table) {//сумма строк
             $("tr:not(:first) td:nth-child(" + (indx + 2) + ")", "#tbodyTable").each(function () {
                 sum += +$(this).text().replace(',', '.');
             });
-            $(this).attr('id', indx === 4 ? 'columnSumNorm' : '').text((sum).toFixed(3));     
+            $(this).attr('id', indx === 4 ? 'columnSumNorm' : '').text((sum).toFixed(3));
         } else if (indx >= 6 && indx <= 8) {
             var sum = 0;
             $("tr:not(:first) td:nth-child(" + (indx + 2) + ")", "#tbodyTable").each(function () {
                 sum += +$(this).text().replace(',', '.');
             });
             $(this).attr('id', indx === 6 ? 'columnSumSalary' : '').text((sum).toFixed(2));
-        } 
+        }
     });
 };
 
@@ -352,11 +364,3 @@ function getEmployees(element, List, nameColum) {//добавить список
 $('#submit').click(function myfunction() {//кнопка добавить /ТЕСТОВАЯ/   
     alert('Тест');
 })
-
-
-
-
-
-
-
-

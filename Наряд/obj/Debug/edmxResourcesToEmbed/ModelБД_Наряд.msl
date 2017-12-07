@@ -115,6 +115,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Прополювання_лісу">
+      <EntityTypeMapping TypeName="БД_НарядModel.Прополювання_лісу">
+        <MappingFragment StoreEntitySet="Прополювання_лісу">
+          <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+          <ScalarProperty Name="Id_Вид_робіт" ColumnName="Id_Вид_робіт" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="РГК_ССР_без_трелювання">
       <EntityTypeMapping TypeName="БД_НарядModel.РГК_ССР_без_трелювання">
         <MappingFragment StoreEntitySet="РГК_ССР_без_трелювання">
@@ -126,6 +134,22 @@
     <EntitySetMapping Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
       <EntityTypeMapping TypeName="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
         <MappingFragment StoreEntitySet="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
+          <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+          <ScalarProperty Name="Id_Вид_робіт" ColumnName="Id_Вид_робіт" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ручний_догляд_за_л_к">
+      <EntityTypeMapping TypeName="БД_НарядModel.Ручний_догляд_за_л_к">
+        <MappingFragment StoreEntitySet="Ручний_догляд_за_л_к">
+          <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+          <ScalarProperty Name="Id_Вид_робіт" ColumnName="Id_Вид_робіт" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Садіння_лісу">
+      <EntityTypeMapping TypeName="БД_НарядModel.Садіння_лісу">
+        <MappingFragment StoreEntitySet="Садіння_лісу">
           <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
           <ScalarProperty Name="Id_Вид_робіт" ColumnName="Id_Вид_робіт" />
         </MappingFragment>
@@ -368,6 +392,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Прополювання_лісу_Норма">
+      <EntityTypeMapping TypeName="БД_НарядModel.Прополювання_лісу_Норма">
+        <MappingFragment StoreEntitySet="Прополювання_лісу_Норма">
+          <ScalarProperty Name="Гірські_умови_схил_понад_20град" ColumnName="Гірські_умови_схил_понад_20град" />
+          <ScalarProperty Name="Гірські_умови_схил_до_20град" ColumnName="Гірські_умови_схил_до_20град" />
+          <ScalarProperty Name="Яружно_балкові_землі_схил_понад_20град" ColumnName="Яружно_балкові_землі_схил_понад_20град" />
+          <ScalarProperty Name="Яружно_балкові_землі_схил_до_20град" ColumnName="Яружно_балкові_землі_схил_до_20град" />
+          <ScalarProperty Name="Рівнині_умови" ColumnName="Рівнині_умови" />
+          <ScalarProperty Name="Id_Вид_робіт" ColumnName="Id_Вид_робіт" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="РГК_ССР_без_трелювання_ГСМ">
       <EntityTypeMapping TypeName="БД_НарядModel.РГК_ССР_без_трелювання_ГСМ">
         <MappingFragment StoreEntitySet="РГК_ССР_без_трелювання_ГСМ">
@@ -474,12 +510,36 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Ручний_догляд_за_л_к_Норма">
+      <EntityTypeMapping TypeName="БД_НарядModel.Ручний_догляд_за_л_к_Норма">
+        <MappingFragment StoreEntitySet="Ручний_догляд_за_л_к_Норма">
+          <ScalarProperty Name="Гірські_умови_схил_понад_20град" ColumnName="Гірські_умови_схил_понад_20град" />
+          <ScalarProperty Name="Гірські_умови_схил_до_20град" ColumnName="Гірські_умови_схил_до_20град" />
+          <ScalarProperty Name="Яружно_балкові_землі_схил_понад_20град" ColumnName="Яружно_балкові_землі_схил_понад_20град" />
+          <ScalarProperty Name="Яружно_балкові_землі_схил_до_20град" ColumnName="Яружно_балкові_землі_схил_до_20град" />
+          <ScalarProperty Name="Рівнині_умови" ColumnName="Рівнині_умови" />
+          <ScalarProperty Name="Id_Вид_робіт" ColumnName="Id_Вид_робіт" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Садіння_лісу_Додаткові_роботи_Норма">
       <EntityTypeMapping TypeName="БД_НарядModel.Садіння_лісу_Додаткові_роботи_Норма">
         <MappingFragment StoreEntitySet="Садіння_лісу_Додаткові_роботи_Норма">
           <ScalarProperty Name="Норма_віробітку" ColumnName="Норма_віробітку" />
           <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
           <ScalarProperty Name="Id_Норма_віробітку" ColumnName="Id_Норма_віробітку" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Садіння_лісу_Норма">
+      <EntityTypeMapping TypeName="БД_НарядModel.Садіння_лісу_Норма">
+        <MappingFragment StoreEntitySet="Садіння_лісу_Норма">
+          <ScalarProperty Name="Гірські_умови_схил_понад_20град" ColumnName="Гірські_умови_схил_понад_20град" />
+          <ScalarProperty Name="Гірські_умови_схил_до_20град" ColumnName="Гірські_умови_схил_до_20град" />
+          <ScalarProperty Name="Яружно_балкові_землі_схил_понад_20град" ColumnName="Яружно_балкові_землі_схил_понад_20град" />
+          <ScalarProperty Name="Яружно_балкові_землі_схил_до_20град" ColumnName="Яружно_балкові_землі_схил_до_20град" />
+          <ScalarProperty Name="Рівнині_умови" ColumnName="Рівнині_умови" />
+          <ScalarProperty Name="Id_Вид_робіт" ColumnName="Id_Вид_робіт" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

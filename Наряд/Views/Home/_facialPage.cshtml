@@ -24,26 +24,26 @@
             </tr>
             <tr>
                 <td> <input type="text" class="calendar" name="getDate" />  </td>
-                <td> 
+                <td>
                     <select id="company">
                         <option></option>
                     </select>
                 </td>
                 <td id="codeEDRPOY"></td>
-                <td> 
+                <td>
                     <select id="subdivision">
                         <option></option>
                     </select>
                 </td>
-                <td> <input type="text"/> </td>
-                <td> <input type="text"/> </td>
+                <td> <input type="text" /> </td>
+                <td> <input type="text" /> </td>
                 <td>
                     <select class="autocompleteCombobox employees">
                         <option></option>
                     </select>
                 </td>
                 <td id="timesheetNumber"></td>
-                <td> <input type="text"/></td>
+                <td> <input type="text" /></td>
             </tr>
         </table>
     </div>
@@ -80,9 +80,10 @@
             </tr>
         </table>
         <div id="coefficient">
-            <form class="navbar-form">
-                <label>Умови трелювання:</label>
-                <div class="btn-group form-group" data-toggle="buttons">
+            <form class="navbar-form">  
+                <label>Умови роботи:</label>
+                <div id="conditionsLumbering" class="btn-group form-group" data-toggle="buttons">
+                  
                     <label class="btn btn-primary active" id="workingConditionsSummer">
                         <input type="radio" checked> Літні
                     </label>
@@ -99,7 +100,7 @@
                     <label>Всього затрачено на переїзд трактора, годин:</label>
                     <input type="text" id="hoursUsed" />
                     <label>Наявність перешкод на ділянці, %:</label>
-                    <input type="text" id="block" />                    
+                    <input type="text" id="block" />
                 </div>
                 <div id="deforestationCoefficient" class="form-group">
                     <label>Коефіцієнт зменшення норм:</label>
@@ -108,6 +109,16 @@
                     <input type="text" />
                     <label>від:</label>
                     <input type="text" class="calendar" />
+                </div>
+                <div id="divForestPlantingConditions" class="form-group">                    
+                    <select id="forestPlantingConditions">
+                        <option></option>
+                        <option>Рівнині умови</option>
+                        <option>Яружно-балкові землі схил до 20&deg;</option>
+                        <option>Яружно-балкові землі схил понад 20&deg;</option>
+                        <option>Гірські умови схил до 20&deg;</option>
+                        <option>Гірські умови схил понад 20&deg;</option>                        
+                    </select>               
                 </div>
             </form>
         </div>
@@ -250,7 +261,7 @@
             </div>
             <div class="form-group">
                 <label> Оцінка якості виконаних робіт:</label>
-                <select id="PerformanceEvaluation">                   
+                <select id="PerformanceEvaluation">
                     <option>Задовільно</option>
                     <option>Не задовільно</option>
                 </select>

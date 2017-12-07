@@ -14,8 +14,11 @@
     <EntitySet Name="Підрозділ" EntityType="БД_НарядModel.Підрозділ" />
     <EntitySet Name="Погрузка" EntityType="БД_НарядModel.Погрузка" />
     <EntitySet Name="Прибирання_небезпечних_дерев" EntityType="БД_НарядModel.Прибирання_небезпечних_дерев" />
+    <EntitySet Name="Прополювання_лісу" EntityType="БД_НарядModel.Прополювання_лісу" />
     <EntitySet Name="РГК_ССР_без_трелювання" EntityType="БД_НарядModel.РГК_ССР_без_трелювання" />
     <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" />
+    <EntitySet Name="Ручний_догляд_за_л_к" EntityType="БД_НарядModel.Ручний_догляд_за_л_к" />
+    <EntitySet Name="Садіння_лісу" EntityType="БД_НарядModel.Садіння_лісу" />
     <EntitySet Name="Садіння_лісу_Додаткові_роботи" EntityType="БД_НарядModel.Садіння_лісу_Додаткові_роботи" />
     <EntitySet Name="Трелювання_підліску" EntityType="БД_НарядModel.Трелювання_підліску" />
     <EntitySet Name="Трелювання_РГК" EntityType="БД_НарядModel.Трелювання_РГК" />
@@ -38,12 +41,15 @@
     <EntitySet Name="Поправочний_коефіцієнт_Перешкоди" EntityType="БД_НарядModel.Поправочний_коефіцієнт_Перешкоди" />
     <EntitySet Name="Прибирання_небезпечних_дерев_ГСМ" EntityType="БД_НарядModel.Прибирання_небезпечних_дерев_ГСМ" />
     <EntitySet Name="Прибирання_небезпечних_дерев_Норма" EntityType="БД_НарядModel.Прибирання_небезпечних_дерев_Норма" />
+    <EntitySet Name="Прополювання_лісу_Норма" EntityType="БД_НарядModel.Прополювання_лісу_Норма" />
     <EntitySet Name="РГК_ССР_без_трелювання_ГСМ" EntityType="БД_НарядModel.РГК_ССР_без_трелювання_ГСМ" />
     <EntitySet Name="РГК_ССР_без_трелювання_Норма" EntityType="БД_НарядModel.РГК_ССР_без_трелювання_Норма" />
     <EntitySet Name="Робітники" EntityType="БД_НарядModel.Робітники" />
     <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" />
     <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" />
+    <EntitySet Name="Ручний_догляд_за_л_к_Норма" EntityType="БД_НарядModel.Ручний_догляд_за_л_к_Норма" />
     <EntitySet Name="Садіння_лісу_Додаткові_роботи_Норма" EntityType="БД_НарядModel.Садіння_лісу_Додаткові_роботи_Норма" />
+    <EntitySet Name="Садіння_лісу_Норма" EntityType="БД_НарядModel.Садіння_лісу_Норма" />
     <EntitySet Name="Сортименти" EntityType="БД_НарядModel.Сортименти" />
     <EntitySet Name="Трелювання_підліску_ГСМ" EntityType="БД_НарядModel.Трелювання_підліску_ГСМ" />
     <EntitySet Name="Трелювання_підліску_Норма" EntityType="БД_НарядModel.Трелювання_підліску_Норма" />
@@ -126,6 +132,10 @@
       <End Role="Прибирання_небезпечних_дерев" EntitySet="Прибирання_небезпечних_дерев" />
       <End Role="Прибирання_небезпечних_дерев_Норма" EntitySet="Прибирання_небезпечних_дерев_Норма" />
     </AssociationSet>
+    <AssociationSet Name="FK__Прополюва__Id_Ви__6A85CC04" Association="БД_НарядModel.FK__Прополюва__Id_Ви__6A85CC04">
+      <End Role="Прополювання_лісу" EntitySet="Прополювання_лісу" />
+      <End Role="Прополювання_лісу_Норма" EntitySet="Прополювання_лісу_Норма" />
+    </AssociationSet>
     <AssociationSet Name="FK__РГК_ССР_б__Вид_р__28ED12D1" Association="БД_НарядModel.FK__РГК_ССР_б__Вид_р__28ED12D1">
       <End Role="РГК_ССР_без_трелювання" EntitySet="РГК_ССР_без_трелювання" />
       <End Role="РГК_ССР_без_трелювання_ГСМ" EntitySet="РГК_ССР_без_трелювання_ГСМ" />
@@ -141,6 +151,14 @@
     <AssociationSet Name="FK__Рубки_дог__Вид_р__3C34F16F" Association="БД_НарядModel.FK__Рубки_дог__Вид_р__3C34F16F">
       <End Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntitySet="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" />
       <End Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" EntitySet="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ручний_до__Id_Ви__6F4A8121" Association="БД_НарядModel.FK__Ручний_до__Id_Ви__6F4A8121">
+      <End Role="Ручний_догляд_за_л_к" EntitySet="Ручний_догляд_за_л_к" />
+      <End Role="Ручний_догляд_за_л_к_Норма" EntitySet="Ручний_догляд_за_л_к_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Садіння_л__Id_Ви__64CCF2AE" Association="БД_НарядModel.FK__Садіння_л__Id_Ви__64CCF2AE">
+      <End Role="Садіння_лісу" EntitySet="Садіння_лісу" />
+      <End Role="Садіння_лісу_Норма" EntitySet="Садіння_лісу_Норма" />
     </AssociationSet>
     <AssociationSet Name="FK__Садіння_л__Вид_р__0E04126B" Association="БД_НарядModel.FK__Садіння_л__Вид_р__0E04126B">
       <End Role="Садіння_лісу_Додаткові_роботи" EntitySet="Садіння_лісу_Додаткові_роботи" />
@@ -303,6 +321,14 @@
     <NavigationProperty Name="Прибирання_небезпечних_дерев_ГСМ" Relationship="БД_НарядModel.FK__Прибиранн__Вид_р__4B422AD5" FromRole="Прибирання_небезпечних_дерев" ToRole="Прибирання_небезпечних_дерев_ГСМ" />
     <NavigationProperty Name="Прибирання_небезпечних_дерев_Норма" Relationship="БД_НарядModel.FK__Прибиранн__Вид_р__7A3223E8" FromRole="Прибирання_небезпечних_дерев" ToRole="Прибирання_небезпечних_дерев_Норма" />
   </EntityType>
+  <EntityType Name="Прополювання_лісу">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Прополювання_лісу_Норма" Relationship="БД_НарядModel.FK__Прополюва__Id_Ви__6A85CC04" FromRole="Прополювання_лісу" ToRole="Прополювання_лісу_Норма" />
+  </EntityType>
   <EntityType Name="РГК_ССР_без_трелювання">
     <Key>
       <PropertyRef Name="Id_Вид_робіт" />
@@ -320,6 +346,22 @@
     <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" Relationship="БД_НарядModel.FK__Рубки_дог__Вид_р__318258D2" FromRole="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" ToRole="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" />
     <NavigationProperty Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" Relationship="БД_НарядModel.FK__Рубки_дог__Вид_р__3C34F16F" FromRole="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" ToRole="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" />
+  </EntityType>
+  <EntityType Name="Ручний_догляд_за_л_к">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Ручний_догляд_за_л_к_Норма" Relationship="БД_НарядModel.FK__Ручний_до__Id_Ви__6F4A8121" FromRole="Ручний_догляд_за_л_к" ToRole="Ручний_догляд_за_л_к_Норма" />
+  </EntityType>
+  <EntityType Name="Садіння_лісу">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Садіння_лісу_Норма" Relationship="БД_НарядModel.FK__Садіння_л__Id_Ви__64CCF2AE" FromRole="Садіння_лісу" ToRole="Садіння_лісу_Норма" />
   </EntityType>
   <EntityType Name="Садіння_лісу_Додаткові_роботи">
     <Key>
@@ -638,6 +680,23 @@
     <Property Name="C1_1" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
     <NavigationProperty Name="Прибирання_небезпечних_дерев" Relationship="БД_НарядModel.FK__Прибиранн__Вид_р__7A3223E8" FromRole="Прибирання_небезпечних_дерев_Норма" ToRole="Прибирання_небезпечних_дерев" />
   </EntityType>
+  <EntityType Name="Прополювання_лісу_Норма">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+      <PropertyRef Name="Рівнині_умови" />
+      <PropertyRef Name="Яружно_балкові_землі_схил_до_20град" />
+      <PropertyRef Name="Яружно_балкові_землі_схил_понад_20град" />
+      <PropertyRef Name="Гірські_умови_схил_до_20град" />
+      <PropertyRef Name="Гірські_умови_схил_понад_20град" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="Рівнині_умови" Type="Int32" Nullable="false" />
+    <Property Name="Яружно_балкові_землі_схил_до_20град" Type="Int32" Nullable="false" />
+    <Property Name="Яружно_балкові_землі_схил_понад_20град" Type="Int32" Nullable="false" />
+    <Property Name="Гірські_умови_схил_до_20град" Type="Int32" Nullable="false" />
+    <Property Name="Гірські_умови_схил_понад_20град" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Прополювання_лісу" Relationship="БД_НарядModel.FK__Прополюва__Id_Ви__6A85CC04" FromRole="Прополювання_лісу_Норма" ToRole="Прополювання_лісу" />
+  </EntityType>
   <EntityType Name="РГК_ССР_без_трелювання_ГСМ">
     <Key>
       <PropertyRef Name="Вид_робітID" />
@@ -812,6 +871,23 @@
     <Property Name="C1_5" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
     <NavigationProperty Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" Relationship="БД_НарядModel.FK__Рубки_дог__Вид_р__3C34F16F" FromRole="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" ToRole="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" />
   </EntityType>
+  <EntityType Name="Ручний_догляд_за_л_к_Норма">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+      <PropertyRef Name="Рівнині_умови" />
+      <PropertyRef Name="Яружно_балкові_землі_схил_до_20град" />
+      <PropertyRef Name="Яружно_балкові_землі_схил_понад_20град" />
+      <PropertyRef Name="Гірські_умови_схил_до_20град" />
+      <PropertyRef Name="Гірські_умови_схил_понад_20град" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="Рівнині_умови" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="Яружно_балкові_землі_схил_до_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="Яружно_балкові_землі_схил_понад_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="Гірські_умови_схил_до_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="Гірські_умови_схил_понад_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <NavigationProperty Name="Ручний_догляд_за_л_к" Relationship="БД_НарядModel.FK__Ручний_до__Id_Ви__6F4A8121" FromRole="Ручний_догляд_за_л_к_Норма" ToRole="Ручний_догляд_за_л_к" />
+  </EntityType>
   <EntityType Name="Садіння_лісу_Додаткові_роботи_Норма">
     <Key>
       <PropertyRef Name="Id_Норма_віробітку" />
@@ -822,6 +898,23 @@
     <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
     <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="6" Scale="3" />
     <NavigationProperty Name="Садіння_лісу_Додаткові_роботи" Relationship="БД_НарядModel.FK__Садіння_л__Вид_р__0E04126B" FromRole="Садіння_лісу_Додаткові_роботи_Норма" ToRole="Садіння_лісу_Додаткові_роботи" />
+  </EntityType>
+  <EntityType Name="Садіння_лісу_Норма">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+      <PropertyRef Name="Рівнині_умови" />
+      <PropertyRef Name="Яружно_балкові_землі_схил_до_20град" />
+      <PropertyRef Name="Яружно_балкові_землі_схил_понад_20град" />
+      <PropertyRef Name="Гірські_умови_схил_до_20град" />
+      <PropertyRef Name="Гірські_умови_схил_понад_20град" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="Рівнині_умови" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="Яружно_балкові_землі_схил_до_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="Яружно_балкові_землі_схил_понад_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="Гірські_умови_схил_до_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="Гірські_умови_схил_понад_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <NavigationProperty Name="Садіння_лісу" Relationship="БД_НарядModel.FK__Садіння_л__Id_Ви__64CCF2AE" FromRole="Садіння_лісу_Норма" ToRole="Садіння_лісу" />
   </EntityType>
   <EntityType Name="Сортименти">
     <Key>
@@ -1278,6 +1371,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Прополюва__Id_Ви__6A85CC04">
+    <End Type="БД_НарядModel.Прополювання_лісу" Role="Прополювання_лісу" Multiplicity="1" />
+    <End Type="БД_НарядModel.Прополювання_лісу_Норма" Role="Прополювання_лісу_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Прополювання_лісу">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Прополювання_лісу_Норма">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__РГК_ССР_б__Вид_р__28ED12D1">
     <End Type="БД_НарядModel.РГК_ССР_без_трелювання" Role="РГК_ССР_без_трелювання" Multiplicity="1" />
     <End Type="БД_НарядModel.РГК_ССР_без_трелювання_ГСМ" Role="РГК_ССР_без_трелювання_ГСМ" Multiplicity="*" />
@@ -1323,6 +1428,30 @@
       </Principal>
       <Dependent Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма">
         <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ручний_до__Id_Ви__6F4A8121">
+    <End Type="БД_НарядModel.Ручний_догляд_за_л_к" Role="Ручний_догляд_за_л_к" Multiplicity="1" />
+    <End Type="БД_НарядModel.Ручний_догляд_за_л_к_Норма" Role="Ручний_догляд_за_л_к_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ручний_догляд_за_л_к">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Ручний_догляд_за_л_к_Норма">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Садіння_л__Id_Ви__64CCF2AE">
+    <End Type="БД_НарядModel.Садіння_лісу" Role="Садіння_лісу" Multiplicity="1" />
+    <End Type="БД_НарядModel.Садіння_лісу_Норма" Role="Садіння_лісу_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Садіння_лісу">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Садіння_лісу_Норма">
+        <PropertyRef Name="Id_Вид_робіт" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

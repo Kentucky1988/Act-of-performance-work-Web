@@ -260,6 +260,12 @@
     <Compile Include="Прибирання_небезпечних_дерев_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
+    <Compile Include="Прополювання_лісу.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Прополювання_лісу_Норма.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
     <Compile Include="РГК_ССР_без_трелювання.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
@@ -281,10 +287,22 @@
     <Compile Include="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
+    <Compile Include="Ручний_догляд_за_л_к.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ручний_догляд_за_л_к_Норма.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Садіння_лісу.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
     <Compile Include="Садіння_лісу_Додаткові_роботи.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
     <Compile Include="Садіння_лісу_Додаткові_роботи_Норма.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Садіння_лісу_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
     <Compile Include="Сортименти.cs">

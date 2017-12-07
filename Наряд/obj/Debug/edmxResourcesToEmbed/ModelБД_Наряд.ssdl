@@ -381,6 +381,31 @@
     <Property Name="0,75" Type="decimal" Precision="5" Scale="3" Nullable="false" />
     <Property Name="1,1" Type="decimal" Precision="5" Scale="3" Nullable="false" />
   </EntityType>
+  <EntityType Name="Прополювання_лісу">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Вид_робіт" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Прополювання_лісу_Норма" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Прополювання_лісу_Норма">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+      <PropertyRef Name="Рівнині_умови" />
+      <PropertyRef Name="Яружно_балкові_землі_схил_до_20град" />
+      <PropertyRef Name="Яружно_балкові_землі_схил_понад_20град" />
+      <PropertyRef Name="Гірські_умови_схил_до_20град" />
+      <PropertyRef Name="Гірські_умови_схил_понад_20град" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="int" Nullable="false" />
+    <Property Name="Рівнині_умови" Type="int" Nullable="false" />
+    <Property Name="Яружно_балкові_землі_схил_до_20град" Type="int" Nullable="false" />
+    <Property Name="Яружно_балкові_землі_схил_понад_20град" Type="int" Nullable="false" />
+    <Property Name="Гірські_умови_схил_до_20град" Type="int" Nullable="false" />
+    <Property Name="Гірські_умови_схил_понад_20град" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="РГК_ССР_без_трелювання">
     <Key>
       <PropertyRef Name="Id_Вид_робіт" />
@@ -575,6 +600,38 @@
     <Property Name="0,98" Type="decimal" Precision="5" Scale="3" Nullable="false" />
     <Property Name="1,5" Type="decimal" Precision="5" Scale="3" Nullable="false" />
   </EntityType>
+  <EntityType Name="Ручний_догляд_за_л_к">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Вид_робіт" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Ручний_догляд_за_л_к_Норма" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Ручний_догляд_за_л_к_Норма">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+      <PropertyRef Name="Рівнині_умови" />
+      <PropertyRef Name="Яружно_балкові_землі_схил_до_20град" />
+      <PropertyRef Name="Яружно_балкові_землі_схил_понад_20град" />
+      <PropertyRef Name="Гірські_умови_схил_до_20град" />
+      <PropertyRef Name="Гірські_умови_схил_понад_20град" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="int" Nullable="false" />
+    <Property Name="Рівнині_умови" Type="decimal" Precision="4" Scale="3" Nullable="false" />
+    <Property Name="Яружно_балкові_землі_схил_до_20град" Type="decimal" Precision="4" Scale="3" Nullable="false" />
+    <Property Name="Яружно_балкові_землі_схил_понад_20град" Type="decimal" Precision="4" Scale="3" Nullable="false" />
+    <Property Name="Гірські_умови_схил_до_20град" Type="decimal" Precision="4" Scale="3" Nullable="false" />
+    <Property Name="Гірські_умови_схил_понад_20град" Type="decimal" Precision="4" Scale="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Садіння_лісу">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Вид_робіт" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
   <EntityType Name="Садіння_лісу_Додаткові_роботи">
     <Key>
       <PropertyRef Name="Id_Вид_робіт" />
@@ -593,6 +650,24 @@
     <Property Name="Id_Норма_віробітку" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Вид_робіт" Type="int" Nullable="false" />
     <Property Name="Норма_віробітку" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Садіння_лісу_Норма" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Садіння_лісу_Норма">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+      <PropertyRef Name="Рівнині_умови" />
+      <PropertyRef Name="Яружно_балкові_землі_схил_до_20град" />
+      <PropertyRef Name="Яружно_балкові_землі_схил_понад_20град" />
+      <PropertyRef Name="Гірські_умови_схил_до_20град" />
+      <PropertyRef Name="Гірські_умови_схил_понад_20град" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="int" Nullable="false" />
+    <Property Name="Рівнині_умови" Type="decimal" Precision="4" Scale="3" Nullable="false" />
+    <Property Name="Яружно_балкові_землі_схил_до_20град" Type="decimal" Precision="4" Scale="3" Nullable="false" />
+    <Property Name="Яружно_балкові_землі_схил_понад_20град" Type="decimal" Precision="4" Scale="3" Nullable="false" />
+    <Property Name="Гірські_умови_схил_до_20град" Type="decimal" Precision="4" Scale="3" Nullable="false" />
+    <Property Name="Гірські_умови_схил_понад_20град" Type="decimal" Precision="4" Scale="3" Nullable="false" />
   </EntityType>
   <!--Ошибки, обнаруженные при создании:
 предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Сортименти" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
@@ -1095,6 +1170,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Прополюва__Id_Ви__6A85CC04">
+    <End Role="Прополювання_лісу" Type="Self.Прополювання_лісу" Multiplicity="1" />
+    <End Role="Прополювання_лісу_Норма" Type="Self.Прополювання_лісу_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Прополювання_лісу">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Прополювання_лісу_Норма">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__РГК_ССР_б__Вид_р__28ED12D1">
     <End Role="РГК_ССР_без_трелювання" Type="Self.РГК_ССР_без_трелювання" Multiplicity="1" />
     <End Role="РГК_ССР_без_трелювання_ГСМ" Type="Self.РГК_ССР_без_трелювання_ГСМ" Multiplicity="*" />
@@ -1140,6 +1227,30 @@
       </Principal>
       <Dependent Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма">
         <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ручний_до__Id_Ви__6F4A8121">
+    <End Role="Ручний_догляд_за_л_к" Type="Self.Ручний_догляд_за_л_к" Multiplicity="1" />
+    <End Role="Ручний_догляд_за_л_к_Норма" Type="Self.Ручний_догляд_за_л_к_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ручний_догляд_за_л_к">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Ручний_догляд_за_л_к_Норма">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Садіння_л__Id_Ви__64CCF2AE">
+    <End Role="Садіння_лісу" Type="Self.Садіння_лісу" Multiplicity="1" />
+    <End Role="Садіння_лісу_Норма" Type="Self.Садіння_лісу_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Садіння_лісу">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Садіння_лісу_Норма">
+        <PropertyRef Name="Id_Вид_робіт" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1277,8 +1388,11 @@
     <EntitySet Name="Підрозділ" EntityType="Self.Підрозділ" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Погрузка" EntityType="Self.Погрузка" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Прибирання_небезпечних_дерев" EntityType="Self.Прибирання_небезпечних_дерев" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Прополювання_лісу" EntityType="Self.Прополювання_лісу" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="РГК_ССР_без_трелювання" EntityType="Self.РГК_ССР_без_трелювання" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntityType="Self.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ручний_догляд_за_л_к" EntityType="Self.Ручний_догляд_за_л_к" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Садіння_лісу" EntityType="Self.Садіння_лісу" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Садіння_лісу_Додаткові_роботи" EntityType="Self.Садіння_лісу_Додаткові_роботи" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Трелювання_підліску" EntityType="Self.Трелювання_підліску" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Трелювання_РГК" EntityType="Self.Трелювання_РГК" Schema="dbo" store:Type="Tables" />
@@ -1442,6 +1556,16 @@
     [Прибирання_небезпечних_дерев_Норма].[1,1] AS [1,1]
     FROM [dbo].[Прибирання_небезпечних_дерев_Норма] AS [Прибирання_небезпечних_дерев_Норма]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="Прополювання_лісу_Норма" EntityType="Self.Прополювання_лісу_Норма" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Прополювання_лісу_Норма].[Id_Вид_робіт] AS [Id_Вид_робіт], 
+    [Прополювання_лісу_Норма].[Рівнині_умови] AS [Рівнині_умови], 
+    [Прополювання_лісу_Норма].[Яружно_балкові_землі_схил_до_20град] AS [Яружно_балкові_землі_схил_до_20град], 
+    [Прополювання_лісу_Норма].[Яружно_балкові_землі_схил_понад_20град] AS [Яружно_балкові_землі_схил_понад_20град], 
+    [Прополювання_лісу_Норма].[Гірські_умови_схил_до_20град] AS [Гірські_умови_схил_до_20град], 
+    [Прополювання_лісу_Норма].[Гірські_умови_схил_понад_20град] AS [Гірські_умови_схил_понад_20град]
+    FROM [dbo].[Прополювання_лісу_Норма] AS [Прополювання_лісу_Норма]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="РГК_ССР_без_трелювання_ГСМ" EntityType="Self.РГК_ССР_без_трелювання_ГСМ" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [РГК_ССР_без_трелювання_ГСМ].[Вид_робітID] AS [Вид_робітID], 
@@ -1538,12 +1662,32 @@
     [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма].[1,5] AS [1,5]
     FROM [dbo].[Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма] AS [Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="Ручний_догляд_за_л_к_Норма" EntityType="Self.Ручний_догляд_за_л_к_Норма" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Ручний_догляд_за_л_к_Норма].[Id_Вид_робіт] AS [Id_Вид_робіт], 
+    [Ручний_догляд_за_л_к_Норма].[Рівнині_умови] AS [Рівнині_умови], 
+    [Ручний_догляд_за_л_к_Норма].[Яружно_балкові_землі_схил_до_20град] AS [Яружно_балкові_землі_схил_до_20град], 
+    [Ручний_догляд_за_л_к_Норма].[Яружно_балкові_землі_схил_понад_20град] AS [Яружно_балкові_землі_схил_понад_20град], 
+    [Ручний_догляд_за_л_к_Норма].[Гірські_умови_схил_до_20град] AS [Гірські_умови_схил_до_20град], 
+    [Ручний_догляд_за_л_к_Норма].[Гірські_умови_схил_понад_20град] AS [Гірські_умови_схил_понад_20град]
+    FROM [dbo].[Ручний_догляд_за_л_к_Норма] AS [Ручний_догляд_за_л_к_Норма]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="Садіння_лісу_Додаткові_роботи_Норма" EntityType="Self.Садіння_лісу_Додаткові_роботи_Норма" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [Садіння_лісу_Додаткові_роботи_Норма].[Id_Норма_віробітку] AS [Id_Норма_віробітку], 
     [Садіння_лісу_Додаткові_роботи_Норма].[Вид_робіт] AS [Вид_робіт], 
     [Садіння_лісу_Додаткові_роботи_Норма].[Норма_віробітку] AS [Норма_віробітку]
     FROM [dbo].[Садіння_лісу_Додаткові_роботи_Норма] AS [Садіння_лісу_Додаткові_роботи_Норма]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Садіння_лісу_Норма" EntityType="Self.Садіння_лісу_Норма" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Садіння_лісу_Норма].[Id_Вид_робіт] AS [Id_Вид_робіт], 
+    [Садіння_лісу_Норма].[Рівнині_умови] AS [Рівнині_умови], 
+    [Садіння_лісу_Норма].[Яружно_балкові_землі_схил_до_20град] AS [Яружно_балкові_землі_схил_до_20град], 
+    [Садіння_лісу_Норма].[Яружно_балкові_землі_схил_понад_20град] AS [Яружно_балкові_землі_схил_понад_20град], 
+    [Садіння_лісу_Норма].[Гірські_умови_схил_до_20град] AS [Гірські_умови_схил_до_20град], 
+    [Садіння_лісу_Норма].[Гірські_умови_схил_понад_20град] AS [Гірські_умови_схил_понад_20град]
+    FROM [dbo].[Садіння_лісу_Норма] AS [Садіння_лісу_Норма]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="Сортименти" EntityType="Self.Сортименти" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -1752,6 +1896,10 @@
       <End Role="Прибирання_небезпечних_дерев" EntitySet="Прибирання_небезпечних_дерев" />
       <End Role="Прибирання_небезпечних_дерев_Норма" EntitySet="Прибирання_небезпечних_дерев_Норма" />
     </AssociationSet>
+    <AssociationSet Name="FK__Прополюва__Id_Ви__6A85CC04" Association="Self.FK__Прополюва__Id_Ви__6A85CC04">
+      <End Role="Прополювання_лісу" EntitySet="Прополювання_лісу" />
+      <End Role="Прополювання_лісу_Норма" EntitySet="Прополювання_лісу_Норма" />
+    </AssociationSet>
     <AssociationSet Name="FK__РГК_ССР_б__Вид_р__28ED12D1" Association="Self.FK__РГК_ССР_б__Вид_р__28ED12D1">
       <End Role="РГК_ССР_без_трелювання" EntitySet="РГК_ССР_без_трелювання" />
       <End Role="РГК_ССР_без_трелювання_ГСМ" EntitySet="РГК_ССР_без_трелювання_ГСМ" />
@@ -1767,6 +1915,14 @@
     <AssociationSet Name="FK__Рубки_дог__Вид_р__3C34F16F" Association="Self.FK__Рубки_дог__Вид_р__3C34F16F">
       <End Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntitySet="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" />
       <End Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" EntitySet="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ручний_до__Id_Ви__6F4A8121" Association="Self.FK__Ручний_до__Id_Ви__6F4A8121">
+      <End Role="Ручний_догляд_за_л_к" EntitySet="Ручний_догляд_за_л_к" />
+      <End Role="Ручний_догляд_за_л_к_Норма" EntitySet="Ручний_догляд_за_л_к_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Садіння_л__Id_Ви__64CCF2AE" Association="Self.FK__Садіння_л__Id_Ви__64CCF2AE">
+      <End Role="Садіння_лісу" EntitySet="Садіння_лісу" />
+      <End Role="Садіння_лісу_Норма" EntitySet="Садіння_лісу_Норма" />
     </AssociationSet>
     <AssociationSet Name="FK__Садіння_л__Вид_р__0E04126B" Association="Self.FK__Садіння_л__Вид_р__0E04126B">
       <End Role="Садіння_лісу_Додаткові_роботи" EntitySet="Садіння_лісу_Додаткові_роботи" />
