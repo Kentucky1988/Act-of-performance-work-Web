@@ -14,12 +14,13 @@ namespace Наряд
     
     public partial class Прополювання_лісу_Норма
     {
-        public int Id_Вид_робіт { get; set; }
-        public int Рівнині_умови { get; set; }
-        public int Яружно_балкові_землі_схил_до_20град { get; set; }
-        public int Яружно_балкові_землі_схил_понад_20град { get; set; }
-        public int Гірські_умови_схил_до_20град { get; set; }
-        public int Гірські_умови_схил_понад_20град { get; set; }
+        public int Id_Норма_віробітку { get; set; }
+        public int Вид_робіт { get; set; }
+        public decimal Рівнині_умови { get; set; }
+        public decimal Яружно_балкові_землі_схил_до_20град { get; set; }
+        public decimal Яружно_балкові_землі_схил_понад_20град { get; set; }
+        public decimal Гірські_умови_схил_до_20град { get; set; }
+        public decimal Гірські_умови_схил_понад_20град { get; set; }
     
         public virtual Прополювання_лісу Прополювання_лісу { get; set; }
     }

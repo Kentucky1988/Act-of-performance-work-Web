@@ -128,15 +128,15 @@ namespace Наряд.Controllers
             }
         }
 
-        public JsonResult normWork(string table, string typeOfWork, string volumeWood, string checkedConditionsWinter,
-                                   string checkedConditionsHard, string tractorMoving, string block, string reduceDeforestationCoefficient)//норма выполнения робот
+        public JsonResult normWork(string table, string typeOfWork, string volumeWood, string checkedConditionsWinter, string checkedConditionsHard, 
+                                   string tractorMoving, string block, string reduceDeforestationCoefficient, string forestPlantingConditions)//норма выполнения робот
         {
             NormFromDB normFromDB = new NormFromDB();
             CoefficientNorm coefficientNorm = new CoefficientNorm();
             ArrayList normArray = new ArrayList();
 
             string tableNormOfWork = normFromDB.TableNorm(table);
-            double norm = normFromDB.NormFromTable(table, tableNormOfWork, typeOfWork, Replace(volumeWood)); //норма выроботка  
+            double norm = normFromDB.NormFromTable(table, tableNormOfWork, typeOfWork, Replace(volumeWood), forestPlantingConditions); //норма выроботка  
 
             if (new NormOil().TableNormOfOil(table) == "-")
             {//если нет ГСМ, тогда пропускаем расчет поправочных коефициентов
@@ -177,7 +177,7 @@ namespace Наряд.Controllers
             CoefficientNorm coefficientNorm = new CoefficientNorm();
 
             string tableNormOil = oilCalculation.TableNormOfOil(table);
-            double normOil = normFromDB.NormFromTable(table, tableNormOil, typeOfWork, Replace(volumeWood)); //норма расхода ГСМ              
+            double normOil = normFromDB.NormFromTable(table, tableNormOil, typeOfWork, Replace(volumeWood), ""); //норма расхода ГСМ              
             double coefficientWinter = checkedConditionsWinter != "" ? coefficientNorm.CoefficientOil_Winter_Hard(checkedConditionsWinter) : 1;//поправочный коефиц. Зима
             double coefficientHard = checkedConditionsHard != "" ? coefficientNorm.CoefficientOil_Winter_Hard(checkedConditionsHard) : 1;//поправочный коефиц. Тяжелые условия
             hoursUsed = hoursUsed != "" ? hoursUsed : "0";

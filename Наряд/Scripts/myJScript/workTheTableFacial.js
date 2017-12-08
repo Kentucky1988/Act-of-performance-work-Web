@@ -88,12 +88,14 @@ function normOfWork(element) {//норма выроботки
         var tractorMoving = $("#tractorMoving").val();
         var block = $("#block").val();
         var reduceDeforestationCoefficient = $('#reduceDeforestationCoefficient').val();
+        var forestPlantingConditions = $('#forestPlantingConditions').val();
         $.ajax({
             type: "GET",
             url: '/home/normWork',
             data: {
                 'table': table, 'typeOfWork': typeOfWork, 'volumeWood': volumeWood, 'checkedConditionsWinter': checkedConditionsWinter,
-                'checkedConditionsHard': checkedConditionsHard, 'tractorMoving': tractorMoving, 'block': block, 'reduceDeforestationCoefficient': reduceDeforestationCoefficient
+                'checkedConditionsHard': checkedConditionsHard, 'tractorMoving': tractorMoving, 'block': block, 'reduceDeforestationCoefficient': reduceDeforestationCoefficient,
+                'forestPlantingConditions': forestPlantingConditions
             },
             success: function (norm) {
                 $('#norm').val(norm[0]);

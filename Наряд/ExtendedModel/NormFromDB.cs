@@ -27,13 +27,13 @@ namespace Наряд.ExtendedModel
             }
         }
 
-        public double NormFromTable(string table, string tableNorm, string typeOfWork, string volumeWood)
+        public double NormFromTable(string table, string tableNorm, string typeOfWork, string volumeWood, string forestPlantingConditions)
         {                    
             string amountOfWood = null;            
 
             if (new NormOil().TableNormOfOil(table) == "-" || (Units(table) != "м3" && table != "Прибирання_небезпечних_дерев"))
             {//если нет ГСМ и м3, тогда пропускаем расчет с V хлиста и возращаем значение в колонке "Норма_віробітку"
-                amountOfWood = "Норма_віробітку";
+                amountOfWood = forestPlantingConditions == "" ? "Норма_віробітку" : forestPlantingConditions;
             }
             else
             {

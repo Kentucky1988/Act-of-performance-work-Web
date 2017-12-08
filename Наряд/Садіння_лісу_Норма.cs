@@ -14,7 +14,8 @@ namespace Наряд
     
     public partial class Садіння_лісу_Норма
     {
-        public int Id_Вид_робіт { get; set; }
+        public int Id_Норма_віробітку { get; set; }
+        public int Вид_робіт { get; set; }
         public decimal Рівнині_умови { get; set; }
         public decimal Яружно_балкові_землі_схил_до_20град { get; set; }
         public decimal Яружно_балкові_землі_схил_понад_20град { get; set; }
