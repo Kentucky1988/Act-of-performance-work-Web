@@ -363,6 +363,12 @@ function getEmployees(element, List, nameColum) {//добавить список
     })
 }
 
+$(document).ajaxStart(function () {//индикатор работы AJAX
+    $('.loader').show();
+}).ajaxStop(function () {
+    $('.loader').hide();
+});
+
 $('#submit').click(function myfunction() {//кнопка добавить /ТЕСТОВАЯ/   
     alert('Тест');
 })
