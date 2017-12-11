@@ -462,8 +462,8 @@
       <PropertyRef Name="Професія" />
     </Key>
     <Property Name="Id_Робітника" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="П_І_Б" Type="nvarchar" MaxLength="30" Nullable="false" />
-    <Property Name="Професія" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="П_І_Б" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Професія" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Тарифний_розряд" Type="int" />
     <Property Name="Категорія" Type="int" />
   </EntityType>
@@ -660,6 +660,25 @@
     </Key>
     <Property Name="СортиментиID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Назва_сортименту" Type="nvarchar" MaxLength="60" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Техобслуговування_бензопили">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Техобслуговування_бензопили_Норма" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Техобслуговування_бензопили_Норма">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="Норма_віробітку" />
+    </Key>
+    <Property Name="Вид_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Вид_робіт" Type="int" Nullable="false" />
+    <Property Name="Норма_віробітку" Type="decimal" Precision="6" Scale="3" Nullable="false" />
   </EntityType>
   <EntityType Name="Трелювання_підліску">
     <Key>
@@ -1248,6 +1267,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Техобслуг__Вид_р__297722B6">
+    <End Role="Техобслуговування_бензопили" Type="Self.Техобслуговування_бензопили" Multiplicity="1" />
+    <End Role="Техобслуговування_бензопили_Норма" Type="Self.Техобслуговування_бензопили_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Техобслуговування_бензопили">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Техобслуговування_бензопили_Норма">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Трелюванн__Вид_р__345EC57D">
     <End Role="Трелювання_фанери_РУ" Type="Self.Трелювання_фанери_РУ" Multiplicity="1" />
     <End Role="Трелювання_фанери_РУ_ГСМ" Type="Self.Трелювання_фанери_РУ_ГСМ" Multiplicity="*" />
@@ -1379,6 +1410,7 @@
     <EntitySet Name="Садіння_лісу" EntityType="Self.Садіння_лісу" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Садіння_лісу_Додаткові_роботи" EntityType="Self.Садіння_лісу_Додаткові_роботи" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Садіння_лісу_Норма" EntityType="Self.Садіння_лісу_Норма" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Техобслуговування_бензопили" EntityType="Self.Техобслуговування_бензопили" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Трелювання_підліску" EntityType="Self.Трелювання_підліску" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Трелювання_РГК" EntityType="Self.Трелювання_РГК" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Трелювання_РУ" EntityType="Self.Трелювання_РУ" Schema="dbo" store:Type="Tables" />
@@ -1650,6 +1682,13 @@
     [Сортименти].[Назва_сортименту] AS [Назва_сортименту]
     FROM [dbo].[Сортименти] AS [Сортименти]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="Техобслуговування_бензопили_Норма" EntityType="Self.Техобслуговування_бензопили_Норма" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Техобслуговування_бензопили_Норма].[Вид_робітID] AS [Вид_робітID], 
+    [Техобслуговування_бензопили_Норма].[Вид_робіт] AS [Вид_робіт], 
+    [Техобслуговування_бензопили_Норма].[Норма_віробітку] AS [Норма_віробітку]
+    FROM [dbo].[Техобслуговування_бензопили_Норма] AS [Техобслуговування_бензопили_Норма]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="Трелювання_підліску_ГСМ" EntityType="Self.Трелювання_підліску_ГСМ" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [Трелювання_підліску_ГСМ].[Вид_робітID] AS [Вид_робітID], 
@@ -1882,6 +1921,10 @@
     <AssociationSet Name="FK__Садіння_л__Вид_р__0E04126B" Association="Self.FK__Садіння_л__Вид_р__0E04126B">
       <End Role="Садіння_лісу_Додаткові_роботи" EntitySet="Садіння_лісу_Додаткові_роботи" />
       <End Role="Садіння_лісу_Додаткові_роботи_Норма" EntitySet="Садіння_лісу_Додаткові_роботи_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Техобслуг__Вид_р__297722B6" Association="Self.FK__Техобслуг__Вид_р__297722B6">
+      <End Role="Техобслуговування_бензопили" EntitySet="Техобслуговування_бензопили" />
+      <End Role="Техобслуговування_бензопили_Норма" EntitySet="Техобслуговування_бензопили_Норма" />
     </AssociationSet>
     <AssociationSet Name="FK__Трелюванн__Вид_р__345EC57D" Association="Self.FK__Трелюванн__Вид_р__345EC57D">
       <End Role="Трелювання_фанери_РУ" EntitySet="Трелювання_фанери_РУ" />

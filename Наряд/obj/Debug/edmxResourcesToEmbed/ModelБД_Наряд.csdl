@@ -23,6 +23,7 @@
     <EntitySet Name="Садіння_лісу" EntityType="БД_НарядModel.Садіння_лісу" />
     <EntitySet Name="Садіння_лісу_Додаткові_роботи" EntityType="БД_НарядModel.Садіння_лісу_Додаткові_роботи" />
     <EntitySet Name="Садіння_лісу_Норма" EntityType="БД_НарядModel.Садіння_лісу_Норма" />
+    <EntitySet Name="Техобслуговування_бензопили" EntityType="БД_НарядModel.Техобслуговування_бензопили" />
     <EntitySet Name="Трелювання_підліску" EntityType="БД_НарядModel.Трелювання_підліску" />
     <EntitySet Name="Трелювання_РГК" EntityType="БД_НарядModel.Трелювання_РГК" />
     <EntitySet Name="Трелювання_РУ" EntityType="БД_НарядModel.Трелювання_РУ" />
@@ -51,6 +52,7 @@
     <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" />
     <EntitySet Name="Садіння_лісу_Додаткові_роботи_Норма" EntityType="БД_НарядModel.Садіння_лісу_Додаткові_роботи_Норма" />
     <EntitySet Name="Сортименти" EntityType="БД_НарядModel.Сортименти" />
+    <EntitySet Name="Техобслуговування_бензопили_Норма" EntityType="БД_НарядModel.Техобслуговування_бензопили_Норма" />
     <EntitySet Name="Трелювання_підліску_ГСМ" EntityType="БД_НарядModel.Трелювання_підліску_ГСМ" />
     <EntitySet Name="Трелювання_підліску_Норма" EntityType="БД_НарядModel.Трелювання_підліску_Норма" />
     <EntitySet Name="Трелювання_РГК_ГСМ" EntityType="БД_НарядModel.Трелювання_РГК_ГСМ" />
@@ -163,6 +165,10 @@
     <AssociationSet Name="FK__Садіння_л__Вид_р__0E04126B" Association="БД_НарядModel.FK__Садіння_л__Вид_р__0E04126B">
       <End Role="Садіння_лісу_Додаткові_роботи" EntitySet="Садіння_лісу_Додаткові_роботи" />
       <End Role="Садіння_лісу_Додаткові_роботи_Норма" EntitySet="Садіння_лісу_Додаткові_роботи_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Техобслуг__Вид_р__297722B6" Association="БД_НарядModel.FK__Техобслуг__Вид_р__297722B6">
+      <End Role="Техобслуговування_бензопили" EntitySet="Техобслуговування_бензопили" />
+      <End Role="Техобслуговування_бензопили_Норма" EntitySet="Техобслуговування_бензопили_Норма" />
     </AssociationSet>
     <AssociationSet Name="FK__Трелюванн__Вид_р__4865BE2A" Association="БД_НарядModel.FK__Трелюванн__Вид_р__4865BE2A">
       <End Role="Трелювання_підліску" EntitySet="Трелювання_підліску" />
@@ -409,6 +415,14 @@
     <Property Name="Гірські_умови_схил_до_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
     <Property Name="Гірські_умови_схил_понад_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
     <NavigationProperty Name="Садіння_лісу" Relationship="БД_НарядModel.FK__Садіння_л__Вид_р__00750D23" FromRole="Садіння_лісу_Норма" ToRole="Садіння_лісу" />
+  </EntityType>
+  <EntityType Name="Техобслуговування_бензопили">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Техобслуговування_бензопили_Норма" Relationship="БД_НарядModel.FK__Техобслуг__Вид_р__297722B6" FromRole="Техобслуговування_бензопили" ToRole="Техобслуговування_бензопили_Норма" />
   </EntityType>
   <EntityType Name="Трелювання_підліску">
     <Key>
@@ -770,8 +784,8 @@
       <PropertyRef Name="Професія" />
     </Key>
     <Property Name="Id_Робітника" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="П_І_Б" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="Професія" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="П_І_Б" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Професія" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Тарифний_розряд" Type="Int32" />
     <Property Name="Категорія" Type="Int32" />
   </EntityType>
@@ -911,6 +925,17 @@
     </Key>
     <Property Name="СортиментиID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Назва_сортименту" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Техобслуговування_бензопили_Норма">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="Норма_віробітку" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="6" Scale="3" />
+    <NavigationProperty Name="Техобслуговування_бензопили" Relationship="БД_НарядModel.FK__Техобслуг__Вид_р__297722B6" FromRole="Техобслуговування_бензопили_Норма" ToRole="Техобслуговування_бензопили" />
   </EntityType>
   <EntityType Name="Трелювання_підліску_ГСМ">
     <Key>
@@ -1451,6 +1476,18 @@
         <PropertyRef Name="Id_Вид_робіт" />
       </Principal>
       <Dependent Role="Садіння_лісу_Додаткові_роботи_Норма">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Техобслуг__Вид_р__297722B6">
+    <End Type="БД_НарядModel.Техобслуговування_бензопили" Role="Техобслуговування_бензопили" Multiplicity="1" />
+    <End Type="БД_НарядModel.Техобслуговування_бензопили_Норма" Role="Техобслуговування_бензопили_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Техобслуговування_бензопили">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Техобслуговування_бензопили_Норма">
         <PropertyRef Name="Вид_робіт" />
       </Dependent>
     </ReferentialConstraint>

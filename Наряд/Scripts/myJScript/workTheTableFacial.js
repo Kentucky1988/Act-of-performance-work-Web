@@ -167,13 +167,16 @@ $("#worksTitlee").change(function () {// событие на изминеие н
     clearRow($('#tbodyTable'));
 });
 
-function showDivForestPlantingConditions(productCategory) {
-    if (productCategory === "Садіння_лісу" || productCategory === "Прополювання_лісу" || productCategory === "Ручний_догляд_за_л_к") {
-        $('#coefficient, #divForestPlantingConditions').show();//отобразить строку   
-        $('#conditionsLumbering, #tractorCoefficient, #deforestationCoefficient').hide();//скрыть строку 
-    } else {
-        $('#coefficient, #divForestPlantingConditions').hide();//скрыть строку 
-        $('#forestPlantingConditions').prop('selectedIndex', 0);
+
+function showDivForestPlantingConditions(elementValue) {
+    if ($('#worksTitlee').val() === "Лісокультурні роботи") {
+        if (elementValue === "Садіння_лісу" || elementValue === "Прополювання_лісу" || elementValue === "Ручний_догляд_за_л_к") {
+            $('#coefficient, #divForestPlantingConditions').show();//отобразить строку   
+            $('#conditionsLumbering, #tractorCoefficient, #deforestationCoefficient').hide();//скрыть строку 
+        } else {
+            $('#coefficient').hide();//скрыть строку 
+            $('#forestPlantingConditions').prop('selectedIndex', 0);
+        }
     }
 }
 
@@ -206,8 +209,15 @@ function getIdList(val, colum, List) {
 }
 
 $("#executed").change(function changeExecuted() {// событие на изминеие ячейки выполнено    
-    if ($('#executed').val() !== 0 && $('#norm').val() !== 0) {// расчет выполненно норм   
-        $('#executedNorm').val(($('#executed').val().replace(',', '.') / $('#norm').val()).toFixed(3));
+    if ($('#executed').val() !== '') {// расчет выполненно норм 
+        var norm = +$('#norm').val();
+        var executedNorm = ($('#executed').val().replace(',', '.') / norm).toFixed(3);
+
+        if (norm === 0) {
+            executedNorm = 0;
+        }  
+
+        $('#executedNorm').val(executedNorm);
         $('#Sum').val(($('#executedNorm').val() * $('#UnitPrice').val()).toFixed(2));
     }
 });
@@ -217,22 +227,30 @@ function changeWorksTitle(value) {//функция оброботчика изм
     pricingUnit();      //расценка за единицу  
 }
 
-function columnSum($table) {//сумма строк    
+function columnSum($table) {//сумма строк нормы   
 
     $($table).next('tfoot').find('td:not(:first)').text(function (indx) {//"tfoot tr td:not(:first)"
-        if (indx === 1 || indx === 2 || indx === 4) {
-
+        if (indx === 1 || indx === 2) {
             var sum = 0;
-            $("tr:not(:first) td:nth-child(" + (indx + 2) + ")", "#tbodyTable").each(function () {
+            $("#tbodyTable tr:not(:first) td:nth-child(" + (indx + 2) + ")").each(function () {   
+                var str = $(this).parents('tr').find('td:eq(1)').text();
+                if (str === 'м3' || str === 'га' || str === 'скл/м' || str === 'тис. шт.') {
+                    sum += +$(this).text().replace(',', '.');  
+                }     
+            });
+            $(this).text(sum === 0 ? '' : (sum).toFixed(3));   
+        } else if (indx === 4) {
+            var sum = 0;
+            $("#tbodyTable tr:not(:first) td:nth-child(" + (indx + 2) + ")").each(function () {
                 sum += +$(this).text().replace(',', '.');
             });
-            $(this).attr('id', indx === 4 ? 'columnSumNorm' : '').text((sum).toFixed(3));
-        } else if (indx >= 6 && indx <= 8) {
+            $(this).attr('id', 'columnSumNorm').text(sum === 0 ? '' : (sum).toFixed(3));
+        } else if (indx === 6) {
             var sum = 0;
-            $("tr:not(:first) td:nth-child(" + (indx + 2) + ")", "#tbodyTable").each(function () {
+            $("#tbodyTable tr:not(:first) td:nth-child(" + (indx + 2) + ")").each(function () {
                 sum += +$(this).text().replace(',', '.');
             });
-            $(this).attr('id', indx === 6 ? 'columnSumSalary' : '').text((sum).toFixed(2));
+            $(this).attr('id', 'columnSumSalary').text(sum === 0 ? '' : (sum).toFixed(2));
         }
     });
 };
@@ -322,7 +340,7 @@ function addStringDetails(colection) {//добавить строку в таб�
         if (i < colection.length && colection[i]['Витрити_ГСМ'] > 0) {
             typeOil = colection[i]['Вид_палива'];
             unit = "л";
-            consumption = colection[i]['Витрити_ГСМ'].toFixed(3);
+            consumption = colection[i]['Витрити_ГСМ'].toFixed(2);
             td_input = "<td><input type='text'/></td>";
             td = "<td/>";
 
@@ -370,5 +388,5 @@ $(document).ajaxStart(function () {//индикатор работы AJAX
 });
 
 $('#submit').click(function myfunction() {//кнопка добавить /ТЕСТОВАЯ/   
-    alert('Тест');
+    $('#myModal').modal('show');
 })

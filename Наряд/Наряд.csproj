@@ -309,6 +309,12 @@
     <Compile Include="Сортименти.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
+    <Compile Include="Техобслуговування_бензопили.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Техобслуговування_бензопили_Норма.cs">
+      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+    </Compile>
     <Compile Include="Трелювання_підліску.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>

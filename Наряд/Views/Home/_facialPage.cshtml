@@ -1,4 +1,29 @@
-﻿<div role="tabpanel" class="tab-pane active" id="facialPage">
+﻿<div role="tabpanel" class="tab-pane active" id="facialPage">   
+    
+    <!--Модальное окно-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Закрити</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Очистити наряд</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="checkbox"> Очистити шапку наряду<Br>
+                    <input type="checkbox"> Очистити перелік відповідальних осіб<Br>
+                    <input type="checkbox"> Очистити таблицю: Перелік виконаних робіт<Br>
+                    <input type="checkbox"> Очистити таблицю: Табель<Br>  
+                    <input type="checkbox"> Очистити таблицю: Лісопродукція<Br> 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Очистити частину</button>
+                    <button type="button" class="btn btn-primary">Очистити повністю</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>                    
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!--лицевая сторона наряд акта-->
     <div>
         <table align="center">
@@ -95,7 +120,7 @@
                     </label>
                 </div>
                 <div id="tractorCoefficient" class="form-group">
-                    <label>Сумарний переїзд трактора, км:</label>
+                    <label>Переїзд трактора, км:</label>
                     <input type="text" id="tractorMoving" />
                     <label>Всього затрачено на переїзд трактора, годин:</label>
                     <input type="text" id="hoursUsed" />
@@ -181,8 +206,8 @@
                     <td> <input type="text" id="executedNorm" disabled /> </td>
                     <td> <input type="text" id="UnitPrice" disabled /> </td>
                     <td> <input type="text" id="Sum" disabled /> </td>
-                    <td> <input type="text" /> </td>
-                    <td> <input type="text" /> </td>
+                    <td> <input type="text" disabled/> </td>
+                    <td> <input type="text" disabled/> </td>
                     <td>
                         <button class="btn btn-success add">
                             <!--кнопка добавления строки-->
@@ -203,7 +228,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
+                    <td><input type="text"/></td>
                 </tr>
             </tfoot>
         </table>
@@ -274,19 +299,19 @@
                 </select>
             </div>
         </form>
-    </div>
+    </div>   
     <div align="right">
         <button id="submit" class="btn btn-warning" style="width:100px">
             <span id="addIcon" class="glyphicon glyphicon-floppy-disk" />
-        </button>
+        </button>   
     </div><!--Кнопка сохранения-->
 </div>
 <br />
 
+
 <script type="text/javascript">
     $("#PerformanceEvaluation").prop('selectedIndex', 0); //значение по умолчанию /оценка работы/
-
-
 </script>
+
 
 

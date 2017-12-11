@@ -193,7 +193,7 @@ function clearRowEmployee($table) {///очистка строки ввода с�
     $('tr:first td[rowspan]:not(:first, :last)', $table).text('');
 }
 
-function columnSumEmployee($table) {//сумма строк  
+function columnSumEmployee($table) {//сумма строк Табель 
     $($table).next('tfoot').find('td').text(function (indx) {
         if (indx >= 16 && indx <= 23) {
             var sum = 0;
@@ -208,8 +208,12 @@ function columnSumEmployee($table) {//сумма строк
             } else {
                 $(this).text(sum > 0 ? (sum).toFixed(2) : '');
             }
+
+            if (indx===17) {
+                $('#tbodyTable').next('tfoot').find('td').eq(8).text((sum).toFixed(2));
+            }
         }
-    });
+    });    
 };
 
 $('.tbodyTableRevers').each(function () {

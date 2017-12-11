@@ -39,7 +39,7 @@ $('.add').click(function () {//событие на нажатие кнопки �
     var $table = $(this).parents('#tbodyTable');//таблица в которой добовляем строки
     var isAllValid = true;
 
-    $("tr:first td input:not(:disabled)", $table).each(function () {//проверка не пустые строки
+    $('tr:first td input:not(":disabled, #set")', $table).each(function () {//проверка не пустые строки
         if ($(this).val().trim() === '') {
             isAllValid = false;
         }

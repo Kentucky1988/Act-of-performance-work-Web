@@ -47,6 +47,7 @@ namespace Наряд
         public virtual DbSet<Садіння_лісу> Садіння_лісу { get; set; }
         public virtual DbSet<Садіння_лісу_Додаткові_роботи> Садіння_лісу_Додаткові_роботи { get; set; }
         public virtual DbSet<Садіння_лісу_Норма> Садіння_лісу_Норма { get; set; }
+        public virtual DbSet<Техобслуговування_бензопили> Техобслуговування_бензопили { get; set; }
         public virtual DbSet<Трелювання_підліску> Трелювання_підліску { get; set; }
         public virtual DbSet<Трелювання_РГК> Трелювання_РГК { get; set; }
         public virtual DbSet<Трелювання_РУ> Трелювання_РУ { get; set; }
@@ -75,6 +76,7 @@ namespace Наряд
         public virtual DbSet<Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма> Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма { get; set; }
         public virtual DbSet<Садіння_лісу_Додаткові_роботи_Норма> Садіння_лісу_Додаткові_роботи_Норма { get; set; }
         public virtual DbSet<Сортименти> Сортименти { get; set; }
+        public virtual DbSet<Техобслуговування_бензопили_Норма> Техобслуговування_бензопили_Норма { get; set; }
         public virtual DbSet<Трелювання_підліску_ГСМ> Трелювання_підліску_ГСМ { get; set; }
         public virtual DbSet<Трелювання_підліску_Норма> Трелювання_підліску_Норма { get; set; }
         public virtual DbSet<Трелювання_РГК_ГСМ> Трелювання_РГК_ГСМ { get; set; }

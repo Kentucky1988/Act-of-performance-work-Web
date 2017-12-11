@@ -202,6 +202,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Техобслуговування_бензопили">
+      <EntityTypeMapping TypeName="БД_НарядModel.Техобслуговування_бензопили">
+        <MappingFragment StoreEntitySet="Техобслуговування_бензопили">
+          <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+          <ScalarProperty Name="Id_Вид_робіт" ColumnName="Id_Вид_робіт" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Трелювання_підліску">
       <EntityTypeMapping TypeName="БД_НарядModel.Трелювання_підліску">
         <MappingFragment StoreEntitySet="Трелювання_підліску">
@@ -551,6 +559,15 @@
         <MappingFragment StoreEntitySet="Сортименти">
           <ScalarProperty Name="Назва_сортименту" ColumnName="Назва_сортименту" />
           <ScalarProperty Name="СортиментиID" ColumnName="СортиментиID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Техобслуговування_бензопили_Норма">
+      <EntityTypeMapping TypeName="БД_НарядModel.Техобслуговування_бензопили_Норма">
+        <MappingFragment StoreEntitySet="Техобслуговування_бензопили_Норма">
+          <ScalarProperty Name="Норма_віробітку" ColumnName="Норма_віробітку" />
+          <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
+          <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
