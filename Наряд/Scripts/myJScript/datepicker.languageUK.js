@@ -166,13 +166,18 @@ function dayNames(day) {//конвертирует дату в день неде
     }
 }
 
+
 $(document).ready(function () {
+    documentReadyDatepicker();
+});
+
+function documentReadyDatepicker() {
     currentDate();
     firstWorkDay();
     lastWorkDay();
     colorCellDayOff();
     titleDay();
-});
+}
 
 $("[name='firstWorkingDay']").change(function () {// событие на изминеие ячейки начало робот
     colorCellDayOff();

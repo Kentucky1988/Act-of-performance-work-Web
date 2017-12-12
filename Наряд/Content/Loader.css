@@ -1,4 +1,4 @@
-﻿.loader {
+﻿#loader {
     height: 4px;
     width: 100%;
     position: relative;
@@ -6,7 +6,7 @@
     background-color: #ddd;
 }
 
-    .loader:before {
+    #loader:before {
         display: block;
         position: absolute;
         content: "";

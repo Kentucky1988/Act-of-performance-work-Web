@@ -124,9 +124,9 @@ function Unit(element) { //единица измерения
 
 function RankActiv() {//выпадающий список разряд робот Активный/Неактивный   
     if (typeOfBrigade === "комплексна") {
-        $('#Rank').val(" ").prop("disabled", true)
+        $('#Rank').val('').prop("disabled", true)
     } else if (typeOfBrigade === "індивідуальна") {
-        $('#Rank').val(" ").prop("disabled", false)
+        $('#Rank').val('').prop("disabled", false)
     }
 };
 
@@ -215,7 +215,7 @@ $("#executed").change(function changeExecuted() {// событие на изми
 
         if (norm === 0) {
             executedNorm = 0;
-        }  
+        }
 
         $('#executedNorm').val(executedNorm);
         $('#Sum').val(($('#executedNorm').val() * $('#UnitPrice').val()).toFixed(2));
@@ -232,13 +232,13 @@ function columnSum($table) {//сумма строк нормы
     $($table).next('tfoot').find('td:not(:first)').text(function (indx) {//"tfoot tr td:not(:first)"
         if (indx === 1 || indx === 2) {
             var sum = 0;
-            $("#tbodyTable tr:not(:first) td:nth-child(" + (indx + 2) + ")").each(function () {   
+            $("#tbodyTable tr:not(:first) td:nth-child(" + (indx + 2) + ")").each(function () {
                 var str = $(this).parents('tr').find('td:eq(1)').text();
                 if (str === 'м3' || str === 'га' || str === 'скл/м' || str === 'тис. шт.') {
-                    sum += +$(this).text().replace(',', '.');  
-                }     
+                    sum += +$(this).text().replace(',', '.');
+                }
             });
-            $(this).text(sum === 0 ? '' : (sum).toFixed(3));   
+            $(this).text(sum === 0 ? '' : (sum).toFixed(3));
         } else if (indx === 4) {
             var sum = 0;
             $("#tbodyTable tr:not(:first) td:nth-child(" + (indx + 2) + ")").each(function () {
@@ -382,11 +382,90 @@ function getEmployees(element, List, nameColum) {//добавить список
 }
 
 $(document).ajaxStart(function () {//индикатор работы AJAX
-    $('.loader').show();
+    $('#loader').show();
 }).ajaxStop(function () {
-    $('.loader').hide();
+    $('#loader').hide();
 });
 
-$('#submit').click(function myfunction() {//кнопка добавить /ТЕСТОВАЯ/   
+$('#buttonModalClear').click(function myfunction() {//кнопка вызов модального окна очистки наряда  
     $('#myModal').modal('show');
 })
+
+$('#cleaningAll').click(function myfunction() {//кнопка очистить полностю наряду   
+    clearingThead();
+    clearingEmployee();
+    clearingTableTbodyTable();
+    clearingTableTbodyTableRevers();
+    clearingTableDetails();
+})
+
+$('#cleaningPart').click(function myfunction() {//кнопка очистить частину наряду
+    if ($('#clearingThead').is(':checked')) {
+        clearingThead();
+    }
+    if ($('#clearingEmployee').is(':checked')) {
+        clearingEmployee();
+    }
+    if ($('#clearingTableTbodyTable').is(':checked')) {
+        clearingTableTbodyTable();
+    }
+    if ($('#clearingTableTbodyTableRevers').is(':checked')) {
+        clearingTableTbodyTableRevers();
+    }
+    if ($('#clearingTableDetails').is(':checked')) {
+        clearingTableDetails();
+    }
+})
+
+
+function clearingThead() {//Очистити шапку наряду
+    var $table = $('.thead');
+    $('input, select', $table).not('.calendar, [name="year"]').val('');
+    $('select', $table).not('[name="year"]').prop('selectedIndex', 0);
+    $('[name="year"]').prop('selectedIndex', 5);
+    $('#codeEDRPOY, #timesheetNumber, #numberPersons', $table).text('');
+    $("#worksTitlee").change();
+    documentReadyDatepicker();
+}
+
+function clearingEmployee() {//Очистити перелік відповідальних осіб
+    $('.employees').each(function () {
+        $(this).next('span').find('input').val('');
+        $(this).prev('label').text('');
+    });
+    $('#PerformanceEvaluation').prop('selectedIndex', 0);
+    $('#timesheetNumber').text('');
+}
+
+function clearingTableTbodyTable() {                   //очистити таблицю: Перелік виконаних робіт
+    var $table = $('#tbodyTable');                     //таблица в которой удаляем строки
+    clearRow($table);                                  //очистка страки ввода       
+    $('tr:not(:first)', $table).each(function () {
+        var indexDeleteElement = $('tr:not(:first)', $table).index(this)//получить номер удаляемой строки
+        $(this).remove();                               //Удаление строки      
+        deleteValCollectionOilCosts(indexDeleteElement);//удаление обекта из колекции расход ГСМ при удалеине строки       
+    });   
+    countValColectionSortOil();                //пересчитать расхода ГСМ по строкам
+    addStringDetails(colectionSortOil);        //перестроить таблицу расход материалов       
+    columnSum($table);                         //пересчитать сумму строк после удаленных       
+}
+
+function clearingTableTbodyTableRevers() {             //Очистити таблицю: Табель
+    var $table = $('.tbodyTableRevers');               //таблица в которой удаляем строки
+    clearRowEmployee($table);                          //очистка страки ввода       
+    $('tr:not(:eq(0), :eq(1))', $table).each(function () {        
+        $(this).remove();                              //Удаление строки 
+    });   
+    columnSumEmployee($table);                         //сумма строк 
+    $('.thead #numberPersons').text('');
+}
+
+function clearingTableDetails() {//Очистити таблицю: Лісопродукція
+    var $table = $('.details tbody');                  //таблица в которой удаляем строки
+    clearRow($table);                                  //очистка страки ввода       
+    $('tr:not(:first)', $table).each(function () {
+        $(this).remove();                              //Удаление строки 
+    }); 
+    $('#volumeTotalTableDetails, #totalTableDetails').text('');
+}
+

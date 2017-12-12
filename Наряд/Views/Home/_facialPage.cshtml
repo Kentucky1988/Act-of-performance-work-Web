@@ -9,15 +9,15 @@
                     <h4 class="modal-title" id="myModalLabel">Очистити наряд</h4>
                 </div>
                 <div class="modal-body">
-                    <input type="checkbox"> Очистити шапку наряду<Br>
-                    <input type="checkbox"> Очистити перелік відповідальних осіб<Br>
-                    <input type="checkbox"> Очистити таблицю: Перелік виконаних робіт<Br>
-                    <input type="checkbox"> Очистити таблицю: Табель<Br>  
-                    <input type="checkbox"> Очистити таблицю: Лісопродукція<Br> 
+                    <input type="checkbox" id="clearingThead"> Очистити шапку наряду<Br>
+                    <input type="checkbox" id="clearingEmployee"> Очистити перелік відповідальних осіб<Br>
+                    <input type="checkbox" id="clearingTableTbodyTable"> Очистити таблицю: Перелік виконаних робіт<Br>
+                    <input type="checkbox" id="clearingTableTbodyTableRevers"> Очистити таблицю: Табель<Br>  
+                    <input type="checkbox" id="clearingTableDetails"> Очистити таблицю: Лісопродукція<Br> 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Очистити частину</button>
-                    <button type="button" class="btn btn-primary">Очистити повністю</button>
+                    <button type="button" class="btn btn-danger" id="cleaningPart">Очистити вибрану частину</button>
+                    <button type="button" class="btn btn-danger" id="cleaningAll">Очистити повністю</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>                    
                 </div>
             </div>
@@ -47,7 +47,7 @@
                 <td>Табельний номер</td>
                 <td>Вид діяльності</td>
             </tr>
-            <tr>
+            <tr class="thead">
                 <td> <input type="text" class="calendar" name="getDate" />  </td>
                 <td>
                     <select id="company">
@@ -61,7 +61,7 @@
                     </select>
                 </td>
                 <td> <input type="text" /> </td>
-                <td> <input type="text" /> </td>
+                <td id="numberPersons"> </td>
                 <td>
                     <select class="autocompleteCombobox employees">
                         <option></option>
@@ -74,7 +74,7 @@
     </div>
     <br />
     <div>
-        <table>
+        <table class="thead">
             <tr>
                 <td style="text-align:right">Місце роботи Кв.</td>
                 <td> <input type="text" /> </td>
@@ -149,7 +149,7 @@
         </div>
     </div>
     <br />
-    <div class="details">
+    <div>
         <table class="table-bordered table-hover">
             <thead>
                 <tr>
@@ -301,8 +301,8 @@
         </form>
     </div>   
     <div align="right">
-        <button id="submit" class="btn btn-warning" style="width:100px">
-            <span id="addIcon" class="glyphicon glyphicon-floppy-disk" />
+        <button id="buttonModalClear" class="btn btn-warning" style="width:100px">   <!-- btn-warning-->
+            <span id="addIcon" class="glyphicon glyphicon-trash" />       <!--glyphicon glyphicon-floppy-disk-->
         </button>   
     </div><!--Кнопка сохранения-->
 </div>
