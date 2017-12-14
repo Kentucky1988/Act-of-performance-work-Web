@@ -3,27 +3,25 @@
 <head>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">  <!--забезпечення правильної візуалізації та підтримки масштабованості на мобільних пристроях-->
     <title>@ViewBag.Title - Наряд</title> <!--имя вкладки, отображается в закладках-->
-    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> <!-- Свіжа збірка мінімізованих CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> <!-- Додаткові теми -->
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">*@
 
     <link rel="stylesheet" href="~/Content/bootstrap.min.css" /> <!--библиотека bootstrap-->
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" /> <!--Стиль-->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="~/Content/themes/base/jquery-ui.min.css"/>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" /> <!--Стиль jquery-ui-->   
     <link rel="stylesheet" type="text/css" href="~/Content/ComboBox.Autocomplete.css" /><!--файл с стилем autocomplete.combobox-->
     <link rel="stylesheet" type="text/css" href="~/Content/textAlignment.css" /><!--стиль с выравниванием текста-->
     <link href="~/Content/Loader.css" rel="stylesheet" /> <!--анимация загрузки-->
+    
 
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script> <!--Подключаем библиотеку JQuery-->
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>   <!--Подключаем библиотеку JQuery-->   
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> <!-- bootstrap -->
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> <!--Подключаем библиотеку JQuery UI-->
-
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> <!--Подключаем библиотеку JQuery UI-->
 </head>
 
 <body>
-    @*<div class="navbar navbar-inverse navbar-fixed-top">
-            <a href="#" class=" = navbar-brand">Наряд - Акт</a>
-        </div>*@
-
     <div class="container-fluid">
         @RenderBody() <!--метод который вставляет часть страницы-->
        
@@ -37,9 +35,9 @@
 </html>
 
 <!--Библиотеки подключать после кода окна, чтоб быстрее загружалась страница-->
-
 <script src="~/Scripts/myJScript/addData.copyString.saveData.js"></script><!--Файл JS в котором будит обработчик нажатия кнопок-->
 <script src="~/Scripts/myJScript/autocomplete.combobox.js"></script> <!--файл с кодом autocomplete.combobox-->
 <script src="~/Scripts/myJScript/datepicker.languageUK.js"></script> <!--файл с кодом Украинского языка календаря и робота с датами-->
 <script src="~/Scripts/myJScript/workTheTableFacial.js"></script><!--робота с ячейками таблицы Лицевая-->
 <script src="~/Scripts/myJScript/workTheTableReverse.js"></script><!--робота с ячейками таблицы Обратная-->
+<script src="~/Scripts/myJScript/editingTheDatabase.js"></script><!--робота с базой данных-->

@@ -6,16 +6,15 @@
     <ul class="nav nav-tabs" role="tablist">
         <li class="active"><a href="#facial" role="tab" data-toggle="tab">Лицьова сторона</a> </li>
         <li><a href="#reverse" role="tab" data-toggle="tab">Зворотня сторона</a> </li>
-        <li><a href="#database" role="tab" data-toggle="tab">База данних</a> </li>
+        <li><a href="#database" role="tab" data-toggle="tab">База даних</a> </li>
     </ul>
 </div>
 
 <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="facial"> @Html.Partial("_facialPage") </div>
     <div role="tabpanel" class="tab-pane" id="reverse"> @Html.Partial("_reversePage") </div>
-    <div role="tabpanel" class="tab-pane" id="database">База данних</div>
+    <div role="tabpanel" class="tab-pane" id="database">@Html.Partial("_workWithDatabase")</div>
 </div>
-
 
 <script type="text/javascript">   
      

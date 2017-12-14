@@ -31,8 +31,8 @@ namespace Наряд.Controllers
         {
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
             {
-                var materials = dc.Робітники.OrderBy(a => a.П_І_Б).Select(a => new { a.Id_Робітника, a.П_І_Б, a.Професія, a.Тарифний_розряд, a.Категорія }).ToList();
-                return new JsonResult { Data = materials, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                var employees = dc.Робітники.OrderBy(a => a.П_І_Б).Select(a => new { a.Id_Робітника, a.П_І_Б, a.Професія, a.Тарифний_розряд, a.Категорія }).ToList();
+                return new JsonResult { Data = employees, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
 
@@ -40,8 +40,8 @@ namespace Наряд.Controllers
         {
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
             {
-                var materials = dc.Підприємство.OrderBy(a => a.Підприємство1).Select(a => new { a.Id_Підприємства, a.Підприємство1, a.Код_ЄДРПОУ }).ToList();
-                return new JsonResult { Data = materials, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                var company = dc.Підприємство.OrderBy(a => a.Підприємство1).Select(a => new { a.Id_Підприємства, a.Підприємство1, a.Код_ЄДРПОУ }).ToList();
+                return new JsonResult { Data = company, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
 
@@ -58,8 +58,8 @@ namespace Наряд.Controllers
         {
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
             {
-                var materials = dc.Найменування_заходу.OrderBy(a => a.Найменування_заходу1).Select(a => a.Найменування_заходу1).ToList();
-                return new JsonResult { Data = materials, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                var worksTitlee = dc.Найменування_заходу.OrderBy(a => a.Найменування_заходу1).Select(a => a.Найменування_заходу1).ToList();
+                return new JsonResult { Data = worksTitlee, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
 
@@ -76,8 +76,8 @@ namespace Наряд.Controllers
         {
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
             {
-                var materials = dc.Вид_рубки.OrderBy(a => a.Вид_рубки1).Select(a => a.Вид_рубки1).ToList();
-                return new JsonResult { Data = materials, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                var typeOfFelling = dc.Вид_рубки.OrderBy(a => a.Вид_рубки1).Select(a => a.Вид_рубки1).ToList();
+                return new JsonResult { Data = typeOfFelling, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
 
@@ -96,10 +96,10 @@ namespace Наряд.Controllers
         {
             using (БД_НарядEntities1 context = new БД_НарядEntities1())
             {
-                var TypeOfWork = context.Database.SqlQuery<string>(
+                var typeOfWork = context.Database.SqlQuery<string>(
                                    $"SELECT Вид_робіт FROM {categoryOfWork}").ToList();
 
-                return new JsonResult { Data = TypeOfWork, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                return new JsonResult { Data = typeOfWork, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
 
@@ -120,11 +120,11 @@ namespace Наряд.Controllers
         {
             using (БД_НарядEntities1 context = new БД_НарядEntities1())
             {
-                var TypeOfWork = context.Категорії_робіт.Where(a => a.Категорії_робіт1 == category)
+                var unit = context.Категорії_робіт.Where(a => a.Категорії_робіт1 == category)
                                                        .Select(a => new { a.Комплексна_индивідуальна, a.РозцінкаID, a.Одиниця_виміру })
                                                        .ToList();
 
-                return new JsonResult { Data = TypeOfWork, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                return new JsonResult { Data = unit, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
 
