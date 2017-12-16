@@ -25,7 +25,6 @@ namespace Наряд.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Employees> Employees { get; set; }
         public virtual DbSet<Вид_ГСМ> Вид_ГСМ { get; set; }
         public virtual DbSet<Вид_рубки> Вид_рубки { get; set; }
         public virtual DbSet<Денна_тарифна_ставка> Денна_тарифна_ставка { get; set; }

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
+using Наряд.Models;
 
 namespace Наряд.Controllers
 {
@@ -17,6 +15,16 @@ namespace Наряд.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult AddOrEdit(int id = 0)
+        {
+            return View(new Робітники());
+        }
 
+        //[HttpGet]
+        //public ActionResult AddOrEdit()
+        //{
+
+        //}
     }
 }

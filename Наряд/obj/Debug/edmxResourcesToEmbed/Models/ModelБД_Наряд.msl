@@ -1,18 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="Хранилище БД_НарядModelContainer" CdmEntityContainer="БД_НарядEntities1">
-    <EntitySetMapping Name="Employees">
-      <EntityTypeMapping TypeName="БД_НарядModel.Employees">
-        <MappingFragment StoreEntitySet="Employees">
-          <ScalarProperty Name="Country" ColumnName="Country" />
-          <ScalarProperty Name="City" ColumnName="City" />
-          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Вид_ГСМ">
       <EntityTypeMapping TypeName="БД_НарядModel.Вид_ГСМ">
         <MappingFragment StoreEntitySet="Вид_ГСМ">

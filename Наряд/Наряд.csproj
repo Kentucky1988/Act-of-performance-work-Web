@@ -163,11 +163,11 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <EntityDeploy Include="ModelБД_Наряд.edmx">
+    <EntityDeploy Include="Models\ModelБД_Наряд.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelБД_Наряд.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="ModelБД_Наряд.edmx.diagram">
+    <Content Include="Models\ModelБД_Наряд.edmx.diagram">
       <DependentUpon>ModelБД_Наряд.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
@@ -181,12 +181,12 @@
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\myJScript\datepicker.languageUK.js" />
-    <Content Include="ModelБД_Наряд.Context.tt">
+    <Content Include="Models\ModelБД_Наряд.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelБД_Наряд.edmx</DependentUpon>
       <LastGenOutput>ModelБД_Наряд.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ModelБД_Наряд.tt">
+    <Content Include="Models\ModelБД_Наряд.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelБД_Наряд.edmx</DependentUpon>
       <LastGenOutput>ModelБД_Наряд.cs</LastGenOutput>
@@ -208,203 +208,203 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ModelБД_Наряд.Context.cs">
+    <Compile Include="Models\ModelБД_Наряд.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelБД_Наряд.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelБД_Наряд.cs">
+    <Compile Include="Models\ModelБД_Наряд.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelБД_Наряд.Designer.cs">
+    <Compile Include="Models\ModelБД_Наряд.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelБД_Наряд.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Вид_ГСМ.cs">
+    <Compile Include="Models\Вид_ГСМ.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Вид_рубки.cs">
+    <Compile Include="Models\Вид_рубки.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Витрати_ГСМ.cs">
+    <Compile Include="Models\Витрати_ГСМ.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Витрати_ГСМ_в_годину.cs">
+    <Compile Include="Models\Витрати_ГСМ_в_годину.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Денна_тарифна_ставка.cs">
+    <Compile Include="Models\Денна_тарифна_ставка.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Догляд_за_л_к_мотокущорізом.cs">
+    <Compile Include="Models\Догляд_за_л_к_мотокущорізом.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Догляд_за_л_к_мотокущорізом_ГСМ.cs">
+    <Compile Include="Models\Догляд_за_л_к_мотокущорізом_ГСМ.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Догляд_за_л_к_мотокущорізом_Норма.cs">
+    <Compile Include="Models\Догляд_за_л_к_мотокущорізом_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР.cs">
+    <Compile Include="Models\Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ.cs">
+    <Compile Include="Models\Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма.cs">
+    <Compile Include="Models\Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Заточка_цепей.cs">
+    <Compile Include="Models\Заточка_цепей.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Заточка_цепей_Норма.cs">
+    <Compile Include="Models\Заточка_цепей_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Категорії_робіт.cs">
+    <Compile Include="Models\Категорії_робіт.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Механізми.cs">
+    <Compile Include="Models\Механізми.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Найменування_заходу.cs">
+    <Compile Include="Models\Найменування_заходу.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Освітлення_механічним_способом.cs">
+    <Compile Include="Models\Освітлення_механічним_способом.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Освітлення_механічним_способом_ГСМ.cs">
+    <Compile Include="Models\Освітлення_механічним_способом_ГСМ.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Освітлення_механічним_способом_Норма.cs">
+    <Compile Include="Models\Освітлення_механічним_способом_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Підприємство.cs">
+    <Compile Include="Models\Підприємство.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Підрозділ.cs">
+    <Compile Include="Models\Підрозділ.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Погрузка.cs">
+    <Compile Include="Models\Погрузка.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Погрузка_Норма.cs">
+    <Compile Include="Models\Погрузка_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Поправочний_коефіцієнт.cs">
+    <Compile Include="Models\Поправочний_коефіцієнт.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Поправочний_коефіцієнт_Переїзд.cs">
+    <Compile Include="Models\Поправочний_коефіцієнт_Переїзд.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Поправочний_коефіцієнт_Перешкоди.cs">
+    <Compile Include="Models\Поправочний_коефіцієнт_Перешкоди.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Прибирання_небезпечних_дерев.cs">
+    <Compile Include="Models\Прибирання_небезпечних_дерев.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Прибирання_небезпечних_дерев_ГСМ.cs">
+    <Compile Include="Models\Прибирання_небезпечних_дерев_ГСМ.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Прибирання_небезпечних_дерев_Норма.cs">
+    <Compile Include="Models\Прибирання_небезпечних_дерев_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Прополювання_лісу.cs">
+    <Compile Include="Models\Прополювання_лісу.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Прополювання_лісу_Норма.cs">
+    <Compile Include="Models\Прополювання_лісу_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="РГК_ССР_без_трелювання.cs">
+    <Compile Include="Models\РГК_ССР_без_трелювання.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="РГК_ССР_без_трелювання_ГСМ.cs">
+    <Compile Include="Models\РГК_ССР_без_трелювання_ГСМ.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="РГК_ССР_без_трелювання_Норма.cs">
+    <Compile Include="Models\РГК_ССР_без_трелювання_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Робітники.cs">
+    <Compile Include="Models\Робітники.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР.cs">
+    <Compile Include="Models\Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ.cs">
+    <Compile Include="Models\Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма.cs">
+    <Compile Include="Models\Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Ручний_догляд_за_л_к.cs">
+    <Compile Include="Models\Ручний_догляд_за_л_к.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Ручний_догляд_за_л_к_Норма.cs">
+    <Compile Include="Models\Ручний_догляд_за_л_к_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Садіння_лісу.cs">
+    <Compile Include="Models\Садіння_лісу.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Садіння_лісу_Додаткові_роботи.cs">
+    <Compile Include="Models\Садіння_лісу_Додаткові_роботи.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Садіння_лісу_Додаткові_роботи_Норма.cs">
+    <Compile Include="Models\Садіння_лісу_Додаткові_роботи_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Садіння_лісу_Норма.cs">
+    <Compile Include="Models\Садіння_лісу_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Сортименти.cs">
+    <Compile Include="Models\Сортименти.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Техобслуговування_бензопили.cs">
+    <Compile Include="Models\Техобслуговування_бензопили.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Техобслуговування_бензопили_Норма.cs">
+    <Compile Include="Models\Техобслуговування_бензопили_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Трелювання_підліску.cs">
+    <Compile Include="Models\Трелювання_підліску.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Трелювання_підліску_ГСМ.cs">
+    <Compile Include="Models\Трелювання_підліску_ГСМ.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Трелювання_підліску_Норма.cs">
+    <Compile Include="Models\Трелювання_підліску_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Трелювання_РГК.cs">
+    <Compile Include="Models\Трелювання_РГК.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Трелювання_РГК_ГСМ.cs">
+    <Compile Include="Models\Трелювання_РГК_ГСМ.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Трелювання_РГК_Норма.cs">
+    <Compile Include="Models\Трелювання_РГК_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Трелювання_РУ.cs">
+    <Compile Include="Models\Трелювання_РУ.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Трелювання_РУ_ГСМ.cs">
+    <Compile Include="Models\Трелювання_РУ_ГСМ.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Трелювання_РУ_Норма.cs">
+    <Compile Include="Models\Трелювання_РУ_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Трелювання_фанери_РУ.cs">
+    <Compile Include="Models\Трелювання_фанери_РУ.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Трелювання_фанери_РУ_ГСМ.cs">
+    <Compile Include="Models\Трелювання_фанери_РУ_ГСМ.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Трелювання_фанери_РУ_Норма.cs">
+    <Compile Include="Models\Трелювання_фанери_РУ_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Устройство_площадок.cs">
+    <Compile Include="Models\Устройство_площадок.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
-    <Compile Include="Устройство_площадок_Норма.cs">
+    <Compile Include="Models\Устройство_площадок_Норма.cs">
       <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -419,6 +419,7 @@
     <Content Include="Views\Home\_workWithDatabase.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
+    <Content Include="Views\EditingTheDatabase\AddOrEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -426,10 +427,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Views\EditingTheDatabase\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

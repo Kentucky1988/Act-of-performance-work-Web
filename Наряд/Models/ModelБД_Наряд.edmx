@@ -5,17 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Хранилище БД_НарядModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Employees">
-          <Key>
-            <PropertyRef Name="EmployeeID" />
-          </Key>
-          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="EmailID" Type="nvarchar" MaxLength="200" />
-          <Property Name="City" Type="nvarchar" MaxLength="50" />
-          <Property Name="Country" Type="nvarchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="Вид_ГСМ">
           <Key>
             <PropertyRef Name="Id_Палива" />
@@ -1404,7 +1393,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище БД_НарядModelContainer">
-          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Вид_ГСМ" EntityType="Self.Вид_ГСМ" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Вид_рубки" EntityType="Self.Вид_рубки" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Денна_тарифна_ставка" EntityType="Self.Денна_тарифна_ставка" Schema="dbo" store:Type="Tables" />
@@ -1985,7 +1973,6 @@
     <edmx:ConceptualModels>
       <Schema Namespace="БД_НарядModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="БД_НарядEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Employees" EntityType="БД_НарядModel.Employees" />
           <EntitySet Name="Вид_ГСМ" EntityType="БД_НарядModel.Вид_ГСМ" />
           <EntitySet Name="Вид_рубки" EntityType="БД_НарядModel.Вид_рубки" />
           <EntitySet Name="Денна_тарифна_ставка" EntityType="БД_НарядModel.Денна_тарифна_ставка" />
@@ -2192,17 +2179,6 @@
             <End Role="Устройство_площадок_Норма" EntitySet="Устройство_площадок_Норма" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Employees">
-          <Key>
-            <PropertyRef Name="EmployeeID" />
-          </Key>
-          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EmailID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Вид_ГСМ">
           <Key>
             <PropertyRef Name="Id_Палива" />
@@ -3602,18 +3578,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище БД_НарядModelContainer" CdmEntityContainer="БД_НарядEntities1">
-          <EntitySetMapping Name="Employees">
-            <EntityTypeMapping TypeName="БД_НарядModel.Employees">
-              <MappingFragment StoreEntitySet="Employees">
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Вид_ГСМ">
             <EntityTypeMapping TypeName="БД_НарядModel.Вид_ГСМ">
               <MappingFragment StoreEntitySet="Вид_ГСМ">
