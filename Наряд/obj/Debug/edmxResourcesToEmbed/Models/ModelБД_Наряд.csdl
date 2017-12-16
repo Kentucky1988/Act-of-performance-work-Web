@@ -1,0 +1,1615 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="БД_НарядModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="БД_НарядEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Employees" EntityType="БД_НарядModel.Employees" />
+    <EntitySet Name="Вид_ГСМ" EntityType="БД_НарядModel.Вид_ГСМ" />
+    <EntitySet Name="Вид_рубки" EntityType="БД_НарядModel.Вид_рубки" />
+    <EntitySet Name="Денна_тарифна_ставка" EntityType="БД_НарядModel.Денна_тарифна_ставка" />
+    <EntitySet Name="Догляд_за_л_к_мотокущорізом" EntityType="БД_НарядModel.Догляд_за_л_к_мотокущорізом" />
+    <EntitySet Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" EntityType="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" />
+    <EntitySet Name="Заточка_цепей" EntityType="БД_НарядModel.Заточка_цепей" />
+    <EntitySet Name="Механізми" EntityType="БД_НарядModel.Механізми" />
+    <EntitySet Name="Найменування_заходу" EntityType="БД_НарядModel.Найменування_заходу" />
+    <EntitySet Name="Освітлення_механічним_способом" EntityType="БД_НарядModel.Освітлення_механічним_способом" />
+    <EntitySet Name="Підприємство" EntityType="БД_НарядModel.Підприємство" />
+    <EntitySet Name="Підрозділ" EntityType="БД_НарядModel.Підрозділ" />
+    <EntitySet Name="Погрузка" EntityType="БД_НарядModel.Погрузка" />
+    <EntitySet Name="Прибирання_небезпечних_дерев" EntityType="БД_НарядModel.Прибирання_небезпечних_дерев" />
+    <EntitySet Name="Прополювання_лісу" EntityType="БД_НарядModel.Прополювання_лісу" />
+    <EntitySet Name="Прополювання_лісу_Норма" EntityType="БД_НарядModel.Прополювання_лісу_Норма" />
+    <EntitySet Name="РГК_ССР_без_трелювання" EntityType="БД_НарядModel.РГК_ССР_без_трелювання" />
+    <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" />
+    <EntitySet Name="Ручний_догляд_за_л_к" EntityType="БД_НарядModel.Ручний_догляд_за_л_к" />
+    <EntitySet Name="Ручний_догляд_за_л_к_Норма" EntityType="БД_НарядModel.Ручний_догляд_за_л_к_Норма" />
+    <EntitySet Name="Садіння_лісу" EntityType="БД_НарядModel.Садіння_лісу" />
+    <EntitySet Name="Садіння_лісу_Додаткові_роботи" EntityType="БД_НарядModel.Садіння_лісу_Додаткові_роботи" />
+    <EntitySet Name="Садіння_лісу_Норма" EntityType="БД_НарядModel.Садіння_лісу_Норма" />
+    <EntitySet Name="Техобслуговування_бензопили" EntityType="БД_НарядModel.Техобслуговування_бензопили" />
+    <EntitySet Name="Трелювання_підліску" EntityType="БД_НарядModel.Трелювання_підліску" />
+    <EntitySet Name="Трелювання_РГК" EntityType="БД_НарядModel.Трелювання_РГК" />
+    <EntitySet Name="Трелювання_РУ" EntityType="БД_НарядModel.Трелювання_РУ" />
+    <EntitySet Name="Трелювання_фанери_РУ" EntityType="БД_НарядModel.Трелювання_фанери_РУ" />
+    <EntitySet Name="Устройство_площадок" EntityType="БД_НарядModel.Устройство_площадок" />
+    <EntitySet Name="Витрати_ГСМ" EntityType="БД_НарядModel.Витрати_ГСМ" />
+    <EntitySet Name="Витрати_ГСМ_в_годину" EntityType="БД_НарядModel.Витрати_ГСМ_в_годину" />
+    <EntitySet Name="Догляд_за_л_к_мотокущорізом_ГСМ" EntityType="БД_НарядModel.Догляд_за_л_к_мотокущорізом_ГСМ" />
+    <EntitySet Name="Догляд_за_л_к_мотокущорізом_Норма" EntityType="БД_НарядModel.Догляд_за_л_к_мотокущорізом_Норма" />
+    <EntitySet Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ" EntityType="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ" />
+    <EntitySet Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" EntityType="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" />
+    <EntitySet Name="Заточка_цепей_Норма" EntityType="БД_НарядModel.Заточка_цепей_Норма" />
+    <EntitySet Name="Категорії_робіт" EntityType="БД_НарядModel.Категорії_робіт" />
+    <EntitySet Name="Освітлення_механічним_способом_ГСМ" EntityType="БД_НарядModel.Освітлення_механічним_способом_ГСМ" />
+    <EntitySet Name="Освітлення_механічним_способом_Норма" EntityType="БД_НарядModel.Освітлення_механічним_способом_Норма" />
+    <EntitySet Name="Погрузка_Норма" EntityType="БД_НарядModel.Погрузка_Норма" />
+    <EntitySet Name="Поправочний_коефіцієнт" EntityType="БД_НарядModel.Поправочний_коефіцієнт" />
+    <EntitySet Name="Поправочний_коефіцієнт_Переїзд" EntityType="БД_НарядModel.Поправочний_коефіцієнт_Переїзд" />
+    <EntitySet Name="Поправочний_коефіцієнт_Перешкоди" EntityType="БД_НарядModel.Поправочний_коефіцієнт_Перешкоди" />
+    <EntitySet Name="Прибирання_небезпечних_дерев_ГСМ" EntityType="БД_НарядModel.Прибирання_небезпечних_дерев_ГСМ" />
+    <EntitySet Name="Прибирання_небезпечних_дерев_Норма" EntityType="БД_НарядModel.Прибирання_небезпечних_дерев_Норма" />
+    <EntitySet Name="РГК_ССР_без_трелювання_ГСМ" EntityType="БД_НарядModel.РГК_ССР_без_трелювання_ГСМ" />
+    <EntitySet Name="РГК_ССР_без_трелювання_Норма" EntityType="БД_НарядModel.РГК_ССР_без_трелювання_Норма" />
+    <EntitySet Name="Робітники" EntityType="БД_НарядModel.Робітники" />
+    <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" />
+    <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" />
+    <EntitySet Name="Садіння_лісу_Додаткові_роботи_Норма" EntityType="БД_НарядModel.Садіння_лісу_Додаткові_роботи_Норма" />
+    <EntitySet Name="Сортименти" EntityType="БД_НарядModel.Сортименти" />
+    <EntitySet Name="Техобслуговування_бензопили_Норма" EntityType="БД_НарядModel.Техобслуговування_бензопили_Норма" />
+    <EntitySet Name="Трелювання_підліску_ГСМ" EntityType="БД_НарядModel.Трелювання_підліску_ГСМ" />
+    <EntitySet Name="Трелювання_підліску_Норма" EntityType="БД_НарядModel.Трелювання_підліску_Норма" />
+    <EntitySet Name="Трелювання_РГК_ГСМ" EntityType="БД_НарядModel.Трелювання_РГК_ГСМ" />
+    <EntitySet Name="Трелювання_РГК_Норма" EntityType="БД_НарядModel.Трелювання_РГК_Норма" />
+    <EntitySet Name="Трелювання_РУ_ГСМ" EntityType="БД_НарядModel.Трелювання_РУ_ГСМ" />
+    <EntitySet Name="Трелювання_РУ_Норма" EntityType="БД_НарядModel.Трелювання_РУ_Норма" />
+    <EntitySet Name="Трелювання_фанери_РУ_ГСМ" EntityType="БД_НарядModel.Трелювання_фанери_РУ_ГСМ" />
+    <EntitySet Name="Трелювання_фанери_РУ_Норма" EntityType="БД_НарядModel.Трелювання_фанери_РУ_Норма" />
+    <EntitySet Name="Устройство_площадок_Норма" EntityType="БД_НарядModel.Устройство_площадок_Норма" />
+    <AssociationSet Name="FK__Витрати_Г__Id_Па__2610A626" Association="БД_НарядModel.FK__Витрати_Г__Id_Па__2610A626">
+      <End Role="Вид_ГСМ" EntitySet="Вид_ГСМ" />
+      <End Role="Витрати_ГСМ" EntitySet="Витрати_ГСМ" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Витрати_Г__Id_Па__473C8FC7" Association="БД_НарядModel.FK__Витрати_Г__Id_Па__473C8FC7">
+      <End Role="Вид_ГСМ" EntitySet="Вид_ГСМ" />
+      <End Role="Витрати_ГСМ_в_годину" EntitySet="Витрати_ГСМ_в_годину" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Категорії__Розці__57A801BA" Association="БД_НарядModel.FK__Категорії__Розці__57A801BA">
+      <End Role="Денна_тарифна_ставка" EntitySet="Денна_тарифна_ставка" />
+      <End Role="Категорії_робіт" EntitySet="Категорії_робіт" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Догляд_за__Вид_р__11D4A34F" Association="БД_НарядModel.FK__Догляд_за__Вид_р__11D4A34F">
+      <End Role="Догляд_за_л_к_мотокущорізом" EntitySet="Догляд_за_л_к_мотокущорізом" />
+      <End Role="Догляд_за_л_к_мотокущорізом_Норма" EntitySet="Догляд_за_л_к_мотокущорізом_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Догляд_за__Вид_р__14B10FFA" Association="БД_НарядModel.FK__Догляд_за__Вид_р__14B10FFA">
+      <End Role="Догляд_за_л_к_мотокущорізом" EntitySet="Догляд_за_л_к_мотокущорізом" />
+      <End Role="Догляд_за_л_к_мотокущорізом_ГСМ" EntitySet="Догляд_за_л_к_мотокущорізом_ГСМ" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Заготівля__Вид_р__2EA5EC27" Association="БД_НарядModel.FK__Заготівля__Вид_р__2EA5EC27">
+      <End Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" EntitySet="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" />
+      <End Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ" EntitySet="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Заготівля__Вид_р__489AC854" Association="БД_НарядModel.FK__Заготівля__Вид_р__489AC854">
+      <End Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" EntitySet="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" />
+      <End Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" EntitySet="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Заточка_ц__Вид_р__7FEAFD3E" Association="БД_НарядModel.FK__Заточка_ц__Вид_р__7FEAFD3E">
+      <End Role="Заточка_цепей" EntitySet="Заточка_цепей" />
+      <End Role="Заточка_цепей_Норма" EntitySet="Заточка_цепей_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Витрати_Г__Id_ме__251C81ED" Association="БД_НарядModel.FK__Витрати_Г__Id_ме__251C81ED">
+      <End Role="Механізми" EntitySet="Механізми" />
+      <End Role="Витрати_ГСМ" EntitySet="Витрати_ГСМ" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Витрати_Г__Id_Ме__46486B8E" Association="БД_НарядModel.FK__Витрати_Г__Id_Ме__46486B8E">
+      <End Role="Механізми" EntitySet="Механізми" />
+      <End Role="Витрати_ГСМ_в_годину" EntitySet="Витрати_ГСМ_в_годину" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Категорії__Id_ме__589C25F3" Association="БД_НарядModel.FK__Категорії__Id_ме__589C25F3">
+      <End Role="Механізми" EntitySet="Механізми" />
+      <End Role="Категорії_робіт" EntitySet="Категорії_робіт" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Категорії__Найме__5A846E65" Association="БД_НарядModel.FK__Категорії__Найме__5A846E65">
+      <End Role="Найменування_заходу" EntitySet="Найменування_заходу" />
+      <End Role="Категорії_робіт" EntitySet="Категорії_робіт" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Освітленн__Вид_р__373B3228" Association="БД_НарядModel.FK__Освітленн__Вид_р__373B3228">
+      <End Role="Освітлення_механічним_способом" EntitySet="Освітлення_механічним_способом" />
+      <End Role="Освітлення_механічним_способом_ГСМ" EntitySet="Освітлення_механічним_способом_ГСМ" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Освітленн__Вид_р__59C55456" Association="БД_НарядModel.FK__Освітленн__Вид_р__59C55456">
+      <End Role="Освітлення_механічним_способом" EntitySet="Освітлення_механічним_способом" />
+      <End Role="Освітлення_механічним_способом_Норма" EntitySet="Освітлення_механічним_способом_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Підрозділ__Id_Пі__370627FE" Association="БД_НарядModel.FK__Підрозділ__Id_Пі__370627FE">
+      <End Role="Підприємство" EntitySet="Підприємство" />
+      <End Role="Підрозділ" EntitySet="Підрозділ" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Погрузка___Вид_р__0B5CAFEA" Association="БД_НарядModel.FK__Погрузка___Вид_р__0B5CAFEA">
+      <End Role="Погрузка" EntitySet="Погрузка" />
+      <End Role="Погрузка_Норма" EntitySet="Погрузка_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Прибиранн__Вид_р__4B422AD5" Association="БД_НарядModel.FK__Прибиранн__Вид_р__4B422AD5">
+      <End Role="Прибирання_небезпечних_дерев" EntitySet="Прибирання_небезпечних_дерев" />
+      <End Role="Прибирання_небезпечних_дерев_ГСМ" EntitySet="Прибирання_небезпечних_дерев_ГСМ" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Прибиранн__Вид_р__7A3223E8" Association="БД_НарядModel.FK__Прибиранн__Вид_р__7A3223E8">
+      <End Role="Прибирання_небезпечних_дерев" EntitySet="Прибирання_небезпечних_дерев" />
+      <End Role="Прибирання_небезпечних_дерев_Норма" EntitySet="Прибирання_небезпечних_дерев_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Прополюва__Вид_р__1387E197" Association="БД_НарядModel.FK__Прополюва__Вид_р__1387E197">
+      <End Role="Прополювання_лісу" EntitySet="Прополювання_лісу" />
+      <End Role="Прополювання_лісу_Норма" EntitySet="Прополювання_лісу_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__РГК_ССР_б__Вид_р__28ED12D1" Association="БД_НарядModel.FK__РГК_ССР_б__Вид_р__28ED12D1">
+      <End Role="РГК_ССР_без_трелювання" EntitySet="РГК_ССР_без_трелювання" />
+      <End Role="РГК_ССР_без_трелювання_ГСМ" EntitySet="РГК_ССР_без_трелювання_ГСМ" />
+    </AssociationSet>
+    <AssociationSet Name="FK__РГК_ССР_б__Вид_р__367C1819" Association="БД_НарядModel.FK__РГК_ССР_б__Вид_р__367C1819">
+      <End Role="РГК_ССР_без_трелювання" EntitySet="РГК_ССР_без_трелювання" />
+      <End Role="РГК_ССР_без_трелювання_Норма" EntitySet="РГК_ССР_без_трелювання_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Рубки_дог__Вид_р__318258D2" Association="БД_НарядModel.FK__Рубки_дог__Вид_р__318258D2">
+      <End Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntitySet="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" />
+      <End Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" EntitySet="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Рубки_дог__Вид_р__3C34F16F" Association="БД_НарядModel.FK__Рубки_дог__Вид_р__3C34F16F">
+      <End Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntitySet="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" />
+      <End Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" EntitySet="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ручний_до__Вид_р__062DE679" Association="БД_НарядModel.FK__Ручний_до__Вид_р__062DE679">
+      <End Role="Ручний_догляд_за_л_к" EntitySet="Ручний_догляд_за_л_к" />
+      <End Role="Ручний_догляд_за_л_к_Норма" EntitySet="Ручний_догляд_за_л_к_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Садіння_л__Вид_р__00750D23" Association="БД_НарядModel.FK__Садіння_л__Вид_р__00750D23">
+      <End Role="Садіння_лісу" EntitySet="Садіння_лісу" />
+      <End Role="Садіння_лісу_Норма" EntitySet="Садіння_лісу_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Садіння_л__Вид_р__0E04126B" Association="БД_НарядModel.FK__Садіння_л__Вид_р__0E04126B">
+      <End Role="Садіння_лісу_Додаткові_роботи" EntitySet="Садіння_лісу_Додаткові_роботи" />
+      <End Role="Садіння_лісу_Додаткові_роботи_Норма" EntitySet="Садіння_лісу_Додаткові_роботи_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Техобслуг__Вид_р__297722B6" Association="БД_НарядModel.FK__Техобслуг__Вид_р__297722B6">
+      <End Role="Техобслуговування_бензопили" EntitySet="Техобслуговування_бензопили" />
+      <End Role="Техобслуговування_бензопили_Норма" EntitySet="Техобслуговування_бензопили_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Трелюванн__Вид_р__4865BE2A" Association="БД_НарядModel.FK__Трелюванн__Вид_р__4865BE2A">
+      <End Role="Трелювання_підліску" EntitySet="Трелювання_підліску" />
+      <End Role="Трелювання_підліску_ГСМ" EntitySet="Трелювання_підліску_ГСМ" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Трелюванн__Вид_р__6EC0713C" Association="БД_НарядModel.FK__Трелюванн__Вид_р__6EC0713C">
+      <End Role="Трелювання_підліску" EntitySet="Трелювання_підліску" />
+      <End Role="Трелювання_підліску_Норма" EntitySet="Трелювання_підліску_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Трелюванн__Вид_р__3A179ED3" Association="БД_НарядModel.FK__Трелюванн__Вид_р__3A179ED3">
+      <End Role="Трелювання_РГК" EntitySet="Трелювання_РГК" />
+      <End Role="Трелювання_РГК_ГСМ" EntitySet="Трелювання_РГК_ГСМ" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Трелюванн__Вид_р__5F7E2DAC" Association="БД_НарядModel.FK__Трелюванн__Вид_р__5F7E2DAC">
+      <End Role="Трелювання_РГК" EntitySet="Трелювання_РГК" />
+      <End Role="Трелювання_РГК_Норма" EntitySet="Трелювання_РГК_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Трелюванн__Вид_р__3CF40B7E" Association="БД_НарядModel.FK__Трелюванн__Вид_р__3CF40B7E">
+      <End Role="Трелювання_РУ" EntitySet="Трелювання_РУ" />
+      <End Role="Трелювання_РУ_ГСМ" EntitySet="Трелювання_РУ_ГСМ" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Трелюванн__Вид_р__690797E6" Association="БД_НарядModel.FK__Трелюванн__Вид_р__690797E6">
+      <End Role="Трелювання_РУ" EntitySet="Трелювання_РУ" />
+      <End Role="Трелювання_РУ_Норма" EntitySet="Трелювання_РУ_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Трелюванн__Вид_р__345EC57D" Association="БД_НарядModel.FK__Трелюванн__Вид_р__345EC57D">
+      <End Role="Трелювання_фанери_РУ" EntitySet="Трелювання_фанери_РУ" />
+      <End Role="Трелювання_фанери_РУ_ГСМ" EntitySet="Трелювання_фанери_РУ_ГСМ" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Трелюванн__Вид_р__4E53A1AA" Association="БД_НарядModel.FK__Трелюванн__Вид_р__4E53A1AA">
+      <End Role="Трелювання_фанери_РУ" EntitySet="Трелювання_фанери_РУ" />
+      <End Role="Трелювання_фанери_РУ_Норма" EntitySet="Трелювання_фанери_РУ_Норма" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Устройств__Вид_р__05A3D694" Association="БД_НарядModel.FK__Устройств__Вид_р__05A3D694">
+      <End Role="Устройство_площадок" EntitySet="Устройство_площадок" />
+      <End Role="Устройство_площадок_Норма" EntitySet="Устройство_площадок_Норма" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmailID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Вид_ГСМ">
+    <Key>
+      <PropertyRef Name="Id_Палива" />
+    </Key>
+    <Property Name="Id_Палива" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_ГСМ1" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Ціні_палива" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+    <NavigationProperty Name="Витрати_ГСМ" Relationship="БД_НарядModel.FK__Витрати_Г__Id_Па__2610A626" FromRole="Вид_ГСМ" ToRole="Витрати_ГСМ" />
+    <NavigationProperty Name="Витрати_ГСМ_в_годину" Relationship="БД_НарядModel.FK__Витрати_Г__Id_Па__473C8FC7" FromRole="Вид_ГСМ" ToRole="Витрати_ГСМ_в_годину" />
+  </EntityType>
+  <EntityType Name="Вид_рубки">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_рубки1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Денна_тарифна_ставка">
+    <Key>
+      <PropertyRef Name="РозцінкаID" />
+    </Key>
+    <Property Name="РозцінкаID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Комплексна_индивідуальна" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="C1" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+    <Property Name="C2" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+    <Property Name="C3" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+    <Property Name="C4" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+    <Property Name="C5" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+    <Property Name="C6" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+    <NavigationProperty Name="Категорії_робіт" Relationship="БД_НарядModel.FK__Категорії__Розці__57A801BA" FromRole="Денна_тарифна_ставка" ToRole="Категорії_робіт" />
+  </EntityType>
+  <EntityType Name="Догляд_за_л_к_мотокущорізом">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Догляд_за_л_к_мотокущорізом_Норма" Relationship="БД_НарядModel.FK__Догляд_за__Вид_р__11D4A34F" FromRole="Догляд_за_л_к_мотокущорізом" ToRole="Догляд_за_л_к_мотокущорізом_Норма" />
+    <NavigationProperty Name="Догляд_за_л_к_мотокущорізом_ГСМ" Relationship="БД_НарядModel.FK__Догляд_за__Вид_р__14B10FFA" FromRole="Догляд_за_л_к_мотокущорізом" ToRole="Догляд_за_л_к_мотокущорізом_ГСМ" />
+  </EntityType>
+  <EntityType Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ" Relationship="БД_НарядModel.FK__Заготівля__Вид_р__2EA5EC27" FromRole="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" ToRole="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ" />
+    <NavigationProperty Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" Relationship="БД_НарядModel.FK__Заготівля__Вид_р__489AC854" FromRole="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" ToRole="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" />
+  </EntityType>
+  <EntityType Name="Заточка_цепей">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Заточка_цепей_Норма" Relationship="БД_НарядModel.FK__Заточка_ц__Вид_р__7FEAFD3E" FromRole="Заточка_цепей" ToRole="Заточка_цепей_Норма" />
+  </EntityType>
+  <EntityType Name="Механізми">
+    <Key>
+      <PropertyRef Name="Id_Механізма" />
+    </Key>
+    <Property Name="Id_Механізма" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Механізми1" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Витрати_ГСМ" Relationship="БД_НарядModel.FK__Витрати_Г__Id_ме__251C81ED" FromRole="Механізми" ToRole="Витрати_ГСМ" />
+    <NavigationProperty Name="Витрати_ГСМ_в_годину" Relationship="БД_НарядModel.FK__Витрати_Г__Id_Ме__46486B8E" FromRole="Механізми" ToRole="Витрати_ГСМ_в_годину" />
+    <NavigationProperty Name="Категорії_робіт" Relationship="БД_НарядModel.FK__Категорії__Id_ме__589C25F3" FromRole="Механізми" ToRole="Категорії_робіт" />
+  </EntityType>
+  <EntityType Name="Найменування_заходу">
+    <Key>
+      <PropertyRef Name="Id_Найменування_заходу" />
+    </Key>
+    <Property Name="Id_Найменування_заходу" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Найменування_заходу1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Категорії_робіт" Relationship="БД_НарядModel.FK__Категорії__Найме__5A846E65" FromRole="Найменування_заходу" ToRole="Категорії_робіт" />
+  </EntityType>
+  <EntityType Name="Освітлення_механічним_способом">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Освітлення_механічним_способом_ГСМ" Relationship="БД_НарядModel.FK__Освітленн__Вид_р__373B3228" FromRole="Освітлення_механічним_способом" ToRole="Освітлення_механічним_способом_ГСМ" />
+    <NavigationProperty Name="Освітлення_механічним_способом_Норма" Relationship="БД_НарядModel.FK__Освітленн__Вид_р__59C55456" FromRole="Освітлення_механічним_способом" ToRole="Освітлення_механічним_способом_Норма" />
+  </EntityType>
+  <EntityType Name="Підприємство">
+    <Key>
+      <PropertyRef Name="Id_Підприємства" />
+    </Key>
+    <Property Name="Id_Підприємства" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Підприємство1" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Код_ЄДРПОУ" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Підрозділ" Relationship="БД_НарядModel.FK__Підрозділ__Id_Пі__370627FE" FromRole="Підприємство" ToRole="Підрозділ" />
+  </EntityType>
+  <EntityType Name="Підрозділ">
+    <Key>
+      <PropertyRef Name="Id_Підрозділу" />
+    </Key>
+    <Property Name="Id_Підрозділу" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Підприємства" Type="Int32" Nullable="false" />
+    <Property Name="Підрозділ1" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Підприємство" Relationship="БД_НарядModel.FK__Підрозділ__Id_Пі__370627FE" FromRole="Підрозділ" ToRole="Підприємство" />
+  </EntityType>
+  <EntityType Name="Погрузка">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Погрузка_Норма" Relationship="БД_НарядModel.FK__Погрузка___Вид_р__0B5CAFEA" FromRole="Погрузка" ToRole="Погрузка_Норма" />
+  </EntityType>
+  <EntityType Name="Прибирання_небезпечних_дерев">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Прибирання_небезпечних_дерев_ГСМ" Relationship="БД_НарядModel.FK__Прибиранн__Вид_р__4B422AD5" FromRole="Прибирання_небезпечних_дерев" ToRole="Прибирання_небезпечних_дерев_ГСМ" />
+    <NavigationProperty Name="Прибирання_небезпечних_дерев_Норма" Relationship="БД_НарядModel.FK__Прибиранн__Вид_р__7A3223E8" FromRole="Прибирання_небезпечних_дерев" ToRole="Прибирання_небезпечних_дерев_Норма" />
+  </EntityType>
+  <EntityType Name="Прополювання_лісу">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Прополювання_лісу_Норма" Relationship="БД_НарядModel.FK__Прополюва__Вид_р__1387E197" FromRole="Прополювання_лісу" ToRole="Прополювання_лісу_Норма" />
+  </EntityType>
+  <EntityType Name="Прополювання_лісу_Норма">
+    <Key>
+      <PropertyRef Name="Id_Норма_віробітку" />
+    </Key>
+    <Property Name="Id_Норма_віробітку" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="Рівнині_умови" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="Яружно_балкові_землі_схил_до_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="Яружно_балкові_землі_схил_понад_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="Гірські_умови_схил_до_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="Гірські_умови_схил_понад_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <NavigationProperty Name="Прополювання_лісу" Relationship="БД_НарядModel.FK__Прополюва__Вид_р__1387E197" FromRole="Прополювання_лісу_Норма" ToRole="Прополювання_лісу" />
+  </EntityType>
+  <EntityType Name="РГК_ССР_без_трелювання">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="РГК_ССР_без_трелювання_ГСМ" Relationship="БД_НарядModel.FK__РГК_ССР_б__Вид_р__28ED12D1" FromRole="РГК_ССР_без_трелювання" ToRole="РГК_ССР_без_трелювання_ГСМ" />
+    <NavigationProperty Name="РГК_ССР_без_трелювання_Норма" Relationship="БД_НарядModel.FK__РГК_ССР_б__Вид_р__367C1819" FromRole="РГК_ССР_без_трелювання" ToRole="РГК_ССР_без_трелювання_Норма" />
+  </EntityType>
+  <EntityType Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" Relationship="БД_НарядModel.FK__Рубки_дог__Вид_р__318258D2" FromRole="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" ToRole="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" />
+    <NavigationProperty Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" Relationship="БД_НарядModel.FK__Рубки_дог__Вид_р__3C34F16F" FromRole="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" ToRole="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" />
+  </EntityType>
+  <EntityType Name="Ручний_догляд_за_л_к">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Ручний_догляд_за_л_к_Норма" Relationship="БД_НарядModel.FK__Ручний_до__Вид_р__062DE679" FromRole="Ручний_догляд_за_л_к" ToRole="Ручний_догляд_за_л_к_Норма" />
+  </EntityType>
+  <EntityType Name="Ручний_догляд_за_л_к_Норма">
+    <Key>
+      <PropertyRef Name="Id_Норма_віробітку" />
+    </Key>
+    <Property Name="Id_Норма_віробітку" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="Рівнині_умови" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="Яружно_балкові_землі_схил_до_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="Яружно_балкові_землі_схил_понад_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="Гірські_умови_схил_до_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="Гірські_умови_схил_понад_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <NavigationProperty Name="Ручний_догляд_за_л_к" Relationship="БД_НарядModel.FK__Ручний_до__Вид_р__062DE679" FromRole="Ручний_догляд_за_л_к_Норма" ToRole="Ручний_догляд_за_л_к" />
+  </EntityType>
+  <EntityType Name="Садіння_лісу">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Садіння_лісу_Норма" Relationship="БД_НарядModel.FK__Садіння_л__Вид_р__00750D23" FromRole="Садіння_лісу" ToRole="Садіння_лісу_Норма" />
+  </EntityType>
+  <EntityType Name="Садіння_лісу_Додаткові_роботи">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Садіння_лісу_Додаткові_роботи_Норма" Relationship="БД_НарядModel.FK__Садіння_л__Вид_р__0E04126B" FromRole="Садіння_лісу_Додаткові_роботи" ToRole="Садіння_лісу_Додаткові_роботи_Норма" />
+  </EntityType>
+  <EntityType Name="Садіння_лісу_Норма">
+    <Key>
+      <PropertyRef Name="Id_Норма_віробітку" />
+    </Key>
+    <Property Name="Id_Норма_віробітку" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="Рівнині_умови" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="Яружно_балкові_землі_схил_до_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="Яружно_балкові_землі_схил_понад_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="Гірські_умови_схил_до_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="Гірські_умови_схил_понад_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <NavigationProperty Name="Садіння_лісу" Relationship="БД_НарядModel.FK__Садіння_л__Вид_р__00750D23" FromRole="Садіння_лісу_Норма" ToRole="Садіння_лісу" />
+  </EntityType>
+  <EntityType Name="Техобслуговування_бензопили">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Техобслуговування_бензопили_Норма" Relationship="БД_НарядModel.FK__Техобслуг__Вид_р__297722B6" FromRole="Техобслуговування_бензопили" ToRole="Техобслуговування_бензопили_Норма" />
+  </EntityType>
+  <EntityType Name="Трелювання_підліску">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Трелювання_підліску_ГСМ" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__4865BE2A" FromRole="Трелювання_підліску" ToRole="Трелювання_підліску_ГСМ" />
+    <NavigationProperty Name="Трелювання_підліску_Норма" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__6EC0713C" FromRole="Трелювання_підліску" ToRole="Трелювання_підліску_Норма" />
+  </EntityType>
+  <EntityType Name="Трелювання_РГК">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Трелювання_РГК_ГСМ" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__3A179ED3" FromRole="Трелювання_РГК" ToRole="Трелювання_РГК_ГСМ" />
+    <NavigationProperty Name="Трелювання_РГК_Норма" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__5F7E2DAC" FromRole="Трелювання_РГК" ToRole="Трелювання_РГК_Норма" />
+  </EntityType>
+  <EntityType Name="Трелювання_РУ">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Трелювання_РУ_ГСМ" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__3CF40B7E" FromRole="Трелювання_РУ" ToRole="Трелювання_РУ_ГСМ" />
+    <NavigationProperty Name="Трелювання_РУ_Норма" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__690797E6" FromRole="Трелювання_РУ" ToRole="Трелювання_РУ_Норма" />
+  </EntityType>
+  <EntityType Name="Трелювання_фанери_РУ">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Трелювання_фанери_РУ_ГСМ" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__345EC57D" FromRole="Трелювання_фанери_РУ" ToRole="Трелювання_фанери_РУ_ГСМ" />
+    <NavigationProperty Name="Трелювання_фанери_РУ_Норма" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__4E53A1AA" FromRole="Трелювання_фанери_РУ" ToRole="Трелювання_фанери_РУ_Норма" />
+  </EntityType>
+  <EntityType Name="Устройство_площадок">
+    <Key>
+      <PropertyRef Name="Id_Вид_робіт" />
+    </Key>
+    <Property Name="Id_Вид_робіт" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Устройство_площадок_Норма" Relationship="БД_НарядModel.FK__Устройств__Вид_р__05A3D694" FromRole="Устройство_площадок" ToRole="Устройство_площадок_Норма" />
+  </EntityType>
+  <EntityType Name="Витрати_ГСМ">
+    <Key>
+      <PropertyRef Name="Id_ВитратГСМ" />
+      <PropertyRef Name="Id_механізма" />
+      <PropertyRef Name="Id_Палива" />
+      <PropertyRef Name="Витрати_ГСМ__" />
+    </Key>
+    <Property Name="Id_ВитратГСМ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_механізма" Type="Int32" Nullable="false" />
+    <Property Name="Id_Палива" Type="Int32" Nullable="false" />
+    <Property Name="Витрати_ГСМ__" Type="Decimal" Nullable="false" Precision="6" Scale="3" />
+    <NavigationProperty Name="Вид_ГСМ" Relationship="БД_НарядModel.FK__Витрати_Г__Id_Па__2610A626" FromRole="Витрати_ГСМ" ToRole="Вид_ГСМ" />
+    <NavigationProperty Name="Механізми" Relationship="БД_НарядModel.FK__Витрати_Г__Id_ме__251C81ED" FromRole="Витрати_ГСМ" ToRole="Механізми" />
+  </EntityType>
+  <EntityType Name="Витрати_ГСМ_в_годину">
+    <Key>
+      <PropertyRef Name="Id_ВитратГСМ" />
+      <PropertyRef Name="Id_Механізма" />
+      <PropertyRef Name="Id_Палива" />
+    </Key>
+    <Property Name="Id_ВитратГСМ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Механізма" Type="Int32" Nullable="false" />
+    <Property Name="Id_Палива" Type="Int32" Nullable="false" />
+    <Property Name="Витрати_ГСМ_переїзд_кг_ч" Type="Decimal" Precision="6" Scale="3" />
+    <Property Name="Витрати_ГСМ_зупинка_кг_ч" Type="Decimal" Precision="6" Scale="3" />
+    <NavigationProperty Name="Вид_ГСМ" Relationship="БД_НарядModel.FK__Витрати_Г__Id_Па__473C8FC7" FromRole="Витрати_ГСМ_в_годину" ToRole="Вид_ГСМ" />
+    <NavigationProperty Name="Механізми" Relationship="БД_НарядModel.FK__Витрати_Г__Id_Ме__46486B8E" FromRole="Витрати_ГСМ_в_годину" ToRole="Механізми" />
+  </EntityType>
+  <EntityType Name="Догляд_за_л_к_мотокущорізом_ГСМ">
+    <Key>
+      <PropertyRef Name="Id_Норма_витрат_ГСМ" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="Норма_віробітку" />
+    </Key>
+    <Property Name="Id_Норма_витрат_ГСМ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <NavigationProperty Name="Догляд_за_л_к_мотокущорізом" Relationship="БД_НарядModel.FK__Догляд_за__Вид_р__14B10FFA" FromRole="Догляд_за_л_к_мотокущорізом_ГСМ" ToRole="Догляд_за_л_к_мотокущорізом" />
+  </EntityType>
+  <EntityType Name="Догляд_за_л_к_мотокущорізом_Норма">
+    <Key>
+      <PropertyRef Name="Id_Норма_віробітку" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="Норма_віробітку" />
+    </Key>
+    <Property Name="Id_Норма_віробітку" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <NavigationProperty Name="Догляд_за_л_к_мотокущорізом" Relationship="БД_НарядModel.FK__Догляд_за__Вид_р__11D4A34F" FromRole="Догляд_за_л_к_мотокущорізом_Норма" ToRole="Догляд_за_л_к_мотокущорізом" />
+  </EntityType>
+  <EntityType Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="C0_12" />
+      <PropertyRef Name="C0_13" />
+      <PropertyRef Name="C0_14" />
+      <PropertyRef Name="C0_16" />
+      <PropertyRef Name="C0_19" />
+      <PropertyRef Name="C0_22" />
+      <PropertyRef Name="C0_25" />
+      <PropertyRef Name="C0_29" />
+      <PropertyRef Name="C0_35" />
+      <PropertyRef Name="C0_41" />
+      <PropertyRef Name="C0_5" />
+      <PropertyRef Name="C0_62" />
+      <PropertyRef Name="C0_78" />
+      <PropertyRef Name="C0_98" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="C0_12" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_13" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_14" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_16" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_19" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_22" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_25" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_29" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_35" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_41" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_5" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_62" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_78" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_98" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <NavigationProperty Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" Relationship="БД_НарядModel.FK__Заготівля__Вид_р__2EA5EC27" FromRole="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ" ToRole="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" />
+  </EntityType>
+  <EntityType Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="C0_12" />
+      <PropertyRef Name="C0_22" />
+      <PropertyRef Name="C0_36" />
+      <PropertyRef Name="C0_54" />
+      <PropertyRef Name="C0_76" />
+      <PropertyRef Name="C1_02" />
+      <PropertyRef Name="C1_29" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="C0_12" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_22" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_36" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_54" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_76" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C1_02" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C1_29" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <NavigationProperty Name="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" Relationship="БД_НарядModel.FK__Заготівля__Вид_р__489AC854" FromRole="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" ToRole="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" />
+  </EntityType>
+  <EntityType Name="Заточка_цепей_Норма">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="Норма_віробітку" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="6" Scale="3" />
+    <NavigationProperty Name="Заточка_цепей" Relationship="БД_НарядModel.FK__Заточка_ц__Вид_р__7FEAFD3E" FromRole="Заточка_цепей_Норма" ToRole="Заточка_цепей" />
+  </EntityType>
+  <EntityType Name="Категорії_робіт">
+    <Key>
+      <PropertyRef Name="Категорії_робітID" />
+      <PropertyRef Name="Найменування_заходуID" />
+      <PropertyRef Name="Категорії_робіт1" />
+      <PropertyRef Name="Норма_віробітку" />
+      <PropertyRef Name="ГСМ" />
+      <PropertyRef Name="Комплексна_индивідуальна" />
+      <PropertyRef Name="РозцінкаID" />
+      <PropertyRef Name="Одиниця_виміру" />
+      <PropertyRef Name="Id_механізма" />
+    </Key>
+    <Property Name="Категорії_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Найменування_заходуID" Type="Int32" Nullable="false" />
+    <Property Name="Категорії_робіт1" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Норма_віробітку" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="ГСМ" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+    <Property Name="Комплексна_индивідуальна" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="РозцінкаID" Type="Int32" Nullable="false" />
+    <Property Name="Одиниця_виміру" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Id_механізма" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Денна_тарифна_ставка" Relationship="БД_НарядModel.FK__Категорії__Розці__57A801BA" FromRole="Категорії_робіт" ToRole="Денна_тарифна_ставка" />
+    <NavigationProperty Name="Механізми" Relationship="БД_НарядModel.FK__Категорії__Id_ме__589C25F3" FromRole="Категорії_робіт" ToRole="Механізми" />
+    <NavigationProperty Name="Найменування_заходу" Relationship="БД_НарядModel.FK__Категорії__Найме__5A846E65" FromRole="Категорії_робіт" ToRole="Найменування_заходу" />
+  </EntityType>
+  <EntityType Name="Освітлення_механічним_способом_ГСМ">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="Норма_віробітку" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <NavigationProperty Name="Освітлення_механічним_способом" Relationship="БД_НарядModel.FK__Освітленн__Вид_р__373B3228" FromRole="Освітлення_механічним_способом_ГСМ" ToRole="Освітлення_механічним_способом" />
+  </EntityType>
+  <EntityType Name="Освітлення_механічним_способом_Норма">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="Норма_віробітку" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <NavigationProperty Name="Освітлення_механічним_способом" Relationship="БД_НарядModel.FK__Освітленн__Вид_р__59C55456" FromRole="Освітлення_механічним_способом_Норма" ToRole="Освітлення_механічним_способом" />
+  </EntityType>
+  <EntityType Name="Погрузка_Норма">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="Норма_віробітку" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="6" Scale="3" />
+    <NavigationProperty Name="Погрузка" Relationship="БД_НарядModel.FK__Погрузка___Вид_р__0B5CAFEA" FromRole="Погрузка_Норма" ToRole="Погрузка" />
+  </EntityType>
+  <EntityType Name="Поправочний_коефіцієнт">
+    <Key>
+      <PropertyRef Name="Id_Умови_праці" />
+      <PropertyRef Name="Умови_праці" />
+      <PropertyRef Name="Поправочний_коефіцієнт_Норма" />
+      <PropertyRef Name="Поправочний_коефіцієнт_ГСМ" />
+    </Key>
+    <Property Name="Id_Умови_праці" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Умови_праці" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Поправочний_коефіцієнт_Норма" Type="Decimal" Nullable="false" Precision="3" Scale="2" />
+    <Property Name="Поправочний_коефіцієнт_ГСМ" Type="Decimal" Nullable="false" Precision="3" Scale="2" />
+  </EntityType>
+  <EntityType Name="Поправочний_коефіцієнт_Переїзд">
+    <Key>
+      <PropertyRef Name="Id_Відстань_переїзду" />
+      <PropertyRef Name="Відстань_переїзду" />
+      <PropertyRef Name="Поправочний_коефіцієнт" />
+    </Key>
+    <Property Name="Id_Відстань_переїзду" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Відстань_переїзду" Type="Decimal" Nullable="false" Precision="4" Scale="2" />
+    <Property Name="Поправочний_коефіцієнт" Type="Decimal" Nullable="false" Precision="3" Scale="2" />
+  </EntityType>
+  <EntityType Name="Поправочний_коефіцієнт_Перешкоди">
+    <Key>
+      <PropertyRef Name="Id_Перешкоди" />
+      <PropertyRef Name="Відсоток_Перешкоди" />
+      <PropertyRef Name="Поправочний_коефіцієнт" />
+    </Key>
+    <Property Name="Id_Перешкоди" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Відсоток_Перешкоди" Type="Int32" Nullable="false" />
+    <Property Name="Поправочний_коефіцієнт" Type="Decimal" Nullable="false" Precision="3" Scale="2" />
+  </EntityType>
+  <EntityType Name="Прибирання_небезпечних_дерев_ГСМ">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="C0_14" />
+      <PropertyRef Name="C0_17" />
+      <PropertyRef Name="C0_21" />
+      <PropertyRef Name="C0_25" />
+      <PropertyRef Name="C0_32" />
+      <PropertyRef Name="C0_39" />
+      <PropertyRef Name="C0_49" />
+      <PropertyRef Name="C0_75" />
+      <PropertyRef Name="C1_1" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="C0_14" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_17" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_21" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_25" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_32" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_39" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_49" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_75" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C1_1" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <NavigationProperty Name="Прибирання_небезпечних_дерев" Relationship="БД_НарядModel.FK__Прибиранн__Вид_р__4B422AD5" FromRole="Прибирання_небезпечних_дерев_ГСМ" ToRole="Прибирання_небезпечних_дерев" />
+  </EntityType>
+  <EntityType Name="Прибирання_небезпечних_дерев_Норма">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="C0_14" />
+      <PropertyRef Name="C0_17" />
+      <PropertyRef Name="C0_21" />
+      <PropertyRef Name="C0_25" />
+      <PropertyRef Name="C0_32" />
+      <PropertyRef Name="C0_39" />
+      <PropertyRef Name="C0_49" />
+      <PropertyRef Name="C0_75" />
+      <PropertyRef Name="C1_1" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="C0_14" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_17" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_21" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_25" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_32" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_39" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_49" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_75" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C1_1" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <NavigationProperty Name="Прибирання_небезпечних_дерев" Relationship="БД_НарядModel.FK__Прибиранн__Вид_р__7A3223E8" FromRole="Прибирання_небезпечних_дерев_Норма" ToRole="Прибирання_небезпечних_дерев" />
+  </EntityType>
+  <EntityType Name="РГК_ССР_без_трелювання_ГСМ">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="C0_25" />
+      <PropertyRef Name="C0_32" />
+      <PropertyRef Name="C0_39" />
+      <PropertyRef Name="C0_49" />
+      <PropertyRef Name="C0_75" />
+      <PropertyRef Name="C1_1" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="C0_25" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_32" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_39" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_49" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_75" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C1_1" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <NavigationProperty Name="РГК_ССР_без_трелювання" Relationship="БД_НарядModel.FK__РГК_ССР_б__Вид_р__28ED12D1" FromRole="РГК_ССР_без_трелювання_ГСМ" ToRole="РГК_ССР_без_трелювання" />
+  </EntityType>
+  <EntityType Name="РГК_ССР_без_трелювання_Норма">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="C0_219" />
+      <PropertyRef Name="C0_25" />
+      <PropertyRef Name="C0_32" />
+      <PropertyRef Name="C0_39" />
+      <PropertyRef Name="C0_49" />
+      <PropertyRef Name="C0_75" />
+      <PropertyRef Name="C1_1" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="C0_219" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_25" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_32" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_39" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_49" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_75" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C1_1" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <NavigationProperty Name="РГК_ССР_без_трелювання" Relationship="БД_НарядModel.FK__РГК_ССР_б__Вид_р__367C1819" FromRole="РГК_ССР_без_трелювання_Норма" ToRole="РГК_ССР_без_трелювання" />
+  </EntityType>
+  <EntityType Name="Робітники">
+    <Key>
+      <PropertyRef Name="Id_Робітника" />
+      <PropertyRef Name="П_І_Б" />
+      <PropertyRef Name="Професія" />
+    </Key>
+    <Property Name="Id_Робітника" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="П_І_Б" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Професія" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Тарифний_розряд" Type="Int32" />
+    <Property Name="Категорія" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="C0_035" />
+      <PropertyRef Name="C0_04" />
+      <PropertyRef Name="C0_045" />
+      <PropertyRef Name="C0_05" />
+      <PropertyRef Name="C0_055" />
+      <PropertyRef Name="C0_06" />
+      <PropertyRef Name="C0_065" />
+      <PropertyRef Name="C0_07" />
+      <PropertyRef Name="C0_08" />
+      <PropertyRef Name="C0_09" />
+      <PropertyRef Name="C0_1" />
+      <PropertyRef Name="C0_12" />
+      <PropertyRef Name="C0_14" />
+      <PropertyRef Name="C0_16" />
+      <PropertyRef Name="C0_19" />
+      <PropertyRef Name="C0_22" />
+      <PropertyRef Name="C0_25" />
+      <PropertyRef Name="C0_29" />
+      <PropertyRef Name="C0_35" />
+      <PropertyRef Name="C0_41" />
+      <PropertyRef Name="C0_5" />
+      <PropertyRef Name="C0_62" />
+      <PropertyRef Name="C0_78" />
+      <PropertyRef Name="C0_98" />
+      <PropertyRef Name="C1_5" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="C0_035" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_04" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_045" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_05" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_055" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_06" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_065" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_07" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_08" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_09" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_1" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_12" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_14" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_16" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_19" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_22" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_25" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_29" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_35" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_41" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_5" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_62" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_78" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_98" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C1_5" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <NavigationProperty Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" Relationship="БД_НарядModel.FK__Рубки_дог__Вид_р__318258D2" FromRole="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" ToRole="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" />
+  </EntityType>
+  <EntityType Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="C0_035" />
+      <PropertyRef Name="C0_04" />
+      <PropertyRef Name="C0_045" />
+      <PropertyRef Name="C0_05" />
+      <PropertyRef Name="C0_055" />
+      <PropertyRef Name="C0_06" />
+      <PropertyRef Name="C0_065" />
+      <PropertyRef Name="C0_07" />
+      <PropertyRef Name="C0_08" />
+      <PropertyRef Name="C0_09" />
+      <PropertyRef Name="C0_1" />
+      <PropertyRef Name="C0_12" />
+      <PropertyRef Name="C0_14" />
+      <PropertyRef Name="C0_16" />
+      <PropertyRef Name="C0_19" />
+      <PropertyRef Name="C0_22" />
+      <PropertyRef Name="C0_25" />
+      <PropertyRef Name="C0_29" />
+      <PropertyRef Name="C0_35" />
+      <PropertyRef Name="C0_41" />
+      <PropertyRef Name="C0_5" />
+      <PropertyRef Name="C0_62" />
+      <PropertyRef Name="C0_78" />
+      <PropertyRef Name="C0_98" />
+      <PropertyRef Name="C1_5" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="C0_035" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_04" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_045" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_05" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_055" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_06" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_065" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_07" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_08" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_09" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_1" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_12" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_14" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_16" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_19" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_22" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_25" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_29" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_35" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_41" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_5" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_62" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_78" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_98" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C1_5" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <NavigationProperty Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" Relationship="БД_НарядModel.FK__Рубки_дог__Вид_р__3C34F16F" FromRole="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" ToRole="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" />
+  </EntityType>
+  <EntityType Name="Садіння_лісу_Додаткові_роботи_Норма">
+    <Key>
+      <PropertyRef Name="Id_Норма_віробітку" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="Норма_віробітку" />
+    </Key>
+    <Property Name="Id_Норма_віробітку" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="6" Scale="3" />
+    <NavigationProperty Name="Садіння_лісу_Додаткові_роботи" Relationship="БД_НарядModel.FK__Садіння_л__Вид_р__0E04126B" FromRole="Садіння_лісу_Додаткові_роботи_Норма" ToRole="Садіння_лісу_Додаткові_роботи" />
+  </EntityType>
+  <EntityType Name="Сортименти">
+    <Key>
+      <PropertyRef Name="СортиментиID" />
+      <PropertyRef Name="Назва_сортименту" />
+    </Key>
+    <Property Name="СортиментиID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Назва_сортименту" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Техобслуговування_бензопили_Норма">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="Норма_віробітку" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="6" Scale="3" />
+    <NavigationProperty Name="Техобслуговування_бензопили" Relationship="БД_НарядModel.FK__Техобслуг__Вид_р__297722B6" FromRole="Техобслуговування_бензопили_Норма" ToRole="Техобслуговування_бензопили" />
+  </EntityType>
+  <EntityType Name="Трелювання_підліску_ГСМ">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="Норма_віробітку" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <NavigationProperty Name="Трелювання_підліску" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__4865BE2A" FromRole="Трелювання_підліску_ГСМ" ToRole="Трелювання_підліску" />
+  </EntityType>
+  <EntityType Name="Трелювання_підліску_Норма">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="Норма_віробітку" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="6" Scale="3" />
+    <NavigationProperty Name="Трелювання_підліску" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__6EC0713C" FromRole="Трелювання_підліску_Норма" ToRole="Трелювання_підліску" />
+  </EntityType>
+  <EntityType Name="Трелювання_РГК_ГСМ">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="C0_25" />
+      <PropertyRef Name="C0_32" />
+      <PropertyRef Name="C0_39" />
+      <PropertyRef Name="C0_49" />
+      <PropertyRef Name="C0_75" />
+      <PropertyRef Name="C1_1" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="C0_25" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_32" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_39" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_49" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_75" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C1_1" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <NavigationProperty Name="Трелювання_РГК" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__3A179ED3" FromRole="Трелювання_РГК_ГСМ" ToRole="Трелювання_РГК" />
+  </EntityType>
+  <EntityType Name="Трелювання_РГК_Норма">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="C0_25" />
+      <PropertyRef Name="C0_32" />
+      <PropertyRef Name="C0_39" />
+      <PropertyRef Name="C0_49" />
+      <PropertyRef Name="C0_75" />
+      <PropertyRef Name="C1_1" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="C0_25" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_32" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_39" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_49" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_75" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C1_1" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <NavigationProperty Name="Трелювання_РГК" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__5F7E2DAC" FromRole="Трелювання_РГК_Норма" ToRole="Трелювання_РГК" />
+  </EntityType>
+  <EntityType Name="Трелювання_РУ_ГСМ">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="C0_1" />
+      <PropertyRef Name="C0_12" />
+      <PropertyRef Name="C0_14" />
+      <PropertyRef Name="C0_16" />
+      <PropertyRef Name="C0_18" />
+      <PropertyRef Name="C0_21" />
+      <PropertyRef Name="C0_24" />
+      <PropertyRef Name="C0_28" />
+      <PropertyRef Name="C0_34" />
+      <PropertyRef Name="C0_4" />
+      <PropertyRef Name="C0_49" />
+      <PropertyRef Name="C0_61" />
+      <PropertyRef Name="C0_77" />
+      <PropertyRef Name="C0_97" />
+      <PropertyRef Name="C1_5" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="C0_1" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_12" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_14" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_16" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_18" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_21" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_24" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_28" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_34" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_4" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_49" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_61" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_77" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_97" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C1_5" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <NavigationProperty Name="Трелювання_РУ" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__3CF40B7E" FromRole="Трелювання_РУ_ГСМ" ToRole="Трелювання_РУ" />
+  </EntityType>
+  <EntityType Name="Трелювання_РУ_Норма">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="C0_1" />
+      <PropertyRef Name="C0_12" />
+      <PropertyRef Name="C0_14" />
+      <PropertyRef Name="C0_16" />
+      <PropertyRef Name="C0_19" />
+      <PropertyRef Name="C0_22" />
+      <PropertyRef Name="C0_25" />
+      <PropertyRef Name="C0_29" />
+      <PropertyRef Name="C0_35" />
+      <PropertyRef Name="C0_41" />
+      <PropertyRef Name="C0_5" />
+      <PropertyRef Name="C0_62" />
+      <PropertyRef Name="C0_78" />
+      <PropertyRef Name="C0_98" />
+      <PropertyRef Name="C1_5" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="C0_1" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_12" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_14" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_16" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_19" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_22" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_25" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_29" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_35" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_41" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_5" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_62" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_78" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_98" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C1_5" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <NavigationProperty Name="Трелювання_РУ" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__690797E6" FromRole="Трелювання_РУ_Норма" ToRole="Трелювання_РУ" />
+  </EntityType>
+  <EntityType Name="Трелювання_фанери_РУ_ГСМ">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="C0_1" />
+      <PropertyRef Name="C0_12" />
+      <PropertyRef Name="C0_14" />
+      <PropertyRef Name="C0_16" />
+      <PropertyRef Name="C0_19" />
+      <PropertyRef Name="C0_22" />
+      <PropertyRef Name="C0_25" />
+      <PropertyRef Name="C0_29" />
+      <PropertyRef Name="C0_35" />
+      <PropertyRef Name="C0_41" />
+      <PropertyRef Name="C0_5" />
+      <PropertyRef Name="C0_62" />
+      <PropertyRef Name="C0_79" />
+      <PropertyRef Name="C1" />
+      <PropertyRef Name="C1_5" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="C0_1" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_12" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_14" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_16" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_19" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_22" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_25" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_29" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_35" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_41" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_5" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_62" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C0_79" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C1" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <Property Name="C1_5" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <NavigationProperty Name="Трелювання_фанери_РУ" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__345EC57D" FromRole="Трелювання_фанери_РУ_ГСМ" ToRole="Трелювання_фанери_РУ" />
+  </EntityType>
+  <EntityType Name="Трелювання_фанери_РУ_Норма">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="C0_1" />
+      <PropertyRef Name="C0_12" />
+      <PropertyRef Name="C0_14" />
+      <PropertyRef Name="C0_16" />
+      <PropertyRef Name="C0_19" />
+      <PropertyRef Name="C0_22" />
+      <PropertyRef Name="C0_25" />
+      <PropertyRef Name="C0_29" />
+      <PropertyRef Name="C0_35" />
+      <PropertyRef Name="C0_41" />
+      <PropertyRef Name="C0_5" />
+      <PropertyRef Name="C0_62" />
+      <PropertyRef Name="C0_79" />
+      <PropertyRef Name="C1" />
+      <PropertyRef Name="C1_5" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="C0_1" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_12" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_14" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_16" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_19" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_22" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_25" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_29" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_35" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_41" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_5" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_62" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C0_79" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C1" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <Property Name="C1_5" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
+    <NavigationProperty Name="Трелювання_фанери_РУ" Relationship="БД_НарядModel.FK__Трелюванн__Вид_р__4E53A1AA" FromRole="Трелювання_фанери_РУ_Норма" ToRole="Трелювання_фанери_РУ" />
+  </EntityType>
+  <EntityType Name="Устройство_площадок_Норма">
+    <Key>
+      <PropertyRef Name="Вид_робітID" />
+      <PropertyRef Name="Вид_робіт" />
+      <PropertyRef Name="Норма_віробітку" />
+    </Key>
+    <Property Name="Вид_робітID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
+    <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="6" Scale="3" />
+    <NavigationProperty Name="Устройство_площадок" Relationship="БД_НарядModel.FK__Устройств__Вид_р__05A3D694" FromRole="Устройство_площадок_Норма" ToRole="Устройство_площадок" />
+  </EntityType>
+  <Association Name="FK__Витрати_Г__Id_Па__2610A626">
+    <End Type="БД_НарядModel.Вид_ГСМ" Role="Вид_ГСМ" Multiplicity="1" />
+    <End Type="БД_НарядModel.Витрати_ГСМ" Role="Витрати_ГСМ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Вид_ГСМ">
+        <PropertyRef Name="Id_Палива" />
+      </Principal>
+      <Dependent Role="Витрати_ГСМ">
+        <PropertyRef Name="Id_Палива" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Витрати_Г__Id_Па__473C8FC7">
+    <End Type="БД_НарядModel.Вид_ГСМ" Role="Вид_ГСМ" Multiplicity="1" />
+    <End Type="БД_НарядModel.Витрати_ГСМ_в_годину" Role="Витрати_ГСМ_в_годину" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Вид_ГСМ">
+        <PropertyRef Name="Id_Палива" />
+      </Principal>
+      <Dependent Role="Витрати_ГСМ_в_годину">
+        <PropertyRef Name="Id_Палива" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Категорії__Розці__57A801BA">
+    <End Type="БД_НарядModel.Денна_тарифна_ставка" Role="Денна_тарифна_ставка" Multiplicity="1" />
+    <End Type="БД_НарядModel.Категорії_робіт" Role="Категорії_робіт" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Денна_тарифна_ставка">
+        <PropertyRef Name="РозцінкаID" />
+      </Principal>
+      <Dependent Role="Категорії_робіт">
+        <PropertyRef Name="РозцінкаID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Догляд_за__Вид_р__11D4A34F">
+    <End Type="БД_НарядModel.Догляд_за_л_к_мотокущорізом" Role="Догляд_за_л_к_мотокущорізом" Multiplicity="1" />
+    <End Type="БД_НарядModel.Догляд_за_л_к_мотокущорізом_Норма" Role="Догляд_за_л_к_мотокущорізом_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Догляд_за_л_к_мотокущорізом">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Догляд_за_л_к_мотокущорізом_Норма">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Догляд_за__Вид_р__14B10FFA">
+    <End Type="БД_НарядModel.Догляд_за_л_к_мотокущорізом" Role="Догляд_за_л_к_мотокущорізом" Multiplicity="1" />
+    <End Type="БД_НарядModel.Догляд_за_л_к_мотокущорізом_ГСМ" Role="Догляд_за_л_к_мотокущорізом_ГСМ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Догляд_за_л_к_мотокущорізом">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Догляд_за_л_к_мотокущорізом_ГСМ">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Заготівля__Вид_р__2EA5EC27">
+    <End Type="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" Multiplicity="1" />
+    <End Type="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ" Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Заготівля__Вид_р__489AC854">
+    <End Type="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" Multiplicity="1" />
+    <End Type="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Заточка_ц__Вид_р__7FEAFD3E">
+    <End Type="БД_НарядModel.Заточка_цепей" Role="Заточка_цепей" Multiplicity="1" />
+    <End Type="БД_НарядModel.Заточка_цепей_Норма" Role="Заточка_цепей_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Заточка_цепей">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Заточка_цепей_Норма">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Витрати_Г__Id_ме__251C81ED">
+    <End Type="БД_НарядModel.Механізми" Role="Механізми" Multiplicity="1" />
+    <End Type="БД_НарядModel.Витрати_ГСМ" Role="Витрати_ГСМ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Механізми">
+        <PropertyRef Name="Id_Механізма" />
+      </Principal>
+      <Dependent Role="Витрати_ГСМ">
+        <PropertyRef Name="Id_механізма" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Витрати_Г__Id_Ме__46486B8E">
+    <End Type="БД_НарядModel.Механізми" Role="Механізми" Multiplicity="1" />
+    <End Type="БД_НарядModel.Витрати_ГСМ_в_годину" Role="Витрати_ГСМ_в_годину" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Механізми">
+        <PropertyRef Name="Id_Механізма" />
+      </Principal>
+      <Dependent Role="Витрати_ГСМ_в_годину">
+        <PropertyRef Name="Id_Механізма" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Категорії__Id_ме__589C25F3">
+    <End Type="БД_НарядModel.Механізми" Role="Механізми" Multiplicity="1" />
+    <End Type="БД_НарядModel.Категорії_робіт" Role="Категорії_робіт" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Механізми">
+        <PropertyRef Name="Id_Механізма" />
+      </Principal>
+      <Dependent Role="Категорії_робіт">
+        <PropertyRef Name="Id_механізма" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Категорії__Найме__5A846E65">
+    <End Type="БД_НарядModel.Найменування_заходу" Role="Найменування_заходу" Multiplicity="1" />
+    <End Type="БД_НарядModel.Категорії_робіт" Role="Категорії_робіт" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Найменування_заходу">
+        <PropertyRef Name="Id_Найменування_заходу" />
+      </Principal>
+      <Dependent Role="Категорії_робіт">
+        <PropertyRef Name="Найменування_заходуID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Освітленн__Вид_р__373B3228">
+    <End Type="БД_НарядModel.Освітлення_механічним_способом" Role="Освітлення_механічним_способом" Multiplicity="1" />
+    <End Type="БД_НарядModel.Освітлення_механічним_способом_ГСМ" Role="Освітлення_механічним_способом_ГСМ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Освітлення_механічним_способом">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Освітлення_механічним_способом_ГСМ">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Освітленн__Вид_р__59C55456">
+    <End Type="БД_НарядModel.Освітлення_механічним_способом" Role="Освітлення_механічним_способом" Multiplicity="1" />
+    <End Type="БД_НарядModel.Освітлення_механічним_способом_Норма" Role="Освітлення_механічним_способом_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Освітлення_механічним_способом">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Освітлення_механічним_способом_Норма">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Підрозділ__Id_Пі__370627FE">
+    <End Type="БД_НарядModel.Підприємство" Role="Підприємство" Multiplicity="1" />
+    <End Type="БД_НарядModel.Підрозділ" Role="Підрозділ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Підприємство">
+        <PropertyRef Name="Id_Підприємства" />
+      </Principal>
+      <Dependent Role="Підрозділ">
+        <PropertyRef Name="Id_Підприємства" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Погрузка___Вид_р__0B5CAFEA">
+    <End Type="БД_НарядModel.Погрузка" Role="Погрузка" Multiplicity="1" />
+    <End Type="БД_НарядModel.Погрузка_Норма" Role="Погрузка_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Погрузка">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Погрузка_Норма">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Прибиранн__Вид_р__4B422AD5">
+    <End Type="БД_НарядModel.Прибирання_небезпечних_дерев" Role="Прибирання_небезпечних_дерев" Multiplicity="1" />
+    <End Type="БД_НарядModel.Прибирання_небезпечних_дерев_ГСМ" Role="Прибирання_небезпечних_дерев_ГСМ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Прибирання_небезпечних_дерев">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Прибирання_небезпечних_дерев_ГСМ">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Прибиранн__Вид_р__7A3223E8">
+    <End Type="БД_НарядModel.Прибирання_небезпечних_дерев" Role="Прибирання_небезпечних_дерев" Multiplicity="1" />
+    <End Type="БД_НарядModel.Прибирання_небезпечних_дерев_Норма" Role="Прибирання_небезпечних_дерев_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Прибирання_небезпечних_дерев">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Прибирання_небезпечних_дерев_Норма">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Прополюва__Вид_р__1387E197">
+    <End Type="БД_НарядModel.Прополювання_лісу" Role="Прополювання_лісу" Multiplicity="1" />
+    <End Type="БД_НарядModel.Прополювання_лісу_Норма" Role="Прополювання_лісу_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Прополювання_лісу">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Прополювання_лісу_Норма">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__РГК_ССР_б__Вид_р__28ED12D1">
+    <End Type="БД_НарядModel.РГК_ССР_без_трелювання" Role="РГК_ССР_без_трелювання" Multiplicity="1" />
+    <End Type="БД_НарядModel.РГК_ССР_без_трелювання_ГСМ" Role="РГК_ССР_без_трелювання_ГСМ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="РГК_ССР_без_трелювання">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="РГК_ССР_без_трелювання_ГСМ">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__РГК_ССР_б__Вид_р__367C1819">
+    <End Type="БД_НарядModel.РГК_ССР_без_трелювання" Role="РГК_ССР_без_трелювання" Multiplicity="1" />
+    <End Type="БД_НарядModel.РГК_ССР_без_трелювання_Норма" Role="РГК_ССР_без_трелювання_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="РГК_ССР_без_трелювання">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="РГК_ССР_без_трелювання_Норма">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Рубки_дог__Вид_р__318258D2">
+    <End Type="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" Multiplicity="1" />
+    <End Type="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Рубки_дог__Вид_р__3C34F16F">
+    <End Type="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" Multiplicity="1" />
+    <End Type="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ручний_до__Вид_р__062DE679">
+    <End Type="БД_НарядModel.Ручний_догляд_за_л_к" Role="Ручний_догляд_за_л_к" Multiplicity="1" />
+    <End Type="БД_НарядModel.Ручний_догляд_за_л_к_Норма" Role="Ручний_догляд_за_л_к_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ручний_догляд_за_л_к">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Ручний_догляд_за_л_к_Норма">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Садіння_л__Вид_р__00750D23">
+    <End Type="БД_НарядModel.Садіння_лісу" Role="Садіння_лісу" Multiplicity="1" />
+    <End Type="БД_НарядModel.Садіння_лісу_Норма" Role="Садіння_лісу_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Садіння_лісу">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Садіння_лісу_Норма">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Садіння_л__Вид_р__0E04126B">
+    <End Type="БД_НарядModel.Садіння_лісу_Додаткові_роботи" Role="Садіння_лісу_Додаткові_роботи" Multiplicity="1" />
+    <End Type="БД_НарядModel.Садіння_лісу_Додаткові_роботи_Норма" Role="Садіння_лісу_Додаткові_роботи_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Садіння_лісу_Додаткові_роботи">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Садіння_лісу_Додаткові_роботи_Норма">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Техобслуг__Вид_р__297722B6">
+    <End Type="БД_НарядModel.Техобслуговування_бензопили" Role="Техобслуговування_бензопили" Multiplicity="1" />
+    <End Type="БД_НарядModel.Техобслуговування_бензопили_Норма" Role="Техобслуговування_бензопили_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Техобслуговування_бензопили">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Техобслуговування_бензопили_Норма">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Трелюванн__Вид_р__4865BE2A">
+    <End Type="БД_НарядModel.Трелювання_підліску" Role="Трелювання_підліску" Multiplicity="1" />
+    <End Type="БД_НарядModel.Трелювання_підліску_ГСМ" Role="Трелювання_підліску_ГСМ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Трелювання_підліску">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Трелювання_підліску_ГСМ">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Трелюванн__Вид_р__6EC0713C">
+    <End Type="БД_НарядModel.Трелювання_підліску" Role="Трелювання_підліску" Multiplicity="1" />
+    <End Type="БД_НарядModel.Трелювання_підліску_Норма" Role="Трелювання_підліску_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Трелювання_підліску">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Трелювання_підліску_Норма">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Трелюванн__Вид_р__3A179ED3">
+    <End Type="БД_НарядModel.Трелювання_РГК" Role="Трелювання_РГК" Multiplicity="1" />
+    <End Type="БД_НарядModel.Трелювання_РГК_ГСМ" Role="Трелювання_РГК_ГСМ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Трелювання_РГК">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Трелювання_РГК_ГСМ">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Трелюванн__Вид_р__5F7E2DAC">
+    <End Type="БД_НарядModel.Трелювання_РГК" Role="Трелювання_РГК" Multiplicity="1" />
+    <End Type="БД_НарядModel.Трелювання_РГК_Норма" Role="Трелювання_РГК_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Трелювання_РГК">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Трелювання_РГК_Норма">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Трелюванн__Вид_р__3CF40B7E">
+    <End Type="БД_НарядModel.Трелювання_РУ" Role="Трелювання_РУ" Multiplicity="1" />
+    <End Type="БД_НарядModel.Трелювання_РУ_ГСМ" Role="Трелювання_РУ_ГСМ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Трелювання_РУ">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Трелювання_РУ_ГСМ">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Трелюванн__Вид_р__690797E6">
+    <End Type="БД_НарядModel.Трелювання_РУ" Role="Трелювання_РУ" Multiplicity="1" />
+    <End Type="БД_НарядModel.Трелювання_РУ_Норма" Role="Трелювання_РУ_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Трелювання_РУ">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Трелювання_РУ_Норма">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Трелюванн__Вид_р__345EC57D">
+    <End Type="БД_НарядModel.Трелювання_фанери_РУ" Role="Трелювання_фанери_РУ" Multiplicity="1" />
+    <End Type="БД_НарядModel.Трелювання_фанери_РУ_ГСМ" Role="Трелювання_фанери_РУ_ГСМ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Трелювання_фанери_РУ">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Трелювання_фанери_РУ_ГСМ">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Трелюванн__Вид_р__4E53A1AA">
+    <End Type="БД_НарядModel.Трелювання_фанери_РУ" Role="Трелювання_фанери_РУ" Multiplicity="1" />
+    <End Type="БД_НарядModel.Трелювання_фанери_РУ_Норма" Role="Трелювання_фанери_РУ_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Трелювання_фанери_РУ">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Трелювання_фанери_РУ_Норма">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Устройств__Вид_р__05A3D694">
+    <End Type="БД_НарядModel.Устройство_площадок" Role="Устройство_площадок" Multiplicity="1" />
+    <End Type="БД_НарядModel.Устройство_площадок_Норма" Role="Устройство_площадок_Норма" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Устройство_площадок">
+        <PropertyRef Name="Id_Вид_робіт" />
+      </Principal>
+      <Dependent Role="Устройство_площадок_Норма">
+        <PropertyRef Name="Вид_робіт" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
