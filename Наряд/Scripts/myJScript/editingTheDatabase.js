@@ -1,5 +1,7 @@
-﻿$(document).ready(function () { //загрузка таблицы /Робітники/
-    var employeesTable = $('#employeesDataTable').DataTable({
+﻿var employeesTable;
+
+$(document).ready(function () { //загрузка таблицы /Робітники/
+    employeesTable = $('#myDatatable').DataTable({
         'ajax': {
             'type': "GET",
             'url': '/EditingTheDatabase/getTableEmployees',
@@ -12,12 +14,12 @@
             { 'data': 'Категорія', 'autoWidth': true },
             {
                 "data": "Id_Робітника", "width": "50px", "render": function (data) {
-                    return '<a class="popup" href="/home/save/' + data + '">Редагувати</a>';
+                    return '<a class="popup" href="/EditingTheDatabase/save/' + data + '">Редагувати</a>';
                 }
             },
             {
                 "data": "Id_Робітника", "width": "50px", "render": function (data) {
-                    return '<a class="popup text-danger" href="/home/delete/' + data + '">Видалити</a>';
+                    return '<a class="popup text-danger" href="/EditingTheDatabase/delete/' + data + '">Видалити</a>';
                 }
             }
         ],
@@ -45,3 +47,52 @@
         }
     })
 }) 
+
+$('.tablecontainer').on('click', 'a.popup', function (e) {
+    e.preventDefault();
+    OpenPopup($(this).attr('href'));
+})
+
+function OpenPopup(pageUrl) {
+    var $pageContent = $('<div/>');
+    $pageContent.load(pageUrl, function () {
+        $('#popupForm', $pageContent).removeData('validator');
+        $('#popupForm', $pageContent).removeData('unobtrusiveValidation');
+        $.validator.unobtrusive.parse('form');
+
+    });
+
+    $dialog = $('<div class="popupWindow" style="overflow:auto"></div>')
+        .html($pageContent)
+        .dialog({
+            draggable: false,
+            autoOpen: false,
+            resizable: false,
+            model: true,
+            title: 'Діалогове вікно',
+            height: 550,
+            width: 600,
+            close: function () {
+                $dialog.dialog('destroy').remove();
+            }
+        })
+
+    $('.popupWindow').on('submit', '#popupForm', function (e) {
+        var url = $('#popupForm')[0].action;
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: $('#popupForm').serialize(),
+            success: function (data) {
+                if (data.status) {
+                    $dialog.dialog('close');
+                    employeesTable.ajax.reload();
+                }
+            }
+        })
+
+        e.preventDefault();
+    })
+    $dialog.dialog('open');
+}
+     

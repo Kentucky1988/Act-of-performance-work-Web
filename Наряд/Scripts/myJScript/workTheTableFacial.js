@@ -387,11 +387,11 @@ $(document).ajaxStart(function () {//индикатор работы AJAX
     $('#loader').hide();
 });
 
-$('#buttonModalClear').click(function myfunction() {//кнопка вызов модального окна очистки наряда  
+$('#buttonModalClear').click(function () {//кнопка вызов модального окна очистки наряда  
     $('#myModal').modal('show');
 })
 
-$('#cleaningAll').click(function myfunction() {//кнопка очистить полностю наряду   
+$('#cleaningAll').click(function () {//кнопка очистить полностю наряду   
     clearingThead();
     clearingEmployee();
     clearingTableTbodyTable();
@@ -399,7 +399,7 @@ $('#cleaningAll').click(function myfunction() {//кнопка очистить �
     clearingTableDetails();
 })
 
-$('#cleaningPart').click(function myfunction() {//кнопка очистить частину наряду
+$('#cleaningPart').click(function () {//кнопка очистить частину наряду
     if ($('#clearingThead').is(':checked')) {
         clearingThead();
     }

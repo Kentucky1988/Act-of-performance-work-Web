@@ -458,13 +458,9 @@
           <Property Name="0,75" Type="decimal" Precision="5" Scale="3" Nullable="false" />
           <Property Name="1,1" Type="decimal" Precision="5" Scale="3" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Робітники" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="Робітники">
           <Key>
             <PropertyRef Name="Id_Робітника" />
-            <PropertyRef Name="П_І_Б" />
-            <PropertyRef Name="Професія" />
           </Key>
           <Property Name="Id_Робітника" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="П_І_Б" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -1409,6 +1405,7 @@
           <EntitySet Name="Прополювання_лісу" EntityType="Self.Прополювання_лісу" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Прополювання_лісу_Норма" EntityType="Self.Прополювання_лісу_Норма" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="РГК_ССР_без_трелювання" EntityType="Self.РГК_ССР_без_трелювання" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Робітники" EntityType="Self.Робітники" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntityType="Self.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ручний_догляд_за_л_к" EntityType="Self.Ручний_догляд_за_л_к" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ручний_догляд_за_л_к_Норма" EntityType="Self.Ручний_догляд_за_л_к_Норма" Schema="dbo" store:Type="Tables" />
@@ -1602,15 +1599,6 @@
     [РГК_ССР_без_трелювання_Норма].[0,75] AS [0,75], 
     [РГК_ССР_без_трелювання_Норма].[1,1] AS [1,1]
     FROM [dbo].[РГК_ССР_без_трелювання_Норма] AS [РГК_ССР_без_трелювання_Норма]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Робітники" EntityType="Self.Робітники" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Робітники].[Id_Робітника] AS [Id_Робітника], 
-    [Робітники].[П_І_Б] AS [П_І_Б], 
-    [Робітники].[Професія] AS [Професія], 
-    [Робітники].[Тарифний_розряд] AS [Тарифний_розряд], 
-    [Робітники].[Категорія] AS [Категорія]
-    FROM [dbo].[Робітники] AS [Робітники]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" EntityType="Self.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1989,6 +1977,7 @@
           <EntitySet Name="Прополювання_лісу" EntityType="БД_НарядModel.Прополювання_лісу" />
           <EntitySet Name="Прополювання_лісу_Норма" EntityType="БД_НарядModel.Прополювання_лісу_Норма" />
           <EntitySet Name="РГК_ССР_без_трелювання" EntityType="БД_НарядModel.РГК_ССР_без_трелювання" />
+          <EntitySet Name="Робітники" EntityType="БД_НарядModel.Робітники" />
           <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" />
           <EntitySet Name="Ручний_догляд_за_л_к" EntityType="БД_НарядModel.Ручний_догляд_за_л_к" />
           <EntitySet Name="Ручний_догляд_за_л_к_Норма" EntityType="БД_НарядModel.Ручний_догляд_за_л_к_Норма" />
@@ -2019,7 +2008,6 @@
           <EntitySet Name="Прибирання_небезпечних_дерев_Норма" EntityType="БД_НарядModel.Прибирання_небезпечних_дерев_Норма" />
           <EntitySet Name="РГК_ССР_без_трелювання_ГСМ" EntityType="БД_НарядModel.РГК_ССР_без_трелювання_ГСМ" />
           <EntitySet Name="РГК_ССР_без_трелювання_Норма" EntityType="БД_НарядModel.РГК_ССР_без_трелювання_Норма" />
-          <EntitySet Name="Робітники" EntityType="БД_НарядModel.Робітники" />
           <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" />
           <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" />
           <EntitySet Name="Садіння_лісу_Додаткові_роботи_Норма" EntityType="БД_НарядModel.Садіння_лісу_Додаткові_роботи_Норма" />
@@ -2328,6 +2316,16 @@
           <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="РГК_ССР_без_трелювання_ГСМ" Relationship="БД_НарядModel.FK__РГК_ССР_б__Вид_р__28ED12D1" FromRole="РГК_ССР_без_трелювання" ToRole="РГК_ССР_без_трелювання_ГСМ" />
           <NavigationProperty Name="РГК_ССР_без_трелювання_Норма" Relationship="БД_НарядModel.FK__РГК_ССР_б__Вид_р__367C1819" FromRole="РГК_ССР_без_трелювання" ToRole="РГК_ССР_без_трелювання_Норма" />
+        </EntityType>
+        <EntityType Name="Робітники">
+          <Key>
+            <PropertyRef Name="Id_Робітника" />
+          </Key>
+          <Property Name="Id_Робітника" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="П_І_Б" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Професія" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Тарифний_розряд" Type="Int32" />
+          <Property Name="Категорія" Type="Int32" />
         </EntityType>
         <EntityType Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
           <Key>
@@ -2748,18 +2746,6 @@
           <Property Name="C0_75" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
           <Property Name="C1_1" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
           <NavigationProperty Name="РГК_ССР_без_трелювання" Relationship="БД_НарядModel.FK__РГК_ССР_б__Вид_р__367C1819" FromRole="РГК_ССР_без_трелювання_Норма" ToRole="РГК_ССР_без_трелювання" />
-        </EntityType>
-        <EntityType Name="Робітники">
-          <Key>
-            <PropertyRef Name="Id_Робітника" />
-            <PropertyRef Name="П_І_Б" />
-            <PropertyRef Name="Професія" />
-          </Key>
-          <Property Name="Id_Робітника" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="П_І_Б" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Професія" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Тарифний_розряд" Type="Int32" />
-          <Property Name="Категорія" Type="Int32" />
         </EntityType>
         <EntityType Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ">
           <Key>
@@ -3721,6 +3707,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Робітники">
+            <EntityTypeMapping TypeName="БД_НарядModel.Робітники">
+              <MappingFragment StoreEntitySet="Робітники">
+                <ScalarProperty Name="Категорія" ColumnName="Категорія" />
+                <ScalarProperty Name="Тарифний_розряд" ColumnName="Тарифний_розряд" />
+                <ScalarProperty Name="Професія" ColumnName="Професія" />
+                <ScalarProperty Name="П_І_Б" ColumnName="П_І_Б" />
+                <ScalarProperty Name="Id_Робітника" ColumnName="Id_Робітника" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
             <EntityTypeMapping TypeName="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
               <MappingFragment StoreEntitySet="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
@@ -4042,17 +4039,6 @@
                 <ScalarProperty Name="C0_219" ColumnName="0,219" />
                 <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
                 <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Робітники">
-            <EntityTypeMapping TypeName="БД_НарядModel.Робітники">
-              <MappingFragment StoreEntitySet="Робітники">
-                <ScalarProperty Name="Категорія" ColumnName="Категорія" />
-                <ScalarProperty Name="Тарифний_розряд" ColumnName="Тарифний_розряд" />
-                <ScalarProperty Name="Професія" ColumnName="Професія" />
-                <ScalarProperty Name="П_І_Б" ColumnName="П_І_Б" />
-                <ScalarProperty Name="Id_Робітника" ColumnName="Id_Робітника" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

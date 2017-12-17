@@ -180,6 +180,8 @@
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\myJScript\datepicker.languageUK.js" />
     <Content Include="Models\ModelБД_Наряд.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -208,6 +210,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Extended\Робітники.cs" />
     <Compile Include="Models\ModelБД_Наряд.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -419,7 +422,8 @@
     <Content Include="Views\Home\_workWithDatabase.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
-    <Content Include="Views\EditingTheDatabase\AddOrEdit.cshtml" />
+    <Content Include="Views\EditingTheDatabase\Save.cshtml" />
+    <Content Include="Views\EditingTheDatabase\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -17,6 +17,7 @@
     <EntitySet Name="Прополювання_лісу" EntityType="БД_НарядModel.Прополювання_лісу" />
     <EntitySet Name="Прополювання_лісу_Норма" EntityType="БД_НарядModel.Прополювання_лісу_Норма" />
     <EntitySet Name="РГК_ССР_без_трелювання" EntityType="БД_НарядModel.РГК_ССР_без_трелювання" />
+    <EntitySet Name="Робітники" EntityType="БД_НарядModel.Робітники" />
     <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" />
     <EntitySet Name="Ручний_догляд_за_л_к" EntityType="БД_НарядModel.Ручний_догляд_за_л_к" />
     <EntitySet Name="Ручний_догляд_за_л_к_Норма" EntityType="БД_НарядModel.Ручний_догляд_за_л_к_Норма" />
@@ -47,7 +48,6 @@
     <EntitySet Name="Прибирання_небезпечних_дерев_Норма" EntityType="БД_НарядModel.Прибирання_небезпечних_дерев_Норма" />
     <EntitySet Name="РГК_ССР_без_трелювання_ГСМ" EntityType="БД_НарядModel.РГК_ССР_без_трелювання_ГСМ" />
     <EntitySet Name="РГК_ССР_без_трелювання_Норма" EntityType="БД_НарядModel.РГК_ССР_без_трелювання_Норма" />
-    <EntitySet Name="Робітники" EntityType="БД_НарядModel.Робітники" />
     <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" />
     <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" />
     <EntitySet Name="Садіння_лісу_Додаткові_роботи_Норма" EntityType="БД_НарядModel.Садіння_лісу_Додаткові_роботи_Норма" />
@@ -356,6 +356,16 @@
     <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="РГК_ССР_без_трелювання_ГСМ" Relationship="БД_НарядModel.FK__РГК_ССР_б__Вид_р__28ED12D1" FromRole="РГК_ССР_без_трелювання" ToRole="РГК_ССР_без_трелювання_ГСМ" />
     <NavigationProperty Name="РГК_ССР_без_трелювання_Норма" Relationship="БД_НарядModel.FK__РГК_ССР_б__Вид_р__367C1819" FromRole="РГК_ССР_без_трелювання" ToRole="РГК_ССР_без_трелювання_Норма" />
+  </EntityType>
+  <EntityType Name="Робітники">
+    <Key>
+      <PropertyRef Name="Id_Робітника" />
+    </Key>
+    <Property Name="Id_Робітника" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="П_І_Б" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Професія" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Тарифний_розряд" Type="Int32" />
+    <Property Name="Категорія" Type="Int32" />
   </EntityType>
   <EntityType Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
     <Key>
@@ -776,18 +786,6 @@
     <Property Name="C0_75" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
     <Property Name="C1_1" Type="Decimal" Nullable="false" Precision="5" Scale="3" />
     <NavigationProperty Name="РГК_ССР_без_трелювання" Relationship="БД_НарядModel.FK__РГК_ССР_б__Вид_р__367C1819" FromRole="РГК_ССР_без_трелювання_Норма" ToRole="РГК_ССР_без_трелювання" />
-  </EntityType>
-  <EntityType Name="Робітники">
-    <Key>
-      <PropertyRef Name="Id_Робітника" />
-      <PropertyRef Name="П_І_Б" />
-      <PropertyRef Name="Професія" />
-    </Key>
-    <Property Name="Id_Робітника" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="П_І_Б" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Професія" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Тарифний_розряд" Type="Int32" />
-    <Property Name="Категорія" Type="Int32" />
   </EntityType>
   <EntityType Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ">
     <Key>

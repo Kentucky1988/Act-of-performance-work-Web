@@ -453,13 +453,9 @@
     <Property Name="0,75" Type="decimal" Precision="5" Scale="3" Nullable="false" />
     <Property Name="1,1" Type="decimal" Precision="5" Scale="3" Nullable="false" />
   </EntityType>
-  <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Робітники" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
   <EntityType Name="Робітники">
     <Key>
       <PropertyRef Name="Id_Робітника" />
-      <PropertyRef Name="П_І_Б" />
-      <PropertyRef Name="Професія" />
     </Key>
     <Property Name="Id_Робітника" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="П_І_Б" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -1404,6 +1400,7 @@
     <EntitySet Name="Прополювання_лісу" EntityType="Self.Прополювання_лісу" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Прополювання_лісу_Норма" EntityType="Self.Прополювання_лісу_Норма" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="РГК_ССР_без_трелювання" EntityType="Self.РГК_ССР_без_трелювання" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Робітники" EntityType="Self.Робітники" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" EntityType="Self.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Ручний_догляд_за_л_к" EntityType="Self.Ручний_догляд_за_л_к" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Ручний_догляд_за_л_к_Норма" EntityType="Self.Ручний_догляд_за_л_к_Норма" Schema="dbo" store:Type="Tables" />
@@ -1597,15 +1594,6 @@
     [РГК_ССР_без_трелювання_Норма].[0,75] AS [0,75], 
     [РГК_ССР_без_трелювання_Норма].[1,1] AS [1,1]
     FROM [dbo].[РГК_ССР_без_трелювання_Норма] AS [РГК_ССР_без_трелювання_Норма]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="Робітники" EntityType="Self.Робітники" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [Робітники].[Id_Робітника] AS [Id_Робітника], 
-    [Робітники].[П_І_Б] AS [П_І_Б], 
-    [Робітники].[Професія] AS [Професія], 
-    [Робітники].[Тарифний_розряд] AS [Тарифний_розряд], 
-    [Робітники].[Категорія] AS [Категорія]
-    FROM [dbo].[Робітники] AS [Робітники]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" EntityType="Self.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 

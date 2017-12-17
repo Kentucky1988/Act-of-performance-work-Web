@@ -144,6 +144,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Робітники">
+      <EntityTypeMapping TypeName="БД_НарядModel.Робітники">
+        <MappingFragment StoreEntitySet="Робітники">
+          <ScalarProperty Name="Категорія" ColumnName="Категорія" />
+          <ScalarProperty Name="Тарифний_розряд" ColumnName="Тарифний_розряд" />
+          <ScalarProperty Name="Професія" ColumnName="Професія" />
+          <ScalarProperty Name="П_І_Б" ColumnName="П_І_Б" />
+          <ScalarProperty Name="Id_Робітника" ColumnName="Id_Робітника" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
       <EntityTypeMapping TypeName="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
         <MappingFragment StoreEntitySet="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР">
@@ -465,17 +476,6 @@
           <ScalarProperty Name="C0_219" ColumnName="0,219" />
           <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
           <ScalarProperty Name="Вид_робітID" ColumnName="Вид_робітID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Робітники">
-      <EntityTypeMapping TypeName="БД_НарядModel.Робітники">
-        <MappingFragment StoreEntitySet="Робітники">
-          <ScalarProperty Name="Категорія" ColumnName="Категорія" />
-          <ScalarProperty Name="Тарифний_розряд" ColumnName="Тарифний_розряд" />
-          <ScalarProperty Name="Професія" ColumnName="Професія" />
-          <ScalarProperty Name="П_І_Б" ColumnName="П_І_Б" />
-          <ScalarProperty Name="Id_Робітника" ColumnName="Id_Робітника" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

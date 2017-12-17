@@ -41,6 +41,7 @@ namespace Наряд.Models
         public virtual DbSet<Прополювання_лісу> Прополювання_лісу { get; set; }
         public virtual DbSet<Прополювання_лісу_Норма> Прополювання_лісу_Норма { get; set; }
         public virtual DbSet<РГК_ССР_без_трелювання> РГК_ССР_без_трелювання { get; set; }
+        public virtual DbSet<Робітники> Робітники { get; set; }
         public virtual DbSet<Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР> Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР { get; set; }
         public virtual DbSet<Ручний_догляд_за_л_к> Ручний_догляд_за_л_к { get; set; }
         public virtual DbSet<Ручний_догляд_за_л_к_Норма> Ручний_догляд_за_л_к_Норма { get; set; }
@@ -71,7 +72,6 @@ namespace Наряд.Models
         public virtual DbSet<Прибирання_небезпечних_дерев_Норма> Прибирання_небезпечних_дерев_Норма { get; set; }
         public virtual DbSet<РГК_ССР_без_трелювання_ГСМ> РГК_ССР_без_трелювання_ГСМ { get; set; }
         public virtual DbSet<РГК_ССР_без_трелювання_Норма> РГК_ССР_без_трелювання_Норма { get; set; }
-        public virtual DbSet<Робітники> Робітники { get; set; }
         public virtual DbSet<Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ> Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ { get; set; }
         public virtual DbSet<Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма> Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма { get; set; }
         public virtual DbSet<Садіння_лісу_Додаткові_роботи_Норма> Садіння_лісу_Додаткові_роботи_Норма { get; set; }
