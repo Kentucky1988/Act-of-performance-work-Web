@@ -391,30 +391,46 @@ $('#buttonModalClear').click(function () {//кнопка вызов модаль
     $('#myModal').modal('show');
 })
 
-$('#cleaningAll').click(function () {//кнопка очистить полностю наряду   
-    clearingThead();
-    clearingEmployee();
-    clearingTableTbodyTable();
-    clearingTableTbodyTableRevers();
-    clearingTableDetails();
+$('#cleaningAll').click(function () {//кнопка очистить полностю наряду  
+    try {
+        clearingThead();
+        clearingEmployee();
+        clearingTableTbodyTable();
+        clearingTableTbodyTableRevers();
+        clearingTableDetails();
+        notifyMessage("Дані успішно видалено", "success");   
+    } catch (e) {
+        notifyMessage("Помилка видалено", "error");   
+    }
+    
 })
 
 $('#cleaningPart').click(function () {//кнопка очистить частину наряду
+    var work = false;
     if ($('#clearingThead').is(':checked')) {
         clearingThead();
+        work = true;
     }
     if ($('#clearingEmployee').is(':checked')) {
         clearingEmployee();
+        work = true;
     }
     if ($('#clearingTableTbodyTable').is(':checked')) {
         clearingTableTbodyTable();
+        work = true;
     }
     if ($('#clearingTableTbodyTableRevers').is(':checked')) {
         clearingTableTbodyTableRevers();
+        work = true;
     }
     if ($('#clearingTableDetails').is(':checked')) {
         clearingTableDetails();
+        work = true;
     }
+
+    if (work) {
+        notifyMessage("Дані успішно видалено", "success");   
+    }   
 })
 
 
@@ -467,5 +483,13 @@ function clearingTableDetails() {//Очистити таблицю: Лісопр
         $(this).remove();                              //Удаление строки 
     }); 
     $('#volumeTotalTableDetails, #totalTableDetails').text('');
+}
+
+
+function notifyMessage(textMessage, classStyles) {
+    $.notify(textMessage, {       
+        globalPosition: "top center",
+        className: classStyles
+    })
 }
 

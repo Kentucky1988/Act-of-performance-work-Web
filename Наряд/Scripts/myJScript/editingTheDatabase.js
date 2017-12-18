@@ -1,7 +1,7 @@
-﻿var employeesTable;
+﻿var dataTable, popupForm;
 
 $(document).ready(function () { //загрузка таблицы /Робітники/
-    employeesTable = $('#myDatatable').DataTable({
+    dataTable = $('#myDatatable').DataTable({
         'ajax': {
             'type': "GET",
             'url': '/EditingTheDatabase/getTableEmployees',
@@ -14,12 +14,12 @@ $(document).ready(function () { //загрузка таблицы /Робітн�
             { 'data': 'Категорія', 'autoWidth': true },
             {
                 "data": "Id_Робітника", "width": "50px", "render": function (data) {
-                    return '<a class="popup" href="/EditingTheDatabase/save/' + data + '">Редагувати</a>';
+                    return '<a class="popup" href="/EditingTheDatabase/Save/' + data + '">Редагувати</a>';
                 }
             },
             {
                 "data": "Id_Робітника", "width": "50px", "render": function (data) {
-                    return '<a class="popup text-danger" href="/EditingTheDatabase/delete/' + data + '">Видалити</a>';
+                    return '<a class="popup text-danger" href="/EditingTheDatabase/Delete/' + data + '">Видалити</a>';
                 }
             }
         ],
@@ -46,12 +46,14 @@ $(document).ready(function () { //загрузка таблицы /Робітн�
             }
         }
     })
-}) 
+})
+
 
 $('.tablecontainer').on('click', 'a.popup', function (e) {
     e.preventDefault();
     OpenPopup($(this).attr('href'));
 })
+
 
 function OpenPopup(pageUrl) {
     var $pageContent = $('<div/>');
@@ -59,24 +61,14 @@ function OpenPopup(pageUrl) {
         $('#popupForm', $pageContent).removeData('validator');
         $('#popupForm', $pageContent).removeData('unobtrusiveValidation');
         $.validator.unobtrusive.parse('form');
-
     });
 
-    $dialog = $('<div class="popupWindow" style="overflow:auto"></div>')
-        .html($pageContent)
-        .dialog({
-            draggable: false,
-            autoOpen: false,
-            resizable: false,
-            model: true,
-            title: 'Діалогове вікно',
-            height: 550,
-            width: 600,
-            close: function () {
-                $dialog.dialog('destroy').remove();
-            }
-        })
+    PopupForm($pageContent);
+    editingData();
+    popupForm.dialog('open');
+}
 
+function editingData() {
     $('.popupWindow').on('submit', '#popupForm', function (e) {
         var url = $('#popupForm')[0].action;
         $.ajax({
@@ -85,14 +77,33 @@ function OpenPopup(pageUrl) {
             data: $('#popupForm').serialize(),
             success: function (data) {
                 if (data.status) {
-                    $dialog.dialog('close');
-                    employeesTable.ajax.reload();
+                    popupForm.dialog('close');
+                    dataTable.ajax.reload();
+
+                    $.notify(data.message, {
+                        globalPosition: "top center",
+                        className: "success"
+                    })
                 }
             }
         })
-
         e.preventDefault();
     })
-    $dialog.dialog('open');
 }
-     
+
+function PopupForm($pageContent) {
+    popupForm = $('<div class="popupWindow" style="overflow:auto"></div>')
+        .html($pageContent)
+        .dialog({
+            draggable: false,
+            autoOpen: false,
+            resizable: false,
+            model: true,
+            title: 'Діалогове вікно',
+            height: 460,
+            width: 500,
+            close: function () {
+                popupForm.dialog('destroy').remove();
+            }
+        })   
+}

@@ -50,7 +50,8 @@ $('.add').click(function () {//событие на нажатие кнопки �
         copyString(this, $table); //копировать строку ввода 
         clearRow($table);         //очистка строк        
         columnSum($table);        //сумма строк  
-    }
+        notifyMessage("Дані успішно добавлено", "success");    
+    }    
 });
 
 function copyString(element, $table) {   
@@ -86,12 +87,13 @@ $('#tbodyTable').each(function () {
         deleteValCollectionOilCosts(indexDeleteElement);//удаление обекта из колекции расход ГСМ при удалеине строки
         countValColectionSortOil();//пересчитать расхода ГСМ по строкам
         addStringDetails(colectionSortOil);//перестроить таблицу расход материалов       
-        columnSum($table); //пересчитать сумму строк после удаленных       
+        columnSum($table); //пересчитать сумму строк после удаленных    
+        notifyMessage("Дані успішно видалено", "success");    
     })
 });
 
 function deleteTr(element) {//Удаление строки
-    $(element).parents('tr').remove();
+    $(element).parents('tr').remove();    
 }
 
 function clearRow($table) {

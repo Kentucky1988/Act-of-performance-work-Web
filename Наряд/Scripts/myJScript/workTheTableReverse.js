@@ -3,7 +3,8 @@
    
     var $table = $(this).parents('tbody').find('tr:not(:first)');//таблица в которой добовляем строки
     volumeTotalTableDetails($table);//Загальний об'єм
-    totalTableDetails($table);//Загальна кількість      
+    totalTableDetails($table);//Загальна кількість   
+    notifyMessage("Дані успішно добавлено", "success"); 
 });
 
 function copyStringDetails(element) {
@@ -35,6 +36,7 @@ $('.details').each(function () {
         var $table = $(this).parents('tbody').find('tr:not(:first)');//таблица в которой добовляем строки
         volumeTotalTableDetails($table);//Загальний об'єм
         totalTableDetails($table);//Загальна кількість    
+        notifyMessage("Дані успішно видалено", "success");   
     })
 });
 
@@ -127,7 +129,7 @@ function percentFulfilledTheNorms() {                 //процент выпо�
     })
 }
 
-function salary() {//зарплата
+function salary() {                                             //зарплата
     var columnSumSalary = $('#columnSumSalary').html();         //всего начислено зарплаты
     var sumNumberDaysWorked = $('#sumNumberDaysWorked').html(); //всего отработано дней 
     $('.fulfilledTheNorms').each(function () {
@@ -138,7 +140,7 @@ function salary() {//зарплата
         if (salary > 0) {
             $(this).next('td').next('td').text(salary.toFixed(2));  //выполнено норм  
         } else {
-            $(this).next('td').next('td').text('');  //выполнено норм  
+            $(this).next('td').next('td').text('');              //выполнено норм  
         }
     })
 }
@@ -158,7 +160,8 @@ $('.addEmployees').click(function myfunction() {//добовляем строк�
     if (testDateValid()) {//проверка не пустые строки
         addStringEmployee(this, $table);  //добавляем нижнюю строку в таблице
         clearRowEmployee($table);         //очистка строки ввода  
-        numberPersons($table);            //количество человек в табеле           
+        numberPersons($table);            //количество человек в табеле    
+        notifyMessage("Дані успішно добавлено", "success"); 
     };
 });
 
@@ -234,7 +237,8 @@ $('.tbodyTableRevers').each(function () {
         percentFulfilledTheNorms(); //процент выполнения норм 
         salary()                    //зарплата
         columnSumEmployee($table);  //сумма строк 
-        numberPersons($table);      //количество человек в табеле       
+        numberPersons($table);      //количество человек в табеле   
+        notifyMessage("Дані успішно видалено", "success"); 
     })
 });
 

@@ -1,31 +1,31 @@
 ﻿@model Наряд.Models.Робітники
 
-<h2>Видалити</h2>
-@using (Html.BeginForm("Delete", "EditingTheDatabase", FormMethod.Post, new { id = "popupForm" }))
-{
-    @Html.HiddenFor(a => a.Id_Робітника)
-    <div class="form-group">
-        @Html.LabelFor(a => a.П_І_Б, new { @class = "control-label" })
-        <p>@Model.П_І_Б</p>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(a => a.Професія, new { @class = "control-label" })
-        <p>@Model.Професія</p>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(a => a.Тарифний_розряд, new { @class = "control-label" })
-        <p>@Model.Тарифний_розряд</p>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(a => a.Категорія, new { @class = "control-label" })
-        <p>@Model.Категорія</p>
-    </div>
-
-    <div>
-        <input type="submit" value="Очистити" />
-    </div>
+@{
+    Layout = null;
 }
 
+<div style="text-align: center"><h3>Видалити</h3></div>
+
+    @using (Html.BeginForm("Delete", "EditingTheDatabase", FormMethod.Post, new { id = "popupForm" }))
+    {
+        @Html.HiddenFor(a => a.Id_Робітника)
+        <div class="form-group">
+            <label>@Html.LabelFor(a => a.П_І_Б, new { @class = "control-label" }):</label>
+            <label>@Model.П_І_Б</label>
+        </div>
+        <div class="form-group">
+            <label>@Html.LabelFor(a => a.Професія, new { @class = "control-label" }):</label>
+            <label>@Model.Професія</label>
+        </div>
+        <div class="form-group">
+            <label>@Html.LabelFor(a => a.Тарифний_розряд, new { @class = "control-label" }):</label>
+            <label>@Model.Тарифний_розряд</label>
+        </div>
+        <div class="form-group">
+            <label>@Html.LabelFor(a => a.Категорія, new { @class = "control-label" }):</label>
+            <label>@Model.Категорія</label>
+        </div>
+        <div>
+            <input class="btn btn-danger" type="submit" value="Видалити дані" />
+        </div>
+    }

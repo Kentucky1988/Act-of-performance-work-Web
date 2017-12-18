@@ -4,7 +4,8 @@
     Layout = null;
 }
 
-<h2>Зберегти</h2>
+<div style="text-align: center"><h3>Зберегти</h3></div>
+
 @using (Html.BeginForm("Save", "EditingTheDatabase", FormMethod.Post, new { id = "popupForm" }))
 {
     if (Model != null && Model.Id_Робітника > 0)
