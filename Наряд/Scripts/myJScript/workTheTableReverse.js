@@ -1,10 +1,10 @@
 ﻿$('.addDetails').click(function () {//событие на нажатие кнопки ДОБАВИТ    
     copyStringDetails(this); //копировать строку ввода
-   
+
     var $table = $(this).parents('tbody').find('tr:not(:first)');//таблица в которой добовляем строки
     volumeTotalTableDetails($table);//Загальний об'єм
     totalTableDetails($table);//Загальна кількість   
-    notifyMessage("Дані успішно добавлено", "success"); 
+    notifyMessage("Дані успішно добавлено", "success");
 });
 
 function copyStringDetails(element) {
@@ -36,7 +36,7 @@ $('.details').each(function () {
         var $table = $(this).parents('tbody').find('tr:not(:first)');//таблица в которой добовляем строки
         volumeTotalTableDetails($table);//Загальний об'єм
         totalTableDetails($table);//Загальна кількість    
-        notifyMessage("Дані успішно видалено", "success");   
+        notifyMessage("Дані успішно видалено", "success");
     })
 });
 
@@ -147,11 +147,23 @@ function salary() {                                             //зарплат
 
 function testDateValid() {//проверка выбора сотрудника и расчет норм
     var isAllValid = false;
+    var isNormValid = false;
 
-    if ($('#columnSumNorm').length && $('#columnSumNorm').html() !== 0 && $('.tbodyTableRevers .autocompleteCombobox').val() !== 'Вибрати') {
-        isAllValid = true;
+    if ($('#columnSumNorm').length && $('#columnSumNorm').html() !== 0) {
+        isNormValid = true;
+    } else {
+        notifyMessage("Вкажіть виконану роботу", "warn");
     }
-    return isAllValid;
+
+    if ($('.tbodyTableRevers .autocompleteCombobox').val() !== 'Вибрати') {
+        isAllValid = true;
+    } else {
+        notifyMessage("Вкажіть кількість відпрацьованих днів", "warn");
+    }
+
+    if (isAllValid && isNormValid) {
+        return true;
+    }    
 }
 
 $('.addEmployees').click(function myfunction() {//добовляем строки в табл. Employees
@@ -161,8 +173,8 @@ $('.addEmployees').click(function myfunction() {//добовляем строк�
         addStringEmployee(this, $table);  //добавляем нижнюю строку в таблице
         clearRowEmployee($table);         //очистка строки ввода  
         numberPersons($table);            //количество человек в табеле    
-        notifyMessage("Дані успішно добавлено", "success"); 
-    };
+        notifyMessage("Дані успішно добавлено", "success");
+    }
 });
 
 function addStringEmployee(element, $table) {//добавляем нижнюю строку в таблице /employee(табель)/
@@ -238,7 +250,7 @@ $('.tbodyTableRevers').each(function () {
         salary()                    //зарплата
         columnSumEmployee($table);  //сумма строк 
         numberPersons($table);      //количество человек в табеле   
-        notifyMessage("Дані успішно видалено", "success"); 
+        notifyMessage("Дані успішно видалено", "success");
     })
 });
 
@@ -255,27 +267,27 @@ function deleteTrEmployee(element) {//Удаление выбранной стр
 function volumeTotalTableDetails($table) {//Загальний об'єм таблица Лесопродукция (details)   
     $('#totalTableDetails').text(function () {
         var sum = 0;
-        $('td:nth-child(3)', $table).each(function () {          
+        $('td:nth-child(3)', $table).each(function () {
             sum += +$(this).text().replace(',', '.');
         });
         $('td:nth-child(8)', $table).each(function () {
             sum += +$(this).text().replace(',', '.');
         });
         $(this).text(sum > 0 ? (sum).toFixed(0) : '');
-    });   
+    });
 }
 
 function totalTableDetails($table) {//Загальна кількість таблица Лесопродукция (details)
     $('#volumeTotalTableDetails').text(function () {
         var sum = 0;
-        $('td:nth-child(4)', $table).each(function () {           
+        $('td:nth-child(4)', $table).each(function () {
             sum += +$(this).text().replace(',', '.');
         });
         $('td:nth-child(9)', $table).each(function () {
             sum += +$(this).text().replace(',', '.');
         });
         $(this).text(sum > 0 ? (sum).toFixed(3) : '');
-    });   
+    });
 }
 
 

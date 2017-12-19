@@ -51,7 +51,9 @@ $('.add').click(function () {//событие на нажатие кнопки �
         clearRow($table);         //очистка строк        
         columnSum($table);        //сумма строк  
         notifyMessage("Дані успішно добавлено", "success");    
-    }    
+    } else {
+        notifyMessage("Вкажіть виконану роботу", "warn");  
+    }
 });
 
 function copyString(element, $table) {   

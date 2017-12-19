@@ -79,29 +79,35 @@ var checkedConditionsWinter;//условия труда /зима/
 var checkedConditionsHard;//условия труда /тяжелые/
 
 function normOfWork(element) {//норма выроботки 
-    if ($('#product').val() !== '') {
-        var table = $('#productCategory').val();
+    if ($('#product').val() !== '') {        
         typeOfWork = element;
         checkedConditionsWinter = $('#workingConditionsWinter').hasClass('active') ? "Зимові умови" : "";
         checkedConditionsHard = $('#workingConditionsHard').hasClass('active') ? "Тяжкі умови" : "";
+
         var volumeWood = $("#volumeWood").val();
-        var tractorMoving = $("#tractorMoving").val();
-        var block = $("#block").val();
-        var reduceDeforestationCoefficient = $('#reduceDeforestationCoefficient').val();
-        var forestPlantingConditions = $('#forestPlantingConditions').val();
-        $.ajax({
-            type: "GET",
-            url: '/home/normWork',
-            data: {
-                'table': table, 'typeOfWork': typeOfWork, 'volumeWood': volumeWood, 'checkedConditionsWinter': checkedConditionsWinter,
-                'checkedConditionsHard': checkedConditionsHard, 'tractorMoving': tractorMoving, 'block': block, 'reduceDeforestationCoefficient': reduceDeforestationCoefficient,
-                'forestPlantingConditions': forestPlantingConditions
-            },
-            success: function (norm) {
-                $('#norm').val(norm[0]);
-                $("#executed").change();
-            }
-        });
+        if (volumeWood > 0) {
+            var table = $('#productCategory').val();
+            var tractorMoving = $("#tractorMoving").val();
+            var block = $("#block").val();
+            var reduceDeforestationCoefficient = $('#reduceDeforestationCoefficient').val();
+            var forestPlantingConditions = $('#forestPlantingConditions').val();
+
+            $.ajax({
+                type: "GET",
+                url: '/home/normWork',
+                data: {
+                    'table': table, 'typeOfWork': typeOfWork, 'volumeWood': volumeWood, 'checkedConditionsWinter': checkedConditionsWinter,
+                    'checkedConditionsHard': checkedConditionsHard, 'tractorMoving': tractorMoving, 'block': block, 'reduceDeforestationCoefficient': reduceDeforestationCoefficient,
+                    'forestPlantingConditions': forestPlantingConditions
+                },
+                success: function (norm) {
+                    $('#norm').val(norm[0]);
+                    $("#executed").change();
+                }
+            });
+        } else {
+            notifyMessage("Вкажіть середній об'єм хлиста", "warn"); 
+        } 
     }
 };
 
@@ -398,11 +404,11 @@ $('#cleaningAll').click(function () {//кнопка очистить полно�
         clearingTableTbodyTable();
         clearingTableTbodyTableRevers();
         clearingTableDetails();
-        notifyMessage("Дані успішно видалено", "success");   
+        notifyMessage("Дані успішно видалено", "success");
     } catch (e) {
-        notifyMessage("Помилка видалено", "error");   
+        notifyMessage("Помилка видалено", "error");
     }
-    
+
 })
 
 $('#cleaningPart').click(function () {//кнопка очистить частину наряду
@@ -429,8 +435,8 @@ $('#cleaningPart').click(function () {//кнопка очистить части
     }
 
     if (work) {
-        notifyMessage("Дані успішно видалено", "success");   
-    }   
+        notifyMessage("Дані успішно видалено", "success");
+    }
 })
 
 
@@ -460,7 +466,7 @@ function clearingTableTbodyTable() {                   //очистити таб
         var indexDeleteElement = $('tr:not(:first)', $table).index(this)//получить номер удаляемой строки
         $(this).remove();                               //Удаление строки      
         deleteValCollectionOilCosts(indexDeleteElement);//удаление обекта из колекции расход ГСМ при удалеине строки       
-    });   
+    });
     countValColectionSortOil();                //пересчитать расхода ГСМ по строкам
     addStringDetails(colectionSortOil);        //перестроить таблицу расход материалов       
     columnSum($table);                         //пересчитать сумму строк после удаленных       
@@ -469,9 +475,9 @@ function clearingTableTbodyTable() {                   //очистити таб
 function clearingTableTbodyTableRevers() {             //Очистити таблицю: Табель
     var $table = $('.tbodyTableRevers');               //таблица в которой удаляем строки
     clearRowEmployee($table);                          //очистка страки ввода       
-    $('tr:not(:eq(0), :eq(1))', $table).each(function () {        
+    $('tr:not(:eq(0), :eq(1))', $table).each(function () {
         $(this).remove();                              //Удаление строки 
-    });   
+    });
     columnSumEmployee($table);                         //сумма строк 
     $('.thead #numberPersons').text('');
 }
@@ -481,13 +487,13 @@ function clearingTableDetails() {//Очистити таблицю: Лісопр
     clearRow($table);                                  //очистка страки ввода       
     $('tr:not(:first)', $table).each(function () {
         $(this).remove();                              //Удаление строки 
-    }); 
+    });
     $('#volumeTotalTableDetails, #totalTableDetails').text('');
 }
 
 
 function notifyMessage(textMessage, classStyles) {
-    $.notify(textMessage, {       
+    $.notify(textMessage, {
         globalPosition: "top center",
         className: classStyles
     })
