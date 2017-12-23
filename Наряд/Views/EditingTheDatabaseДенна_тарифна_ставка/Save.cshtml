@@ -1,0 +1,73 @@
+﻿@model Наряд.Models.Денна_тарифна_ставка
+
+@{
+    Layout = null;
+}
+
+<div style="text-align: center"><h3>Зберегти</h3></div>
+
+@using (Html.BeginForm("Save", "EditingTheDatabaseДенна_тарифна_ставка", FormMethod.Post, new { id = "popupForm" }))
+{
+    if (Model != null && Model.РозцінкаID > 0)
+    {
+        @Html.HiddenFor(a => a.РозцінкаID)
+    }
+
+    <div class="form-group">
+        <label>Вид робіт</label>
+        @*@Html.LabelFor(a => a.Вид_робіт, new { @class = "control-label" })*@
+        @Html.TextBoxFor(a => a.Вид_робіт, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Вид_робіт)
+    </div>
+    <div class="form-group">
+        <label>Комплексна/Індивідуальна</label>
+        @*@Html.LabelFor(a => a.Комплексна_индивідуальна, new { @class = "control-label" })*@
+        @Html.TextBoxFor(a => a.Комплексна_индивідуальна, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Комплексна_индивідуальна)
+    </div>
+    <div class="form-group">
+        <label>Розряд 1</label>
+        @*@Html.LabelFor(a => a.Тарифний_розряд, new { @class = "control-label" })*@
+        @Html.TextBoxFor(a => a.C1, new { @tabindex = 7.11 })
+        @Html.ValidationMessageFor(a => a.C1)
+    </div>
+    <div class="form-group">
+        <label>Розряд 2</label>
+        @*@Html.LabelFor(a => a.Категорія, new { @class = "control-label" })*@
+        @Html.TextBoxFor(a => a.C2, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.C2)
+    </div>
+    <div class="form-group">
+        <label>Розряд 3</label>
+        @*@Html.LabelFor(a => a.Тарифний_розряд, new { @class = "control-label" })*@
+        @Html.TextBoxFor(a => a.C3, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.C3)
+    </div>
+    <div class="form-group">
+        <label>Розряд 4</label>
+        @*@Html.LabelFor(a => a.Категорія, new { @class = "control-label" })*@
+        @Html.TextBoxFor(a => a.C4, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.C4)
+    </div>
+    <div class="form-group">
+        <label>Розряд 5</label>
+        @*@Html.LabelFor(a => a.Тарифний_розряд, new { @class = "control-label" })*@
+        @Html.TextBoxFor(a => a.C5, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.C5)
+    </div>
+    <div class="form-group">
+        <label>Розряд 6</label>
+        @*@Html.LabelFor(a => a.Категорія, new { @class = "control-label" })*@
+        @Html.TextBoxFor(a => a.C6, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.C6)
+    </div>
+    <div>
+        <input type="submit" value="Зберегти" class="btn btn-primary" />
+        <input type="reset" value="Очистити" class="btn btn-default" />
+    </div>
+}
+
+
+
+
+

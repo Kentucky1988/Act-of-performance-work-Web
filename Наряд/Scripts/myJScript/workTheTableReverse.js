@@ -63,7 +63,7 @@ $arrayHoursUsed.change(function () {
 
         var $table = $(this).parents('tbody');//таблица в которой считаем сумму строк
         columnSumEmployee($table);      //сумма строк  
-        if (numberHours > 0) {
+        if (numberHours > 0) {           
             fulfilledTheNorms();        //выполнено норм     
             percentFulfilledTheNorms(); //процент выполнения норм 
             salary()                    //зарплата
@@ -147,9 +147,9 @@ function salary() {                                             //зарплат
 
 function testDateValid() {//проверка выбора сотрудника и расчет норм
     var isAllValid = false;
-    var isNormValid = false;
+    var isNormValid = false; 
 
-    if ($('#columnSumNorm').length && $('#columnSumNorm').html() !== 0) {
+    if ($('#columnSumNorm').length && $('#columnSumNorm').html() > 0) {
         isNormValid = true;
     } else {
         notifyMessage("Вкажіть виконану роботу", "warn");
@@ -158,7 +158,7 @@ function testDateValid() {//проверка выбора сотрудника �
     if ($('.tbodyTableRevers .autocompleteCombobox').val() !== 'Вибрати') {
         isAllValid = true;
     } else {
-        notifyMessage("Вкажіть кількість відпрацьованих днів", "warn");
+        notifyMessage("Вкажіть П.І.Б. робітника", "warn");
     }
 
     if (isAllValid && isNormValid) {
@@ -169,11 +169,13 @@ function testDateValid() {//проверка выбора сотрудника �
 $('.addEmployees').click(function myfunction() {//добовляем строки в табл. Employees
     var $table = $(this).parents('tbody');//таблица в которой добовляем строки
 
-    if (testDateValid()) {//проверка не пустые строки
+    if (testDateValid() && $('.dayWorked').html() > 0) {//проверка не пустые строки
         addStringEmployee(this, $table);  //добавляем нижнюю строку в таблице
         clearRowEmployee($table);         //очистка строки ввода  
         numberPersons($table);            //количество человек в табеле    
-        notifyMessage("Дані успішно добавлено", "success");
+       
+    } else {
+        notifyMessage("Вкажіть кількість відпрацьованих днів", "warn");
     }
 });
 
@@ -241,18 +243,22 @@ function columnSumEmployee($table) {//сумма строк Табель
 };
 
 $('.tbodyTableRevers').each(function () {
-    $(this).on('click', '.remove', function () {   //событие на нажатие кнопки удалить строку 
-        var $table = $(this).parents('tbody');//таблица в которой добовляем строки       
-        deleteTrEmployee(this);     //Удаление строки  
-        columnSumEmployee($table);  //сумма строк  
-        fulfilledTheNorms();        //выполнено норм     
-        percentFulfilledTheNorms(); //процент выполнения норм 
-        salary()                    //зарплата
-        columnSumEmployee($table);  //сумма строк 
-        numberPersons($table);      //количество человек в табеле   
+    $(this).on('click', '.remove', function () {   //событие на нажатие кнопки удалить строку        
+        deleteTrEmployee(this);        //Удаление строки  
+        workFromtbodyTableRevers();    //пересчет даных в таблице тпбель
         notifyMessage("Дані успішно видалено", "success");
     })
 });
+
+function workFromtbodyTableRevers() {
+    var $table = $('.tbodyTableRevers');//таблица в которой добовляем строки   
+    columnSumEmployee($table);  //сумма строк  
+    fulfilledTheNorms();        //выполнено норм     
+    percentFulfilledTheNorms(); //процент выполнения норм 
+    salary()                    //зарплата
+    columnSumEmployee($table);  //сумма строк 
+    numberPersons($table);      //количество человек в табеле   
+}
 
 function numberPersons($table) {  //количество человек в табеле  
     $('#numberPersons').text($('tr:not(:eq(0), :eq(1))', $table).length / 2);

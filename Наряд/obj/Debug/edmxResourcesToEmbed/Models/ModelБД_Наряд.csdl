@@ -24,6 +24,7 @@
     <EntitySet Name="Садіння_лісу" EntityType="БД_НарядModel.Садіння_лісу" />
     <EntitySet Name="Садіння_лісу_Додаткові_роботи" EntityType="БД_НарядModel.Садіння_лісу_Додаткові_роботи" />
     <EntitySet Name="Садіння_лісу_Норма" EntityType="БД_НарядModel.Садіння_лісу_Норма" />
+    <EntitySet Name="Сортименти" EntityType="БД_НарядModel.Сортименти" />
     <EntitySet Name="Техобслуговування_бензопили" EntityType="БД_НарядModel.Техобслуговування_бензопили" />
     <EntitySet Name="Трелювання_підліску" EntityType="БД_НарядModel.Трелювання_підліску" />
     <EntitySet Name="Трелювання_РГК" EntityType="БД_НарядModel.Трелювання_РГК" />
@@ -51,7 +52,6 @@
     <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" />
     <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" />
     <EntitySet Name="Садіння_лісу_Додаткові_роботи_Норма" EntityType="БД_НарядModel.Садіння_лісу_Додаткові_роботи_Норма" />
-    <EntitySet Name="Сортименти" EntityType="БД_НарядModel.Сортименти" />
     <EntitySet Name="Техобслуговування_бензопили_Норма" EntityType="БД_НарядModel.Техобслуговування_бензопили_Норма" />
     <EntitySet Name="Трелювання_підліску_ГСМ" EntityType="БД_НарядModel.Трелювання_підліску_ГСМ" />
     <EntitySet Name="Трелювання_підліску_Норма" EntityType="БД_НарядModel.Трелювання_підліску_Норма" />
@@ -232,11 +232,11 @@
     <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
     <Property Name="Комплексна_индивідуальна" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
     <Property Name="C1" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
-    <Property Name="C2" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
-    <Property Name="C3" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
-    <Property Name="C4" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
-    <Property Name="C5" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
-    <Property Name="C6" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+    <Property Name="C2" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="C3" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="C4" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="C5" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="C6" Type="Decimal" Precision="6" Scale="2" />
     <NavigationProperty Name="Категорії_робіт" Relationship="БД_НарядModel.FK__Категорії__Розці__57A801BA" FromRole="Денна_тарифна_ставка" ToRole="Категорії_робіт" />
   </EntityType>
   <EntityType Name="Догляд_за_л_к_мотокущорізом">
@@ -425,6 +425,13 @@
     <Property Name="Гірські_умови_схил_до_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
     <Property Name="Гірські_умови_схил_понад_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
     <NavigationProperty Name="Садіння_лісу" Relationship="БД_НарядModel.FK__Садіння_л__Вид_р__00750D23" FromRole="Садіння_лісу_Норма" ToRole="Садіння_лісу" />
+  </EntityType>
+  <EntityType Name="Сортименти">
+    <Key>
+      <PropertyRef Name="СортиментиID" />
+    </Key>
+    <Property Name="СортиментиID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Назва_сортименту" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Техобслуговування_бензопили">
     <Key>
@@ -915,14 +922,6 @@
     <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
     <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="6" Scale="3" />
     <NavigationProperty Name="Садіння_лісу_Додаткові_роботи" Relationship="БД_НарядModel.FK__Садіння_л__Вид_р__0E04126B" FromRole="Садіння_лісу_Додаткові_роботи_Норма" ToRole="Садіння_лісу_Додаткові_роботи" />
-  </EntityType>
-  <EntityType Name="Сортименти">
-    <Key>
-      <PropertyRef Name="СортиментиID" />
-      <PropertyRef Name="Назва_сортименту" />
-    </Key>
-    <Property Name="СортиментиID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Назва_сортименту" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Техобслуговування_бензопили_Норма">
     <Key>

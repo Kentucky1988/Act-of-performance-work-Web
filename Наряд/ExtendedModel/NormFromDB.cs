@@ -44,12 +44,12 @@ namespace Наряд.ExtendedModel
             return Norm(amountOfWood, table, tableNorm, typeOfWork);
         }
 
-        public List<string> ColumnList(string tableNorm)//получаем список колонок в таблице
+        public List<string> ColumnList(string tableName)//получаем список колонок в таблице
         {
             using (БД_НарядEntities1 db = new БД_НарядEntities1())
             {
                 var normList = db.Database.SqlQuery<string>(
-                                   $"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'{tableNorm}'").ToList();
+                                   $"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'{tableName}'").ToList();
                 return normList;
             }
         }

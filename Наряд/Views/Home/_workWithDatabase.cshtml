@@ -3,18 +3,20 @@
         <h4>Редагування бази даних</h4>
     </div>
     <div class="tablecontainer">
-        <a class="popup btn btn-success" href="/EditingTheDatabase/Save" style="margin-bottom:10px; margin-left:20px;">Додати новий запис</a>
+        <div class="navbar-form form-group">
+            <label> Виберіть таблицю для редагування:</label>           
+            <select id="selectTheTableToEdit" style="width:250px">
+                <option></option>
+                <option>Вид_рубки</option>
+                <option>Денна_тарифна_ставка</option>
+                <option>Робітники</option>
+                <option>Сортименти</option>       
+            </select>
+            <a class="popup btn btn-success" id="addDataToDB" @*href="/EditingTheDatabaseРобітники/Save"*@ style="margin-left:20px;">Додати новий запис в таблицю</a>
+        </div>
+       
         <table id="myDatatable" class="table table-striped table-bordered table-hover" cellspacing="0" width="100%"> 
-            <thead>
-                <tr>
-                    <td>П.І.Б.</td>
-                    <td>Посада</td>
-                    <td>Тарифний розряд</td>
-                    <td>Категорія</td>
-                    <td>Редагувати</td>
-                    <td>Видалити</td>
-                </tr>
-            </thead>
+            <thead></thead>
         </table>
     </div>
 </div>
@@ -30,4 +32,6 @@
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>    
+
+
 

@@ -6,13 +6,13 @@
 
 <div style="text-align: center"><h3>Видалити</h3></div>
 
-    @using (Html.BeginForm("Delete", "EditingTheDatabase", FormMethod.Post, new { id = "popupForm" }))
-    {
-        @Html.HiddenFor(a => a.Id_Робітника)
-        <div class="form-group">
-            <label>@Html.LabelFor(a => a.П_І_Б, new { @class = "control-label" }):</label>
-            <label>@Model.П_І_Б</label>
-        </div>
+@using (Html.BeginForm("Delete", "EditingTheDatabaseРобітники", FormMethod.Post, new { id = "popupForm" }))
+{
+    @Html.HiddenFor(a => a.Id_Робітника)
+    <div class="form-group">
+        <label>@Html.LabelFor(a => a.П_І_Б, new { @class = "control-label" }):</label>
+        <label>@Model.П_І_Б</label>
+    </div>
         <div class="form-group">
             <label>@Html.LabelFor(a => a.Професія, new { @class = "control-label" }):</label>
             <label>@Model.Професія</label>
@@ -28,4 +28,4 @@
         <div>
             <input class="btn btn-danger" type="submit" value="Видалити дані" />
         </div>
-    }
+}

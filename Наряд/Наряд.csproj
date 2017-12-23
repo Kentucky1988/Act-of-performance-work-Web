@@ -425,6 +425,13 @@
     <Content Include="Scripts\jquery-3.2.1.min.map" />
     <Content Include="Views\EditingTheDatabase\Save.cshtml" />
     <Content Include="Views\EditingTheDatabase\Delete.cshtml" />
+    <Content Include="Views\EditingTheDatabaseРобітники\Save.cshtml" />
+    <Content Include="Views\EditingTheDatabaseРобітники\Delete.cshtml" />
+    <Content Include="Views\EditingTheDatabaseВид_рубки\Save.cshtml" />
+    <Content Include="Views\EditingTheDatabaseВид_рубки\Delete.cshtml" />
+    <Content Include="Views\EditingTheDatabaseДенна_тарифна_ставка\Save.cshtml" />
+    <Content Include="Views\EditingTheDatabaseСортименти\Save.cshtml" />
+    <Content Include="Views\EditingTheDatabaseСортименти\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

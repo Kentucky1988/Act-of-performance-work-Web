@@ -1,30 +1,48 @@
-﻿var dataTable, popupForm;
+﻿$(document).ready(function () {
+    $('#addDataToDB').hide();//скрыть кнопку
+});
 
-$(document).ready(function () { //загрузка таблицы /Робітники/
+var tableName;
+$('#selectTheTableToEdit').change(function () {
+    tableName = $(this).val();
+
+    if ($('#myDatatable tr').length) {
+        var table = $('#myDatatable').DataTable();   //очистка таблицы
+        table.clear().draw();
+        table.destroy();
+    }
+
+    if (tableName !== '') {      
+
+        if (tableName === 'Денна_тарифна_ставка') {
+            $('#addDataToDB').hide(); //скрыть кнопку
+        } else {
+            $('#addDataToDB').show(); //отобразить кнопку редактирования таблицы
+        }
+
+        var $thead = $('#myDatatable thead');
+        $('tr', $thead).remove(); //удалить  шапку таблицы
+        addTr($thead, tableName); //добавить шапку таблицы
+        showDataTable(tableName); //загрузка таблицы из БД
+    } else if ($('#myDatatable tr').length) {
+        $('tr', $thead).remove(); //удалить  шапку таблицы
+        $('#addDataToDB').hide(); //скрыть кнопку
+    }
+})
+
+
+var dataTable, popupForm;
+function showDataTable(tableName) { //загрузка таблицы из БД
     dataTable = $('#myDatatable').DataTable({
         'ajax': {
             'type': "GET",
-            'url': '/EditingTheDatabase/getTableEmployees',
+            'url': '/EditingTheDatabase' + tableName + '/GetTable', /*'/EditingTheDatabaseРобітники/GetTable',   */
             'datatype': 'json'
         },
-        'columns': [
-            { 'data': 'П_І_Б', 'autoWidth': true },
-            { 'data': 'Професія', 'autoWidth': true },
-            { 'data': 'Тарифний_розряд', 'autoWidth': true },
-            { 'data': 'Категорія', 'autoWidth': true },
-            {
-                "data": "Id_Робітника", "width": "50px", "render": function (data) {
-                    return '<a class="popup" href="/EditingTheDatabase/Save/' + data + '">Редагувати</a>';
-                }
-            },
-            {
-                "data": "Id_Робітника", "width": "50px", "render": function (data) {
-                    return '<a class="popup text-danger" href="/EditingTheDatabase/Delete/' + data + '">Видалити</a>';
-                }
-            }
-        ],
-        'language':
-        {
+        'columns': returnTr(tableName),//получаем структуру таблицы
+        'language': {
+            "decimal": ",",
+            "thousands": ".",
             "sProcessing": "Зачекайте...",
             "sLengthMenu": "Показати _MENU_ записів",
             "sZeroRecords": "Записи відсутні.",
@@ -46,12 +64,16 @@ $(document).ready(function () { //загрузка таблицы /Робітн�
             }
         }
     })
-})
+}
 
 
 $('.tablecontainer').on('click', 'a.popup', function (e) {
-    e.preventDefault();
-    OpenPopup($(this).attr('href'));
+    e.preventDefault();   
+    var str = $(this).attr('href');
+    if ($(this).attr('id') === 'addDataToDB') {
+        str = '/EditingTheDatabase' + tableName + '/Save';
+    }   
+    OpenPopup(str);
 })
 
 
@@ -68,7 +90,7 @@ function OpenPopup(pageUrl) {
     popupForm.dialog('open');
 }
 
-function editingData() {
+function editingData() {//изминение записей
     $('.popupWindow').on('submit', '#popupForm', function (e) {
         var url = $('#popupForm')[0].action;
         $.ajax({
@@ -97,13 +119,100 @@ function PopupForm($pageContent) {
         .dialog({
             draggable: false,
             autoOpen: false,
-            resizable: false,
+            resizable: false,            
             model: true,
             title: 'Діалогове вікно',
-            height: 460,
+            height: tableName === 'Денна_тарифна_ставка' ? 600 : 460,
             width: 500,
             close: function () {
                 popupForm.dialog('destroy').remove();
             }
-        })   
+        })
 }
+
+function addTr($thead, tableName) {    //добавить шапку таблицы
+
+    if (tableName === "Вид_рубки") {                  //построение таблицы Вид_рубки
+        $($thead).append('<tr><td>Вид рубки</td><td>Редагувати</td><td>Видалити</td></tr>');
+    } else if (tableName === "Денна_тарифна_ставка") {//построение таблицы Денна_тарифна_ставка
+        $($thead).append('<tr><td>Вид робіт</td><td>Комплексна/Індивідуальна</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>Видалити</td></tr>');
+    } else if (tableName === "Робітники") {           //построение таблицы Робітники       
+        $($thead).append('<tr><td>П.І.Б.</td><td>Посада</td><td>Тарифний розряд</td><td>Категорія</td><td>Редагувати</td><td>Видалити</td></tr>');
+    } else if (tableName === "Сортименти") {          //построение таблицы Сортименти
+        $($thead).append('<tr><td>Назва сортименту</td><td>Редагувати</td><td>Видалити</td></tr>');
+    }
+}
+
+
+function returnTr(tableName) {//получаем структуру таблицы
+    var newTr;
+    if (tableName === "Вид_рубки") {
+        newTr = [//построение таблицы Вид_рубки
+            { 'data': 'Вид_рубки1', 'autoWidth': true },
+            {
+                "data": "Id_Вид_робіт", "width": "50px", "render": function (data) {
+                    return '<a class="popup" href="/EditingTheDatabaseВид_рубки/Save/' + data + '">Редагувати</a>';
+                }
+            },
+            {
+                "data": "Id_Вид_робіт", "width": "50px", "render": function (data) {
+                    return '<a class="popup text-danger" href="/EditingTheDatabaseВид_рубки/Delete/' + data + '">Видалити</a>';
+                }
+            }
+        ];
+    } else if (tableName === "Денна_тарифна_ставка") {
+        newTr = [//построение таблицы Денна_тарифна_ставка
+            { 'data': 'Вид_робіт', 'autoWidth': true },
+            { 'data': 'Комплексна_индивідуальна', 'autoWidth': true },
+            { 'data': 'C1', 'autoWidth': true },
+            { 'data': 'C2', 'autoWidth': true },
+            { 'data': 'C3', 'autoWidth': true },
+            { 'data': 'C4', 'autoWidth': true },
+            { 'data': 'C5', 'autoWidth': true },
+            { 'data': 'C6', 'autoWidth': true },
+            {
+                "data": "РозцінкаID", "width": "50px", "render": function (data) {
+                    return '<a class="popup" href="/EditingTheDatabaseДенна_тарифна_ставка/Save/' + data + '">Редагувати</a>';
+                }
+            }
+        ];
+    } else if (tableName === "Робітники") {
+        newTr = [//построение таблицы Робітники
+            { 'data': 'П_І_Б', 'autoWidth': true },
+            { 'data': 'Професія', 'autoWidth': true },
+            { 'data': 'Тарифний_розряд', 'autoWidth': true },
+            { 'data': 'Категорія', 'autoWidth': true },
+            {
+                "data": "Id_Робітника", "width": "50px", "render": function (data) {
+                    return '<a class="popup" href="/EditingTheDatabaseРобітники/Save/' + data + '">Редагувати</a>';
+                }
+            },
+            {
+                "data": "Id_Робітника", "width": "50px", "render": function (data) {
+                    return '<a class="popup text-danger" href="/EditingTheDatabaseРобітники/Delete/' + data + '">Видалити</a>';
+                }
+            }
+        ];
+    } else if (tableName === "Сортименти") {
+        newTr = [//построение таблицы Сортименти
+            { 'data': 'Назва_сортименту', 'autoWidth': true },
+            {
+                "data": "СортиментиID", "width": "50px", "render": function (data) {
+                    return '<a class="popup" href="/EditingTheDatabaseСортименти/Save/' + data + '">Редагувати</a>';
+                }
+            },
+            {
+                "data": "СортиментиID", "width": "50px", "render": function (data) {
+                    return '<a class="popup text-danger" href="/EditingTheDatabaseСортименти/Delete/' + data + '">Видалити</a>';
+                }
+            }
+        ];
+    }
+    return newTr;
+}
+
+
+
+
+
+

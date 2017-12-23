@@ -32,15 +32,15 @@ function subdivision(element) {//Підрозділи
     })
 }
 
-function LoadMaterials(element) { //сортименты   
-    $.ajax({
-        type: "GET",
-        url: '/home/getMaterials',
-        success: function (data) {
-            renderCategory(element, data);
-        }
-    })
-}
+//function LoadMaterials(element) { //сортименты   
+//    $.ajax({
+//        type: "GET",
+//        url: '/home/getMaterials',
+//        success: function (data) {
+//            renderCategory(element, data);
+//        }
+//    })
+//}
 
 var Employees = []
 function loadEmployees() { //роботники   
@@ -84,8 +84,8 @@ function normOfWork(element) {//норма выроботки
         checkedConditionsWinter = $('#workingConditionsWinter').hasClass('active') ? "Зимові умови" : "";
         checkedConditionsHard = $('#workingConditionsHard').hasClass('active') ? "Тяжкі умови" : "";
 
-        var volumeWood = $("#volumeWood").val();
-        if (volumeWood > 0) {
+        var volumeWood = $("#volumeWood").val().trim();
+        if (volumeWood !== '') {
             var table = $('#productCategory').val();
             var tractorMoving = $("#tractorMoving").val();
             var block = $("#block").val();
@@ -105,7 +105,7 @@ function normOfWork(element) {//норма выроботки
                     $("#executed").change();
                 }
             });
-        } else {
+        }else {
             notifyMessage("Вкажіть середній об'єм хлиста", "warn"); 
         } 
     }
@@ -215,7 +215,7 @@ function getIdList(val, colum, List) {
 }
 
 $("#executed").change(function changeExecuted() {// событие на изминеие ячейки выполнено    
-    if ($('#executed').val() !== '') {// расчет выполненно норм 
+    if ($('#executed').val().trim() !== '' && $("#volumeWood").val().trim() !== '') {// расчет выполненно норм 
         var norm = +$('#norm').val();
         var executedNorm = ($('#executed').val().replace(',', '.') / norm).toFixed(3);
 
@@ -225,6 +225,8 @@ $("#executed").change(function changeExecuted() {// событие на изми
 
         $('#executedNorm').val(executedNorm);
         $('#Sum').val(($('#executedNorm').val() * $('#UnitPrice').val()).toFixed(2));
+    } else {
+        $('#executedNorm, #Sum').val('');
     }
 });
 
@@ -236,27 +238,27 @@ function changeWorksTitle(value) {//функция оброботчика изм
 function columnSum($table) {//сумма строк нормы   
 
     $($table).next('tfoot').find('td:not(:first)').text(function (indx) {//"tfoot tr td:not(:first)"
-        if (indx === 1 || indx === 2) {
-            var sum = 0;
+        var sumColumn = 0;
+        if (indx === 1 || indx === 2) {            
             $("#tbodyTable tr:not(:first) td:nth-child(" + (indx + 2) + ")").each(function () {
                 var str = $(this).parents('tr').find('td:eq(1)').text();
                 if (str === 'м3' || str === 'га' || str === 'скл/м' || str === 'тис. шт.') {
-                    sum += +$(this).text().replace(',', '.');
+                    sumColumn += +$(this).text().replace(',', '.');
                 }
             });
-            $(this).text(sum === 0 ? '' : (sum).toFixed(3));
+            $(this).text(sumColumn === 0 ? '' : (sumColumn).toFixed(3));
         } else if (indx === 4) {
-            var sum = 0;
+           // var sumColumn = 0;
             $("#tbodyTable tr:not(:first) td:nth-child(" + (indx + 2) + ")").each(function () {
-                sum += +$(this).text().replace(',', '.');
+                sumColumn += +$(this).text().replace(',', '.');
             });
-            $(this).attr('id', 'columnSumNorm').text(sum === 0 ? '' : (sum).toFixed(3));
+            $(this).attr('id', 'columnSumNorm').text(sumColumn === 0 ? '' : (sumColumn).toFixed(3));
         } else if (indx === 6) {
-            var sum = 0;
+           // var sumColumn = 0;
             $("#tbodyTable tr:not(:first) td:nth-child(" + (indx + 2) + ")").each(function () {
-                sum += +$(this).text().replace(',', '.');
+                sumColumn += +$(this).text().replace(',', '.');
             });
-            $(this).attr('id', 'columnSumSalary').text(sum === 0 ? '' : (sum).toFixed(2));
+            $(this).attr('id', 'columnSumSalary').text(sumColumn === 0 ? '' : (sumColumn).toFixed(2));
         }
     });
 };

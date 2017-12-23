@@ -39,20 +39,30 @@ $('.add').click(function () {//событие на нажатие кнопки �
     var $table = $(this).parents('#tbodyTable');//таблица в которой добовляем строки
     var isAllValid = true;
 
-    $('tr:first td input:not(":disabled, #set")', $table).each(function () {//проверка не пустые строки
+    $('tr:first td input:not(":disabled, #set")', $table).each(function (i, value) {//проверка не пустые строки
         if ($(this).val().trim() === '') {
             isAllValid = false;
+            if (i === 0) {
+                notifyMessage("Вкажіть найменуваня робіт", "warn"); 
+            }    
+            if (i === 1) {
+                notifyMessage("Вкажіть обсяг виконаних робіт", "warn");
+            }  
         }
     });
+
+    if ($("#volumeWood").val().trim() === '') {
+        isAllValid = false;
+        notifyMessage("Вкажіть середній об'єм хлиста", "warn");  
+    }
 
     if (isAllValid) {             //копирование строки   
         collectionOilCosts();     //получить колекцию расхода ГСМ   
         copyString(this, $table); //копировать строку ввода 
         clearRow($table);         //очистка строк        
         columnSum($table);        //сумма строк  
+        workFromtbodyTableRevers();//пересчет зарплаты сотрудников
         notifyMessage("Дані успішно добавлено", "success");    
-    } else {
-        notifyMessage("Вкажіть виконану роботу", "warn");  
     }
 });
 
@@ -89,7 +99,8 @@ $('#tbodyTable').each(function () {
         deleteValCollectionOilCosts(indexDeleteElement);//удаление обекта из колекции расход ГСМ при удалеине строки
         countValColectionSortOil();//пересчитать расхода ГСМ по строкам
         addStringDetails(colectionSortOil);//перестроить таблицу расход материалов       
-        columnSum($table); //пересчитать сумму строк после удаленных    
+        columnSum($table); //пересчитать сумму строк после удаленных 
+        workFromtbodyTableRevers();//пересчет зарплаты сотрудников
         notifyMessage("Дані успішно видалено", "success");    
     })
 });
@@ -191,6 +202,9 @@ function clearRow($table) {
  //    }
 
  //});
+
+
+
 
 
 

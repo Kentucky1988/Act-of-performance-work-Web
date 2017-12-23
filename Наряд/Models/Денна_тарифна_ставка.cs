@@ -24,11 +24,11 @@ namespace Наряд.Models
         public string Вид_робіт { get; set; }
         public string Комплексна_индивідуальна { get; set; }
         public decimal C1 { get; set; }
-        public decimal C2 { get; set; }
-        public decimal C3 { get; set; }
-        public decimal C4 { get; set; }
-        public decimal C5 { get; set; }
-        public decimal C6 { get; set; }
+        public Nullable<decimal> C2 { get; set; }
+        public Nullable<decimal> C3 { get; set; }
+        public Nullable<decimal> C4 { get; set; }
+        public Nullable<decimal> C5 { get; set; }
+        public Nullable<decimal> C6 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Категорії_робіт> Категорії_робіт { get; set; }

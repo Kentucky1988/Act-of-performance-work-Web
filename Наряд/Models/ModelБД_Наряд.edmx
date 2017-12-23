@@ -56,11 +56,11 @@
           <Property Name="Вид_робіт" Type="nvarchar" MaxLength="60" Nullable="false" />
           <Property Name="Комплексна_индивідуальна" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="1" Type="decimal" Precision="6" Scale="2" Nullable="false" />
-          <Property Name="2" Type="decimal" Precision="6" Scale="2" Nullable="false" />
-          <Property Name="3" Type="decimal" Precision="6" Scale="2" Nullable="false" />
-          <Property Name="4" Type="decimal" Precision="6" Scale="2" Nullable="false" />
-          <Property Name="5" Type="decimal" Precision="6" Scale="2" Nullable="false" />
-          <Property Name="6" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="2" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="3" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="4" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="5" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="6" Type="decimal" Precision="6" Scale="2" />
         </EntityType>
         <EntityType Name="Догляд_за_л_к_мотокущорізом">
           <Key>
@@ -652,12 +652,9 @@
           <Property Name="Гірські_умови_схил_до_20град" Type="decimal" Precision="4" Scale="3" Nullable="false" />
           <Property Name="Гірські_умови_схил_понад_20град" Type="decimal" Precision="4" Scale="3" Nullable="false" />
         </EntityType>
-        <!--Ошибки, обнаруженные при создании:
-предупреждение 6002: В таблице или представлении "E:\GITHUB\НАРЯД\НАРЯД\APP_DATA\БД_НАРЯД.MDF.dbo.Сортименти" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
         <EntityType Name="Сортименти">
           <Key>
             <PropertyRef Name="СортиментиID" />
-            <PropertyRef Name="Назва_сортименту" />
           </Key>
           <Property Name="СортиментиID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Назва_сортименту" Type="nvarchar" MaxLength="60" Nullable="false" />
@@ -1412,6 +1409,7 @@
           <EntitySet Name="Садіння_лісу" EntityType="Self.Садіння_лісу" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Садіння_лісу_Додаткові_роботи" EntityType="Self.Садіння_лісу_Додаткові_роботи" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Садіння_лісу_Норма" EntityType="Self.Садіння_лісу_Норма" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Сортименти" EntityType="Self.Сортименти" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Техобслуговування_бензопили" EntityType="Self.Техобслуговування_бензопили" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Трелювання_підліску" EntityType="Self.Трелювання_підліску" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Трелювання_РГК" EntityType="Self.Трелювання_РГК" Schema="dbo" store:Type="Tables" />
@@ -1668,12 +1666,6 @@
     [Садіння_лісу_Додаткові_роботи_Норма].[Вид_робіт] AS [Вид_робіт], 
     [Садіння_лісу_Додаткові_роботи_Норма].[Норма_віробітку] AS [Норма_віробітку]
     FROM [dbo].[Садіння_лісу_Додаткові_роботи_Норма] AS [Садіння_лісу_Додаткові_роботи_Норма]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Сортименти" EntityType="Self.Сортименти" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Сортименти].[СортиментиID] AS [СортиментиID], 
-    [Сортименти].[Назва_сортименту] AS [Назва_сортименту]
-    FROM [dbo].[Сортименти] AS [Сортименти]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Техобслуговування_бензопили_Норма" EntityType="Self.Техобслуговування_бензопили_Норма" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1984,6 +1976,7 @@
           <EntitySet Name="Садіння_лісу" EntityType="БД_НарядModel.Садіння_лісу" />
           <EntitySet Name="Садіння_лісу_Додаткові_роботи" EntityType="БД_НарядModel.Садіння_лісу_Додаткові_роботи" />
           <EntitySet Name="Садіння_лісу_Норма" EntityType="БД_НарядModel.Садіння_лісу_Норма" />
+          <EntitySet Name="Сортименти" EntityType="БД_НарядModel.Сортименти" />
           <EntitySet Name="Техобслуговування_бензопили" EntityType="БД_НарядModel.Техобслуговування_бензопили" />
           <EntitySet Name="Трелювання_підліску" EntityType="БД_НарядModel.Трелювання_підліску" />
           <EntitySet Name="Трелювання_РГК" EntityType="БД_НарядModel.Трелювання_РГК" />
@@ -2011,7 +2004,6 @@
           <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" />
           <EntitySet Name="Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" />
           <EntitySet Name="Садіння_лісу_Додаткові_роботи_Норма" EntityType="БД_НарядModel.Садіння_лісу_Додаткові_роботи_Норма" />
-          <EntitySet Name="Сортименти" EntityType="БД_НарядModel.Сортименти" />
           <EntitySet Name="Техобслуговування_бензопили_Норма" EntityType="БД_НарядModel.Техобслуговування_бензопили_Норма" />
           <EntitySet Name="Трелювання_підліску_ГСМ" EntityType="БД_НарядModel.Трелювання_підліску_ГСМ" />
           <EntitySet Name="Трелювання_підліску_Норма" EntityType="БД_НарядModel.Трелювання_підліску_Норма" />
@@ -2192,11 +2184,11 @@
           <Property Name="Вид_робіт" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
           <Property Name="Комплексна_индивідуальна" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="C1" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
-          <Property Name="C2" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
-          <Property Name="C3" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
-          <Property Name="C4" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
-          <Property Name="C5" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
-          <Property Name="C6" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+          <Property Name="C2" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="C3" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="C4" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="C5" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="C6" Type="Decimal" Precision="6" Scale="2" />
           <NavigationProperty Name="Категорії_робіт" Relationship="БД_НарядModel.FK__Категорії__Розці__57A801BA" FromRole="Денна_тарифна_ставка" ToRole="Категорії_робіт" />
         </EntityType>
         <EntityType Name="Догляд_за_л_к_мотокущорізом">
@@ -2385,6 +2377,13 @@
           <Property Name="Гірські_умови_схил_до_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
           <Property Name="Гірські_умови_схил_понад_20град" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
           <NavigationProperty Name="Садіння_лісу" Relationship="БД_НарядModel.FK__Садіння_л__Вид_р__00750D23" FromRole="Садіння_лісу_Норма" ToRole="Садіння_лісу" />
+        </EntityType>
+        <EntityType Name="Сортименти">
+          <Key>
+            <PropertyRef Name="СортиментиID" />
+          </Key>
+          <Property Name="СортиментиID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Назва_сортименту" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Техобслуговування_бензопили">
           <Key>
@@ -2875,14 +2874,6 @@
           <Property Name="Вид_робіт" Type="Int32" Nullable="false" />
           <Property Name="Норма_віробітку" Type="Decimal" Nullable="false" Precision="6" Scale="3" />
           <NavigationProperty Name="Садіння_лісу_Додаткові_роботи" Relationship="БД_НарядModel.FK__Садіння_л__Вид_р__0E04126B" FromRole="Садіння_лісу_Додаткові_роботи_Норма" ToRole="Садіння_лісу_Додаткові_роботи" />
-        </EntityType>
-        <EntityType Name="Сортименти">
-          <Key>
-            <PropertyRef Name="СортиментиID" />
-            <PropertyRef Name="Назва_сортименту" />
-          </Key>
-          <Property Name="СортиментиID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Назва_сортименту" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Техобслуговування_бензопили_Норма">
           <Key>
@@ -3776,6 +3767,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Сортименти">
+            <EntityTypeMapping TypeName="БД_НарядModel.Сортименти">
+              <MappingFragment StoreEntitySet="Сортименти">
+                <ScalarProperty Name="Назва_сортименту" ColumnName="Назва_сортименту" />
+                <ScalarProperty Name="СортиментиID" ColumnName="СортиментиID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Техобслуговування_бензопили">
             <EntityTypeMapping TypeName="БД_НарядModel.Техобслуговування_бензопили">
               <MappingFragment StoreEntitySet="Техобслуговування_бензопили">
@@ -4114,14 +4113,6 @@
                 <ScalarProperty Name="Норма_віробітку" ColumnName="Норма_віробітку" />
                 <ScalarProperty Name="Вид_робіт" ColumnName="Вид_робіт" />
                 <ScalarProperty Name="Id_Норма_віробітку" ColumnName="Id_Норма_віробітку" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Сортименти">
-            <EntityTypeMapping TypeName="БД_НарядModel.Сортименти">
-              <MappingFragment StoreEntitySet="Сортименти">
-                <ScalarProperty Name="Назва_сортименту" ColumnName="Назва_сортименту" />
-                <ScalarProperty Name="СортиментиID" ColumnName="СортиментиID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
