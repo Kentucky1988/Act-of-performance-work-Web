@@ -122,7 +122,7 @@ function PopupForm($pageContent) {
             resizable: false,            
             model: true,
             title: 'Діалогове вікно',
-            height: tableName === 'Денна_тарифна_ставка' ? 600 : 460,
+            height: tableName === 'Денна_тарифна_ставка' ? 560 : 460,
             width: 500,
             close: function () {
                 popupForm.dialog('destroy').remove();

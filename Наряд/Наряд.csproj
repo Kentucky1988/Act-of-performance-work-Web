@@ -211,6 +211,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Extended\Денна_тарифна_ставка.cs" />
     <Compile Include="Models\Extended\Робітники.cs" />
     <Compile Include="Models\ModelБД_Наряд.Context.cs">
       <AutoGen>True</AutoGen>

@@ -206,8 +206,8 @@ namespace Наряд.Controllers
                     //db.Entry(data).State = EntityState.Modified;
 
                     var table = db.Денна_тарифна_ставка.Where(a => a.РозцінкаID == data.РозцінкаID).FirstOrDefault();
-                    table.Вид_робіт = data.Вид_робіт;
-                    table.Комплексна_индивідуальна = data.Комплексна_индивідуальна;
+                    //table.Вид_робіт = data.Вид_робіт;
+                    //table.Комплексна_индивідуальна = data.Комплексна_индивідуальна;
                     table.C1 = data.C1;
                     table.C2 = data.C2;
                     table.C3 = data.C3;
@@ -215,7 +215,7 @@ namespace Наряд.Controllers
                     table.C5 = data.C5;
                     table.C6 = data.C6;
 
-                    message = data.C1.ToString();   //"Дані змінено"
+                    message = "Дані змінено";
                 }
                 db.SaveChanges();
                 return Json(new { status = true, message = message }, JsonRequestBehavior.AllowGet);
@@ -224,7 +224,7 @@ namespace Наряд.Controllers
 
         public decimal ReplaceDecimal(decimal i)
         {
-            return Decimal.Parse(i.ToString().Replace(',', '.')); 
+            return Decimal.Parse(i.ToString().Replace('.', ',')); 
         }
        
         //[HttpGet]
