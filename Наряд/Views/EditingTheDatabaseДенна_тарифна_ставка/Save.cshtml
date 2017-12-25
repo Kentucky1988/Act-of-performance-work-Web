@@ -28,48 +28,49 @@
         @Html.ValidationMessageFor(a => a.Комплексна_индивідуальна)
     </div>
     <div class="form-group">
-        <label>Розряд 1:</label>
-        <label>@Html.TextBoxFor(a => a.C1, "{0:G29}", new { @class = "form-control" })</label>
+        <label>Розряд 1:</label>      
+        <label>@Html.TextBoxFor(a => a.C1, "{0:0.00}", new { @class = "form-control" })</label>
         @*@Html.LabelFor(a => a.Тарифний_розряд, new { @class = "control-label" })*@        
         @Html.ValidationMessageFor(a => a.C1)
     </div>
-    <div class="form-group">
-        <label>Розряд 2:</label>
-        <label>@Html.TextBoxFor(a => a.C2, new { @class = "form-control" })</label>
-        @*@Html.LabelFor(a => a.Категорія, new { @class = "control-label" })*@       
-        @Html.ValidationMessageFor(a => a.C2)
-    </div>
-    <div class="form-group">
-        <label>Розряд 3:</label>
-        <label>@Html.TextBoxFor(a => a.C3, new { @class = "form-control" })</label>
-        @*@Html.LabelFor(a => a.Тарифний_розряд, new { @class = "control-label" })*@       
-        @Html.ValidationMessageFor(a => a.C3)
-    </div>
-    <div class="form-group">
-        <label>Розряд 4:</label>
-        <label>@Html.TextBoxFor(a => a.C4, new { @class = "form-control" })</label>
-        @*@Html.LabelFor(a => a.Категорія, new { @class = "control-label" })*@        
-        @Html.ValidationMessageFor(a => a.C4)
-    </div>
-    <div class="form-group">
-        <label>Розряд 5:</label>
-        <label>@Html.TextBoxFor(a => a.C5, new { @class = "form-control" })</label>
-        @*@Html.LabelFor(a => a.Тарифний_розряд, new { @class = "control-label" })*@       
-        @Html.ValidationMessageFor(a => a.C5)
-    </div>
-    <div class="form-group">
-        <label>Розряд 6:</label>
-        <label>@Html.TextBoxFor(a => a.C6, new { @class = "form-control" })</label>
-        @*@Html.LabelFor(a => a.Категорія, new { @class = "control-label" })*@       
-        @Html.ValidationMessageFor(a => a.C6)
-    </div>
+
+    if (Html.DisplayTextFor(a => a.Комплексна_индивідуальна).ToString() == "індивідуальна")
+    {
+        <div class="form-group">
+            <label>Розряд 2:</label>
+            <label>@Html.TextBoxFor(a => a.C2, new { @class = "form-control" })</label>
+            @*@Html.LabelFor(a => a.Категорія, new { @class = "control-label" })*@
+            @Html.ValidationMessageFor(a => a.C2)
+        </div>
+        <div class="form-group">
+            <label>Розряд 3:</label>
+            <label>@Html.TextBoxFor(a => a.C3, new { @class = "form-control" })</label>
+            @*@Html.LabelFor(a => a.Тарифний_розряд, new { @class = "control-label" })*@
+            @Html.ValidationMessageFor(a => a.C3)
+        </div>
+        <div class="form-group">
+            <label>Розряд 4:</label>
+            <label>@Html.TextBoxFor(a => a.C4, new { @class = "form-control" })</label>
+            @*@Html.LabelFor(a => a.Категорія, new { @class = "control-label" })*@
+            @Html.ValidationMessageFor(a => a.C4)
+        </div>
+        <div class="form-group">
+            <label>Розряд 5:</label>
+            <label>@Html.TextBoxFor(a => a.C5, new { @class = "form-control" })</label>
+            @*@Html.LabelFor(a => a.Тарифний_розряд, new { @class = "control-label" })*@
+            @Html.ValidationMessageFor(a => a.C5)
+        </div>
+        <div class="form-group">
+            <label>Розряд 6:</label>
+            <label>@Html.TextBoxFor(a => a.C6, new { @class = "form-control" })</label>
+            @*@Html.LabelFor(a => a.Категорія, new { @class = "control-label" })*@
+            @Html.ValidationMessageFor(a => a.C6)
+        </div>
+    }
+
     <div>
         <input type="submit" value="Зберегти" class="btn btn-primary" />
         <input type="reset" value="Очистити" class="btn btn-default" />
     </div>
 }
-
-
-
-
 

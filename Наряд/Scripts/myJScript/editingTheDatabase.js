@@ -5,13 +5,14 @@
 var tableName;
 $('#selectTheTableToEdit').change(function () {
     tableName = $(this).val();
+    var $theadMyDatatableDB = $('#myDatatableDB thead');
 
-    if ($('#myDatatable tr').length) {
-        var table = $('#myDatatable').DataTable();   //очистка таблицы
+    if ($('#myDatatableDB tr').length) {
+        var table = $('#myDatatableDB').DataTable();   //очистка таблицы
         table.clear().draw();
         table.destroy();
     }
-
+       
     if (tableName !== '') {      
 
         if (tableName === 'Денна_тарифна_ставка') {
@@ -19,21 +20,19 @@ $('#selectTheTableToEdit').change(function () {
         } else {
             $('#addDataToDB').show(); //отобразить кнопку редактирования таблицы
         }
-
-        var $thead = $('#myDatatable thead');
-        $('tr', $thead).remove(); //удалить  шапку таблицы
-        addTr($thead, tableName); //добавить шапку таблицы
+                
+        $('tr', $theadMyDatatableDB).remove(); //удалить  шапку таблицы
+        addTr($theadMyDatatableDB, tableName); //добавить шапку таблицы
         showDataTable(tableName); //загрузка таблицы из БД
-    } else if ($('#myDatatable tr').length) {
-        $('tr', $thead).remove(); //удалить  шапку таблицы
+    } else if ($('#myDatatableDB tr').length) {
+        $('tr', $theadMyDatatableDB).remove(); //удалить  шапку таблицы
         $('#addDataToDB').hide(); //скрыть кнопку
     }
 })
 
-
 var dataTable, popupForm;
 function showDataTable(tableName) { //загрузка таблицы из БД
-    dataTable = $('#myDatatable').DataTable({
+    dataTable = $('#myDatatableDB').DataTable({
         'ajax': {
             'type': "GET",
             'url': '/EditingTheDatabase' + tableName + '/GetTable', /*'/EditingTheDatabaseРобітники/GetTable',   */
@@ -122,7 +121,7 @@ function PopupForm($pageContent) {
             resizable: false,            
             model: true,
             title: 'Діалогове вікно',
-            height: tableName === 'Денна_тарифна_ставка' ? 560 : 460,
+            height: tableName === 'Денна_тарифна_ставка' ? 585 : 460,
             width: 500,
             close: function () {
                 popupForm.dialog('destroy').remove();
@@ -210,6 +209,9 @@ function returnTr(tableName) {//получаем структуру таблиц
     }
     return newTr;
 }
+
+
+
 
 
 

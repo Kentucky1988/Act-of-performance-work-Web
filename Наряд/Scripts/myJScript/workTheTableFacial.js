@@ -271,6 +271,7 @@ $(document).ready(function () {
     loadEmployees('.employees');
     LoadMaterials('.materials');
     Company('#company');
+    addNumberAct();//номер акта
 
     $('#tbodyTable .custom-combobox-input, .details .custom-combobox-input').css('min-width', '340px');
     $('.employees').parent('td').find('.custom-combobox-input').css('min-width', '200px');
@@ -406,6 +407,7 @@ $('#cleaningAll').click(function () {//кнопка очистить полно�
         clearingTableTbodyTable();
         clearingTableTbodyTableRevers();
         clearingTableDetails();
+        addNumberAct();//номер акта
         notifyMessage("Дані успішно видалено", "success");
     } catch (e) {
         notifyMessage("Помилка видалено", "error");
@@ -437,9 +439,20 @@ $('#cleaningPart').click(function () {//кнопка очистить части
     }
 
     if (work) {
+        addNumberAct();//номер акта
         notifyMessage("Дані успішно видалено", "success");
-    }
+    }   
 })
+
+function addNumberAct() {//номер акта
+
+    var $elementValue = +$('#numberAct').val();   
+    if ($elementValue == '') {
+        $('#numberAct').val('1');
+    } else {        
+        $('#numberAct').val($elementValue + 1);
+    }
+}
 
 
 function clearingThead() {//Очистити шапку наряду

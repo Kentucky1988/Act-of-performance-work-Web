@@ -194,6 +194,7 @@
       <LastGenOutput>ModelБД_Наряд.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\myJScript\editingTheDatabase.js" />
+    <Content Include="Scripts\myJScript\jQueryFixesDecimal.js" />
     <Content Include="Scripts\myJScript\workTheTableFacial.js" />
     <Content Include="Scripts\myJScript\autocomplete.combobox.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -211,7 +212,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Extended\Денна_тарифна_ставка.cs" />
     <Compile Include="Models\Extended\Робітники.cs" />
     <Compile Include="Models\ModelБД_Наряд.Context.cs">
       <AutoGen>True</AutoGen>
@@ -424,8 +424,6 @@
     <Content Include="Views\Home\_workWithDatabase.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
-    <Content Include="Views\EditingTheDatabase\Save.cshtml" />
-    <Content Include="Views\EditingTheDatabase\Delete.cshtml" />
     <Content Include="Views\EditingTheDatabaseРобітники\Save.cshtml" />
     <Content Include="Views\EditingTheDatabaseРобітники\Delete.cshtml" />
     <Content Include="Views\EditingTheDatabaseВид_рубки\Save.cshtml" />

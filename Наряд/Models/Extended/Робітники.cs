@@ -18,4 +18,26 @@ namespace Наряд.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "Введіть посаду")]
         public string Професія { get; set; }
     }
+
+    [MetadataType(typeof(Вид_рубкиMetadata))]
+    public partial class Вид_рубки
+    {
+    }
+
+    public class Вид_рубкиMetadata
+    {
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Введіть вид рубки")]
+        public string Вид_рубки1 { get; set; } 
+    }
+
+    [MetadataType(typeof(СортиментиMetadata))]
+    public partial class Сортименти
+    {
+    }
+
+    public class СортиментиMetadata
+    {
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Введіть назву сортимента")]
+        public string Назва_сортименту { get; set; }    
+    }
 }
