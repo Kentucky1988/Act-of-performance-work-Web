@@ -1,4 +1,4 @@
-﻿$.validator.methods.range = function (value, element, param) {
+﻿$.validator.methods.range = function (value, element, param) {//исправление библиотеки jquery.validate.js чтоб можно было в поле ввода вводить запятую - ","
     var globalizedValue = value.replace(",", ".");
     return this.optional(element) || (globalizedValue >= param[0] && globalizedValue <= param[1]);
 }

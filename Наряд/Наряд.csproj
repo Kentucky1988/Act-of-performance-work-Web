@@ -212,7 +212,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Extended\Робітники.cs" />
+    <Compile Include="Models\Extended\ErrorMessageAddData.cs" />
     <Compile Include="Models\ModelБД_Наряд.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

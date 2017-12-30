@@ -19,10 +19,10 @@ input.form-control { /*выравнивать текст в полях ввод�
     outline: none;
 }
 
-.paddingLeft { /*текст перед полями ввода*/   
+.paddingLeft { /*текст перед полями ввода*/
     vertical-align: middle; /*вертикаль*/
     padding-left: 13px;
-    padding-right: 5px;    
+    padding-right: 5px;
 }
 
 .add, .addDetails, .addEmployees { /*ширина кнопки добавить*/
@@ -31,8 +31,7 @@ input.form-control { /*выравнивать текст в полях ввод�
 
 label {
     font-weight: normal;
-    padding-left:10px;
+    padding-left: 10px;
 }
-
 
 

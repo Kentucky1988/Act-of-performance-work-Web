@@ -32,16 +32,6 @@ function subdivision(element) {//Підрозділи
     })
 }
 
-//function LoadMaterials(element) { //сортименты   
-//    $.ajax({
-//        type: "GET",
-//        url: '/home/getMaterials',
-//        success: function (data) {
-//            renderCategory(element, data);
-//        }
-//    })
-//}
-
 var Employees = []
 function loadEmployees() { //роботники   
     $.ajax({
@@ -274,7 +264,7 @@ $(document).ready(function () {
     addNumberAct();//номер акта
 
     $('#tbodyTable .custom-combobox-input, .details .custom-combobox-input').css('min-width', '340px');
-    $('.employees').parent('td').find('.custom-combobox-input').css('min-width', '200px');
+    $('.employees').next('span').find('.custom-combobox-input').css('min-width', '250px');
 });
 
 

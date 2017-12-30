@@ -54,16 +54,18 @@ function emmployeesChange(element) {
 
 var $arrayHoursUsed = $('.tbodyTableRevers tr').filter(':eq(0), :eq(1)').find('td[id]');
 $arrayHoursUsed.change(function () {
+    var numberHours = getNumberHours($arrayHoursUsed);
+    var $input = $('input', this); 
+    var boolNumberHours = checkTheNumberOfHours($($input).val(), this);
 
-    if (testDateValid()) {//проверка не пустые строки
-        var numberHours = getNumberHours($arrayHoursUsed);
+    if (testDateValid() && boolNumberHours) {//проверка не пустые строки   
         var numberDay = getNumberDay($arrayHoursUsed);
         $('#hoursWorked').text(numberHours);
         $('.dayWorked').eq(0).text(numberDay / 8);
 
         var $table = $(this).parents('tbody');//таблица в которой считаем сумму строк
         columnSumEmployee($table);      //сумма строк  
-        if (numberHours > 0) {           
+        if (numberHours > 0) {
             fulfilledTheNorms();        //выполнено норм     
             percentFulfilledTheNorms(); //процент выполнения норм 
             salary()                    //зарплата
@@ -72,11 +74,23 @@ $arrayHoursUsed.change(function () {
     }
 })
 
+function checkTheNumberOfHours(hours, element) {
+    if (hours > 24 || hours < 0) {
+        notifyMessage("Кількість годин не може бути більше 24 і менше 1", "warn");
+        $(element).css('background-color', 'red');
+        boolNumberHours = false;
+        return false;
+    } else {
+        $(element).css('background-color', 'transparent');//цвет фона по умолчанию
+        return true;
+    }
+}
+
 function getNumberHours($array) {
     var numberHours = 0;
     $array.each(function () {
         var day = this.id;
-        var hours = +$('input', this).val();
+        var hours = +$('input', this).val();       
 
         if ((day >= 1 || day <= 31) && hours > 0) {
             numberHours += hours;
@@ -98,6 +112,7 @@ function getNumberDay($array) {
     });
     return numberDay;
 }
+
 
 function fulfilledTheNorms() {//расчет Виконано норм
     var columnSumNorm = $('#columnSumNorm').html();             //всего выполнено норм
@@ -147,7 +162,7 @@ function salary() {                                             //зарплат
 
 function testDateValid() {//проверка выбора сотрудника и расчет норм
     var isAllValid = false;
-    var isNormValid = false; 
+    var isNormValid = false;
 
     if ($('#columnSumNorm').length && $('#columnSumNorm').html() > 0) {
         isNormValid = true;
@@ -163,7 +178,7 @@ function testDateValid() {//проверка выбора сотрудника �
 
     if (isAllValid && isNormValid) {
         return true;
-    }    
+    }
 }
 
 $('.addEmployees').click(function myfunction() {//добовляем строки в табл. Employees
@@ -172,14 +187,15 @@ $('.addEmployees').click(function myfunction() {//добовляем строк�
     if (testDateValid() && $('.dayWorked').html() > 0) {//проверка не пустые строки
         addStringEmployee(this, $table);  //добавляем нижнюю строку в таблице
         clearRowEmployee($table);         //очистка строки ввода  
-        numberPersons($table);            //количество человек в табеле    
-       
+        numberPersons($table);            //количество человек в табеле 
+        notifyMessage("Дані успішно добавлено", "success");
+
     } else {
         notifyMessage("Вкажіть кількість відпрацьованих днів", "warn");
     }
 });
 
-function addStringEmployee(element, $table) {//добавляем нижнюю строку в таблице /employee(табель)/
+function addStringEmployee(button, $table) {//добавляем нижнюю строку в таблице /employee(табель)/
     $("<tr>").css('height', '20px').appendTo($table);//добавляем нижнюю строку
 
     $('tr:eq(0) td', $table).each(function (indx) {  //копируем первую строку    
@@ -207,7 +223,7 @@ function addStringEmployee(element, $table) {//добавляем нижнюю �
         $("<td/>", { text: str }).appendTo($("tr:last", $table));
     });
 
-    var $newRow = $(element).clone();//клонирование кнопки add
+    var $newRow = $(button).clone();//клонирование кнопки add
     $($newRow).addClass('remove').toggleClass('btn-success btn-danger');//сменить стиль success - danger
     $('#addIcon', $newRow).toggleClass('glyphicon-plus glyphicon-trash');//сменить иконку кнопки
     $($newRow).appendTo($("tr:eq(-2) td:last", $table));//добавление клонированой кнопки add  

@@ -284,10 +284,12 @@
         }
     });
 
-    $('.verticalText').css({ 'max-width': '20px', 'transform': 'rotate(-90deg) translateX(-7px)' });
+    $('.verticalText').css({ 'max-width': '40px', 'transform': 'rotate(-90deg) translateX(-7px)' });
     $('.employee tr:first td').filter('.verticalText').css({ 'transform': 'rotate(-90deg) translateX(-2.2em)', 'height': '110px' });
     $('.employee thead tr').not(':first').css('height', '35px');
     $('#RankEmployee').css('min-width', '40px');  
+
+    $('.employee thead tr').filter(':eq(2)').find('td').css('width', '45px'); 
 
 </script>
 

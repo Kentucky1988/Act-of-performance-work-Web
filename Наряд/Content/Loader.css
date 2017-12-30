@@ -1,4 +1,4 @@
-﻿#loader {
+﻿#loader { /*индикатор загрузки Ajax запросов*/
     height: 4px;
     width: 100%;
     position: relative;
