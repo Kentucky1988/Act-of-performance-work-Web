@@ -12,15 +12,15 @@ $('#selectTheTableToEdit').change(function () {
         table.clear().draw();
         table.destroy();
     }
-       
-    if (tableName !== '') {      
+
+    if (tableName !== '') {
 
         if (tableName === 'Денна_тарифна_ставка') {
             $('#addDataToDB').hide(); //скрыть кнопку
         } else {
             $('#addDataToDB').show(); //отобразить кнопку редактирования таблицы
         }
-                
+
         $('tr', $theadMyDatatableDB).remove(); //удалить  шапку таблицы
         addTr($theadMyDatatableDB, tableName); //добавить шапку таблицы
         showDataTable(tableName); //загрузка таблицы из БД
@@ -28,7 +28,7 @@ $('#selectTheTableToEdit').change(function () {
         $('tr', $theadMyDatatableDB).remove(); //удалить  шапку таблицы
         $('#addDataToDB').hide(); //скрыть кнопку
     }
-})
+});
 
 var dataTable, popupForm;
 function showDataTable(tableName) { //загрузка таблицы из БД
@@ -62,18 +62,18 @@ function showDataTable(tableName) { //загрузка таблицы из БД
                 "sSortDescending": ": активувати для сортування стовпців за спаданням"
             }
         }
-    })
+    });
 }
 
 
 $('.tablecontainer').on('click', 'a.popup', function (e) {
-    e.preventDefault();   
+    e.preventDefault();
     var str = $(this).attr('href');
     if ($(this).attr('id') === 'addDataToDB') {
         str = '/EditingTheDatabase' + tableName + '/Save';
-    }   
+    }
     OpenPopup(str);
-})
+});
 
 
 function OpenPopup(pageUrl) {
@@ -104,12 +104,12 @@ function editingData() {//изминение записей
                     $.notify(data.message, {
                         globalPosition: "top center",
                         className: "success"
-                    })
+                    });
                 }
             }
-        })
+        });
         e.preventDefault();
-    })
+    });
 }
 
 function PopupForm($pageContent) {
@@ -118,7 +118,7 @@ function PopupForm($pageContent) {
         .dialog({
             draggable: false,
             autoOpen: false,
-            resizable: false,            
+            resizable: false,
             model: true,
             title: 'Діалогове вікно',
             height: tableName === 'Денна_тарифна_ставка' ? 585 : 460,
@@ -126,7 +126,7 @@ function PopupForm($pageContent) {
             close: function () {
                 popupForm.dialog('destroy').remove();
             }
-        })
+        });
 }
 
 function addTr($thead, tableName) {    //добавить шапку таблицы

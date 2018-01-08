@@ -1,5 +1,5 @@
-﻿<div role="tabpanel" class="tab-pane active" id="facialPage">   
-    
+﻿<div role="tabpanel" class="tab-pane active" id="facialPage">
+
     <!--Модальное окно-->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
         <div class="modal-dialog">
@@ -12,13 +12,13 @@
                     <input type="checkbox" id="clearingThead"> Очистити шапку наряду<Br>
                     <input type="checkbox" id="clearingEmployee"> Очистити перелік відповідальних осіб<Br>
                     <input type="checkbox" id="clearingTableTbodyTable"> Очистити таблицю: Перелік виконаних робіт<Br>
-                    <input type="checkbox" id="clearingTableTbodyTableRevers"> Очистити таблицю: Табель<Br>  
-                    <input type="checkbox" id="clearingTableDetails"> Очистити таблицю: Лісопродукція<Br> 
+                    <input type="checkbox" id="clearingTableTbodyTableRevers"> Очистити таблицю: Табель<Br>
+                    <input type="checkbox" id="clearingTableDetails"> Очистити таблицю: Лісопродукція<Br>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" id="cleaningPart">Очистити вибрану частину</button>
                     <button type="button" class="btn btn-danger" id="cleaningAll">Очистити повністю</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>                    
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
                 </div>
             </div>
         </div>
@@ -26,291 +26,317 @@
 
     <!--лицевая сторона наряд акта-->
     <div>
-        <table align="center">
-            <tr>
-                <td> <h3>Наряд - акт на виконання робіт №</h3> </td>
-                <td><input type="text" class="form-control" id="numberAct" style="width: 50px; margin-top: 10px" /></td>
-            </tr>
-        </table>
-    </div>
-    <br />
-    <div>
-        <table class="table-bordered container-fluid">
-            <tr>
-                <td>Дата</td>
-                <td>Підприємство</td>
-                <td>Ідентифікаційний код ЄДРПОУ</td>
-                <td>Підрозділ</td>
-                <td>Бригада</td>
-                <td>Кількістьть осіб</td>
-                <td>Прізвище та ініціали робітника</td>
-                <td>Табельний номер</td>
-                <td>Вид діяльності</td>
-            </tr>
-            <tr class="thead">
-                <td> <input type="text" class="calendar" name="getDate" />  </td>
-                <td>
-                    <select id="company">
-                        <option></option>
-                    </select>
-                </td>
-                <td id="codeEDRPOY"></td>
-                <td>
-                    <select id="subdivision">
-                        <option></option>
-                    </select>
-                </td>
-                <td> <input type="text" /> </td>
-                <td id="numberPersons"> </td>
-                <td>
+        <div>
+            <table align="center">
+                <tr>
+                    <td> <h3>Наряд - акт на виконання робіт №</h3> </td>
+                    <td id="dressNumberFase"><input type="text" class="form-control" id="numberAct" style="width: 50px; margin-top: 10px" /></td>
+                </tr>
+            </table>
+        </div>
+        <br />
+        <div>
+            <table class="table-bordered container-fluid" id="theadTableFase">
+                <tr>
+                    <td>Дата</td>
+                    <td>Підприємство</td>
+                    <td>Ідентифікаційний код ЄДРПОУ</td>
+                    <td>Підрозділ</td>
+                    <td>Бригада</td>
+                    <td>Кількістьть осіб</td>
+                    <td>Прізвище та ініціали робітника</td>
+                    <td>Табельний номер</td>
+                    <td>Вид діяльності</td>
+                </tr>
+                <tr class="thead">
+                    <td> <input type="text" class="calendar" name="getDate" />  </td>
+                    <td>
+                        <select id="company">
+                            <option></option>
+                        </select>
+                    </td>
+                    <td id="codeEDRPOY"></td>
+                    <td>
+                        <select id="subdivision">
+                            <option></option>
+                        </select>
+                    </td>
+                    <td> <input type="text" /> </td>
+                    <td id="numberPersons"> </td>
+                    <td>
+                        <select class="autocompleteCombobox employees">
+                            <option></option>
+                        </select>
+                    </td>
+                    <td id="timesheetNumber"></td>
+                    <td> <input type="text" /></td>
+                </tr>
+            </table>
+        </div>
+        <br />
+        <div>
+            <table class="thead" id="theadFase">
+                <tr>
+                    <td style="text-align:right">Місце роботи Кв.</td>
+                    <td> <input type="text" /> </td>
+                    <td class="paddingLeft">Виділ</td>
+                    <td> <input type="text" /> </td>
+                    <td class="paddingLeft">Лісорубний квиток №</td>
+                    <td> <input type="text" /> </td>
+                    <td class="paddingLeft">Якого року лісосіка</td>
+                    <td> <select name="year" style="min-width:80px"> </select> </td>
+                    <td class="paddingLeft">Вид рубки</td>
+                    <td>
+                        <select id="typeOfFelling">
+                            <option></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td> Найменування заходу</td>
+                    <td> <select id="worksTitlee" style="min-width:100px"> </select> </td>
+                    <td class="paddingLeft">Початок роботи</td>
+                    <td> <input type="text" class="calendar" name="firstWorkingDay" />  </td>
+                    <td class="paddingLeft">Закінчення роботи</td>
+                    <td> <input type="text" class="calendar" name="lastWorkingDay" /> </td>
+                    <td class="paddingLeft">Щоденник приймання робіт №</td>
+                    <td> <input type="text" id="orderDate" /> </td>
+                    <td class="paddingLeft">Середній об'єм хлиста, м<sup>3</sup></td>
+                    <td> <input type="text" id="volumeWood" /> </td>
+                </tr>
+            </table>
+            <div id="coefficient">
+                <form class="navbar-form">
+                    <label>Умови роботи:</label>
+                    <div id="conditionsLumbering" class="btn-group form-group" data-toggle="buttons">
+
+                        <label class="btn btn-primary active" id="workingConditionsSummer">
+                            <input type="radio" checked> Літні
+                        </label>
+                        <label class="btn btn-primary" id="workingConditionsHard">
+                            <input type="checkbox"> Тяжкі
+                        </label>
+                        <label class="btn btn-primary" id="workingConditionsWinter">
+                            <input type="radio"> Зимові
+                        </label>
+                    </div>
+                    <div id="tractorCoefficient" class="form-group">
+                        <label>Переїзд трактора, км:</label>
+                        <input type="text" id="tractorMoving" />
+                        <label>Всього затрачено на переїзд трактора, годин:</label>
+                        <input type="text" id="hoursUsed" />
+                        <label>Наявність перешкод на ділянці, %:</label>
+                        <input type="text" id="block" />
+                    </div>
+                    <div id="deforestationCoefficient" class="form-group">
+                        <label>Коефіцієнт зменшення норм:</label>
+                        <input type="text" id="reduceDeforestationCoefficient" />
+                        <label> Згідно наказу №:</label>
+                        <input type="text" />
+                        <label>від:</label>
+                        <input type="text" class="calendar" />
+                    </div>
+                    <div id="divForestPlantingConditions" class="form-group">
+                        <select id="forestPlantingConditions">
+                            <option></option>
+                            <option>Рівнині_умови</option>
+                            <option>Яружно_балкові_землі_схил_до_20град</option>
+                            <option>Яружно_балкові_землі_схил_понад_20град</option>
+                            <option>Гірські_умови_схил_до_20град</option>
+                            <option>Гірські_умови_схил_понад_20град</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br />
+        <div>
+            <table class="table-bordered table-hover" id="tbodyTableFase">
+                <thead>
+                    <tr>
+                        <td rowspan="2">Категорія робіт</td>
+                        <td rowspan="2">Найменування робіт</td>
+                        <td rowspan="2">Разряд&nbsp;робіт</td>
+                        <td rowspan="2">Одиниця виміру</td>
+                        <td colspan="2">Обсяг робіт </td>
+                        <td rowspan="2">Норма виробітку</td>
+                        <td rowspan="2">Виконанно норм</td>
+                        <td rowspan="2">Розцінка за одиницю</td>
+                        <td rowspan="2">Сума заробітку</td>
+                        <td colspan="2">Відпрацьовано</td>
+                        <td rowspan="2">Додати строку</td>
+                    </tr>
+                    <tr>
+                        <td>Задано</td>
+                        <td>Виконано</td>
+                        <td>Людино-дні</td>
+                        <td>Машино-змін</td>
+                    </tr>
+                </thead>
+                <tbody id="tbodyTable">
+                    <!--тело таблицы-->
+                    <tr class="mycontainer" id="mainrow">
+                        <td>
+                            <!--выпадающий список категория работ-->
+                            <select id="productCategory" style="min-width:250px">
+                                <option></option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--выпадающий список вид работ-->
+                            <select id="product" class="autocompleteCombobox form-control quantity">
+                                <option></option>
+                            </select>
+                        </td>
+                        <td>
+                            <!--выпадающий список разряд робот-->
+                            <select id="Rank" disabled>
+                                <option></option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                            </select>
+                        </td>
+                        <td> <input type="text" id="Unit" disabled /> </td>
+                        <td> <input type="text" id="set" /> </td>
+                        <td> <input type="text" id="executed" /> </td>
+                        <td> <input type="text" id="norm" disabled /> </td>
+                        <td> <input type="text" id="executedNorm" disabled /> </td>
+                        <td> <input type="text" id="UnitPrice" disabled /> </td>
+                        <td> <input type="text" id="Sum" disabled /> </td>
+                        <td> <input type="text" disabled /> </td>
+                        <td> <input type="text" disabled /> </td>
+                        <td>
+                            <button class="btn btn-success add">
+                                <!--кнопка добавления строки-->
+                                <span id="addIcon" class="glyphicon glyphicon-plus" />
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <!--нижняя строка с суммой-->
+                    <tr>
+                        <td colspan="3">УСЬОГО</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><input type="text" /></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <br />
+        <div align="center">
+            <h4>Витрачено сировини, матеріалів та відходів виробництва</h4>
+        </div>
+        <div class="material">
+            <table class="table-bordered table-hover container-fluid" id="tfootTableFase">
+                <thead>
+                    <tr>
+                        <td rowspan="2">Найменування сировини, матеріалів та на що витрачено</td>
+                        <td rowspan="2">Одиниця виміру</td>
+                        <td colspan="2">Кількість</td>
+                        <td rowspan="2">Вартість</td>
+                        <td rowspan="2">Найменування сировини, матеріалів та на що витрачено</td>
+                        <td rowspan="2">Одиниця виміру</td>
+                        <td colspan="2">Кількість</td>
+                        <td rowspan="2">Вартість</td>
+                    </tr>
+                    <tr>
+                        <td>по нормі</td>
+                        <td>фактично</td>
+                        <td>по нормі</td>
+                        <td>фактично</td>
+                    </tr>
+                </thead>
+                <tbody />
+            </table>
+        </div>
+        <br />
+        <div>
+            <form class="navbar-form">
+                <div class="form-group">
+                    <label> Наряд видав:</label>
+                    <label></label>
                     <select class="autocompleteCombobox employees">
                         <option></option>
                     </select>
-                </td>
-                <td id="timesheetNumber"></td>
-                <td> <input type="text" /></td>
-            </tr>
-        </table>
-    </div>
-    <br />
-    <div>
-        <table class="thead">
-            <tr>
-                <td style="text-align:right">Місце роботи Кв.</td>
-                <td> <input type="text" /> </td>
-                <td class="paddingLeft">Виділ</td>
-                <td> <input type="text" /> </td>
-                <td class="paddingLeft">Лісорубний квиток №</td>
-                <td> <input type="text" /> </td>
-                <td class="paddingLeft">Якого року лісосіка</td>
-                <td> <select name="year" style="min-width:80px"> </select> </td>
-                <td class="paddingLeft">Вид рубки</td>
-                <td>
-                    <select id="typeOfFelling">
+                </div>
+                <div class="form-group">
+                    <label> До виконання прийняв:</label>
+                    <label></label>
+                    <select class="autocompleteCombobox employees">
                         <option></option>
                     </select>
-                </td>
-            </tr>
-            <tr>
-                <td> Найменування заходу</td>
-                <td> <select id="worksTitlee" style="min-width:100px"> </select> </td>
-                <td class="paddingLeft">Початок роботи</td>
-                <td> <input type="text" class="calendar" name="firstWorkingDay" />  </td>
-                <td class="paddingLeft">Закінчення роботи</td>
-                <td> <input type="text" class="calendar" name="lastWorkingDay" /> </td>
-                <td class="paddingLeft">Щоденник приймання робіт №</td>
-                <td> <input type="text" id="orderDate" /> </td>
-                <td class="paddingLeft">Середній об'єм хлиста, м<sup>3</sup></td>
-                <td> <input type="text" id="volumeWood" /> </td>
-            </tr>
-        </table>
-        <div id="coefficient">
-            <form class="navbar-form">  
-                <label>Умови роботи:</label>
-                <div id="conditionsLumbering" class="btn-group form-group" data-toggle="buttons">
-                  
-                    <label class="btn btn-primary active" id="workingConditionsSummer">
-                        <input type="radio" checked> Літні
-                    </label>
-                    <label class="btn btn-primary" id="workingConditionsHard">
-                        <input type="checkbox"> Тяжкі
-                    </label>
-                    <label class="btn btn-primary" id="workingConditionsWinter">
-                        <input type="radio"> Зимові
-                    </label>
                 </div>
-                <div id="tractorCoefficient" class="form-group">
-                    <label>Переїзд трактора, км:</label>
-                    <input type="text" id="tractorMoving" />
-                    <label>Всього затрачено на переїзд трактора, годин:</label>
-                    <input type="text" id="hoursUsed" />
-                    <label>Наявність перешкод на ділянці, %:</label>
-                    <input type="text" id="block" />
-                </div>
-                <div id="deforestationCoefficient" class="form-group">
-                    <label>Коефіцієнт зменшення норм:</label>
-                    <input type="text" id="reduceDeforestationCoefficient" />
-                    <label> Згідно наказу №:</label>
-                    <input type="text" />
-                    <label>від:</label>
-                    <input type="text" class="calendar" />
-                </div>
-                <div id="divForestPlantingConditions" class="form-group">                    
-                    <select id="forestPlantingConditions">
+                <div class="form-group">
+                    <label> Виконану роботу здав:</label>
+                    <label></label>
+                    <select class="autocompleteCombobox employees">
                         <option></option>
-                        <option>Рівнині_умови</option>
-                        <option>Яружно_балкові_землі_схил_до_20град</option>
-                        <option>Яружно_балкові_землі_схил_понад_20град</option>
-                        <option>Гірські_умови_схил_до_20град</option>
-                        <option>Гірські_умови_схил_понад_20град</option>                        
-                    </select>               
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label> Оцінка якості виконаних робіт:</label>
+                    <select id="PerformanceEvaluation">
+                        <option>Задовільно</option>
+                        <option>Не задовільно</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label> Роботу прийняв:</label>
+                    <label></label>
+                    <select class="autocompleteCombobox employees">
+                        <option></option>
+                    </select>
                 </div>
             </form>
         </div>
     </div>
-    <br />
-    <div>
-        <table class="table-bordered table-hover">
-            <thead>
-                <tr>
-                    <td rowspan="2">Категорія робіт</td>
-                    <td rowspan="2">Найменування робіт</td>
-                    <td rowspan="2">Разряд&nbsp;робіт</td>
-                    <td rowspan="2">Одиниця виміру</td>
-                    <td colspan="2">Обсяг робіт </td>
-                    <td rowspan="2">Норма виробітку</td>
-                    <td rowspan="2">Виконанно норм</td>
-                    <td rowspan="2">Розцінка за одиницю</td>
-                    <td rowspan="2">Сума заробітку</td>
-                    <td colspan="2">Відпрацьовано</td>
-                    <td rowspan="2">Додати строку</td>
-                </tr>
-                <tr>
-                    <td>Задано</td>
-                    <td>Виконано</td>
-                    <td>Людино-дні</td>
-                    <td>Машино-змін</td>
-                </tr>
-            </thead>
-            <tbody id="tbodyTable">
-                <!--тело таблицы-->
-                <tr class="mycontainer" id="mainrow">
-                    <td>
-                        <!--выпадающий список категория работ-->
-                        <select id="productCategory" style="min-width:250px">
-                            <option></option>
-                        </select>
-                    </td>
-                    <td>
-                        <!--выпадающий список вид работ-->
-                        <select id="product" class="autocompleteCombobox form-control quantity">
-                            <option></option>
-                        </select>
-                    </td>
-                    <td>
-                        <!--выпадающий список разряд робот-->
-                        <select id="Rank" disabled>
-                            <option></option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                        </select>
-                    </td>
-                    <td> <input type="text" id="Unit" disabled /> </td>
-                    <td> <input type="text" id="set" /> </td>
-                    <td> <input type="text" id="executed" /> </td>
-                    <td> <input type="text" id="norm" disabled /> </td>
-                    <td> <input type="text" id="executedNorm" disabled /> </td>
-                    <td> <input type="text" id="UnitPrice" disabled /> </td>
-                    <td> <input type="text" id="Sum" disabled /> </td>
-                    <td> <input type="text" disabled/> </td>
-                    <td> <input type="text" disabled/> </td>
-                    <td>
-                        <button class="btn btn-success add">
-                            <!--кнопка добавления строки-->
-                            <span id="addIcon" class="glyphicon glyphicon-plus" />
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <!--нижняя строка с суммой-->
-                <tr>
-                    <td colspan="3">УСЬОГО</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><input type="text"/></td>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
-    <br />
-    <div align="center">
-        <h4>Витрачено сировини, матеріалів та відходів виробництва</h4>
-    </div>
-    <div class="material">
-        <table class="table-bordered table-hover container-fluid">
-            <thead>
-                <tr>
-                    <td rowspan="2">Найменування сировини, матеріалів та на що витрачено</td>
-                    <td rowspan="2">Одиниця виміру</td>
-                    <td colspan="2">Кількість</td>
-                    <td rowspan="2">Вартість</td>
-                    <td rowspan="2">Найменування сировини, матеріалів та на що витрачено</td>
-                    <td rowspan="2">Одиниця виміру</td>
-                    <td colspan="2">Кількість</td>
-                    <td rowspan="2">Вартість</td>
-                </tr>
-                <tr>
-                    <td>по нормі</td>
-                    <td>фактично</td>
-                    <td>по нормі</td>
-                    <td>фактично</td>
-                </tr>
-            </thead>
-            <tbody />
-        </table>
-    </div>
-    <br />
-    <div>
-        <form class="navbar-form" autocomplete="on">
-            <div class="form-group">
-                <label> Наряд видав:</label>
-                <label></label>
-                <select class="autocompleteCombobox employees">
-                    <option></option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label> До виконання прийняв:</label>
-                <label></label>
-                <select class="autocompleteCombobox employees">
-                    <option></option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label> Виконану роботу здав:</label>
-                <label></label>
-                <select class="autocompleteCombobox employees">
-                    <option></option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label> Оцінка якості виконаних робіт:</label>
-                <select id="PerformanceEvaluation">
-                    <option>Задовільно</option>
-                    <option>Не задовільно</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label> Роботу прийняв:</label>
-                <label></label>
-                <select class="autocompleteCombobox employees">
-                    <option></option>
-                </select>
-            </div>
-        </form>
-    </div>   
-    <div align="right">
-        <button id="buttonModalClear" class="btn btn-warning" style="width:100px" title="Очистити таблицю">   <!-- btn-warning-->
-            <span id="addIcon" class="glyphicon glyphicon-trash" />       <!--glyphicon glyphicon-floppy-disk-->
-        </button>   
-    </div><!--Кнопка сохранения-->
 </div>
-<br />
+
+@*<div id="divPDF"></div>
+
+    <div id="mytable">
+        <div xmlns="http://www.w3.org/1999/xhtml" style='font-size:12px'>
+            <table border=1 id="idtable">
+                <tr>
+                    <td>Привіт</td>
+                    <td>Україна</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <canvas id="canvas"></canvas>*@
+
+
+<div align="right">
+    <button id="addDocument" class="btn btn-success" style="width:150px" title="Створити документ">
+        Створити документ
+    </button>
+    <button id="printDocument" class="btn btn-success" style="width:100px" title="Друк">
+        <!-- btn-warning-->
+        <span id="addIcon" class="glyphicon glyphicon-print" />       <!--glyphicon glyphicon-floppy-disk-->
+    </button>
+    <button id="buttonModalClear" class="btn btn-warning" style="width:100px" title="Очистити таблицю">
+        <!-- btn-warning-->
+        <span id="addIcon" class="glyphicon glyphicon-trash" />       <!--glyphicon glyphicon-floppy-disk-->
+    </button>
+</div><!--Кнопка сохранения-->
+
 
 
 <script type="text/javascript">
-    $("#PerformanceEvaluation").prop('selectedIndex', 0); //значение по умолчанию /оценка работы/  
+    $("#PerformanceEvaluation").prop('selectedIndex', 0); //значение по умолчанию /оценка работы/
 </script>
 
 

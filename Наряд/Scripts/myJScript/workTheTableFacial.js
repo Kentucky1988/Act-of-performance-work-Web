@@ -5,10 +5,10 @@
         success: function (data) {
             renderCategory(element, data);
         }
-    })
+    });
 }
 
-var ListCompany = []
+var ListCompany = [];
 function Company(element) { //предприятие   
     $.ajax({
         type: "GET",
@@ -17,7 +17,7 @@ function Company(element) { //предприятие
             ListCompany = data;
             getEmployees(element, ListCompany, 'Підприємство1');
         }
-    })
+    });
 }
 
 function subdivision(element) {//Підрозділи
@@ -29,10 +29,10 @@ function subdivision(element) {//Підрозділи
             $element = $('#subdivision');
             renderCategory($element, data);
         }
-    })
+    });
 }
 
-var Employees = []
+var Employees = [];
 function loadEmployees() { //роботники   
     $.ajax({
         type: "GET",
@@ -41,7 +41,7 @@ function loadEmployees() { //роботники
             Employees = data;
             getEmployees('.employees', Employees, 'П_І_Б');
         }
-    })
+    });
 }
 
 function worksTitlee(element) {//найменування заходу
@@ -51,7 +51,7 @@ function worksTitlee(element) {//найменування заходу
         success: function (data) {
             renderCategory(element, data);
         }
-    })
+    });
 }
 
 function typeOfFelling(element) {//вид рубок
@@ -61,7 +61,7 @@ function typeOfFelling(element) {//вид рубок
         success: function (data) {
             renderCategory(element, data);
         }
-    })
+    });
 }
 
 var typeOfWork;//вид робот
@@ -99,10 +99,10 @@ function normOfWork(element) {//норма выроботки
             notifyMessage("Вкажіть середній об'єм хлиста", "warn"); 
         } 
     }
-};
+}
 
-var pricingID     //РозцінкаID
-var typeOfBrigade //Комплексна_индивідуальна 
+var pricingID;     //РозцінкаID
+var typeOfBrigade; //Комплексна_индивідуальна 
 
 function Unit(element) { //единица измерения  
     $.ajax({
@@ -116,15 +116,15 @@ function Unit(element) { //единица измерения
             RankActiv();
         }
     });
-};
+}
 
 function RankActiv() {//выпадающий список разряд робот Активный/Неактивный   
     if (typeOfBrigade === "комплексна") {
-        $('#Rank').val('').prop("disabled", true)
+        $('#Rank').val('').prop("disabled", true);
     } else if (typeOfBrigade === "індивідуальна") {
-        $('#Rank').val('').prop("disabled", false)
+        $('#Rank').val('').prop("disabled", false);
     }
-};
+}
 
 function pricingUnit() {//расценка за единицу   
     if ($('#productCategory').val() !== 0 && ((typeOfBrigade === "індивідуальна" && $('#Rank').val() > 0) || typeOfBrigade === "комплексна")) {
@@ -138,7 +138,7 @@ function pricingUnit() {//расценка за единицу
             }
         });
     }
-};
+}
 
 $("#volumeWood").change(function () {// событие на изминеие обьема хлыста   
     normOfWork($('#product').val());
@@ -177,7 +177,7 @@ function showDivForestPlantingConditions(elementValue) {
 }
 
 $("#productCategory").change(function () {// событие на изминеие категории работ
-    var productCategory = $('#productCategory').val()
+    var productCategory = $('#productCategory').val();
     showDivForestPlantingConditions(productCategory);
     LoadProduct(this);
     Unit(productCategory);
@@ -200,7 +200,7 @@ function getIdList(val, colum, List) {
         if (val === this[colum]) {
             id = i;
         }
-    })
+    });
     return id;
 }
 
@@ -251,7 +251,7 @@ function columnSum($table) {//сумма строк нормы
             $(this).attr('id', 'columnSumSalary').text(sumColumn === 0 ? '' : (sumColumn).toFixed(2));
         }
     });
-};
+}
 
 $(document).ready(function () {
     $('#coefficient').hide();//скрыть строку /Поправочный коефициент/
@@ -268,7 +268,7 @@ $(document).ready(function () {
 });
 
 
-var colectionSortOil = []  //колекция расхода ГСМ по видам
+var colectionSortOil = [];  //колекция расхода ГСМ по видам
 function ColectionSortOil() {// виды ГСМ
     $.ajax({
         type: "GET",
@@ -276,12 +276,12 @@ function ColectionSortOil() {// виды ГСМ
         success: function (data) {
             $(data).each(function (i, val) {
                 colectionSortOil.push({ 'Вид_палива': val, 'Витрити_ГСМ': 0 });
-            })
+            });
         }
-    })
+    });
 }
 
-var CollectionOilCosts = [] //колекция расхода ГСМ по строкам
+var CollectionOilCosts = []; //колекция расхода ГСМ по строкам
 function collectionOilCosts() { //расхода ГСМ по строке
     var checkedConditionsWinterOil = $('#worksTitlee').val() === 'Лісозаготівельні роботи' ? '' : checkedConditionsWinter;
     $.ajax({
@@ -296,7 +296,7 @@ function collectionOilCosts() { //расхода ГСМ по строке
             countValColectionSortOil();//подсчет расхода ГСМ по видам
             addStringDetails(colectionSortOil);//пересчитать строки расход материалов
         }
-    })
+    });
 }
 
 function countValColectionSortOil() {//подсчет расхода ГСМ по видам
@@ -307,9 +307,9 @@ function countValColectionSortOil() {//подсчет расхода ГСМ по
                 if (colectionSortOil[iSort]['Вид_палива'] === this['Вид_палива']) {
                     colectionSortOil[iSort]['Витрити_ГСМ'] += this['Витрити_ГСМ'];
                 }
-            })
-        })
-    })
+            });
+        });
+    });
 }
 
 function deleteValCollectionOilCosts(indexDeleteElement) {//удаление обекта из колекции /расход ГСМ по строкам/ при удалеине строки
@@ -317,13 +317,13 @@ function deleteValCollectionOilCosts(indexDeleteElement) {//удаление о�
 }
 
 function notNullInColection(colection) {//убрать из колекции /расхода ГСМ по видам/ пустые поля 
-    var colectionSortOilNotNull = []
+    var colectionSortOilNotNull = [];
     $(colection).each(function () {
         alert(this['Витрити_ГСМ']);
         if (this['Витрити_ГСМ'] > 0) {
             colectionSortOilNotNull.push({ 'Вид_палива': this['Вид_палива'], 'Витрити_ГСМ': this['Витрити_ГСМ'] });
         }
-    })
+    });
     return colectionSortOilNotNull;
 }
 
@@ -377,7 +377,7 @@ function getEmployees(element, List, nameColum) {//добавить список
     $ele.append($('<option/>').text('Вибрати'));
     $.each(List, function () {
         $ele.append($('<option/>').text(this[nameColum]));
-    })
+    });
 }
 
 $(document).ajaxStart(function () {//индикатор работы AJAX
@@ -388,7 +388,7 @@ $(document).ajaxStart(function () {//индикатор работы AJAX
 
 $('#buttonModalClear').click(function () {//кнопка вызов модального окна очистки наряда  
     $('#myModal').modal('show');
-})
+});
 
 $('#cleaningAll').click(function () {//кнопка очистить полностю наряду  
     try {
@@ -403,7 +403,7 @@ $('#cleaningAll').click(function () {//кнопка очистить полно�
         notifyMessage("Помилка видалено", "error");
     }
 
-})
+});
 
 $('#cleaningPart').click(function () {//кнопка очистить частину наряду
     var work = false;
@@ -431,13 +431,13 @@ $('#cleaningPart').click(function () {//кнопка очистить части
     if (work) {
         addNumberAct();//номер акта
         notifyMessage("Дані успішно видалено", "success");
-    }   
-})
+    }
+});
 
 function addNumberAct() {//номер акта
 
     var $elementValue = +$('#numberAct').val();   
-    if ($elementValue == '') {
+    if ($elementValue === '') {
         $('#numberAct').val('1');
     } else {        
         $('#numberAct').val($elementValue + 1);
@@ -468,7 +468,7 @@ function clearingTableTbodyTable() {                   //очистити таб
     var $table = $('#tbodyTable');                     //таблица в которой удаляем строки
     clearRow($table);                                  //очистка страки ввода       
     $('tr:not(:first)', $table).each(function () {
-        var indexDeleteElement = $('tr:not(:first)', $table).index(this)//получить номер удаляемой строки
+        var indexDeleteElement = $('tr:not(:first)', $table).index(this);//получить номер удаляемой строки
         $(this).remove();                               //Удаление строки      
         deleteValCollectionOilCosts(indexDeleteElement);//удаление обекта из колекции расход ГСМ при удалеине строки       
     });
@@ -501,6 +501,6 @@ function notifyMessage(textMessage, classStyles) {
     $.notify(textMessage, {
         globalPosition: "top center",
         className: classStyles
-    })
+    });
 }
 

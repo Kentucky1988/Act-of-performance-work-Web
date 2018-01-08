@@ -37,7 +37,7 @@ $('.details').each(function () {
         volumeTotalTableDetails($table);//Загальний об'єм
         totalTableDetails($table);//Загальна кількість    
         notifyMessage("Дані успішно видалено", "success");
-    })
+    });
 });
 
 function emmployeesChange(element) {
@@ -46,7 +46,7 @@ function emmployeesChange(element) {
     $(element).parent('div').find('label:odd').text(Employees[id]['Професія']);  //указать должность DIV
     $('#timesheetNumber', $element).text(Employees[id]['Id_Робітника']);         //указать табельный номер  table 
     $('#position', $element).text(Employees[id]['Професія']);                    //указать должность        table
-    var RankEmployee = Employees[id]['Тарифний_розряд']
+    var RankEmployee = Employees[id]['Тарифний_розряд'];
     if (RankEmployee !== null) {
         $('#RankEmployee', $element).text(RankEmployee);                         //указать Тарифний_розряд  table
     }
@@ -55,7 +55,7 @@ function emmployeesChange(element) {
 var $arrayHoursUsed = $('.tbodyTableRevers tr').filter(':eq(0), :eq(1)').find('td[id]');
 $arrayHoursUsed.change(function () {
     var numberHours = getNumberHours($arrayHoursUsed);
-    var $input = $('input', this); 
+    var $input = $('input', this);
     var boolNumberHours = checkTheNumberOfHours($($input).val(), this);
 
     if (testDateValid() && boolNumberHours) {//проверка не пустые строки   
@@ -68,11 +68,11 @@ $arrayHoursUsed.change(function () {
         if (numberHours > 0) {
             fulfilledTheNorms();        //выполнено норм     
             percentFulfilledTheNorms(); //процент выполнения норм 
-            salary()                    //зарплата
+            salary();                   //зарплата
             columnSumEmployee($table);  //сумма строк  
         }
     }
-})
+});
 
 function checkTheNumberOfHours(hours, element) {
     if (hours > 24 || hours < 0) {
@@ -127,7 +127,7 @@ function fulfilledTheNorms() {//расчет Виконано норм
         } else {
             $(this).text('');                                   //выполнено норм  
         }
-    })
+    });
 }
 
 function percentFulfilledTheNorms() {                 //процент выполнения норм  
@@ -141,7 +141,7 @@ function percentFulfilledTheNorms() {                 //процент выпо�
         } else {
             $(this).next('td').text('');                                  //выполнено норм  
         }
-    })
+    });
 }
 
 function salary() {                                             //зарплата
@@ -157,7 +157,7 @@ function salary() {                                             //зарплат
         } else {
             $(this).next('td').next('td').text('');              //выполнено норм  
         }
-    })
+    });
 }
 
 function testDateValid() {//проверка выбора сотрудника и расчет норм
@@ -256,14 +256,14 @@ function columnSumEmployee($table) {//сумма строк Табель
             }
         }
     });
-};
+}
 
 $('.tbodyTableRevers').each(function () {
     $(this).on('click', '.remove', function () {   //событие на нажатие кнопки удалить строку        
         deleteTrEmployee(this);        //Удаление строки  
         workFromtbodyTableRevers();    //пересчет даных в таблице тпбель
         notifyMessage("Дані успішно видалено", "success");
-    })
+    });
 });
 
 function workFromtbodyTableRevers() {
@@ -271,7 +271,7 @@ function workFromtbodyTableRevers() {
     columnSumEmployee($table);  //сумма строк  
     fulfilledTheNorms();        //выполнено норм     
     percentFulfilledTheNorms(); //процент выполнения норм 
-    salary()                    //зарплата
+    salary();                   //зарплата
     columnSumEmployee($table);  //сумма строк 
     numberPersons($table);      //количество человек в табеле   
 }

@@ -7,7 +7,7 @@ function LoadCategory(element, val) {//категории робот
         success: function (data) {
             renderCategory(element, data);
         }
-    })
+    });
 }
 
 function renderCategory(element, List) {//создание списка категорий
@@ -16,7 +16,7 @@ function renderCategory(element, List) {//создание списка кате
     $ele.append($('<option/>').text('Вибрати'));
     $.each(List, function (i, val) {
         $ele.append($('<option/>').text(val));
-    })
+    });
     $ele.prop('selectedIndex', 0); //значение по умолчанию
 }
 
@@ -32,33 +32,17 @@ function LoadProduct(element) {//вид робот
             $("option:contains('Вибрати')", element).remove();
             $(element).parents('td').find('.custom-combobox-input').val(" ");
         }
-    })
+    });
 }
 
 $('.add').click(function () {//событие на нажатие кнопки ДОБАВИТ 
     var $table = $(this).parents('#tbodyTable');//таблица в которой добовляем строки
-    var isAllValid = true;
-
-    $('tr:first td input:not(":disabled, #set")', $table).each(function (i, value) {//проверка не пустые строки
-        if ($(this).val().trim() === '') {
-            isAllValid = false;
-            if (i === 0) {
-                notifyMessage("Вкажіть найменуваня робіт", "warn"); 
-            }    
-            if (i === 1) {
-                notifyMessage("Вкажіть обсяг виконаних робіт", "warn");
-            }  
-        }
-    });
-
-    if ($("#volumeWood").val().trim() === '') {
-        isAllValid = false;
-        notifyMessage("Вкажіть середній об'єм хлиста", "warn");  
-    }
+    var isAllValid = allValidtbodyTableFase($table);
 
     if (isAllValid) {              //копирование строки   
         collectionOilCosts();      //получить колекцию расхода ГСМ   
-        copyString(this, $table);  //копировать строку ввода 
+        copyString($table);        //копировать строку ввода 
+        copyButton(this, $table);  //копировать кнопку 
         clearRow($table);          //очистка строк        
         columnSum($table);         //сумма строк  
         workFromtbodyTableRevers();//пересчет зарплаты сотрудников
@@ -66,25 +50,52 @@ $('.add').click(function () {//событие на нажатие кнопки �
     }
 });
 
-function copyString(element, $table) {   
+function allValidtbodyTableFase($table) {
+    var isAllValid = true;
+
+    $('tr:first td input:not(":disabled, #set")', $table).each(function (i, value) {//проверка не пустые строки
+        if ($(this).val().trim() === '') {
+            isAllValid = false;
+            if (i === 0) {
+                notifyMessage("Вкажіть найменуваня робіт", "warn");
+            }
+            if (i === 1) {
+                notifyMessage("Вкажіть обсяг виконаних робіт", "warn");
+            }
+        }
+    });
+
+    if ($("#volumeWood").val().trim() === '') {
+        isAllValid = false;
+        notifyMessage("Вкажіть середній об'єм хлиста", "warn");
+    }
+
+    return isAllValid;
+}
+
+function copyString($table) {   
     $("<tr>").appendTo($table);//добавляем нижнюю строку            
     $("tr:first td", $table).each(function (indx) {//заполняем последнюю строку данными     
         var str;
 
         if ($("input", this).length) {
             str = $("input", this).val();
+        }else {
+            str = $(this).text();
         }
 
         if (indx === 1 && ($($table).next().is("tfoot"))) {
             $("<td/>").attr("colspan", "3").text(str).appendTo($("tr:last", $table));
-        } else if (indx >= 3 || (indx === 0 && !($($table).next().is("tfoot")))) {
+        } else if (indx >= 3) {
             $("<td/>", { text: str }).appendTo($("tr:last", $table));
         }
         else {
             return;
         }
-    });
+    });   
+}
 
+function copyButton(element, $table) {
     var $newRow = $(element).clone();//клонирование кнопки add
     $($newRow).addClass('remove').toggleClass('btn-success btn-danger');//сменить стиль success - danger
     $('#addIcon', $newRow).toggleClass('glyphicon-plus glyphicon-trash');//сменить иконку кнопки
@@ -93,16 +104,16 @@ function copyString(element, $table) {
 
 $('#tbodyTable').each(function () {
     $(this).on('click', '.remove', function () {   //событие на нажатие кнопки удалить строку 
-        var $table = $(this).parents('tbody');//таблица в которой добовляем строки
-        var indexDeleteElement = $('tr:not(:first)', $table).index($(this).parents('tr'))//получить номер удаляемой строки
+        var $table = $(this).parents('tbody');     //таблица в которой добовляем строки
+        var indexDeleteElement = $('tr:not(:first)', $table).index($(this).parents('tr')); //получить номер удаляемой строки
         deleteTr(this);//Удаление строки      
         deleteValCollectionOilCosts(indexDeleteElement);//удаление обекта из колекции расход ГСМ при удалеине строки
         countValColectionSortOil();//пересчитать расхода ГСМ по строкам
         addStringDetails(colectionSortOil);//перестроить таблицу расход материалов       
         columnSum($table); //пересчитать сумму строк после удаленных 
         workFromtbodyTableRevers();//пересчет зарплаты сотрудников
-        notifyMessage("Дані успішно видалено", "success");    
-    })
+        notifyMessage("Дані успішно видалено", "success");
+    });
 });
 
 function deleteTr(element) {//Удаление строки
