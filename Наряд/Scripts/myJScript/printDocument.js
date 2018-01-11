@@ -84,7 +84,7 @@
 
 
 $('#printDocument').click(function () {//печать докумета
-    var printMe = document.getElementById('printDiv');
+    var printMe = document.getElementById('print');
     var documentPrint = window.open(/*'', '', 'width = 400, height = 300'*/);
     documentPrint.document.write(printMe.outerHTML);
     documentPrint.document.close();
@@ -93,42 +93,117 @@ $('#printDocument').click(function () {//печать докумета
     documentPrint.close();
 });
 
-$('#addDocument').click(function () { //сформировать документ
+$('#addDocument').click(function () { //сформировать документ Fase
     copyDressNumber();
     copyTableFace($('#theadTableFase tr:eq(1)').find('td'), $('#theadTablePrint tr:eq(1)').find('td'));
     copyTableFace($('#theadFase td:odd'), $('#theadPrint td:odd'));
-    copyTbodyFace($('#tbodyTableFase tbody tr:not(:first)'), $('#tbodyTablePrint tbody'));
     copyTableFace($('#tbodyTableFase tfoot td:not(:first)'), $('#tbodyTablePrint tfoot td:not(:first)'));
+    deleteFromTbodyTr($('#tbodyTablePrint'));
+    deleteFromTbodyTr($('#tfootTablePrint'));
+    copyTbodyFace($('#tbodyTableFase tbody tr:not(:first)'), $('#tbodyTablePrint tbody'));
     copyTbodyFace($('#tfootTableFase tbody tr'), $('#tfootTablePrint tbody'));
+    copyEmployeePosition($('#tfootTFase'), $('#tfootPrint'));   
+    copyCoefficientFromPrint($('#coefficient'), $('#coefficientPrint'));
 });
 
 function copyDressNumber() {
     $('#dressNumberPrint').text($('#dressNumberFase input').val());
 }
 
-function copyTableFace($tableCopy, $tablePrint) {
-    $($tableCopy).each(function (index, val) {
-        var str;
-        if ($('input', this).length) {
-            str = $('input', this).val();
-        } else if ($('select', this).length) {
-            str = $('select', this).val();
-        } else {
-            str = $(this).text();
-        }
-        $($tablePrint).eq(index).text(str);
+function getTheText($element) {
+    var str;
+    if ($('input', $element).length) {
+        str = $('input', $element).val();
+    } else if ($('select', $element).length) {
+        str = $('select', $element).val();
+    } else {
+        str = $($element).text();
+    }
+    return str;
+}
+
+function copyTableFace($tableCopyTd, $tablePrintTd) {
+    $($tableCopyTd).each(function (index, val) {
+        var str = getTheText(this);
+        $($tablePrintTd).eq(index).text(str);
     });
 }
 
 function copyTbodyFace($tableCopyTr, $tablePrintTbody) {
     $($tableCopyTr).each(function () {
+
         $("<tr>").appendTo($tablePrintTbody);//добавляем нижнюю строку  
 
         $('td', this).each(function () {
-            if (!$('button', this).length) {             
-                $("<td/>", { text: $(this).text() }).appendTo($("tr:last", $tablePrintTbody));
+            if (!$('button', this).length) {
+                var str = getTheText(this);
+                $("<td/>", { text: str }).appendTo($("tr:last", $tablePrintTbody));
             }
         });
+    });
+}
+
+function deleteFromTbodyTr(table) {//удалить все строки в tbody таблицы   
+    var $table = $('tbody', table);
+    $('tr', $table).each(function () {
+        $(this).remove();
+    });
+}
+
+function copyEmployeePosition($employeePositionCopyDiv, $employeePositionPrintDiv) {
+    var $lablePrint = $('label:nth-child(3n+3)', $employeePositionPrintDiv);
+    $('div', $employeePositionCopyDiv).each(function (index, val) {
+        var str;
+        var $lable = $(this).children().eq(1);
+
+        if ($($lable).is('label')) {
+            str = $($lable).text();
+        } else {
+            str = $('select', this).val();
+        }
+
+        var $employee = $('.custom-combobox-input', this);
+        if ($($employee).length) {
+            str += ' ' + $($employee).val();
+        }
+
+        $($lablePrint).eq(index).text(str);
+    });
+}
+
+function copyCoefficientFromPrint($coefficientFacial, $coefficientPrint) {
+
+    var $tdCoefficientPrint = $('td', $coefficientPrint);
+    $('#coefficientPrint td, #coefficientPrint label').show();
+
+    $('div', $coefficientFacial).each(function (index, val) {
+
+        if ($(this).is(':visible')) {//если div отображается 
+
+            if (index === 1) {
+                $(this).children().each(function (i, v) {
+                    if (!$(this).hasClass('active')) { //если отмечен флажок
+                        $($tdCoefficientPrint).eq(index).find('label').eq(i).hide();
+                    }
+                });
+            } else if (index === 2 || index === 3) {
+                $(this).children().each(function (i, v) {
+                    if ($(this).is('input')) { //если отмечен флажок
+                        var str = $(this).val() === '' ? '-' : $(this).val();
+                        $($tdCoefficientPrint).eq(index).find('label').eq(i).text(str);
+                    }
+                });
+            } else if (index === 4) {
+                $(this).children().each(function (i, v) {
+                    if ($(this).is('select')) { //если отмечен флажок
+                        var str = $(this).val();
+                        $($tdCoefficientPrint).eq(index).find('label').eq(i).text(str);
+                    }
+                });
+            }
+        } else {
+            $('#coefficientPrint td').eq(index).hide();
+        }
     });
 }
 

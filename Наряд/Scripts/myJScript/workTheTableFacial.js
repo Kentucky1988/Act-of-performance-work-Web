@@ -345,16 +345,15 @@ function addStringDetails(colection) {//добавить строку в таб�
 
             addString($table, index, typeOil, unit, consumption, td_input, td);
             index++;
-        } else if (i === colection.length) {
+        } else if (i = colection.length && index % 2 != 0) {
             typeOil = "";
             unit = "";
             consumption = "";
             td_input = "<td/>";
             td = "<td/>";
 
-            addString($table, index, typeOil, unit, consumption, td_input, td);
-            index++;
-        }
+            addString($table, index, typeOil, unit, consumption, td_input, td);                  
+        }       
     }
 }
 
@@ -474,7 +473,8 @@ function clearingTableTbodyTable() {                   //очистити таб
     });
     countValColectionSortOil();                //пересчитать расхода ГСМ по строкам
     addStringDetails(colectionSortOil);        //перестроить таблицу расход материалов       
-    columnSum($table);                         //пересчитать сумму строк после удаленных       
+    columnSum($table);                         //пересчитать сумму строк после удаленных 
+    $('#tbodyTableFase tfoot input').val('');    //удалить количество машино-змин
 }
 
 function clearingTableTbodyTableRevers() {             //Очистити таблицю: Табель
