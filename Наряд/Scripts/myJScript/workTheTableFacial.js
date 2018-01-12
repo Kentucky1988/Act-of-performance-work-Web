@@ -1,4 +1,18 @@
-﻿function LoadMaterials(element) { //сортименты   
+﻿$(document).ready(function () {
+    $('#coefficient').hide();//скрыть строку /Поправочный коефициент/
+    typeOfFelling('#typeOfFelling');
+    ColectionSortOil();
+    worksTitlee('#worksTitlee');
+    loadEmployees('.employees');
+    LoadMaterials('.materials');
+    Company('#company');
+    addNumberAct();//номер акта
+
+    $('#tbodyTable .custom-combobox-input, .details .custom-combobox-input').css('min-width', '340px');
+    $('.employees').next('span').find('.custom-combobox-input').css('min-width', '250px');
+});
+
+function LoadMaterials(element) { //сортименты   
     $.ajax({
         type: "GET",
         url: '/home/getMaterials',
@@ -163,7 +177,6 @@ $("#worksTitlee").change(function () {// событие на изминеие н
     clearRow($('#tbodyTable'));
 });
 
-
 function showDivForestPlantingConditions(elementValue) {
     if ($('#worksTitlee').val() === "Лісокультурні роботи") {
         if (elementValue === "Садіння_лісу" || elementValue === "Прополювання_лісу" || elementValue === "Ручний_догляд_за_л_к") {
@@ -194,7 +207,7 @@ $("#company").change(function () {// событие на изминеие яче
     subdivision(ListCompany[id]['Id_Підприємства']);//создать выпадающий список /Підрозділи/
 });
 
-function getIdList(val, colum, List) {
+function getIdList(val, colum, List) {//получить Id выбраного елемента 
     var id;
     $.each(List, function (i, value) {
         if (val === this[colum]) {
@@ -253,21 +266,6 @@ function columnSum($table) {//сумма строк нормы
     });
 }
 
-$(document).ready(function () {
-    $('#coefficient').hide();//скрыть строку /Поправочный коефициент/
-    typeOfFelling('#typeOfFelling');
-    ColectionSortOil();
-    worksTitlee('#worksTitlee');
-    loadEmployees('.employees');
-    LoadMaterials('.materials');
-    Company('#company');
-    addNumberAct();//номер акта
-
-    $('#tbodyTable .custom-combobox-input, .details .custom-combobox-input').css('min-width', '340px');
-    $('.employees').next('span').find('.custom-combobox-input').css('min-width', '250px');
-});
-
-
 var colectionSortOil = [];  //колекция расхода ГСМ по видам
 function ColectionSortOil() {// виды ГСМ
     $.ajax({
@@ -294,7 +292,7 @@ function collectionOilCosts() { //расхода ГСМ по строке
         success: function (data) {
             CollectionOilCosts.push(data);
             countValColectionSortOil();//подсчет расхода ГСМ по видам
-            addStringDetails(colectionSortOil);//пересчитать строки расход материалов
+            addStringDetails(colectionSortOil);//пересчитать строки расход материалов               
         }
     });
 }
@@ -345,7 +343,7 @@ function addStringDetails(colection) {//добавить строку в таб�
 
             addString($table, index, typeOil, unit, consumption, td_input, td);
             index++;
-        } else if (i = colection.length && index % 2 != 0) {
+        } else if (i === colection.length && index % 2 != 0) {
             typeOil = "";
             unit = "";
             consumption = "";
@@ -355,6 +353,7 @@ function addStringDetails(colection) {//добавить строку в таб�
             addString($table, index, typeOil, unit, consumption, td_input, td);                  
         }       
     }
+    notifyMessage("Витрати ГСМ успішно перераховано", "success"); 
 }
 
 function addString($table, index, typeOil, unit, consumption, td_input, td) {//добавляем нижнюю строку в таблице /details(лісопродукція)/
@@ -443,7 +442,6 @@ function addNumberAct() {//номер акта
     }
 }
 
-
 function clearingThead() {//Очистити шапку наряду
     var $table = $('.thead');
     $('input, select', $table).not('.calendar, [name="year"]').val('');
@@ -463,39 +461,30 @@ function clearingEmployee() {//Очистити перелік відповід�
     $('#timesheetNumber').text('');
 }
 
-function clearingTableTbodyTable() {                   //очистити таблицю: Перелік виконаних робіт
-    var $table = $('#tbodyTable');                     //таблица в которой удаляем строки
-    clearRow($table);                                  //очистка страки ввода       
-    $('tr:not(:first)', $table).each(function () {
-        var indexDeleteElement = $('tr:not(:first)', $table).index(this);//получить номер удаляемой строки
-        $(this).remove();                               //Удаление строки      
-        deleteValCollectionOilCosts(indexDeleteElement);//удаление обекта из колекции расход ГСМ при удалеине строки       
-    });
-    countValColectionSortOil();                //пересчитать расхода ГСМ по строкам
-    addStringDetails(colectionSortOil);        //перестроить таблицу расход материалов       
-    columnSum($table);                         //пересчитать сумму строк после удаленных 
-    $('#tbodyTableFase tfoot input').val('');    //удалить количество машино-змин
+function clearingTableTbodyTable() {                //очистити таблицю: Перелік виконаних робіт
+    var $table = $('#tbodyTable');                  //таблица в которой удаляем строки
+    clearRow($table);                               //очистка страки ввода 
+    $('tr:not(:first)', $table).remove();           //Удаление строки       
+    CollectionOilCosts.length = 0;                  //очищаем колекцию расхода ГСМ 
+    $('.material tbody tr').remove();               //очистить таблицу расход материалов      
+    columnSum($table);                              //пересчитать сумму строк после удаленных 
+    $('#tbodyTableFase tfoot input').val('');       //удалить количество машино-змин
 }
 
-function clearingTableTbodyTableRevers() {             //Очистити таблицю: Табель
-    var $table = $('.tbodyTableRevers');               //таблица в которой удаляем строки
-    clearRowEmployee($table);                          //очистка страки ввода       
-    $('tr:not(:eq(0), :eq(1))', $table).each(function () {
-        $(this).remove();                              //Удаление строки 
-    });
-    columnSumEmployee($table);                         //сумма строк 
+function clearingTableTbodyTableRevers() {          //Очистити таблицю: Табель
+    var $table = $('.tbodyTableRevers');            //таблица в которой удаляем строки
+    clearRowEmployee($table);                       //очистка страки ввода       
+    $('tr:not(:eq(0), :eq(1))', $table).remove();   //Удаление строки    
+    columnSumEmployee($table);                      //сумма строк 
     $('.thead #numberPersons').text('');
 }
 
-function clearingTableDetails() {//Очистити таблицю: Лісопродукція
-    var $table = $('.details tbody');                  //таблица в которой удаляем строки
-    clearRow($table);                                  //очистка страки ввода       
-    $('tr:not(:first)', $table).each(function () {
-        $(this).remove();                              //Удаление строки 
-    });
+function clearingTableDetails() {                   //Очистити таблицю: Лісопродукція
+    var $table = $('.details tbody');               //таблица в которой удаляем строки
+    clearRow($table);                               //очистка страки ввода       
+    $('tr:not(:first)', $table).remove();           //Удаление строки    
     $('#volumeTotalTableDetails, #totalTableDetails').text('');
 }
-
 
 function notifyMessage(textMessage, classStyles) {
     $.notify(textMessage, {

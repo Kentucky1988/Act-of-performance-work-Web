@@ -1,91 +1,6 @@
-﻿//function addCanvas(canvasID) {
-//    $('<canvas>').attr({
-//        id: canvasID
-//    }).css({
-//        width: '300px',
-//        height: '200px'
-//    }).appendTo('#divPDF');
-//}
-
-//function addContentToCanvas(canvasID) {
-//    var canvas = document.getElementById(canvasID).getContext('2d');
-//    canvas.font = '24px serif'; 
-//    canvas.textAlign = 'centr';   
-//    canvas.fillText('Привіт !!!', 20, 20);
-
-//    //var canvas = document.getElementById(canvasID);
-//    //var ctx = canvas.getContext('2d');
-
-//    //var data = "<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'>" +
-//    //    "<foreignObject width='100%' height='100%'>" +
-//    //    "<div xmlns='http://www.w3.org/1999/xhtml' style='font-size:40px'>" +
-//    //    "<table border='1'><tr><td>row 1, cell 1</td><td>row 1, cell 2</td></tr><tr><td>row 2, cell 1</td><td>row 2, cell 2</td></tr></table>" +
-//    //    "</div>" +
-//    //    "</foreignObject>" +
-//    //    "</svg>";
-
-//    //var DOMURL = self.URL || self.webkitURL || self;
-//    //var img = new Image();
-//    //var svg = new Blob([data], { type: "image/svg+xml;charset=utf-8" });
-//    //var url = DOMURL.createObjectURL(svg);
-//    //img.onload = function () {
-//    //    ctx.drawImage(img, 0, 0);
-//    //    DOMURL.revokeObjectURL(url);
-//    //};
-//    //img.src = url;
-//}
-
-//function convertHtmlToPDF(canvasID) {
-//    var docPDF = new jsPDF({
-//        orientation: 'l',
-//        unit: 'mm',
-//        format: 'a4'
-//    });
-
-//    var canvas = document.getElementById(canvasID);
-//    var imgData = canvas.toDataURL("image/png");
-//    docPDF.addImage(imgData, 'PNG', 0, 0);
-//    docPDF.save("download.pdf");
-//}
-
-//$('#convertPDF').click(function () {
-//    var canvasID = 'PDF';
-
-//    //addCanvas(canvasID);
-//   // addContentToCanvas(canvasID);
-//    convertHtmlToPDF('canvas');
-
-//   // $('#divPDF canvas').remove();
-//});
-
-
-//$(document).ready(function () {
-//    var canvas = document.getElementById("canvas");
-//    var ctx = canvas.getContext("2d");
-//    var data = "<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'>" +
-//        "<style>" +
-//        "td {background-color:yellow;" +
-//        "padding: 10px;}" +
-//        "</style>" +
-//        "<foreignObject width='100%' height='100%'>" + $("#mytable").html() +
-//        "</foreignObject>" +
-//        "</svg>";
-//    var DOMURL = self.URL || self.webkitURL || self;
-//    var svg = new Blob([data], { type: "image/svg+xml" });
-//    var url = DOMURL.createObjectURL(svg);
-
-//    var img = new Image();   
-//    img.onload = function () {
-//        ctx.drawImage(img, 0, 0);
-//        DOMURL.revokeObjectURL(url);       
-//    };
-//    img.src = url;
-//});
-
-
-$('#printDocument').click(function () {//печать докумета
+﻿$('#printDocument').click(function () {//печать докумета
     var printMe = document.getElementById('print');
-    var documentPrint = window.open(/*'', '', 'width = 400, height = 300'*/);
+    var documentPrint = window.open();
     documentPrint.document.write(printMe.outerHTML);
     documentPrint.document.close();
     documentPrint.focus();
@@ -106,7 +21,7 @@ $('#addDocument').click(function () { //сформировать докумен�
     copyCoefficientFromPrint($('#coefficient'), $('#coefficientPrint'));
 });
 
-function copyDressNumber() {
+function copyDressNumber() {//копировать номер наряда
     $('#dressNumberPrint').text($('#dressNumberFase input').val());
 }
 
@@ -188,14 +103,14 @@ function copyCoefficientFromPrint($coefficientFacial, $coefficientPrint) {
                 });
             } else if (index === 2 || index === 3) {
                 $(this).children().each(function (i, v) {
-                    if ($(this).is('input')) { //если отмечен флажок
+                    if ($(this).is('input')) {
                         var str = $(this).val() === '' ? '-' : $(this).val();
                         $($tdCoefficientPrint).eq(index).find('label').eq(i).text(str);
                     }
                 });
             } else if (index === 4) {
                 $(this).children().each(function (i, v) {
-                    if ($(this).is('select')) { //если отмечен флажок
+                    if ($(this).is('select')) { 
                         var str = $(this).val();
                         $($tdCoefficientPrint).eq(index).find('label').eq(i).text(str);
                     }
