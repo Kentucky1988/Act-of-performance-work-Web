@@ -433,6 +433,8 @@
     <Content Include="Views\EditingTheDatabaseСортименти\Save.cshtml" />
     <Content Include="Views\EditingTheDatabaseСортименти\Delete.cshtml" />
     <Content Include="Views\Home\_print.cshtml" />
+    <Content Include="Views\Home\_printFacial.cshtml" />
+    <Content Include="Views\Home\_printReverse.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
