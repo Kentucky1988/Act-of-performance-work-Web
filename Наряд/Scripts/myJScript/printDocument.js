@@ -9,7 +9,8 @@
 });
 
 $('#addDocument').click(function () { //сформировать документ Fase
-    copyDressNumber();
+    //копирование лицевой стороны
+    copyDressNumber($('#dressNumberFase input').val(), $('#dressNumberPrint'));
     copyTableFace($('#theadTableFase tr:eq(1)').find('td'), $('#theadTablePrint tr:eq(1)').find('td'));
     copyTableFace($('#theadFase td:odd'), $('#theadPrint td:odd'));
     copyTableFace($('#tbodyTableFase tfoot td:not(:first)'), $('#tbodyTablePrint tfoot td:not(:first)'));
@@ -17,12 +18,23 @@ $('#addDocument').click(function () { //сформировать докумен�
     deleteFromTbodyTr($('#tfootTablePrint'));
     copyTbodyFace($('#tbodyTableFase tbody tr:not(:first)'), $('#tbodyTablePrint tbody'));
     copyTbodyFace($('#tfootTableFase tbody tr'), $('#tfootTablePrint tbody'));
-    copyEmployeePosition($('#tfootTFase'), $('#tfootPrint'));   
+    copyEmployeePosition($('#tfootTFase'), $('#tfootPrint'));
     copyCoefficientFromPrint($('#coefficient'), $('#coefficientPrint'));
+
+    //копирование обратной стороны
+    deleteFromTbodyTr($('#theadTablePrintReverse'));
+    deleteFromTbodyTr($('#tbodyTablePrintReverse'));
+    copyTableEmployee($('.tbodyTableRevers'), $('#theadTablePrintReverse tbody'));
+    copyTableFace($('.employee tfoot td:not(:first)'), $('#theadTablePrintReverse tfoot td:not(:first)'));
+    copyEmployeePosition($('#tbodyEmployeePositionReverse'), $('#theadPrintReverse'));
+    copyDressNumber($('#totalTableDetails').text(), $(totalTableDetailsPrint));
+    copyDressNumber($('#volumeTotalTableDetails').text(), $(volumeTotalTableDetailsPrint));
+    copyTbodyFace($('.details tbody tr:not(:first)'), $('#tbodyTablePrintReverse tbody'));
+    copyEmployeePosition($('#tfootEmployeePositionReverse'), $('#tfootPrintReverse'));
 });
 
-function copyDressNumber() {//копировать номер наряда
-    $('#dressNumberPrint').text($('#dressNumberFase input').val());
+function copyDressNumber($valElementCopy, $elementPrint) {//копировать номер наряда
+    $($elementPrint).text($valElementCopy);
 }
 
 function getTheText($element) {
@@ -73,6 +85,8 @@ function copyEmployeePosition($employeePositionCopyDiv, $employeePositionPrintDi
 
         if ($($lable).is('label')) {
             str = $($lable).text();
+        } else if ($($lable).is('input')) {
+            str = $($lable).val();
         } else {
             str = $('select', this).val();
         }
@@ -110,7 +124,7 @@ function copyCoefficientFromPrint($coefficientFacial, $coefficientPrint) {
                 });
             } else if (index === 4) {
                 $(this).children().each(function (i, v) {
-                    if ($(this).is('select')) { 
+                    if ($(this).is('select')) {
                         var str = $(this).val();
                         $($tdCoefficientPrint).eq(index).find('label').eq(i).text(str);
                     }
@@ -119,6 +133,24 @@ function copyCoefficientFromPrint($coefficientFacial, $coefficientPrint) {
         } else {
             $('#coefficientPrint td').eq(index).hide();
         }
+    });
+}
+
+function copyTableEmployee($tableCopyEmployee, $tablePrintEmployee) {
+    $('tr:not(:eq(0), :eq(1))', $tableCopyEmployee).each(function (index, value) {
+
+        $("<tr>").css('height', '15px').appendTo($tablePrintEmployee);//добавляем нижнюю строку           
+
+        $('td:not(:last)', this).each(function (i) {  //копируем первую строку    
+            var str = $(this).text();
+            var $lastTr = $('tr:last', $tablePrintEmployee);
+
+            if (index % 2 === 0 && (i <= 4 || i >= 21)) {
+                $("<td/>").attr("rowspan", "2").text(str).appendTo($($lastTr));
+            } else {
+                $("<td/>", { text: str }).appendTo($($lastTr));
+            }
+        });
     });
 }
 

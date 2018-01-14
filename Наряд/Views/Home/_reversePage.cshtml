@@ -122,6 +122,7 @@
                     <td id="30"> <input type="text" /> </td>
                     <td id="31"> <input type="text" /> </td>
                 </tr>
+            </tbody>
             <tfoot>
                 <!--нижняя строка с суммой-->
                 <tr>
@@ -153,11 +154,12 @@
             </tfoot>
         </table>
     </div>
-    <div>
+    <div id="tbodyEmployeePositionReverse">
         <form class="navbar-form">
             <div class="form-group">
-               
+                <label>Вартість коефіцієнту, грн:</label>
                 <input type="text" />
+                <label></label>
             </div>
             <div class="form-group">
                 <label>Бригадир:</label>
@@ -237,15 +239,15 @@
                 </tr>
             </tbody>
         </table>
-    </div>
-    <div>
         <div class="form-group">
             <label>Загальна кількість, шт :</label>
             <label id="totalTableDetails"></label>
             <label>Загальний об'єм, м<sup>3</sup> :</label>
-            <label id="volumeTotalTableDetails"></label>            
+            <label id="volumeTotalTableDetails"></label>
         </div>
-        <form class="navbar-form">         
+    </div>
+    <div id="tfootEmployeePositionReverse">
+        <form class="navbar-form">
             <div class="form-group">
                 <label>Прийняв на відповідальне зберігання:</label>
                 <label></label>
@@ -256,6 +258,7 @@
             <div class="form-group">
                 <label>Дата:</label>
                 <input type="text" class="calendar" name="getDate" />
+                <label></label>
             </div>
             <div class="form-group">
                 <label>Затверджую:</label>
@@ -287,9 +290,9 @@
     $('.verticalText').css({ 'max-width': '40px', 'transform': 'rotate(-90deg) translateX(-7px)' });
     $('.employee tr:first td').filter('.verticalText').css({ 'transform': 'rotate(-90deg) translateX(-2.2em)', 'height': '110px' });
     $('.employee thead tr').not(':first').css('height', '35px');
-    $('#RankEmployee').css('min-width', '40px');  
+    $('#RankEmployee').css('min-width', '40px');
 
-    $('.employee thead tr').filter(':eq(2)').find('td').css('width', '45px'); 
+    $('.employee thead tr').filter(':eq(2)').find('td').css('width', '45px');
 
 </script>
 

@@ -90,7 +90,7 @@ function getNumberHours($array) {
     var numberHours = 0;
     $array.each(function () {
         var day = this.id;
-        var hours = +$('input', this).val();       
+        var hours = +$('input', this).val();
 
         if ((day >= 1 || day <= 31) && hours > 0) {
             numberHours += hours;
@@ -196,31 +196,27 @@ $('.addEmployees').click(function myfunction() {//добовляем строк�
 });
 
 function addStringEmployee(button, $table) {//добавляем нижнюю строку в таблице /employee(табель)/
-    $("<tr>").css('height', '20px').appendTo($table);//добавляем нижнюю строку
 
-    $('tr:eq(0) td', $table).each(function (indx) {  //копируем первую строку    
-        var str;
+    $('tr', $table).filter(':eq(0), :eq(1)').each(function (index) {  
+        $("<tr>").css('height', '20px').appendTo($table);//добавляем нижнюю строку
 
-        if ($('input', this).length) {
-            str = $('input', this).val();
-        } else if ($(':button', this).length) {
-            str = '';
-        } else {
-            str = $(this).html();
-        }
+        $('td', this).each(function (i) {  //копируем строку   
+            var str;
 
-        if ((indx >= 0 && indx <= 4) || (indx >= 21 && indx <= 28)) {
-            $("<td/>").attr("rowspan", "2").text(str).addClass(indx === 21 ? 'dayWorked' : '').addClass(indx === 25 ? 'fulfilledTheNorms' : '').appendTo($("tr:last", $table));
-        } else {
-            $("<td/>", { text: str }).appendTo($("tr:last", $table));
-        }
-    });
+            if ($('input', this).length) {
+                str = $('input', this).val();
+            } else if ($(':button', this).length) {
+                str = '';
+            } else {
+                str = $(this).html();
+            }
 
-    $("<tr>").css('height', '20px').appendTo($table);//добавляем нижнюю строку      
-    $('tr:eq(1) td', $table).each(function () {//копируем вторую строку  
-        var $val = $('input', this).val();
-        var str = $val !== 0 ? $val : '';
-        $("<td/>", { text: str }).appendTo($("tr:last", $table));
+            if (index === 0 && (i <= 4 || i >= 21)) {
+                $("<td/>").attr("rowspan", "2").text(str).addClass(i === 21 ? 'dayWorked' : '').addClass(i === 25 ? 'fulfilledTheNorms' : '').appendTo($("tr:last", $table));
+            } else {
+                $("<td/>", { text: str }).appendTo($("tr:last", $table));
+            }
+        });
     });
 
     var $newRow = $(button).clone();//клонирование кнопки add
