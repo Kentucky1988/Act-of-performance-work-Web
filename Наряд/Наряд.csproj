@@ -208,6 +208,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EditingTheDatabaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\WorkWithDatabaseController.cs" />
     <Compile Include="ExtendedModel\NormFromDB.cs" />
     <Compile Include="ExtendedModel\OrderMaster.cs" />
     <Compile Include="Global.asax.cs">
@@ -422,7 +424,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\_facialPage.cshtml" />
     <Content Include="Views\Home\_reversePage.cshtml" />
-    <Content Include="Views\Home\_workWithDatabase.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
     <Content Include="Views\EditingTheDatabaseРобітники\Save.cshtml" />
@@ -435,6 +436,8 @@
     <Content Include="Views\Home\_print.cshtml" />
     <Content Include="Views\Home\_printFacial.cshtml" />
     <Content Include="Views\Home\_printReverse.cshtml" />
+    <Content Include="Views\Main\Index.cshtml" />
+    <Content Include="Views\WorkWithDatabase\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="jumbotron">
+    <h1>Turn</h1>
+    <p class="lead">Какойто умный текст.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Наряд - акт", "Index", "Home")</h2>
+        <p>
+            Розрахунок наряд-акта на виконання робіт згідно норм виробітку і розцінок затверджених
+            в ДП "Свеський лісгосп".
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("Кубатурник", "", "")</h2>
+        <p>Визначення об'єму круглих лісоматеріалів довжиною 1,0 - 13,5 м і діаметром 3 - 120 см згідно ДСТ 2708-75.</p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Html.ActionLink("База даних", "Index", "WorkWithDatabase")</h2>
+        <p>Редагування, додавання і видалення даних.</p>
+    </div>
+</div>
+

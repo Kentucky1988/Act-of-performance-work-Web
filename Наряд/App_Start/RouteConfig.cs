@@ -16,7 +16,7 @@ namespace Наряд
             routes.MapRoute(
                 name: "Default",//по умолчанию
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }//ссылку на загружаемую 
+                defaults: new { controller = "Main", action = "Index", id = UrlParameter.Optional }//ссылку на загружаемую 
             );//страницу взять в controller - Home (HomeController) метод Index(чтоб узнать какое окно нажать правой кнопкой 
         }// по методу и выбрать "перейти к представлению")
     }

@@ -1,24 +1,25 @@
 ﻿@{
     ViewBag.Title = "Index"; //имя вкладки, отображается в закладках
 }
+<div>
+    <br /><br /><br />
+    <div class="container">
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="active"><a href="#facial" role="tab" data-toggle="tab">Лицьова сторона</a> </li>
+            <li>               <a href="#reverse" role="tab" data-toggle="tab">Зворотня сторона</a> </li>          
+            <li>               <a href="#print" role="tab" data-toggle="tab">Ескиз печати</a> </li>
+        </ul>
+    </div>
 
-<div class="container">   
-    <ul class="nav nav-tabs" role="tablist">
-        <li class="active"><a href="#facial"   role="tab" data-toggle="tab">Лицьова сторона</a> </li>
-        <li>               <a href="#reverse"  role="tab" data-toggle="tab">Зворотня сторона</a> </li>
-        <li>               <a href="#database" role="tab" data-toggle="tab">База даних</a> </li>
-        <li>               <a href="#print"    role="tab" data-toggle="tab">Ескиз печати</a> </li>
-    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="facial">  @Html.Partial("_facialPage") </div>
+        <div role="tabpanel" class="tab-pane" id="reverse"> @Html.Partial("_reversePage") </div>     
+        <div role="tabpanel" class="tab-pane" id="print">   @Html.Partial("_print")</div>
+    </div>
 </div>
 
-<div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="facial">  @Html.Partial("_facialPage") </div>
-    <div role="tabpanel" class="tab-pane"        id="reverse"> @Html.Partial("_reversePage") </div>
-    <div role="tabpanel" class="tab-pane"        id="database">@Html.Partial("_workWithDatabase")</div>
-    <div role="tabpanel" class="tab-pane"        id="print">   @Html.Partial("_print")</div>
-</div>
 
-<script type="text/javascript">        
+<script type="text/javascript">
     $(function () {
         $("input[type='text'], select").addClass("form-control");
     });
