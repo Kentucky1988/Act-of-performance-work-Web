@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f36a692287fc4cd38c552df7c2e92879" Name="Diagram1">
+        <EntityTypeShape EntityType="БД_НарядModel.Вид_ГСМ" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Вид_рубки" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Денна_тарифна_ставка" Width="1.5" PointX="3.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Догляд_за_л_к_мотокущорізом" Width="1.5" PointX="20.75" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР" Width="1.5" PointX="10.75" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Заточка_цепей" Width="1.5" PointX="25.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Кубатурник" Width="1.5" PointX="5.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Механізми" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Найменування_заходу" Width="1.5" PointX="3.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Освітлення_механічним_способом" Width="1.5" PointX="20.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Підприємство" Width="1.5" PointX="25.75" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Підрозділ" Width="1.5" PointX="28" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Погрузка" Width="1.5" PointX="25.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Прибирання_небезпечних_дерев" Width="1.5" PointX="0.75" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Прополювання_лісу" Width="1.5" PointX="25.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Прополювання_лісу_Норма" Width="1.5" PointX="28" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.РГК_ССР_без_трелювання" Width="1.5" PointX="20.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Робітники" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР" Width="1.5" PointX="15.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Ручний_догляд_за_л_к" Width="1.5" PointX="25.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Ручний_догляд_за_л_к_Норма" Width="1.5" PointX="28" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Садіння_лісу" Width="1.5" PointX="25.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Садіння_лісу_Додаткові_роботи" Width="1.5" PointX="20.75" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Садіння_лісу_Норма" Width="1.5" PointX="28" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Сортименти" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Техобслуговування_бензопили" Width="1.5" PointX="15.75" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Трелювання_підліску" Width="1.5" PointX="13.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Трелювання_РГК" Width="1.5" PointX="10.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Трелювання_РУ" Width="1.5" PointX="5.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Трелювання_фанери_РУ" Width="1.5" PointX="8.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Устройство_площадок" Width="1.5" PointX="20.75" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Витрати_ГСМ" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Витрати_ГСМ_в_годину" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Догляд_за_л_к_мотокущорізом_ГСМ" Width="1.5" PointX="23" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Догляд_за_л_к_мотокущорізом_Норма" Width="1.5" PointX="23" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ" Width="1.5" PointX="13" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма" Width="1.5" PointX="13" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Заточка_цепей_Норма" Width="1.5" PointX="28" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Категорії_робіт" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Освітлення_механічним_способом_ГСМ" Width="1.5" PointX="23" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Освітлення_механічним_способом_Норма" Width="1.5" PointX="23" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Погрузка_Норма" Width="1.5" PointX="28" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Поправочний_коефіцієнт" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Поправочний_коефіцієнт_Переїзд" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Поправочний_коефіцієнт_Перешкоди" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Прибирання_небезпечних_дерев_ГСМ" Width="1.5" PointX="3" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Прибирання_небезпечних_дерев_Норма" Width="1.5" PointX="3" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.РГК_ССР_без_трелювання_ГСМ" Width="1.5" PointX="23" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.РГК_ССР_без_трелювання_Норма" Width="1.5" PointX="23" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ" Width="1.5" PointX="18" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма" Width="1.5" PointX="18" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Садіння_лісу_Додаткові_роботи_Норма" Width="1.5" PointX="23" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Техобслуговування_бензопили_Норма" Width="1.5" PointX="18" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Трелювання_підліску_ГСМ" Width="1.5" PointX="16" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Трелювання_підліску_Норма" Width="1.5" PointX="16" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Трелювання_РГК_ГСМ" Width="1.5" PointX="13" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Трелювання_РГК_Норма" Width="1.5" PointX="13" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Трелювання_РУ_ГСМ" Width="1.5" PointX="8" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Трелювання_РУ_Норма" Width="1.5" PointX="8" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Трелювання_фанери_РУ_ГСМ" Width="1.5" PointX="11" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Трелювання_фанери_РУ_Норма" Width="1.5" PointX="11" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="БД_НарядModel.Устройство_площадок_Норма" Width="1.5" PointX="23" PointY="20.875" IsExpanded="true" />
+        <AssociationConnector Association="БД_НарядModel.FK__Витрати_Г__Id_Па__2610A626" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Витрати_Г__Id_Па__473C8FC7" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Категорії__Розці__57A801BA" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Догляд_за__Вид_р__11D4A34F" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Догляд_за__Вид_р__14B10FFA" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Заготівля__Вид_р__2EA5EC27" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Заготівля__Вид_р__489AC854" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Заточка_ц__Вид_р__7FEAFD3E" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Витрати_Г__Id_ме__251C81ED" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Витрати_Г__Id_Ме__46486B8E" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Категорії__Id_ме__589C25F3" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Категорії__Найме__5A846E65" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Освітленн__Вид_р__373B3228" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Освітленн__Вид_р__59C55456" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Підрозділ__Id_Пі__370627FE" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Погрузка___Вид_р__0B5CAFEA" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Прибиранн__Вид_р__4B422AD5" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Прибиранн__Вид_р__7A3223E8" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Прополюва__Вид_р__1387E197" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__РГК_ССР_б__Вид_р__28ED12D1" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__РГК_ССР_б__Вид_р__367C1819" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Рубки_дог__Вид_р__318258D2" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Рубки_дог__Вид_р__3C34F16F" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Ручний_до__Вид_р__062DE679" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Садіння_л__Вид_р__00750D23" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Садіння_л__Вид_р__0E04126B" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Техобслуг__Вид_р__297722B6" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Трелюванн__Вид_р__4865BE2A" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Трелюванн__Вид_р__6EC0713C" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Трелюванн__Вид_р__3A179ED3" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Трелюванн__Вид_р__5F7E2DAC" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Трелюванн__Вид_р__3CF40B7E" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Трелюванн__Вид_р__690797E6" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Трелюванн__Вид_р__345EC57D" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Трелюванн__Вид_р__4E53A1AA" ManuallyRouted="false" />
+        <AssociationConnector Association="БД_НарядModel.FK__Устройств__Вид_р__05A3D694" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

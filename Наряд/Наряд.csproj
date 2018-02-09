@@ -163,14 +163,24 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <EntityDeploy Include="Models\ModelБД_Наряд.edmx">
+    <EntityDeploy Include="Models\БД_НарядEntities1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelБД_Наряд.Designer.cs</LastGenOutput>
+      <LastGenOutput>БД_НарядEntities1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\ModelБД_Наряд.edmx.diagram">
-      <DependentUpon>ModelБД_Наряд.edmx</DependentUpon>
+    <Content Include="Models\БД_НарядEntities1.edmx.diagram">
+      <DependentUpon>БД_НарядEntities1.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="Models\БД_НарядEntities1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>БД_НарядEntities1.edmx</DependentUpon>
+      <LastGenOutput>БД_НарядEntities1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\БД_НарядEntities1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>БД_НарядEntities1.edmx</DependentUpon>
+      <LastGenOutput>БД_НарядEntities1.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
@@ -184,16 +194,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\myJScript\printDocument.js" />
     <Content Include="Scripts\myJScript\datepicker.languageUK.js" />
-    <Content Include="Models\ModelБД_Наряд.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelБД_Наряд.edmx</DependentUpon>
-      <LastGenOutput>ModelБД_Наряд.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\ModelБД_Наряд.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelБД_Наряд.edmx</DependentUpon>
-      <LastGenOutput>ModelБД_Наряд.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\myJScript\editingTheDatabase.js" />
     <Content Include="Scripts\myJScript\jQueryFixesDecimal.js" />
     <Content Include="Scripts\myJScript\workTheTableFacial.js" />
@@ -206,6 +206,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CubaturnicController.cs" />
     <Compile Include="Controllers\EditingTheDatabaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MainController.cs" />
@@ -216,205 +217,208 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Extended\ErrorMessageAddData.cs" />
-    <Compile Include="Models\ModelБД_Наряд.Context.cs">
+    <Compile Include="Models\БД_НарядEntities1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelБД_Наряд.Context.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelБД_Наряд.cs">
+    <Compile Include="Models\БД_НарядEntities1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelБД_Наряд.Designer.cs">
+    <Compile Include="Models\БД_НарядEntities1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelБД_Наряд.edmx</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Вид_ГСМ.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Вид_рубки.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Витрати_ГСМ.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Витрати_ГСМ_в_годину.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Денна_тарифна_ставка.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Догляд_за_л_к_мотокущорізом.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Догляд_за_л_к_мотокущорізом_ГСМ.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Догляд_за_л_к_мотокущорізом_Норма.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_ГСМ.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Заготівля_фанерної_сировини_на_ПРЖ_ПРХ_ВСР_Норма.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Заточка_цепей.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Заточка_цепей_Норма.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Категорії_робіт.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Кубатурник.cs">
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Механізми.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Найменування_заходу.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Освітлення_механічним_способом.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Освітлення_механічним_способом_ГСМ.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Освітлення_механічним_способом_Норма.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Підприємство.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Підрозділ.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Погрузка.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Погрузка_Норма.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Поправочний_коефіцієнт.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Поправочний_коефіцієнт_Переїзд.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Поправочний_коефіцієнт_Перешкоди.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Прибирання_небезпечних_дерев.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Прибирання_небезпечних_дерев_ГСМ.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Прибирання_небезпечних_дерев_Норма.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Прополювання_лісу.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Прополювання_лісу_Норма.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\РГК_ССР_без_трелювання.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\РГК_ССР_без_трелювання_ГСМ.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\РГК_ССР_без_трелювання_Норма.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Робітники.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_ГСМ.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Рубки_догляду_за_лісом_ПРЖ_ПРХ_ВСР_Норма.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ручний_догляд_за_л_к.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ручний_догляд_за_л_к_Норма.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Садіння_лісу.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Садіння_лісу_Додаткові_роботи.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Садіння_лісу_Додаткові_роботи_Норма.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Садіння_лісу_Норма.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Сортименти.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Техобслуговування_бензопили.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Техобслуговування_бензопили_Норма.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Трелювання_підліску.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Трелювання_підліску_ГСМ.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Трелювання_підліску_Норма.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Трелювання_РГК.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Трелювання_РГК_ГСМ.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Трелювання_РГК_Норма.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Трелювання_РУ.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Трелювання_РУ_ГСМ.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Трелювання_РУ_Норма.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Трелювання_фанери_РУ.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Трелювання_фанери_РУ_ГСМ.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Трелювання_фанери_РУ_Норма.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Устройство_площадок.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Устройство_площадок_Норма.cs">
-      <DependentUpon>ModelБД_Наряд.tt</DependentUpon>
+      <DependentUpon>БД_НарядEntities1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -438,6 +442,7 @@
     <Content Include="Views\Home\_printReverse.cshtml" />
     <Content Include="Views\Main\Index.cshtml" />
     <Content Include="Views\WorkWithDatabase\Index.cshtml" />
+    <Content Include="Views\Cubaturnic\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
