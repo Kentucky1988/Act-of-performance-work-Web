@@ -486,7 +486,7 @@ function clearingTableDetails() {                   //Очистити табл�
     $('#volumeTotalTableDetails, #totalTableDetails').text('');
 }
 
-function notifyMessage(textMessage, classStyles) {
+function notifyMessage(textMessage, classStyles) {  //окно сообщеиня
     $.notify(textMessage, {
         globalPosition: "top center",
         className: classStyles

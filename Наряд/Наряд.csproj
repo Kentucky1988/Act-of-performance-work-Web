@@ -192,6 +192,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\myJScript\cubaturnic.js" />
     <Content Include="Scripts\myJScript\printDocument.js" />
     <Content Include="Scripts\myJScript\datepicker.languageUK.js" />
     <Content Include="Scripts\myJScript\editingTheDatabase.js" />
