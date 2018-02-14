@@ -40,7 +40,7 @@ namespace Наряд.Controllers
         {
             using (БД_НарядEntities1 context = new БД_НарядEntities1())
             {
-                var volumeOfWood = context.Database.SqlQuery<decimal>($"SELECT [{length}] FROM Кубатурник").ToList();
+                var volumeOfWood = context.Database.SqlQuery<decimal>($"SELECT [{length}] FROM Кубатурник").ToList();               
                 return new JsonResult { Data = volumeOfWood, JsonRequestBehavior = JsonRequestBehavior.AllowGet };               
             }
         }
