@@ -8,7 +8,7 @@ $('#addTableCubaturnic').click(function () {   //кнопка построени
     var $diameterFrom = +$('#diameterFrom').val();   //диаметр ОТ
     var $diameterUpTo = +$('#diameterUpTo').val();   //диаметр ДО
 
-    if ($diameterFrom > $diameterUpTo ) {
+    if ($diameterFrom > $diameterUpTo) {
         notifyMessage('Значення "Діаметр від" повинно бути менше, або дорівнювати "Діаметр до"', "error");  //сообщение об ощибке diameterFrom > diameterUpTo
     } else {
         removeAllTrInTbody('#tableCubaturnic');    //удалить строки из tbody    
@@ -57,6 +57,7 @@ function getListVolumeOfTree(element) {   //масив объемов необх
         success: function (data) {
             addTrCubaturnic('#tableCubaturnic', DiametrsList, data); //создать таблицу
             onChangeAmountTree();       //добавляем к input .amountTree событие change
+            validation('.amountTree');  //в input только целые числа
         }
     });
 }
@@ -78,7 +79,7 @@ function addTrCubaturnic(element, listDiametr, listVolumeOfTree) { //созда�
                 } else if (i == 1) {
                     $("<td/>", { text: listVolumeOfTree[index] }).appendTo($('tr:last', $table));
                 } else if (i == 2) {
-                    $('<td> <input class="form-control amountTree" type="number"/> </td>').appendTo($('tr:last', $table));
+                    $('<td> <input class="form-control amountTree" type="number" min="0"/> </td>').appendTo($('tr:last', $table));
                 } else {
                     $('<td/>').appendTo($('tr:last', $table));
                 }
@@ -88,10 +89,9 @@ function addTrCubaturnic(element, listDiametr, listVolumeOfTree) { //созда�
 }
 
 function onChangeAmountTree() {        //добавляем к input .amountTree событие change
-
     $('.amountTree').change(function () {
         sumPoStupeniam(this);          //расчитываем объем по ступеням толщины
-        columnSumValueQuantity(this);  //общая сумма и количество
+        columnSumValueQuantity(this);  //общая сумма и количество        
     });
 }
 
@@ -119,6 +119,34 @@ function columnSumValueQuantity(element) {     //общая сумма и кол
     });
 }
 
+function validation(element) {  //в input только целые числа
+    $(element).keydown(function (e) {
+        if (e.key.length == 1 && e.key.match(/[^0-9]/)) {
+            return false;
+        };
+    })
+}
+
+function removeAllTrInTbody(element) {//удалить все строки из tbody
+    $('tbody', element).find('tr').remove();
+}
+
+$('#clearAmountTree').click(function () {  //кнопка - Очистити кількість лісоматеріалів
+    removeValueInput('#tableCubaturnic tbody');  //очистить значение input-ов в tbody (убрать количество колодок)   
+    clearLastTd('#tableCubaturnic tbody');       //очистить значение колонки (Загальний обєм)
+    removeValueTfoot('#tableCubaturnic');        //очистить значение в tfoot
+});
+
+function removeValueInput($tbody) { //очистить значение input-ов в tbody (убрать количество колодок)
+    $('input', $tbody).each(function () {
+        $(this).val('');      
+    })
+}
+
+function clearLastTd($tbody) {  //очистить значение колонки (Загальний обєм)
+    $("td:nth-child(4)", $tbody).text('');
+}
+
 function removeValueTfoot(table) {  //очистить tfoot
     var $tbody = $('tfoot', table);
     $($tbody).find('td').not(':first').each(function () {
@@ -126,9 +154,11 @@ function removeValueTfoot(table) {  //очистить tfoot
     });
 }
 
-function removeAllTrInTbody(element) {//удалить все строки из tbody
-    $('tbody', element).find('tr').remove();
-}
+
+
+
+
+
 
 
 

@@ -103,17 +103,16 @@ function colorCellDayOff() { //выделение ячеек с выходным
     var firstWorkingDate = $("[name='firstWorkingDay']").val().split("/");
     var dateObject = new Date(firstWorkingDate[2], firstWorkingDate[1] - 1, firstWorkingDate[0]);
     var lasMonthDay = new Date(dateObject.getFullYear(), dateObject.getMonth() + 1, 0);//последний день месяца
-        
+
     $('.employee tbody tr').filter(':eq(0), :eq(1)').find('td[id]').each(function () {
         var date = this.id;
-
         if (date >= 1 || date <= 31) {
-            $('input' ,this).add(this).css('background-color', 'transparent');//очистить предыдущий цвет фона
+            $('input', this).add(this).css('background-color', 'transparent');//очистить предыдущий цвет фона
             var lasMonthDay = new Date(dateObject.getFullYear(), dateObject.getMonth(), date);
-            if (lasMonthDay.getDay() > 5 || lasMonthDay.getDay() < 1) {
-                $('input', this).add(this).css('background-color', '#5cb85c');
-            }else if (date > lasMonthDay.getDate()) {
+            if (date > lasMonthDay.getDate()) {
                 $('input', this).add(this).css('background-color', '#f0ad4e');
+            } else if (lasMonthDay.getDay() > 5 || lasMonthDay.getDay() < 1) {
+                $('input', this).add(this).css('background-color', '#5cb85c');
             }
         }
     });
