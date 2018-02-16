@@ -33,3 +33,7 @@ label {
     font-weight: normal;
     padding-left: 10px;
 }
+
+#tractorMoving, #hoursUsed, #block {
+    width: 90px;
+}

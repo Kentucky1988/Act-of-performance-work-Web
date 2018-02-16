@@ -61,7 +61,7 @@
                             <option></option>
                         </select>
                     </td>
-                    <td> <input type="text" /> </td>
+                    <td> <input class="validateInt" type="text" /> </td>
                     <td id="numberPersons"> </td>
                     <td>
                         <select class="autocompleteCombobox employees">
@@ -78,11 +78,11 @@
             <table class="thead" id="theadFase">
                 <tr>
                     <td style="text-align:right">Місце роботи Кв.</td>
-                    <td> <input type="text" /> </td>
+                    <td> <input class="validateInt" type="text" /> </td>
                     <td class="paddingLeft">Виділ</td>
-                    <td> <input type="text" /> </td>
+                    <td> <input class="validateDouble" type="text" /> </td>
                     <td class="paddingLeft">Лісорубний квиток №</td>
-                    <td> <input type="text" /> </td>
+                    <td> <input class="validateInt" type="text" /> </td>
                     <td class="paddingLeft">Якого року лісосіка</td>
                     <td> <select name="year" style="min-width:80px"> </select> </td>
                     <td class="paddingLeft">Вид рубки</td>
@@ -100,9 +100,9 @@
                     <td class="paddingLeft">Закінчення роботи</td>
                     <td> <input type="text" class="calendar" name="lastWorkingDay" /> </td>
                     <td class="paddingLeft">Щоденник приймання робіт №</td>
-                    <td> <input type="text" id="orderDate" /> </td>
+                    <td> <input class="validateInt" type="text" id="orderDate" /> </td>
                     <td class="paddingLeft">Середній об'єм хлиста, м<sup>3</sup></td>
-                    <td> <input type="text" id="volumeWood" /> </td>
+                    <td> <input class="validateDouble" type="text" id="volumeWood" /> </td>
                 </tr>
             </table>
             <div id="coefficient">
@@ -123,17 +123,17 @@
                     </div>
                     <div id="tractorCoefficient" class="form-group">
                         <label>Переїзд трактора, км:</label>
-                        <input type="text" id="tractorMoving" style="width:90px"/>
+                        <input class="validateDouble" type="text" id="tractorMoving"/>
                         <label>Всього затрачено на переїзд трактора, годин:</label>
-                        <input type="text" id="hoursUsed"  style="width:90px"/>
+                        <input class="validateDouble" type="text" id="hoursUsed"/>
                         <label>Наявність перешкод на ділянці, %:</label>
-                        <input type="text" id="block"  style="width:90px"/>
+                        <input class="validateDouble" type="text" id="block"/>
                     </div>
                     <div id="deforestationCoefficient" class="form-group">
                         <label>Коефіцієнт зменшення норм:</label>
-                        <input type="text" id="reduceDeforestationCoefficient" />
+                        <input class="validateInt" type="text" id="reduceDeforestationCoefficient" />
                         <label> Згідно наказу №:</label>
-                        <input type="text" />
+                        <input class="validateInt" type="text" />
                         <label>від:</label>
                         <input type="text" class="calendar" />
                     </div>
@@ -202,8 +202,8 @@
                             </select>
                         </td>
                         <td> <input type="text" id="Unit" disabled /> </td>
-                        <td> <input type="text" id="set" /> </td>
-                        <td> <input type="text" id="executed" /> </td>
+                        <td> <input type="text" id="set"  class="validateDouble"/> </td>
+                        <td> <input type="text" id="executed"  class="validateDouble"/> </td>
                         <td> <input type="text" id="norm" disabled /> </td>
                         <td> <input type="text" id="executedNorm" disabled /> </td>
                         <td> <input type="text" id="UnitPrice" disabled /> </td>
@@ -230,7 +230,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><input type="text" /></td>
+                        <td><input class="validateDouble" type="text" /></td>
                     </tr>
                 </tfoot>
             </table>

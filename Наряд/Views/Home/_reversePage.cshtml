@@ -74,21 +74,21 @@
                     <td rowspan="2"> </td>
                     <td rowspan="2" id="position"> </td>
                     <td rowspan="2" id="RankEmployee"> </td>
-                    <td id="1"> <input type="text" /> </td>
-                    <td id="2"> <input type="text" /> </td>
-                    <td id="3"> <input type="text" /> </td>
-                    <td id="4"> <input type="text" /> </td>
-                    <td id="5"> <input type="text" /> </td>
-                    <td id="6"> <input type="text" /> </td>
-                    <td id="7"> <input type="text" /> </td>
-                    <td id="8"> <input type="text" /> </td>
-                    <td id="9"> <input type="text" /> </td>
-                    <td id="10"> <input type="text" /> </td>
-                    <td id="11"> <input type="text" /> </td>
-                    <td id="12"> <input type="text" /> </td>
-                    <td id="13"> <input type="text" /> </td>
-                    <td id="14"> <input type="text" /> </td>
-                    <td id="15"> <input type="text" /> </td>
+                    <td id="1"> <input class="validateInt" type="text" /> </td>
+                    <td id="2"> <input class="validateInt" type="text" /> </td>
+                    <td id="3"> <input class="validateInt" type="text" /> </td>
+                    <td id="4"> <input class="validateInt" type="text" /> </td>
+                    <td id="5"> <input class="validateInt" type="text" /> </td>
+                    <td id="6"> <input class="validateInt" type="text" /> </td>
+                    <td id="7"> <input class="validateInt" type="text" /> </td>
+                    <td id="8"> <input class="validateInt" type="text" /> </td>
+                    <td id="9"> <input class="validateInt" type="text" /> </td>
+                    <td id="10"> <input  class="validateInt" type="text" /> </td>
+                    <td id="11"> <input  class="validateInt" type="text" /> </td>
+                    <td id="12"> <input  class="validateInt" type="text" /> </td>
+                    <td id="13"> <input  class="validateInt" type="text" /> </td>
+                    <td id="14"> <input  class="validateInt" type="text" /> </td>
+                    <td id="15"> <input  class="validateInt" type="text" /> </td>
                     <td> <input type="text" disabled /> </td>
                     <td rowspan="2" class="dayWorked"> </td>
                     <td rowspan="2" id="hoursWorked"> </td>
@@ -105,22 +105,22 @@
                     </td>
                 </tr>
                 <tr>
-                    <td id="16"> <input type="text" /> </td>
-                    <td id="17"> <input type="text" /> </td>
-                    <td id="18"> <input type="text" /> </td>
-                    <td id="19"> <input type="text" /> </td>
-                    <td id="20"> <input type="text" /> </td>
-                    <td id="21"> <input type="text" /> </td>
-                    <td id="22"> <input type="text" /> </td>
-                    <td id="23"> <input type="text" /> </td>
-                    <td id="24"> <input type="text" /> </td>
-                    <td id="25"> <input type="text" /> </td>
-                    <td id="26"> <input type="text" /> </td>
-                    <td id="27"> <input type="text" /> </td>
-                    <td id="28"> <input type="text" /> </td>
-                    <td id="29"> <input type="text" /> </td>
-                    <td id="30"> <input type="text" /> </td>
-                    <td id="31"> <input type="text" /> </td>
+                    <td id="16"> <input class="validateInt" type="text" /> </td>
+                    <td id="17"> <input class="validateInt" type="text" /> </td>
+                    <td id="18"> <input class="validateInt" type="text" /> </td>
+                    <td id="19"> <input class="validateInt" type="text" /> </td>
+                    <td id="20"> <input class="validateInt" type="text" /> </td>
+                    <td id="21"> <input class="validateInt" type="text" /> </td>
+                    <td id="22"> <input class="validateInt" type="text" /> </td>
+                    <td id="23"> <input class="validateInt" type="text" /> </td>
+                    <td id="24"> <input class="validateInt" type="text" /> </td>
+                    <td id="25"> <input class="validateInt" type="text" /> </td>
+                    <td id="26"> <input class="validateInt" type="text" /> </td>
+                    <td id="27"> <input class="validateInt" type="text" /> </td>
+                    <td id="28"> <input class="validateInt" type="text" /> </td>
+                    <td id="29"> <input class="validateInt" type="text" /> </td>
+                    <td id="30"> <input class="validateInt" type="text" /> </td>
+                    <td id="31"> <input class="validateInt" type="text" /> </td>
                 </tr>
             </tbody>
             <tfoot>
@@ -158,7 +158,7 @@
         <form class="navbar-form">
             <div class="form-group">
                 <label>Вартість коефіцієнту, грн:</label>
-                <input type="text" />
+                <input class="validateDouble" type="text" />
                 <label></label>
             </div>
             <div class="form-group">
@@ -187,14 +187,10 @@
     <div align="left">
         <h4 style="padding-left:150px">Лісопродукція:</h4>
     </div>
-    <div class="details">
+    <div class="details" align="center">
         <table class="table-bordered table-hover">
             <thead>
                 <tr>
-                    <td rowspan="2">Сортимент</td>
-                    <td rowspan="2">Довжина</td>
-                    <td colspan="2">Один. виміру</td>
-                    <td rowspan="2">Кількість</td>
                     <td rowspan="2">Сортимент</td>
                     <td rowspan="2">Довжина</td>
                     <td colspan="2">Один. виміру</td>
@@ -204,12 +200,9 @@
                 <tr>
                     <td>штук</td>
                     <td>м<sup>3</sup></td>
-                    <td>штук</td>
-                    <td>м<sup>3</sup></td>
                 </tr>
             </thead>
             <tbody>
-                <!--тело таблицы-->
                 <tr align="center">
                     <td>
                         <!--выпадающий список сортименты-->
@@ -217,20 +210,10 @@
                             <option></option>
                         </select>
                     </td>
-                    <td> <input type="text" /> </td>
-                    <td> <input type="text" /> </td>
-                    <td> <input type="text" /> </td>
-                    <td> <input type="text" /> </td>
-                    <td>
-                        <!--выпадающий список сортименты-->
-                        <select class="autocompleteCombobox materials">
-                            <option></option>
-                        </select>
-                    </td>
-                    <td> <input type="text" /> </td>
-                    <td> <input type="text" /> </td>
-                    <td> <input type="text" /> </td>
-                    <td> <input type="text" /> </td>
+                    <td> <input class="validateDouble" type="text" /> </td>
+                    <td> <input class="validateDouble" type="text" /> </td>
+                    <td> <input class="validateDouble" type="text" /> </td>
+                    <td> <input class="validateDouble" type="text" /> </td>
                     <td>
                         <button class="btn btn-success addDetails">
                             <span id="addIconDetails" class="glyphicon glyphicon-plus" />

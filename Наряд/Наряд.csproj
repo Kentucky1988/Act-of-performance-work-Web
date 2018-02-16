@@ -197,6 +197,7 @@
     <Content Include="Scripts\myJScript\datepicker.languageUK.js" />
     <Content Include="Scripts\myJScript\editingTheDatabase.js" />
     <Content Include="Scripts\myJScript\jQueryFixesDecimal.js" />
+    <Content Include="Scripts\myJScript\validate.js" />
     <Content Include="Scripts\myJScript\workTheTableFacial.js" />
     <Content Include="Scripts\myJScript\autocomplete.combobox.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />

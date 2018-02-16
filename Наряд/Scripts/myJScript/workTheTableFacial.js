@@ -6,7 +6,9 @@
     loadEmployees('.employees');
     LoadMaterials('.materials');
     Company('#company');
-    addNumberAct();//номер акта
+    addNumberAct();                  //номер акта
+    validateInt('.validateInt')      //валидация Int
+    validateDouble('.validateDouble')//валидация Double
 
     $('#tbodyTable .custom-combobox-input, .details .custom-combobox-input').css('min-width', '340px');
     $('.employees').next('span').find('.custom-combobox-input').css('min-width', '250px');
@@ -250,14 +252,12 @@ function columnSum($table) {//сумма строк нормы
                 }
             });
             $(this).text(sumColumn === 0 ? '' : (sumColumn).toFixed(3));
-        } else if (indx === 4) {
-           // var sumColumn = 0;
+        } else if (indx === 4) {          
             $("#tbodyTable tr:not(:first) td:nth-child(" + (indx + 2) + ")").each(function () {
                 sumColumn += +$(this).text().replace(',', '.');
             });
             $(this).attr('id', 'columnSumNorm').text(sumColumn === 0 ? '' : (sumColumn).toFixed(3));
         } else if (indx === 6) {
-           // var sumColumn = 0;
             $("#tbodyTable tr:not(:first) td:nth-child(" + (indx + 2) + ")").each(function () {
                 sumColumn += +$(this).text().replace(',', '.');
             });

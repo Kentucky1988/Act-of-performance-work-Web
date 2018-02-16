@@ -287,11 +287,7 @@ function volumeTotalTableDetails($table) {//Загальний об'єм таб�
         var sum = 0;
         $('td:nth-child(3)', $table).each(function () {
             sum += +$(this).text().replace(',', '.');
-        });
-        $('td:nth-child(8)', $table).each(function () {
-            sum += +$(this).text().replace(',', '.');
-        });
-        $(this).text(sum > 0 ? (sum).toFixed(0) : '');
+        });      
     });
 }
 
@@ -300,11 +296,7 @@ function totalTableDetails($table) {//Загальна кількість таб
         var sum = 0;
         $('td:nth-child(4)', $table).each(function () {
             sum += +$(this).text().replace(',', '.');
-        });
-        $('td:nth-child(9)', $table).each(function () {
-            sum += +$(this).text().replace(',', '.');
-        });
-        $(this).text(sum > 0 ? (sum).toFixed(3) : '');
+        });       
     });
 }
 

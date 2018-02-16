@@ -29,7 +29,7 @@ $('#addDocument').click(function () { //сформировать докумен�
     copyEmployeePosition($('#tbodyEmployeePositionReverse'), $('#theadPrintReverse'));
     copyDressNumber($('#totalTableDetails').text(), $(totalTableDetailsPrint));
     copyDressNumber($('#volumeTotalTableDetails').text(), $(volumeTotalTableDetailsPrint));
-    copyTbodyFace($('.details tbody tr:not(:first)'), $('#tbodyTablePrintReverse tbody'));
+    copyTrtbodyPrintDetails($('.details tbody tr:not(:first)'), $('#tbodyTablePrintReverse tbody'));
     copyEmployeePosition($('#tfootEmployeePositionReverse'), $('#tfootPrintReverse'));
 });
 
@@ -47,6 +47,30 @@ function getTheText($element) {
         str = $($element).text();
     }
     return str;
+}
+
+function copyTrtbodyPrintDetails($tableCopyTr, $tablePrintTbody) {//копируем таблицу .details
+    $('tr', $tablePrintTbody).remove();
+
+    $($tableCopyTr).each(function (index) {
+
+        if (index === 0 || index % 2 === 0) {
+            $("<tr>").appendTo($tablePrintTbody);//добавляем нижнюю строку  
+        }
+
+        $('td', this).each(function () {
+            if (!$('button', this).length) {
+                var str = getTheText(this);
+                $("<td/>", { text: str }).appendTo($("tr:last", $tablePrintTbody));
+            }
+        });
+
+        if ($tableCopyTr.length === 1 || (index === $tableCopyTr.length - 1 && index % 2 === 0)) {
+            $($tableCopyTr).filter(':eq(0)').find('td:not(:last)').each(function () {               
+                $("<td/>").appendTo($("tr:last", $tablePrintTbody));
+            });
+        }
+    });
 }
 
 function copyTableFace($tableCopyTd, $tablePrintTd) {

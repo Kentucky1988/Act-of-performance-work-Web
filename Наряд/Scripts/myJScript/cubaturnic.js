@@ -57,7 +57,7 @@ function getListVolumeOfTree(element) {   //масив объемов необх
         success: function (data) {
             addTrCubaturnic('#tableCubaturnic', DiametrsList, data); //создать таблицу
             onChangeAmountTree();       //добавляем к input .amountTree событие change
-            validation('.amountTree');  //в input только целые числа
+            validateInt('.amountTree');  //в input только целые числа
         }
     });
 }
@@ -117,14 +117,6 @@ function columnSumValueQuantity(element) {     //общая сумма и кол
         });
         $(this).text(sumColumn === 0 ? '' : (sumColumn).toFixed(x));
     });
-}
-
-function validation(element) {  //в input только целые числа
-    $(element).keydown(function (e) {
-        if (e.key.length == 1 && e.key.match(/[^0-9]/)) {
-            return false;
-        };
-    })
 }
 
 function removeAllTrInTbody(element) {//удалить все строки из tbody
