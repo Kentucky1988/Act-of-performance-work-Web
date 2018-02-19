@@ -165,6 +165,7 @@ namespace Наряд.Controllers
         }
     }
 
+    [Authorize(Roles = "admin")]
     public class EditingTheDatabaseДенна_тарифна_ставкаController : Controller
     {
         public ActionResult GetTable()

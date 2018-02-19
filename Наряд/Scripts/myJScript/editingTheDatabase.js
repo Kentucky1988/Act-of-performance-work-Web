@@ -34,9 +34,12 @@ var dataTable, popupForm;
 function showDataTable(tableName) { //загрузка таблицы из БД
     dataTable = $('#myDatatableDB').DataTable({
         'ajax': {
-            'type': "GET",
-            'url': '/EditingTheDatabase' + tableName + '/GetTable', /*'/EditingTheDatabaseРобітники/GetTable',   */
-            'datatype': 'json'
+            type: "GET",
+            url: '/EditingTheDatabase' + tableName + '/GetTable', /*'/EditingTheDatabaseРобітники/GetTable',   */
+            datatype: 'json',
+            error: function () {
+                notifyMessage("Ви не маєте права доступу до цієї таблиці", "error");
+            }
         },
         'columns': returnTr(tableName),//получаем структуру таблицы
         'language': {

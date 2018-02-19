@@ -9,6 +9,7 @@ using Наряд.Models;
 
 namespace Наряд.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -16,6 +17,7 @@ namespace Наряд.Controllers
             return View();
         }
 
+        [HttpGet]
         public JsonResult getMaterials()
         {
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
@@ -25,6 +27,7 @@ namespace Наряд.Controllers
             }
         }
 
+        [HttpGet]
         public JsonResult getEmployees()
         {
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
@@ -34,6 +37,7 @@ namespace Наряд.Controllers
             }
         }
 
+        [HttpGet]
         public JsonResult getCompany()
         {
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
@@ -43,15 +47,17 @@ namespace Наряд.Controllers
             }
         }
 
+        [HttpGet]
         public JsonResult getSubdivision(int companyID)
-        {            
+        {
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
-            {              
+            {
                 var subdivision = dc.Підрозділ.Where(a => a.Id_Підприємства == companyID).Select(a => a.Підрозділ1).ToList();
                 return new JsonResult { Data = subdivision, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
         }
 
+        [HttpGet]
         public JsonResult getWorksTitlee()
         {
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
@@ -61,6 +67,7 @@ namespace Наряд.Controllers
             }
         }
 
+        [HttpGet]
         public JsonResult getcolectionSortOil()
         {
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
@@ -70,6 +77,7 @@ namespace Наряд.Controllers
             }
         }
 
+        [HttpGet]
         public JsonResult TypeOfFelling()
         {
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
@@ -79,6 +87,7 @@ namespace Наряд.Controllers
             }
         }
 
+        [HttpGet]
         public JsonResult getCategories(string valueWorksTitlee)
         {
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())
@@ -90,6 +99,7 @@ namespace Наряд.Controllers
             }
         }
 
+        [HttpGet]
         public JsonResult getTypeOfWork(string categoryOfWork)
         {
             using (БД_НарядEntities1 context = new БД_НарядEntities1())
@@ -101,10 +111,11 @@ namespace Наряд.Controllers
             }
         }
 
+        [HttpGet]
         public JsonResult PricingUnit(string pricingID, string rank)//расценка за единицу   
         {
             using (БД_НарядEntities1 context = new БД_НарядEntities1())
-            {                
+            {
                 string colum = (rank == "") ? "1" : rank; //индивидуальна / комплексна
 
                 var PricingUnit = context.Database.SqlQuery<decimal>(
@@ -114,6 +125,7 @@ namespace Наряд.Controllers
             }
         }
 
+        [HttpGet]
         public JsonResult getUnit(string category)
         {
             using (БД_НарядEntities1 context = new БД_НарядEntities1())
@@ -126,7 +138,8 @@ namespace Наряд.Controllers
             }
         }
 
-        public JsonResult normWork(string table, string typeOfWork, string volumeWood, string checkedConditionsWinter, string checkedConditionsHard, 
+        [HttpGet]
+        public JsonResult normWork(string table, string typeOfWork, string volumeWood, string checkedConditionsWinter, string checkedConditionsHard,
                                    string tractorMoving, string block, string reduceDeforestationCoefficient, string forestPlantingConditions)//норма выполнения робот
         {
             NormFromDB normFromDB = new NormFromDB();
@@ -168,6 +181,7 @@ namespace Наряд.Controllers
             }
         }
 
+        [HttpGet]
         public JsonResult CollectionOilCosts(string table, string typeOfWork, string volumeWood, string executed, string checkedConditionsWinter, string checkedConditionsHard, string hoursUsed)//нормарасхода ГСМ
         {
             NormOil oilCalculation = new NormOil();

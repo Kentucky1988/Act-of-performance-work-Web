@@ -9,6 +9,7 @@ namespace Наряд.Controllers
     public class WorkWithDatabaseController : Controller
     {
         // GET: WorkWithDatabase
+        [Authorize]
         public ActionResult Index()
         {
             return View();

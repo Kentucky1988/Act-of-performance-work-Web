@@ -45,10 +45,12 @@
                     </li>
                     <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
                 </ul>
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
     <div class="container-fluid">
+        <br /><br />
         @RenderBody() <!--метод который вставляет часть страницы-->
 
         <div id="loader"></div> @*индикатор загрузки*@

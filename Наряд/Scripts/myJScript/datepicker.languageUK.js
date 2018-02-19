@@ -33,16 +33,6 @@ $(function ($) {//украинский язык календаря
     $.datepicker.setDefaults($.datepicker.regional['uk']);
 });
 
-$(function () {// добавить годы в випадающий список от -5 до +10 в name='year'      
-    var year = new Date().getFullYear() - 5;
-
-    for (var newYear = year; newYear < year + 10; newYear++) {
-        $("[name='year']").append($('<option/>').text(newYear));
-    }
-
-    $("[name='year']").prop('selectedIndex', 5); //значение по умолчанию
-});
-
 function currentDate() {// текущая дата 
 
     var data = new Date();
@@ -57,10 +47,19 @@ function currentDate() {// текущая дата
     $("[name='getDate']").val(day);
 };
 
+$(function () {// добавить годы в випадающий список от -5 до +10 в name='year'      
+    var year = new Date().getFullYear() - 5;
+
+    for (var newYear = year; newYear < year + 10; newYear++) {
+        $("[name='year']").append($('<option/>').text(newYear));
+    }
+
+    $("[name='year']").prop('selectedIndex', 5); //значение по умолчанию
+});
 
 function firstWorkDay() {// первый робочий день месяца   
 
-    var firstWorkingDate = $("[name='getDate']").val().split("/");
+    var firstWorkingDate = $("[name='getDate']").val().split("/");   
     var dateObject = new Date(firstWorkingDate[2], firstWorkingDate[1] - 1, firstWorkingDate[0]);
     var firstMonthDay = new Date(dateObject.getFullYear(), dateObject.getMonth(), 1);//первый день месяца
 

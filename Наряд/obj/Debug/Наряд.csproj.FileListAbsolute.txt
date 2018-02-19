@@ -82,3 +82,22 @@ E:\GitHub\Наряд\Наряд\obj\Debug\Наряд.dll
 E:\GitHub\Наряд\Наряд\obj\Debug\Наряд.pdb
 E:\GitHub\Наряд\Наряд\bin\System.Linq.Dynamic.dll
 E:\GitHub\Наряд\Наряд\bin\roslyn\Содержание OneNote.onetoc2
+E:\GitHub\Наряд\Наряд\bin\Microsoft.AspNet.Identity.Core.dll
+E:\GitHub\Наряд\Наряд\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\GitHub\Наряд\Наряд\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\GitHub\Наряд\Наряд\bin\Microsoft.Owin.dll
+E:\GitHub\Наряд\Наряд\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\GitHub\Наряд\Наряд\bin\Microsoft.Owin.Security.Cookies.dll
+E:\GitHub\Наряд\Наряд\bin\Microsoft.Owin.Security.dll
+E:\GitHub\Наряд\Наряд\bin\Microsoft.Owin.Security.OAuth.dll
+E:\GitHub\Наряд\Наряд\bin\Newtonsoft.Json.dll
+E:\GitHub\Наряд\Наряд\bin\Owin.dll
+E:\GitHub\Наряд\Наряд\bin\Microsoft.AspNet.Identity.Core.xml
+E:\GitHub\Наряд\Наряд\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\GitHub\Наряд\Наряд\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\GitHub\Наряд\Наряд\bin\Microsoft.Owin.xml
+E:\GitHub\Наряд\Наряд\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\GitHub\Наряд\Наряд\bin\Microsoft.Owin.Security.xml
+E:\GitHub\Наряд\Наряд\bin\Microsoft.Owin.Security.Cookies.xml
+E:\GitHub\Наряд\Наряд\bin\Microsoft.Owin.Security.OAuth.xml
+E:\GitHub\Наряд\Наряд\bin\Newtonsoft.Json.xml
