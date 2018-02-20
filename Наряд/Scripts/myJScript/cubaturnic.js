@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     getListDiametr();             //список диаметров 
     LoadLength('#lengthOfTree');
-    renderCategory('#diameter', getListDiameter());
+    renderSelectOption('#diameter', getListDiameter());
 });
 
 $('#addTableCubaturnic').click(function () {   //кнопка построения таблицы
@@ -23,7 +23,7 @@ function LoadLength(element) { //длина
         url: '/Cubaturnic/getListColumn',
         data: { 'nameTable': 'Кубатурник' },
         success: function (data) {
-            renderCategory(element, data);
+            renderSelectOption(element, data);
         }
     });
 }
@@ -40,8 +40,8 @@ function getListDiametr() { //список диаметров
         url: '/Cubaturnic/getListDiameter',
         success: function (data) {
             DiametrsList = data;
-            renderCategory('#diameterFrom', data);
-            renderCategory('#diameterUpTo', data);
+            renderSelectOption('#diameterFrom', data);
+            renderSelectOption('#diameterUpTo', data);
         }
     });
 }
@@ -144,6 +144,16 @@ function removeValueTfoot(table) {  //очистить tfoot
     $($tbody).find('td').not(':first').each(function () {
         $(this).text('');
     });
+}
+
+function renderSelectOption(element, List) {//создание выпадающего списка
+    var $ele = $(element);
+    $ele.empty();
+    $ele.append($('<option/>').text('Вибрати'));
+    $.each(List, function (i, val) {
+        $ele.append($('<option/>').text(val));
+    });
+    $ele.prop('selectedIndex', 0); //значение по умолчанию
 }
 
 

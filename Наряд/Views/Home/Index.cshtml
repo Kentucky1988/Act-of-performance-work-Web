@@ -1,21 +1,22 @@
 ﻿@{
     ViewBag.Title = "Index"; //имя вкладки, отображается в закладках
 }
-<div>   
+<div>
     <div class="container">
         <ul class="nav nav-tabs" role="tablist">
-            <li class="active"><a href="#facial" role="tab" data-toggle="tab">Лицьова сторона</a> </li>
-            <li>               <a href="#reverse" role="tab" data-toggle="tab">Зворотня сторона</a> </li>          
-            <li>               <a href="#print" role="tab" data-toggle="tab">Ескиз печати</a> </li>
+            <li class="active"><a href="#facial"  role="tab" data-toggle="tab">Лицьова сторона</a> </li>
+            <li>               <a href="#reverse" role="tab" data-toggle="tab">Зворотня сторона</a> </li>
+            <li>               <a href="#print"   role="tab" data-toggle="tab">Ескиз печати</a> </li>
         </ul>
     </div>
 
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="facial">  @Html.Partial("_facialPage") </div>
-        <div role="tabpanel" class="tab-pane" id="reverse"> @Html.Partial("_reversePage") </div>     
+        <div role="tabpanel" class="tab-pane" id="reverse"> @Html.Partial("_reversePage") </div>
         <div role="tabpanel" class="tab-pane" id="print">   @Html.Partial("_print")</div>
     </div>
 </div>
+<br /><div id="loader"></div> @*индикатор загрузки*@
 
 
 <script type="text/javascript">
@@ -24,4 +25,9 @@
     });
 </script>
 
-
+<script src="~/Scripts/myJScript/datepicker.languageUK.js"></script> <!--файл с кодом Украинского языка календаря и робота с датами-->
+<script src="~/Scripts/myJScript/autocomplete.combobox.js"></script> <!--файл с кодом autocomplete.combobox-->
+<script src="~/Scripts/myJScript/addData.copyString.saveData.js"></script><!--Файл JS в котором будит обработчик нажатия кнопок-->
+<script src="~/Scripts/myJScript/workTheTableFacial.js"></script><!--робота с ячейками таблицы Лицевая-->
+<script src="~/Scripts/myJScript/workTheTableReverse.js"></script><!--робота с ячейками таблицы Обратная-->
+<script src="~/Scripts/myJScript/printDocument.js"></script><!--печать наряда-->

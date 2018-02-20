@@ -81,11 +81,11 @@ namespace Наряд.Content
             if (ModelState.IsValid)
             {
                 ApplicationUser user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+                IdentityResult result = await UserManager.CreateAsync(user, model.Password);               
                 if (result.Succeeded)
                 {
                     await UserManager.AddToRoleAsync(user.Id, "user");
-                    return RedirectToAction("Index", "Main");
+                    return RedirectToAction("Hello");
                 }
                 else
                 {
@@ -96,6 +96,11 @@ namespace Наряд.Content
                 }
             }
             return View(model);
+        }
+                
+        public ActionResult Hello()
+        {
+            return View();
         }
 
         [HttpPost]

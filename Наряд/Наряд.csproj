@@ -204,6 +204,7 @@
     <Content Include="Models\БД_НарядEntities1.edmx.diagram">
       <DependentUpon>БД_НарядEntities1.edmx</DependentUpon>
     </Content>
+    <None Include="bundleconfig.json" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Models\БД_НарядEntities1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -215,6 +216,8 @@
       <DependentUpon>БД_НарядEntities1.edmx</DependentUpon>
       <LastGenOutput>БД_НарядEntities1.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
     <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
@@ -227,6 +230,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\myJScript\cubaturnic.js" />
+    <Content Include="Scripts\myJScript\notifyMessage.js" />
     <Content Include="Scripts\myJScript\printDocument.js" />
     <Content Include="Scripts\myJScript\datepicker.languageUK.js" />
     <Content Include="Scripts\myJScript\editingTheDatabase.js" />
@@ -486,6 +490,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Account\Hello.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

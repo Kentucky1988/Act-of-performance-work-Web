@@ -9,16 +9,13 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" /> <!--Стиль jquery-ui-->
     <link rel="stylesheet" type="text/css" href="~/Content/ComboBox.Autocomplete.css" /><!--файл с стилем autocomplete.combobox-->
     <link rel="stylesheet" type="text/css" href="~/Content/textAlignment.css" /><!--стиль с выравниванием текста-->
-    <link href="~/Content/Loader.css" rel="stylesheet" /> <!--анимация загрузки Ajax-->
+    <link rel="stylesheet" href="~/Content/Loader.css" /> <!--анимация загрузки Ajax-->
 
-
-    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> <!-- bootstrap -->
-    @*<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>*@
-    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>   <!--Подключаем библиотеку JQuery-->
-    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>       <!--Подключаем библиотеку JQuery UI-->
-    <script src="~/Scripts/notify.min.js"></script>             <!--Подключаем библиотеку notify (подсказки)-->
-    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>*@ <!--конвертирование HTML вPDF-->
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>     <!--Подключаем библиотеку JQuery-->
+    <script src="~/Scripts/bootstrap.min.js"></script>        <!--bootstrap.min -->
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script> <!--Подключаем библиотеку JQuery UI-->
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>     <!--Подключаем библиотеку JQuery UI-->
+    <script src="~/Scripts/notify.min.js"></script>           <!--Подключаем библиотеку notify (подсказки)-->
 </head>
 
 <body>
@@ -52,8 +49,6 @@
     <div class="container-fluid">
         <br /><br />
         @RenderBody() <!--метод который вставляет часть страницы-->
-
-        <div id="loader"></div> @*индикатор загрузки*@
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Наряд - акт на виконання робіт</p>
@@ -62,12 +57,5 @@
 </body>
 </html>
 
-<!--Библиотеки подключать после кода окна, чтоб быстрее загружалась страница-->
-<script src="~/Scripts/myJScript/addData.copyString.saveData.js"></script><!--Файл JS в котором будит обработчик нажатия кнопок-->
-<script src="~/Scripts/myJScript/autocomplete.combobox.js"></script> <!--файл с кодом autocomplete.combobox-->
-<script src="~/Scripts/myJScript/datepicker.languageUK.js"></script> <!--файл с кодом Украинского языка календаря и робота с датами-->
-<script src="~/Scripts/myJScript/workTheTableFacial.js"></script><!--робота с ячейками таблицы Лицевая-->
-<script src="~/Scripts/myJScript/workTheTableReverse.js"></script><!--робота с ячейками таблицы Обратная-->
-<script src="~/Scripts/myJScript/editingTheDatabase.js"></script><!--робота с базой данных-->
-<script src="~/Scripts/myJScript/printDocument.js"></script><!--печать наряда-->
-<script src="~/Scripts/myJScript/validate.js"></script><!--валидация-->
+<script src="~/Scripts/myJScript/notifyMessage.js"></script> <!--окно сообщеиня-->
+<script src="~/Scripts/myJScript/validate.js"></script>      <!--валидация-->

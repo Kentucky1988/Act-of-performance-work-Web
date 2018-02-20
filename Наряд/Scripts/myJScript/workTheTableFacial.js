@@ -338,7 +338,7 @@ function addStringDetails(colection) {//добавить строку в таб�
             typeOil = colection[i]['Вид_палива'];
             unit = "л";
             consumption = colection[i]['Витрити_ГСМ'].toFixed(2);
-            td_input = "<td><input type='text'/></td>";
+            td_input = "<td><input class='form-control' type='text'/></td>";
             td = "<td/>";
 
             addString($table, index, typeOil, unit, consumption, td_input, td);
@@ -485,10 +485,4 @@ function clearingTableDetails() {                   //Очистити табл�
     $('#volumeTotalTableDetails, #totalTableDetails').text('');
 }
 
-function notifyMessage(textMessage, classStyles) {  //окно сообщеиня
-    $.notify(textMessage, {
-        globalPosition: "top center",
-        className: classStyles
-    });
-}
 
