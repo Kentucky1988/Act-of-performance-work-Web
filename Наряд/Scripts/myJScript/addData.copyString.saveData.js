@@ -2,7 +2,7 @@
 function LoadCategory(element, val) {//категории робот
     $.ajax({
         type: "GET",
-        url: '/home/getCategories',
+        url: '/Home/GetCategories',
         data: { 'valueWorksTitlee': val },
         success: function (data) {
             renderCategory(element, data);
@@ -23,7 +23,7 @@ function renderCategory(element, List) {//создание списка кате
 function LoadProduct(element) {//вид робот
     $.ajax({
         type: "GET",
-        url: "/home/getTypeOfWork",
+        url: "/Home/GetTypeOfWork",
         data: { 'categoryOfWork': $(element).val() },
         success: function (data) {
             element = $(element).parents('.mycontainer').find('select#product');
@@ -123,6 +123,18 @@ function deleteTr(element) {//Удаление строки
 function clearRow($table) {
     $('input, select', $table).not('#Unit, #productCategory').val('');
 }
+
+
+function getProperty(list, nameProperty) {//вернуть определенное свойство масива
+
+    var listProperty = [];
+    $(list).each(function () {
+        listProperty.push(this[nameProperty]);
+    });
+
+    return listProperty;
+}
+
 
  //Сохранить
  //$('#submit').click(function () {

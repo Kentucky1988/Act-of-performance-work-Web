@@ -31,7 +31,7 @@ function copyStringDetails(element) {
 
 $('.details').each(function () {
     $(this).on('click', '.removeDetails', function () {   //событие на нажатие кнопки удалить строку   
-        deleteTr(this);//Удаление строки  
+        deleteTr(this);   //Удаление строки  
 
         var $table = $(this).parents('tbody').find('tr:not(:first)');//таблица в которой добовляем строки
         volumeTotalTableDetails($table);//Загальний об'єм

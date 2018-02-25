@@ -9,6 +9,7 @@ namespace Наряд.Controllers
 {
     public class EditingTheDatabaseРобітникиController : Controller
     {
+        [HttpGet]
         public ActionResult GetTable()
         {
             using (БД_НарядEntities1 dc = new БД_НарядEntities1())

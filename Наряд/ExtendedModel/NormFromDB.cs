@@ -28,8 +28,8 @@ namespace Наряд.ExtendedModel
         }
 
         public double NormFromTable(string table, string tableNorm, string typeOfWork, string volumeWood, string forestPlantingConditions)
-        {                    
-            string amountOfWood = null;            
+        {
+            string amountOfWood = null;
 
             if (new NormOil().TableNormOfOil(table) == "-" || (Units(table) != "м3" && table != "Прибирання_небезпечних_дерев"))
             {//если нет ГСМ и м3, тогда пропускаем расчет с V хлиста и возращаем значение в колонке "Норма_віробітку"
@@ -162,16 +162,32 @@ namespace Наряд.ExtendedModel
         {
             try
             {
-                using (БД_НарядEntities1 db = new БД_НарядEntities1())
+                double coefficient = 1;
+
+                if (!string.IsNullOrEmpty(workingСonditions))
                 {
-                    var tableNorm = db.Поправочний_коефіцієнт.Where(a => a.Умови_праці == workingСonditions)
-                                        .Select(a => a.Поправочний_коефіцієнт_Норма).ToList();
-                    return Convert.ToDouble(tableNorm[0]);
+                    using (БД_НарядEntities1 db = new БД_НарядEntities1())
+                    {
+                        var tableNorm = db.Поправочний_коефіцієнт.Where(a => a.Умови_праці == workingСonditions)
+                                            .Select(a => a.Поправочний_коефіцієнт_Норма).ToList();
+                        coefficient = Convert.ToDouble(tableNorm[0]);
+                    }
                 }
+                return coefficient;
             }
             catch (Exception)
             {
-                return 0;
+                return 1;
+            }
+        }
+
+        public bool WinterConditions(string category) //приминение зимних условий ДА/НЕТ
+        {
+            using (БД_НарядEntities1 db = new БД_НарядEntities1())
+            {
+                var winterConditions = db.Категорії_робіт.Where(a => a.Категорії_робіт1 == category)
+                                                        .Select(a => a.Зимові_умови).ToList();
+                return Convert.ToBoolean(winterConditions[0]);
             }
         }
 
@@ -179,16 +195,22 @@ namespace Наряд.ExtendedModel
         {
             try
             {
-                using (БД_НарядEntities1 db = new БД_НарядEntities1())
+                double coefficient = 1;
+
+                if (!string.IsNullOrEmpty(workingСonditions))
                 {
-                    var tableNorm = db.Поправочний_коефіцієнт.Where(a => a.Умови_праці == workingСonditions)
-                                        .Select(a => a.Поправочний_коефіцієнт_ГСМ).ToList();
-                    return Convert.ToDouble(tableNorm[0]);
+                    using (БД_НарядEntities1 db = new БД_НарядEntities1())
+                    {
+                        var tableNorm = db.Поправочний_коефіцієнт.Where(a => a.Умови_праці == workingСonditions)
+                                            .Select(a => a.Поправочний_коефіцієнт_ГСМ).ToList();
+                        coefficient = Convert.ToDouble(tableNorm[0]);
+                    }
                 }
+                return coefficient;
             }
             catch (Exception)
             {
-                return 0;
+                return 1;
             }
         }
 
@@ -196,16 +218,22 @@ namespace Наряд.ExtendedModel
         {
             try
             {
-                decimal distance = Convert.ToDecimal(distanceMoving);
-                using (БД_НарядEntities1 db = new БД_НарядEntities1())
+                double coefficient = 1;
+
+                if (!string.IsNullOrEmpty(distanceMoving))
                 {
-                    var tableNorm = db.Поправочний_коефіцієнт_Переїзд.Where(a => a.Відстань_переїзду >= distance).Select(a => a.Поправочний_коефіцієнт).ToList();
-                    return Convert.ToDouble(tableNorm[0]);
+                    decimal distance = Convert.ToDecimal(distanceMoving);
+                    using (БД_НарядEntities1 db = new БД_НарядEntities1())
+                    {
+                        var tableNorm = db.Поправочний_коефіцієнт_Переїзд.Where(a => a.Відстань_переїзду >= distance).Select(a => a.Поправочний_коефіцієнт).ToList();
+                        coefficient = Convert.ToDouble(tableNorm[0]);
+                    }
                 }
+                return coefficient;
             }
             catch (Exception)
             {
-                return 0;
+                return 1;
             }
         }
 
@@ -213,23 +241,29 @@ namespace Наряд.ExtendedModel
         {
             try
             {
-                decimal distance = Convert.ToDecimal(distanceMoving);
-                using (БД_НарядEntities1 db = new БД_НарядEntities1())
+                double coefficient = 1;
+
+                if (!string.IsNullOrEmpty(distanceMoving))
                 {
-                    var tableNorm = db.Поправочний_коефіцієнт_Перешкоди.Where(a => a.Відсоток_Перешкоди >= distance).Select(a => a.Поправочний_коефіцієнт).ToList();
-                    return Convert.ToDouble(tableNorm[0]);
+                    decimal distance = Convert.ToDecimal(distanceMoving);
+                    using (БД_НарядEntities1 db = new БД_НарядEntities1())
+                    {
+                        var tableNorm = db.Поправочний_коефіцієнт_Перешкоди.Where(a => a.Відсоток_Перешкоди >= distance).Select(a => a.Поправочний_коефіцієнт).ToList();
+                        coefficient = Convert.ToDouble(tableNorm[0]);
+                    }
                 }
+                return coefficient;
             }
             catch (Exception)
             {
-                return 0;
+                return 1;
             }
         }
 
         public double NormHoursUsed()//норма расход топлива на переезд
         {
             try
-            {               
+            {
                 using (БД_НарядEntities1 db = new БД_НарядEntities1())
                 {
                     var normHoursUsed = db.Витрати_ГСМ_в_годину.Where(a => a.Id_Механізма >= 3).Select(a => a.Витрати_ГСМ_переїзд_кг_ч).ToList();
@@ -238,7 +272,7 @@ namespace Наряд.ExtendedModel
             }
             catch (Exception)
             {
-                return 0;
+                return 1;
             }
         }
     }

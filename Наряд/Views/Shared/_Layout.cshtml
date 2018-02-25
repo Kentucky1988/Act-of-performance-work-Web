@@ -3,19 +3,16 @@
 <head>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">  <!--забезпечення правильної візуалізації та підтримки масштабованості на мобільних пристроях-->
     <title>@ViewBag.Title - Наряд</title> <!--имя вкладки, отображается в закладках-->
-
-    <link rel="stylesheet" href="~/Content/bootstrap.min.css" /> <!--библиотека bootstrap-->
+  
     <link rel="stylesheet" href="~/Content/themes/base/jquery-ui.min.css" />
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" /> <!--Стиль jquery-ui-->
-    <link rel="stylesheet" type="text/css" href="~/Content/ComboBox.Autocomplete.css" /><!--файл с стилем autocomplete.combobox-->
-    <link rel="stylesheet" type="text/css" href="~/Content/textAlignment.css" /><!--стиль с выравниванием текста-->
-    <link rel="stylesheet" href="~/Content/Loader.css" /> <!--анимация загрузки Ajax-->
 
-    <script src="~/Scripts/jquery-3.2.1.min.js"></script>     <!--Подключаем библиотеку JQuery-->
-    <script src="~/Scripts/bootstrap.min.js"></script>        <!--bootstrap.min -->
-    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script> <!--Подключаем библиотеку JQuery UI-->
-    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>     <!--Подключаем библиотеку JQuery UI-->
-    <script src="~/Scripts/notify.min.js"></script>           <!--Подключаем библиотеку notify (подсказки)-->
+    @Styles.Render("~/Content/css")          @*стили*@
+
+    @Scripts.Render("~/Scripts/jquery-3.2.1.min.js")      @*Подключаем библиотеку JQuery min*@
+    @Scripts.Render("~/Scripts/bootstrap.min.js")         @*bootstrap.min*@
+    @Scripts.Render("~/Scripts/jquery-ui-1.12.1.min.js")  @*Подключаем библиотеку JQuery UI min*@
+    @Scripts.Render("~/Scripts/notify.min.js")            @*Подключаем библиотеку notify(подсказки)*@
 </head>
 
 <body>
@@ -57,5 +54,4 @@
 </body>
 </html>
 
-<script src="~/Scripts/myJScript/notifyMessage.js"></script> <!--окно сообщеиня-->
-<script src="~/Scripts/myJScript/validate.js"></script>      <!--валидация-->
+@Scripts.Render("~/bundles/notify_validate")    @*Робота с Notifi и валидация*@

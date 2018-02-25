@@ -189,6 +189,7 @@
       <PropertyRef Name="РозцінкаID" />
       <PropertyRef Name="Одиниця_виміру" />
       <PropertyRef Name="Id_механізма" />
+      <PropertyRef Name="Зимові_умови" />
     </Key>
     <Property Name="Категорії_робітID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Найменування_заходуID" Type="int" Nullable="false" />
@@ -199,6 +200,7 @@
     <Property Name="РозцінкаID" Type="int" Nullable="false" />
     <Property Name="Одиниця_виміру" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="Id_механізма" Type="int" Nullable="false" />
+    <Property Name="Зимові_умови" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Кубатурник">
     <Key>
@@ -1609,7 +1611,8 @@
     [Категорії_робіт].[Комплексна_индивідуальна] AS [Комплексна_индивідуальна], 
     [Категорії_робіт].[РозцінкаID] AS [РозцінкаID], 
     [Категорії_робіт].[Одиниця_виміру] AS [Одиниця_виміру], 
-    [Категорії_робіт].[Id_механізма] AS [Id_механізма]
+    [Категорії_робіт].[Id_механізма] AS [Id_механізма], 
+    [Категорії_робіт].[Зимові_умови] AS [Зимові_умови]
     FROM [dbo].[Категорії_робіт] AS [Категорії_робіт]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="Освітлення_механічним_способом_ГСМ" EntityType="Self.Освітлення_механічним_способом_ГСМ" store:Type="Tables" store:Schema="dbo">

@@ -104,4 +104,14 @@ E:\GitHub\Наряд\Наряд.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.
 E:\GitHub\Наряд\Наряд.Tests\bin\Debug\Microsoft.Owin.Security.xml
 E:\GitHub\Наряд\Наряд.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
 E:\GitHub\Наряд\Наряд.Tests\bin\Debug\Microsoft.Owin.Security.OAuth.xml
-E:\GitHub\Наряд\Наряд.Tests\bin\Debug\Newtonsoft.Json.xml
+E:\GitHub\Наряд\Наряд.Tests\bin\Debug\System.Web.Optimization.dll
+E:\GitHub\Наряд\Наряд.Tests\bin\Debug\System.Web.Optimization.xml
+E:\GitHub\Наряд\Наряд.Tests\bin\Debug\System.Web.Http.dll
+E:\GitHub\Наряд\Наряд.Tests\bin\Debug\System.Web.Http.WebHost.dll
+E:\GitHub\Наряд\Наряд.Tests\bin\Debug\System.Net.Http.Formatting.dll
+E:\GitHub\Наряд\Наряд.Tests\bin\Debug\System.Web.Http.xml
+E:\GitHub\Наряд\Наряд.Tests\bin\Debug\System.Web.Http.WebHost.xml
+E:\GitHub\Наряд\Наряд.Tests\bin\Debug\System.Net.Http.Formatting.xml
+E:\GitHub\Наряд\Наряд.Tests\bin\Debug\ru\System.Web.Http.resources.dll
+E:\GitHub\Наряд\Наряд.Tests\bin\Debug\ru\System.Web.Http.WebHost.resources.dll
+E:\GitHub\Наряд\Наряд.Tests\bin\Debug\ru\System.Net.Http.Formatting.resources.dll

@@ -23,6 +23,7 @@ namespace Наряд.Models
         public int РозцінкаID { get; set; }
         public string Одиниця_виміру { get; set; }
         public int Id_механізма { get; set; }
+        public bool Зимові_умови { get; set; }
     
         public virtual Денна_тарифна_ставка Денна_тарифна_ставка { get; set; }
         public virtual Механізми Механізми { get; set; }

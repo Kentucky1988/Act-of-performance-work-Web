@@ -101,3 +101,17 @@ E:\GitHub\Наряд\Наряд\bin\Microsoft.Owin.Security.xml
 E:\GitHub\Наряд\Наряд\bin\Microsoft.Owin.Security.Cookies.xml
 E:\GitHub\Наряд\Наряд\bin\Microsoft.Owin.Security.OAuth.xml
 E:\GitHub\Наряд\Наряд\bin\Newtonsoft.Json.xml
+E:\GitHub\Наряд\Наряд\bin\Antlr3.Runtime.dll
+E:\GitHub\Наряд\Наряд\bin\System.Web.Optimization.dll
+E:\GitHub\Наряд\Наряд\bin\WebGrease.dll
+E:\GitHub\Наряд\Наряд\bin\Antlr3.Runtime.pdb
+E:\GitHub\Наряд\Наряд\bin\System.Web.Optimization.xml
+E:\GitHub\Наряд\Наряд\bin\System.Net.Http.Formatting.dll
+E:\GitHub\Наряд\Наряд\bin\System.Web.Http.dll
+E:\GitHub\Наряд\Наряд\bin\System.Web.Http.WebHost.dll
+E:\GitHub\Наряд\Наряд\bin\System.Net.Http.Formatting.xml
+E:\GitHub\Наряд\Наряд\bin\System.Web.Http.xml
+E:\GitHub\Наряд\Наряд\bin\System.Web.Http.WebHost.xml
+E:\GitHub\Наряд\Наряд\bin\ru\System.Net.Http.Formatting.resources.dll
+E:\GitHub\Наряд\Наряд\bin\ru\System.Web.Http.resources.dll
+E:\GitHub\Наряд\Наряд\bin\ru\System.Web.Http.WebHost.resources.dll

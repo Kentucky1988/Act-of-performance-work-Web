@@ -6,40 +6,34 @@
     loadEmployees('.employees');
     LoadMaterials('.materials');
     Company('#company');
-    addNumberAct();                  //номер акта
-    validateInt('.validateInt')      //валидация Int
-    validateDouble('.validateDouble')//валидация Double
+    addNumberAct();                    //номер акта
+    validateInt('.validateInt');       //валидация Int
+    validateDouble('.validateDouble'); //валидация Double
 
     $('#tbodyTable .custom-combobox-input, .details .custom-combobox-input').css('min-width', '340px');
     $('.employees').next('span').find('.custom-combobox-input').css('min-width', '250px');
 });
 
-function LoadMaterials(element) { //сортименты   
-    $.ajax({
-        type: "GET",
-        url: '/home/getMaterials',
-        success: function (data) {
-            renderCategory(element, data);
-        }
+function LoadMaterials(element) {    //сортименты   
+    $.getJSON('/api/Materials', function (data) {
+        var list = getProperty(data, 'Назва_сортименту');
+        renderCategory(element, list);
     });
 }
 
 var ListCompany = [];
 function Company(element) { //предприятие   
-    $.ajax({
-        type: "GET",
-        url: '/home/getCompany',
-        success: function (data) {
-            ListCompany = data;
-            getEmployees(element, ListCompany, 'Підприємство1');
-        }
+    $.getJSON('/api/Company', function (data) {
+        ListCompany = data.Data;
+        var list = getProperty(ListCompany, 'Підприємство1');
+        renderCategory(element, list);          
     });
 }
 
 function subdivision(element) {//Підрозділи
     $.ajax({
         type: "GET",
-        url: "/home/getSubdivision",
+        url: "/Home/GetSubdivision",
         data: { 'companyID': element },
         success: function (data) {
             $element = $('#subdivision');
@@ -49,34 +43,26 @@ function subdivision(element) {//Підрозділи
 }
 
 var Employees = [];
-function loadEmployees() { //роботники   
-    $.ajax({
-        type: "GET",
-        url: '/home/getEmployees',
-        success: function (data) {
-            Employees = data;
-            getEmployees('.employees', Employees, 'П_І_Б');
-        }
+
+function loadEmployees(element) {   //роботники   
+    $.getJSON('/api/Employees', function (data) {
+        Employees = data;
+        var list = getProperty(data, 'П_І_Б');
+        renderCategory(element, list);
     });
 }
 
 function worksTitlee(element) {//найменування заходу
-    $.ajax({
-        type: "GET",
-        url: '/home/getWorksTitlee',
-        success: function (data) {
-            renderCategory(element, data);
-        }
+    $.getJSON('/api/WorksTitlee', function (data) {
+        var list = getProperty(data.Data, 'Найменування_заходу1');
+        renderCategory(element, list);
     });
 }
 
-function typeOfFelling(element) {//вид рубок
-    $.ajax({
-        type: "GET",
-        url: '/home/TypeOfFelling',
-        success: function (data) {
-            renderCategory(element, data);
-        }
+function typeOfFelling(element) {         //вид рубок
+    $.getJSON('/api/TypeOfFelling', function (data) {
+        var list = getProperty(data, 'Вид_рубки1');
+        renderCategory(element, list);
     });
 }
 
@@ -85,7 +71,7 @@ var checkedConditionsWinter;//условия труда /зима/
 var checkedConditionsHard;//условия труда /тяжелые/
 
 function normOfWork(element) {//норма выроботки 
-    if ($('#product').val() !== '') {        
+    if ($('#product').val() !== '') {
         typeOfWork = element;
         checkedConditionsWinter = $('#workingConditionsWinter').hasClass('active') ? "Зимові умови" : "";
         checkedConditionsHard = $('#workingConditionsHard').hasClass('active') ? "Тяжкі умови" : "";
@@ -111,9 +97,9 @@ function normOfWork(element) {//норма выроботки
                     $("#executed").change();
                 }
             });
-        }else {
-            notifyMessage("Вкажіть середній об'єм хлиста", "warn"); 
-        } 
+        } else {
+            notifyMessage("Вкажіть середній об'єм хлиста", "warn");
+        }
     }
 }
 
@@ -123,7 +109,7 @@ var typeOfBrigade; //Комплексна_индивідуальна
 function Unit(element) { //единица измерения  
     $.ajax({
         type: "GET",
-        url: '/home/getUnit',
+        url: '/Home/GetUnit',
         data: { 'category': $('#productCategory').val() },
         success: function (unit) {
             $('#Unit').val(unit[0].Одиниця_виміру);
@@ -146,7 +132,7 @@ function pricingUnit() {//расценка за единицу
     if ($('#productCategory').val() !== 0 && ((typeOfBrigade === "індивідуальна" && $('#Rank').val() > 0) || typeOfBrigade === "комплексна")) {
         $.ajax({
             type: "GET",
-            url: '/home/PricingUnit',
+            url: '/Home/PricingUnit',
             data: { 'pricingID': pricingID, 'rank': $("#Rank").val() },
             success: function (unitPrice) {
                 $('#UnitPrice').val(unitPrice);
@@ -244,7 +230,7 @@ function columnSum($table) {//сумма строк нормы
 
     $($table).next('tfoot').find('td:not(:first)').text(function (indx) {//"tfoot tr td:not(:first)"
         var sumColumn = 0;
-        if (indx === 1 || indx === 2) {            
+        if (indx === 1 || indx === 2) {
             $("#tbodyTable tr:not(:first) td:nth-child(" + (indx + 2) + ")").each(function () {
                 var str = $(this).parents('tr').find('td:eq(1)').text();
                 if (str === 'м3' || str === 'га' || str === 'скл/м' || str === 'тис. шт.') {
@@ -252,7 +238,7 @@ function columnSum($table) {//сумма строк нормы
                 }
             });
             $(this).text(sumColumn === 0 ? '' : (sumColumn).toFixed(3));
-        } else if (indx === 4) {          
+        } else if (indx === 4) {
             $("#tbodyTable tr:not(:first) td:nth-child(" + (indx + 2) + ")").each(function () {
                 sumColumn += +$(this).text().replace(',', '.');
             });
@@ -268,14 +254,10 @@ function columnSum($table) {//сумма строк нормы
 
 var colectionSortOil = [];  //колекция расхода ГСМ по видам
 function ColectionSortOil() {// виды ГСМ
-    $.ajax({
-        type: "GET",
-        url: '/home/getcolectionSortOil',
-        success: function (data) {
-            $(data).each(function (i, val) {
-                colectionSortOil.push({ 'Вид_палива': val, 'Витрити_ГСМ': 0 });
-            });
-        }
+    $.getJSON('/api/ColectionSortOil', function (data) {
+        $(data.Data).each(function () {
+            colectionSortOil.push({ 'Вид_палива': this.Вид_ГСМ1, 'Витрити_ГСМ': 0 });
+        });
     });
 }
 
@@ -284,7 +266,7 @@ function collectionOilCosts() { //расхода ГСМ по строке
     var checkedConditionsWinterOil = $('#worksTitlee').val() === 'Лісозаготівельні роботи' ? '' : checkedConditionsWinter;
     $.ajax({
         type: "GET",
-        url: '/home/CollectionOilCosts',
+        url: '/Home/CollectionOilCosts',
         data: {
             'table': $('#productCategory').val(), 'typeOfWork': typeOfWork, 'volumeWood': $("#volumeWood").val(), 'executed': $("#executed").val(),
             'checkedConditionsWinter': checkedConditionsWinterOil, 'checkedConditionsHard': checkedConditionsHard, 'hoursUsed': $("#hoursUsed").val()
@@ -301,7 +283,7 @@ function countValColectionSortOil() {//подсчет расхода ГСМ по
     $(colectionSortOil).each(function (iSort, valSort) {
         this['Витрити_ГСМ'] = 0;
         $(CollectionOilCosts).each(function (iCosts, valCosts) {
-            $(this).each(function (i, val) {
+            $(this).each(function () {
                 if (colectionSortOil[iSort]['Вид_палива'] === this['Вид_палива']) {
                     colectionSortOil[iSort]['Витрити_ГСМ'] += this['Витрити_ГСМ'];
                 }
@@ -312,17 +294,6 @@ function countValColectionSortOil() {//подсчет расхода ГСМ по
 
 function deleteValCollectionOilCosts(indexDeleteElement) {//удаление обекта из колекции /расход ГСМ по строкам/ при удалеине строки
     CollectionOilCosts.splice(indexDeleteElement, 1);
-}
-
-function notNullInColection(colection) {//убрать из колекции /расхода ГСМ по видам/ пустые поля 
-    var colectionSortOilNotNull = [];
-    $(colection).each(function () {
-        alert(this['Витрити_ГСМ']);
-        if (this['Витрити_ГСМ'] > 0) {
-            colectionSortOilNotNull.push({ 'Вид_палива': this['Вид_палива'], 'Витрити_ГСМ': this['Витрити_ГСМ'] });
-        }
-    });
-    return colectionSortOilNotNull;
 }
 
 function addStringDetails(colection) {//добавить строку в таблицу расход материалов
@@ -343,17 +314,17 @@ function addStringDetails(colection) {//добавить строку в таб�
 
             addString($table, index, typeOil, unit, consumption, td_input, td);
             index++;
-        } else if (i === colection.length && index % 2 != 0) {
+        } else if (i === colection.length && index % 2 !== 0) {
             typeOil = "";
             unit = "";
             consumption = "";
             td_input = "<td/>";
             td = "<td/>";
 
-            addString($table, index, typeOil, unit, consumption, td_input, td);                  
-        }       
+            addString($table, index, typeOil, unit, consumption, td_input, td);
+        }
     }
-    notifyMessage("Витрати ГСМ успішно перераховано", "success"); 
+    notifyMessage("Витрати ГСМ успішно перераховано", "success");
 }
 
 function addString($table, index, typeOil, unit, consumption, td_input, td) {//добавляем нижнюю строку в таблице /details(лісопродукція)/
@@ -368,21 +339,6 @@ function addString($table, index, typeOil, unit, consumption, td_input, td) {//�
     $(td_input).appendTo($("tr:last", $table));
     $(td).appendTo($("tr:last", $table));
 }
-
-function getEmployees(element, List, nameColum) {//добавить список сотрудников в выподающий список 
-    var $ele = $(element);
-    $ele.empty();
-    $ele.append($('<option/>').text('Вибрати'));
-    $.each(List, function () {
-        $ele.append($('<option/>').text(this[nameColum]));
-    });
-}
-
-$(document).ajaxStart(function () {//индикатор работы AJAX
-    $('#loader').show();
-}).ajaxStop(function () {
-    $('#loader').hide();
-});
 
 $('#buttonModalClear').click(function () {//кнопка вызов модального окна очистки наряда  
     $('#myModal').modal('show');
@@ -433,10 +389,10 @@ $('#cleaningPart').click(function () {//кнопка очистить части
 
 function addNumberAct() {//номер акта
 
-    var $elementValue = +$('#numberAct').val();   
+    var $elementValue = +$('#numberAct').val();
     if ($elementValue === '') {
         $('#numberAct').val('1');
-    } else {        
+    } else {
         $('#numberAct').val($elementValue + 1);
     }
 }

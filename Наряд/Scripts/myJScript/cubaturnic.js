@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     getListDiametr();             //список диаметров 
-    LoadLength('#lengthOfTree');
-    renderSelectOption('#diameter', getListDiameter());
+    LoadLength('#lengthOfTree');  //длины   
+    renderSelectOption('#diameter', getListDiameter()); //шаг диаметров
 });
 
 $('#addTableCubaturnic').click(function () {   //кнопка построения таблицы
@@ -13,18 +13,13 @@ $('#addTableCubaturnic').click(function () {   //кнопка построени
     } else {
         removeAllTrInTbody('#tableCubaturnic');    //удалить строки из tbody    
         removeValueTfoot('#tableCubaturnic');      //очистить значение в tfoot
-        getListVolumeOfTree('#lengthOfTree')       //масив объемов необходимой длины       
+        getListVolumeOfTree('#lengthOfTree');      //масив объемов необходимой длины       
     }
 });
 
-function LoadLength(element) { //длина   
-    $.ajax({
-        type: "GET",
-        url: '/Cubaturnic/getListColumn',
-        data: { 'nameTable': 'Кубатурник' },
-        success: function (data) {
-            renderSelectOption(element, data);
-        }
+function LoadLength(element) { //длины   
+     $.getJSON('/Cubaturnic/GetListColumn', { 'nameTable': 'Кубатурник' }, function (data) {
+        renderSelectOption(element, data);
     });
 }
 
@@ -34,31 +29,22 @@ function getListDiameter() {
 }
 
 var DiametrsList = [];
-function getListDiametr() { //список диаметров   
-    $.ajax({
-        type: "GET",
-        url: '/Cubaturnic/getListDiameter',
-        success: function (data) {
-            DiametrsList = data;
-            renderSelectOption('#diameterFrom', data);
-            renderSelectOption('#diameterUpTo', data);
-        }
+function getListDiametr() {
+    $.getJSON('/Cubaturnic/GetListDiameter', function (data) {
+        DiametrsList = data;
+        renderSelectOption('#diameterFrom', data);
+        renderSelectOption('#diameterUpTo', data);
     });
 }
 
-function getListVolumeOfTree(element) {   //масив объемов необходимой длины   
+function getListVolumeOfTree(element) {   //масив объемов необходимой длины 
 
     var lengthOfTree = $(element).val();  //длина бревна
 
-    $.ajax({
-        type: "GET",
-        url: '/Cubaturnic/getListVolumeOfTree',
-        data: { 'length': lengthOfTree },
-        success: function (data) {
-            addTrCubaturnic('#tableCubaturnic', DiametrsList, data); //создать таблицу
-            onChangeAmountTree();       //добавляем к input .amountTree событие change
-            validateInt('.amountTree');  //в input только целые числа
-        }
+    $.getJSON('/Cubaturnic/GetListVolumeOfTree', { 'length': lengthOfTree }, function (data) {
+        addTrCubaturnic('#tableCubaturnic', DiametrsList, data); //создать таблицу
+        onChangeAmountTree();        //добавляем к input .amountTree событие change
+        validateInt('.amountTree');  //в input только целые числа
     });
 }
 
@@ -69,16 +55,16 @@ function addTrCubaturnic(element, listDiametr, listVolumeOfTree) { //созда�
     var $multiplicity = +$('#diameter').val();
 
     $(listDiametr).each(function (index, value) {
-        if (+value % $multiplicity == 0 && $diameterFrom <= value && $diameterUpTo >= value) {
+        if (+value % $multiplicity === 0 && $diameterFrom <= value && $diameterUpTo >= value) {
 
             $("<tr>").appendTo($table);//добавляем строку   
 
             for (var i = 0; i <= 3; i++) {
-                if (i == 0) {
+                if (i === 0) {
                     $("<td/>", { text: value }).appendTo($('tr:last', $table));
-                } else if (i == 1) {
+                } else if (i === 1) {
                     $("<td/>", { text: listVolumeOfTree[index] }).appendTo($('tr:last', $table));
-                } else if (i == 2) {
+                } else if (i === 2) {
                     $('<td> <input class="form-control amountTree" type="number" min="0"/> </td>').appendTo($('tr:last', $table));
                 } else {
                     $('<td/>').appendTo($('tr:last', $table));
@@ -123,7 +109,7 @@ function removeAllTrInTbody(element) {//удалить все строки из 
     $('tbody', element).find('tr').remove();
 }
 
-$('#clearAmountTree').click(function () {  //кнопка - Очистити кількість лісоматеріалів
+$('#clearAmountTree').click(function () {        //кнопка - Очистити кількість лісоматеріалів
     removeValueInput('#tableCubaturnic tbody');  //очистить значение input-ов в tbody (убрать количество колодок)   
     clearLastTd('#tableCubaturnic tbody');       //очистить значение колонки (Загальний обєм)
     removeValueTfoot('#tableCubaturnic');        //очистить значение в tfoot
@@ -131,8 +117,8 @@ $('#clearAmountTree').click(function () {  //кнопка - Очистити к�
 
 function removeValueInput($tbody) { //очистить значение input-ов в tbody (убрать количество колодок)
     $('input', $tbody).each(function () {
-        $(this).val('');      
-    })
+        $(this).val('');
+    });
 }
 
 function clearLastTd($tbody) {  //очистить значение колонки (Загальний обєм)
