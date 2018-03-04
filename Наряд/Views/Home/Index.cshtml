@@ -6,7 +6,11 @@
         <ul class="nav nav-tabs" role="tablist">
             <li class="active"><a href="#facial" role="tab" data-toggle="tab">Лицьова сторона</a> </li>
             <li>               <a href="#reverse" role="tab" data-toggle="tab">Зворотня сторона</a> </li>
-            <li>               <a href="#print" role="tab" data-toggle="tab">Ескиз печати</a> </li>
+            @{if (ViewContext.HttpContext.User.IsInRole("admin"))
+                {  <li> <a href="#print" role="tab" data-toggle="tab">Попередній перегляд</a> </li> }
+              else
+                { <li style="visibility: hidden"> <a href="#print" role="tab" data-toggle="tab">Попередній перегляд</a> </li> }
+            }
         </ul>
     </div>
 
@@ -16,7 +20,6 @@
         <div role="tabpanel" class="tab-pane" id="print">   @Html.Partial("_print")</div>
     </div>
 </div>
-<br /><div id="loader"></div> @*индикатор загрузки*@
 
 
 <script type="text/javascript">
@@ -26,5 +29,5 @@
 </script>
 
 
-@Scripts.Render("~/bundles/scriptPage")           
+@Scripts.Render("~/bundles/scriptPage")
 

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Linq.Dynamic;
 using Наряд.ExtendedModel;
 using Наряд.Models;
+using System.Threading.Tasks;
 
 namespace Наряд.Controllers
 {
@@ -82,19 +83,25 @@ namespace Наряд.Controllers
             NormFromDB normFromDB = new NormFromDB();
             CoefficientNorm coefficientNorm = new CoefficientNorm();
             ArrayList normArray = new ArrayList();
+                        
+            bool winterConditions = coefficientNorm.WinterConditions(table);     //приминение зимних условий ДА/НЕТ
 
-            string tableNormOfWork = normFromDB.TableNorm(table);
-            double norm = normFromDB.NormFromTable(table, tableNormOfWork, typeOfWork, Replace(volumeWood), forestPlantingConditions); //норма выроботка  
-            
-            bool winterConditions = coefficientNorm.WinterConditions(table);            //приминение зимних условий ДА/НЕТ
-            double coefficientWinter = winterConditions ? coefficientNorm.CoefficientNorm_Winter_Hard(checkedConditionsWinter) : 1; //поправочный коефиц. Зима
+            Task<double> coefficientWinter = Task.Run(() => 1.0); //по умолчанию 1
+            if (winterConditions)
+            {
+                coefficientWinter = coefficientNorm.CoefficientNorm_Winter_Hard(checkedConditionsWinter); //поправочный коефиц. Зима
+            }
+            Task<double> coefficientHard = coefficientNorm.CoefficientNorm_Winter_Hard(checkedConditionsHard);     //поправочный коефиц. Тяжелые условия
+            Task<double> coefficientDistance = coefficientNorm.CoefficientTractorMoving(Replace(tractorMoving));   //поправочный коефиц. переезд
+            Task<double> coefficientBlock = coefficientNorm.CoefficientBlock(Replace(block));                      //поправочный коефиц. помехи     
 
-            double coefficientHard = coefficientNorm.CoefficientNorm_Winter_Hard(checkedConditionsHard);     //поправочный коефиц. Тяжелые условия
-            double coefficientDistance = coefficientNorm.CoefficientTractorMoving(Replace(tractorMoving));   //поправочный коефиц. переезд
-            double coefficientBlock = coefficientNorm.CoefficientBlock(Replace(block));                      //поправочный коефиц. помехи                
             double deforestationCoefficient = !string.IsNullOrEmpty(reduceDeforestationCoefficient) ? Convert.ToDouble(Replace(reduceDeforestationCoefficient)) : 1;//поправочный коефиц. заготовка (по приказу)
+            string tableNormOfWork = normFromDB.TableNorm(table);
+            double norm = normFromDB.NormFromTable(table, tableNormOfWork, typeOfWork, Replace(volumeWood), forestPlantingConditions); //норма выроботка              
 
-            norm = Math.Round(norm * (coefficientWinter * coefficientHard * coefficientDistance * coefficientBlock * deforestationCoefficient), 3);
+            Task.WaitAll(coefficientWinter, coefficientHard, coefficientDistance, coefficientBlock);//ожидаем завершение асинхронных методов
+
+            norm = Math.Round(norm * (coefficientWinter.Result * coefficientHard.Result * coefficientDistance.Result * coefficientBlock.Result * deforestationCoefficient), 3);
             normArray.Add(norm);
             return new JsonResult { Data = normArray, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
@@ -118,14 +125,18 @@ namespace Наряд.Controllers
             NormOil oilCalculation = new NormOil();
             NormFromDB normFromDB = new NormFromDB();
             CoefficientNorm coefficientNorm = new CoefficientNorm();
+                        
+            Task<double> coefficientWinter = coefficientNorm.CoefficientOil_Winter_Hard(checkedConditionsWinter);//поправочный коефиц. Зима
+            Task<double> coefficientHard = coefficientNorm.CoefficientOil_Winter_Hard(checkedConditionsHard);//поправочный коефиц. Тяжелые условия           
 
-            string tableNormOil = oilCalculation.TableNormOfOil(table);
-            double normOil = normFromDB.NormFromTable(table, tableNormOil, typeOfWork, Replace(volumeWood), ""); //норма расхода ГСМ              
-            double coefficientWinter = coefficientNorm.CoefficientOil_Winter_Hard(checkedConditionsWinter);//поправочный коефиц. Зима
-            double coefficientHard = coefficientNorm.CoefficientOil_Winter_Hard(checkedConditionsHard);//поправочный коефиц. Тяжелые условия
-            hoursUsed = !string.IsNullOrEmpty(hoursUsed) ? hoursUsed : "0";
             double normOilHoursUsed = coefficientNorm.NormHoursUsed(); //норма расход топлива на переезд
-            double fuelCosts = Convert.ToDouble(Replace(executed)) * normOil * (coefficientWinter * coefficientHard) + (normOilHoursUsed * Convert.ToDouble(hoursUsed));//расход топлива  
+            hoursUsed = !string.IsNullOrEmpty(hoursUsed) ? hoursUsed : "0";
+            string tableNormOil = oilCalculation.TableNormOfOil(table);
+            double normOil = normFromDB.NormFromTable(table, tableNormOil, typeOfWork, Replace(volumeWood), ""); //норма расхода ГСМ 
+
+            Task.WaitAll(coefficientWinter, coefficientHard);//ожидаем завершение асинхронных методов
+
+            double fuelCosts = Convert.ToDouble(Replace(executed)) * normOil * (coefficientWinter.Result * coefficientHard.Result) + (normOilHoursUsed * Convert.ToDouble(hoursUsed));//расход топлива  
             List<Oil> collectionOilCosts = oilCalculation.CollectionOilCosts(table, fuelCosts);
 
             return new JsonResult { Data = collectionOilCosts, JsonRequestBehavior = JsonRequestBehavior.AllowGet };

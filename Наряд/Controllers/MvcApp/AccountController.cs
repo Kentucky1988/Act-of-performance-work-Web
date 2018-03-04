@@ -45,7 +45,7 @@ namespace Наряд.Content
                 ApplicationUser user = await UserManager.FindAsync(model.Email, model.Password);
                 if (user == null)
                 {
-                    ModelState.AddModelError("", "Неверный логин или пароль.");
+                    ModelState.AddModelError("", "Невірний логін або пароль :(");
                 }
                 else
                 {

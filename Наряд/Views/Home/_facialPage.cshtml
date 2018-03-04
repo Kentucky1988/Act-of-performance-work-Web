@@ -307,16 +307,17 @@
 </div>
 
 <div align="right">
-    <button id="addDocument" class="btn btn-success" style="width:150px" title="Створити документ">
-        Створити документ
-    </button>
-    <button id="printDocument" class="btn btn-success" style="width:100px" title="Друк">       
-        <span class="glyphicon glyphicon-print" />     
-    </button><!--Кнопка ПЕЧАТЬ наряда-->
-    <button id="buttonModalClear" class="btn btn-warning" style="width:100px" title="Очистити таблицю">     
-        <span class="glyphicon glyphicon-trash" />       
-    </button><!--Кнопка ОЧИСТКА наряда-->
-</div>
+    @if (ViewContext.HttpContext.User.IsInRole("admin"))
+    {
+        <button id="addDocument" class="btn btn-success" style="width:150px" title="Створити документ">Створити документ</button>
+    }
+        <button id="printDocument" class="btn btn-success" style="width:100px" title="Друк">
+            <span class="glyphicon glyphicon-print" />
+        </button><!--Кнопка ПЕЧАТЬ наряда-->
+        <button id="buttonModalClear" class="btn btn-warning" style="width:100px" title="Очистити таблицю">
+            <span class="glyphicon glyphicon-trash" />
+        </button><!--Кнопка ОЧИСТКА наряда-->
+    </div>
 
 
 <script type="text/javascript">

@@ -1,0 +1,39 @@
+﻿
+/*.verticalText {
+    -webkit-transform: rotate(-90deg); Chrome,Safari 
+    -moz-transform: rotate(-90deg); Firefox
+    -o-transform: rotate(-90deg); Opera
+    -ms-transform: rotate(-90deg); IE
+    transform: rotate(-90deg); браузеры без префексов
+}*/
+
+td, th { /*Отображать содержимое ячеек заголовка по центру*/
+    vertical-align: middle; /*вертикаль*/
+    text-align: center; /*горизонталь*/
+    padding: 0px;
+}
+
+input.form-control { /*выравнивать текст в полях ввода по центу с отступом 0*/
+    padding: 0px; /*внутрений отступ*/
+    text-align: center;
+    outline: none;
+}
+
+.paddingLeft { /*текст перед полями ввода*/
+    vertical-align: middle; /*вертикаль*/
+    padding-left: 13px;
+    padding-right: 5px;
+}
+
+.add, .addDetails, .addEmployees { /*ширина кнопки добавить*/
+    width: 75px;
+}
+
+label {
+    font-weight: normal;
+    padding-left: 10px;
+}
+
+#tractorMoving, #hoursUsed, #block {
+    width: 90px;
+}

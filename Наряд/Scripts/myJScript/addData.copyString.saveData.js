@@ -10,11 +10,11 @@ function LoadCategory(element, val) {//категории робот
     });
 }
 
-function renderCategory(element, List) {//создание списка категорий
+function renderCategory(element, list) {//создание списка категорий
     var $ele = $(element);
     $ele.empty();
     $ele.append($('<option/>').text('Вибрати'));
-    $.each(List, function (i, val) {
+    $(list).each(function (i, val) {
         $ele.append($('<option/>').text(val));
     });
     $ele.prop('selectedIndex', 0); //значение по умолчанию
@@ -50,24 +50,30 @@ $('.add').click(function () {//событие на нажатие кнопки �
     }
 });
 
-function allValidtbodyTableFase($table) {
+function allValidtbodyTableFase($table) {  //проверка не пустые строки
     var isAllValid = true;
 
-    $('tr:first td input:not(":disabled, #set")', $table).each(function (i, value) {//проверка не пустые строки
-        if ($(this).val().trim() === '') {
-            isAllValid = false;
-            if (i === 0) {
+    $('tr:first td input:not(":disabled")', $table).each(function (i, value) {
+        if ($(this).val().trim() === '') {           
+            if ($(this).is('.custom-combobox-input')) { 
+                isAllValid = false;
                 notifyMessage("Вкажіть найменуваня робіт", "warn");
             }
-            if (i === 1) {
+            if ($(this).is('#executed')) { 
+                isAllValid = false;
                 notifyMessage("Вкажіть обсяг виконаних робіт", "warn");
-            }
+            }          
         }
     });
 
     if ($("#volumeWood").val().trim() === '') {
         isAllValid = false;
         notifyMessage("Вкажіть середній об'єм хлиста", "warn");
+    }
+
+    if ($('#Rank').val().trim() === '' && $('#Rank').is(":not(:disabled)")) {
+        isAllValid = false;
+        notifyMessage("Вкажіть розряд робіт", "warn");
     }
 
     return isAllValid;

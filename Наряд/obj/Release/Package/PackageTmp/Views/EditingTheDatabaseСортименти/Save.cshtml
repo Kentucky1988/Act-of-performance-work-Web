@@ -1,0 +1,30 @@
+﻿@model Наряд.Models.Сортименти
+
+@{
+    Layout = null;
+}
+
+<div style="text-align: center"><h3>Зберегти</h3></div>
+
+@using (Html.BeginForm("Save", "EditingTheDatabaseСортименти", FormMethod.Post, new { id = "popupForm" }))
+{
+    if (Model != null && Model.СортиментиID > 0)
+    {
+        @Html.HiddenFor(a => a.СортиментиID)
+    }
+
+    <div class="form-group">      
+        @Html.LabelFor(a => a.Назва_сортименту, new { @class = "control-label" })
+        @Html.TextBoxFor(a => a.Назва_сортименту, new { @class = "form-control" })
+        @Html.ValidationMessageFor(a => a.Назва_сортименту)
+    </div>
+    <div>
+        <input type="submit" value="Зберегти" class="btn btn-primary" />
+        <input type="reset" value="Очистити" class="btn btn-default" />
+    </div>
+}
+
+
+
+
+

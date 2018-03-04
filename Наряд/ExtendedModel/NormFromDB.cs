@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using Наряд.Models;
 
 namespace Наряд.ExtendedModel
@@ -12,7 +14,7 @@ namespace Наряд.ExtendedModel
             using (БД_НарядEntities1 db = new БД_НарядEntities1())
             {
                 var tableNorm = db.Категорії_робіт.Where(a => a.Категорії_робіт1 == table)
-                                    .Select(a => a.Норма_віробітку).ToList();
+                                                  .Select(a => a.Норма_віробітку).ToList();
                 return tableNorm[0];
             }
         }
@@ -158,7 +160,7 @@ namespace Наряд.ExtendedModel
     }
     class CoefficientNorm
     {
-        public double CoefficientNorm_Winter_Hard(string workingСonditions)//поправочный коефициент Норма (зима, тяжелые)
+        public async Task<double> CoefficientNorm_Winter_Hard(string workingСonditions)//поправочный коефициент Норма (зима, тяжелые)
         {
             try
             {
@@ -168,8 +170,8 @@ namespace Наряд.ExtendedModel
                 {
                     using (БД_НарядEntities1 db = new БД_НарядEntities1())
                     {
-                        var tableNorm = db.Поправочний_коефіцієнт.Where(a => a.Умови_праці == workingСonditions)
-                                            .Select(a => a.Поправочний_коефіцієнт_Норма).ToList();
+                        var tableNorm = await db.Поправочний_коефіцієнт.Where(a => a.Умови_праці == workingСonditions)
+                                                                 .Select(a => a.Поправочний_коефіцієнт_Норма).ToListAsync();
                         coefficient = Convert.ToDouble(tableNorm[0]);
                     }
                 }
@@ -191,7 +193,7 @@ namespace Наряд.ExtendedModel
             }
         }
 
-        public double CoefficientOil_Winter_Hard(string workingСonditions)//поправочный коефициент ГСМ (зима, тяжелые)
+        public async Task<double> CoefficientOil_Winter_Hard(string workingСonditions)//поправочный коефициент ГСМ (зима, тяжелые)
         {
             try
             {
@@ -201,8 +203,8 @@ namespace Наряд.ExtendedModel
                 {
                     using (БД_НарядEntities1 db = new БД_НарядEntities1())
                     {
-                        var tableNorm = db.Поправочний_коефіцієнт.Where(a => a.Умови_праці == workingСonditions)
-                                            .Select(a => a.Поправочний_коефіцієнт_ГСМ).ToList();
+                        var tableNorm = await db.Поправочний_коефіцієнт.Where(a => a.Умови_праці == workingСonditions)
+                                            .Select(a => a.Поправочний_коефіцієнт_ГСМ).ToListAsync();
                         coefficient = Convert.ToDouble(tableNorm[0]);
                     }
                 }
@@ -214,7 +216,7 @@ namespace Наряд.ExtendedModel
             }
         }
 
-        public double CoefficientTractorMoving(string distanceMoving)//поправочный коефициент переезд трактора
+        public async Task<double> CoefficientTractorMoving(string distanceMoving)//поправочный коефициент переезд трактора
         {
             try
             {
@@ -225,7 +227,7 @@ namespace Наряд.ExtendedModel
                     decimal distance = Convert.ToDecimal(distanceMoving);
                     using (БД_НарядEntities1 db = new БД_НарядEntities1())
                     {
-                        var tableNorm = db.Поправочний_коефіцієнт_Переїзд.Where(a => a.Відстань_переїзду >= distance).Select(a => a.Поправочний_коефіцієнт).ToList();
+                        var tableNorm = await db.Поправочний_коефіцієнт_Переїзд.Where(a => a.Відстань_переїзду >= distance).Select(a => a.Поправочний_коефіцієнт).ToListAsync();
                         coefficient = Convert.ToDouble(tableNorm[0]);
                     }
                 }
@@ -237,7 +239,7 @@ namespace Наряд.ExtendedModel
             }
         }
 
-        public double CoefficientBlock(string distanceMoving)//поправочный коефициент помехи на делянке
+        public async Task<double> CoefficientBlock(string distanceMoving)//поправочный коефициент помехи на делянке
         {
             try
             {
@@ -248,7 +250,7 @@ namespace Наряд.ExtendedModel
                     decimal distance = Convert.ToDecimal(distanceMoving);
                     using (БД_НарядEntities1 db = new БД_НарядEntities1())
                     {
-                        var tableNorm = db.Поправочний_коефіцієнт_Перешкоди.Where(a => a.Відсоток_Перешкоди >= distance).Select(a => a.Поправочний_коефіцієнт).ToList();
+                        var tableNorm = await db.Поправочний_коефіцієнт_Перешкоди.Where(a => a.Відсоток_Перешкоди >= distance).Select(a => a.Поправочний_коефіцієнт).ToListAsync();
                         coefficient = Convert.ToDouble(tableNorm[0]);
                     }
                 }
@@ -263,11 +265,11 @@ namespace Наряд.ExtendedModel
         public double NormHoursUsed()//норма расход топлива на переезд
         {
             try
-            {
+            {               
                 using (БД_НарядEntities1 db = new БД_НарядEntities1())
                 {
-                    var normHoursUsed = db.Витрати_ГСМ_в_годину.Where(a => a.Id_Механізма >= 3).Select(a => a.Витрати_ГСМ_переїзд_кг_ч).ToList();
-                    return Convert.ToDouble(normHoursUsed[0]);
+                    var normHoursUsedList = db.Витрати_ГСМ_в_годину.Where(a => a.Id_Механізма >= 3).Select(a => a.Витрати_ГСМ_переїзд_кг_ч).ToList();
+                    return Convert.ToDouble(normHoursUsedList[0]);
                 }
             }
             catch (Exception)
