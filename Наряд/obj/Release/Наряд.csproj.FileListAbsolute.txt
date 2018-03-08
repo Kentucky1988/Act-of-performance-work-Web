@@ -115,3 +115,4 @@ E:\GitHub\Наряд\Наряд\obj\Release\Наряд.csprojResolveAssemblyRefe
 E:\GitHub\Наряд\Наряд\obj\Release\Наряд.csproj.CoreCompileInputs.cache
 E:\GitHub\Наряд\Наряд\obj\Release\Наряд.dll
 E:\GitHub\Наряд\Наряд\obj\Release\Наряд.pdb
+E:\GitHub\Наряд\Наряд\obj\Release\Наряд.csproj.CopyComplete

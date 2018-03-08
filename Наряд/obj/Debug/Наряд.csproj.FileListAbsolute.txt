@@ -76,7 +76,6 @@ E:\GitHub\Наряд\Наряд\bin\ru\System.Web.Webpages.Deployment.resources.
 E:\GitHub\Наряд\Наряд\bin\ru\System.Web.Webpages.Razor.resources.dll
 E:\GitHub\Наряд\Наряд\bin\ru\System.Web.Helpers.resources.dll
 E:\GitHub\Наряд\Наряд\bin\ru\System.Web.Mvc.resources.dll
-E:\GitHub\Наряд\Наряд\obj\Debug\Наряд.csprojResolveAssemblyReference.cache
 E:\GitHub\Наряд\Наряд\obj\Debug\Наряд.csproj.CoreCompileInputs.cache
 E:\GitHub\Наряд\Наряд\obj\Debug\Наряд.dll
 E:\GitHub\Наряд\Наряд\obj\Debug\Наряд.pdb
@@ -115,3 +114,4 @@ E:\GitHub\Наряд\Наряд\bin\System.Web.Http.WebHost.xml
 E:\GitHub\Наряд\Наряд\bin\ru\System.Net.Http.Formatting.resources.dll
 E:\GitHub\Наряд\Наряд\bin\ru\System.Web.Http.resources.dll
 E:\GitHub\Наряд\Наряд\bin\ru\System.Web.Http.WebHost.resources.dll
+E:\GitHub\Наряд\Наряд\obj\Debug\Наряд.csprojResolveAssemblyReference.cache

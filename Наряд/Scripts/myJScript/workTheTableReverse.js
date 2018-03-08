@@ -1,9 +1,9 @@
-﻿$('.addDetails').click(function () {//событие на нажатие кнопки ДОБАВИТ    
+﻿$('.addDetails').click(function () {//событие на нажатие кнопки ДОБАВИТ  (Сортименты)  
     copyStringDetails(this); //копировать строку ввода
 
-    var $table = $(this).parents('tbody').find('tr:not(:first)');//таблица в которой добовляем строки
-    volumeTotalTableDetails($table);//Загальний об'єм
-    totalTableDetails($table);//Загальна кількість   
+    var $table = $(this).parents('tbody').find('tr:not(:first)');    //Таблица в которой добовляем строки
+    $('#totalTableDetails').text(totalTableColumn($table, 3));       //Загальний об'єм
+    $('#volumeTotalTableDetails').text(totalTableColumn($table, 4)); //Загальна кількість 
     notifyMessage("Дані успішно добавлено", "success");
 });
 
@@ -197,7 +197,7 @@ $('.addEmployees').click(function myfunction() {//добовляем строк�
 
 function addStringEmployee(button, $table) {//добавляем нижнюю строку в таблице /employee(табель)/
 
-    $('tr', $table).filter(':eq(0), :eq(1)').each(function (index) {  
+    $('tr', $table).filter(':eq(0), :eq(1)').each(function (index) {
         $("<tr>").css('height', '20px').appendTo($table);//добавляем нижнюю строку
 
         $('td', this).each(function (i) {  //копируем строку   
@@ -281,23 +281,12 @@ function deleteTrEmployee(element) {//Удаление выбранной стр
     $($tr).add($($tr).next('tr')).remove();
 }
 
-
-function volumeTotalTableDetails($table) {//Загальний об'єм таблица Лесопродукция (details)   
-    $('#totalTableDetails').text(function () {
-        var sum = 0;
-        $('td:nth-child(3)', $table).each(function () {
-            sum += +$(this).text().replace(',', '.');
-        });      
+function totalTableColumn($table, column) {//Загальна кількість в колонке  
+    var sum = 0;
+    $('td:nth-child(' + column + ')', $table).each(function () {
+        sum += +$(this).text().replace(',', '.');
     });
-}
-
-function totalTableDetails($table) {//Загальна кількість таблица Лесопродукция (details)
-    $('#volumeTotalTableDetails').text(function () {
-        var sum = 0;
-        $('td:nth-child(4)', $table).each(function () {
-            sum += +$(this).text().replace(',', '.');
-        });       
-    });
+    return sum;
 }
 
 

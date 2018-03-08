@@ -1,4 +1,5 @@
 ﻿$('#printDocument').click(function () {//печать докумета
+    createDocumentNarad();
     var printMe = document.getElementById('print');
     var documentPrint = window.open();
     documentPrint.document.write(printMe.outerHTML);
@@ -9,6 +10,10 @@
 });
 
 $('#addDocument').click(function () { //сформировать документ Fase
+    createDocumentNarad();
+});
+
+function createDocumentNarad() {
     //копирование лицевой стороны
     copyDressNumber($('#dressNumberFase input').val(), $('#dressNumberPrint'));
     copyTableFace($('#theadTableFase tr:eq(1)').find('td'), $('#theadTablePrint tr:eq(1)').find('td'));
@@ -31,7 +36,7 @@ $('#addDocument').click(function () { //сформировать докумен�
     copyDressNumber($('#volumeTotalTableDetails').text(), $(volumeTotalTableDetailsPrint));
     copyTrtbodyPrintDetails($('.details tbody tr:not(:first)'), $('#tbodyTablePrintReverse tbody'));
     copyEmployeePosition($('#tfootEmployeePositionReverse'), $('#tfootPrintReverse'));
-});
+}
 
 function copyDressNumber($valElementCopy, $elementPrint) {//копировать номер наряда
     $($elementPrint).text($valElementCopy);
